@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/teams/{id}/leader', [TeamController::class, 'changeLeader'])->name('team.changeLeader');
     Route::patch('/teams/{id}', [TeamController::class, 'update'])->name('team.update');
     Route::delete('/teams/{id}', [TeamController::class, 'disband'])->name('team.disband');
+
+    Route::get('/proposals', [ProposalController::class, 'showProposals'])->name('proposals.index');
+    Route::post('/proposals', [ProposalController::class, 'submit'])->name('proposal.submit');
+    Route::patch('/proposals/{id}/accept', [ProposalController::class, 'accept'])->name('proposal.accept');
+    Route::patch('/proposals/{id}/reject', [ProposalController::class, 'reject'])->name('proposal.reject');
+    Route::patch('/proposals/{id}', [ProposalController::class, 'update'])->name('proposal.update');
+    Route::delete('/proposals/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,6 +34,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/teams/{id}', [TeamController::class, 'showTeam'])->name('team.index');
+    Route::get('/teams', [TeamController::class, 'showTeams'])->name('teams.index');
+    Route::post('/teams', [TeamController::class, 'create'])->name('team.create');
+    Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('team.join');
+    Route::delete('/teams/leave', [TeamController::class, 'leave'])->name('team.leave');
+    Route::delete('/teams/kick/{userId}', [TeamController::class, 'kickMember'])->name('team.kick');
+    Route::patch('/teams/{id}/leader', [TeamController::class, 'changeLeader'])->name('team.changeLeader');
+    Route::patch('/teams/{id}', [TeamController::class, 'update'])->name('team.update');
+    Route::delete('/teams/{id}', [TeamController::class, 'disband'])->name('team.disband');
 });
 
 require __DIR__.'/auth.php';

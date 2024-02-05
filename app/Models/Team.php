@@ -11,7 +11,7 @@ class Team extends Model
 
     protected $protected = [];
 
-    public function users()
+    public function members()
     {
         return $this->hasMany(User::class);
     }

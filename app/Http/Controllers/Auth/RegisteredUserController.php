@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Enums\UserRole;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -34,13 +35,20 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'nim' => 'required|string|min:10|max:10|unique:'.User::class,
+            'phone' => 'required|regex:/^08[0-9]+$/',
+            'line_id' => 'required|string',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'nim' => $request->nim,
+            'phone' => $request->phone,
+            'line_id' => $request->line_id,
             'password' => Hash::make($request->password),
+            'role' => UserRole::PARTICIPANT
         ]);
 
         event(new Registered($user));

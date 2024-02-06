@@ -46,6 +46,19 @@ class TeamController extends Controller
         // set your redirect page here
     }
 
+    public function search(Request $request)
+    {
+        $request->validate([
+            'token' => 'required|string|max:255',
+        ], [
+            'token.required' => 'Mohon masukkan token tim',
+        ]);
+
+        $teams = Team::with('members')->where('token', $request->token)->get();
+
+        // set your redirect page here
+    }
+
     public function join($token)
     {
         $teamId = Team::where('token', $token)->first()->id;

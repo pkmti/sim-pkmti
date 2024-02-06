@@ -67,7 +67,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <div className='flex flex-col w-full'>
                                 <span className='uppercase font-medium md:text-base sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
                                 <h3 className='capitalize text-secondary leading-18 font-black lg:text-8xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
-                                <p className='text-xs sm:text-sm mt-3 text-slate-800 font-light capitalize w-9/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
+                                <p className='text-xs sm:text-sm mt-3 font-light capitalize w-9/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
                                 <div className='mt-3 w-64'>
                                     <button className="bg-primary hover:bg-blue-lagoon text-white btn sm:btn-xs md:btn-sm lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
                                 </div>

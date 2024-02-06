@@ -49,14 +49,24 @@ class ProposalController extends Controller
         // set your redirect page here
     }
 
-    public function reject($id)
+    public function reject($id, Request $request)
     {
-        Proposal::find($id)->update(['status' => 'rejected']);
+        $request->validate([
+            'note' => 'required|string',
+        ], [
+            'note.required' => 'Mohon masukkan alasan penolakan',
+        ]);
+
+        Proposal::find($id)->update([
+            'status' => 'rejected',
+            'note' => $request->note,
+        ]);
 
         // send notif email here
 
         // set your redirect page here
     }
+
 
     public function update(Request $request, $id)
     {

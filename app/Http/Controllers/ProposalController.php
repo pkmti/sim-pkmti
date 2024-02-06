@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proposal;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -27,6 +28,12 @@ class ProposalController extends Controller
             'title.required' => 'Mohon masukkan judul proposal',
             'draft_proposal_url.required' => 'Mohon masukkan URL proposal draft',
         ]);
+
+        // allow submit when team member count if more than 3
+        $teamMembersCount = User::where('team_id', $request->team_id)->count();
+        if ($teamMembersCount < 3) {
+            return back()->with('error', 'Tim terdiri dari minimal 3 orang untuk mengajukan proposal');
+        }
 
         Proposal::create([
             'team_id' => $request->team_id,

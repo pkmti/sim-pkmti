@@ -1,21 +1,6 @@
-import {
-    Bars3Icon,
-    DocumentTextIcon,
-    HomeIcon,
-    UserGroupIcon,
-    UserIcon,
-} from "@heroicons/react/24/solid";
+import { Bars3Icon, UserIcon } from "@heroicons/react/24/solid";
 
-export default function Sidebar({ user, children }) {
-    const navigations = [
-        { icon: <HomeIcon className="h-6 w-6" />, text: "Beranda" },
-        { icon: <UserGroupIcon className="h-6 w-6" />, text: "Tim" },
-        {
-            icon: <DocumentTextIcon className="h-6 w-6" />,
-            text: "Proposal PKM",
-        },
-    ];
-
+export default function Sidebar({ user, navigations, children }) {
     return (
         <div className="drawer lg:drawer-open">
             <input id="sidebar" type="checkbox" className="drawer-toggle" />

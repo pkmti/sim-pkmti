@@ -41,10 +41,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/teams', [TeamController::class, 'create'])->name('team.create');
     Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('team.join');
     Route::delete('/teams/leave', [TeamController::class, 'leave'])->name('team.leave');
-    Route::delete('/teams/kick/{userId}', [TeamController::class, 'kickMember'])->name('team.kick');
-    Route::patch('/teams/{id}/leader', [TeamController::class, 'changeLeader'])->name('team.changeLeader');
-    Route::patch('/teams/{id}', [TeamController::class, 'update'])->name('team.update');
-    Route::delete('/teams/{id}', [TeamController::class, 'disband'])->name('team.disband');
+
+    Route::middleware(['role:admin|leader'])->group(function () {
+        Route::delete('/teams/kick/{userId}', [TeamController::class, 'kickMember'])->name('team.kick');
+        Route::patch('/teams/{id}/leader', [TeamController::class, 'changeLeader'])->name('team.changeLeader');
+        Route::patch('/teams/{id}', [TeamController::class, 'update'])->name('team.update');
+        Route::delete('/teams/{id}', [TeamController::class, 'disband'])->name('team.disband');
+    });
 
     Route::get('/proposals', [ProposalController::class, 'showProposals'])->name('proposals.index');
     Route::post('/proposals', [ProposalController::class, 'submit'])->name('proposal.submit');

@@ -1,11 +1,13 @@
 import { Link, Head } from '@inertiajs/react';
 import DarkMode from '@/Components/darkMode';
+import { BookOpenIcon } from "@heroicons/react/24/outline";
+
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="PKM TI" />
-            <div className="navbar fixed sm:px-10 z-10">
+            <div className="navbar fixed sm:px-12 z-10">
                 <div className="navbar-start">
                     <a href='#' className="cursor-pointer w-14">
                         <img src="/images/Logo PKM TI.png" alt="" />
@@ -29,8 +31,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 </div>
                 <div className="navbar-end space-x-4">
 
-                    <DarkMode/>
-                    
+                    <DarkMode />
+
                     {auth.user ? (
                         <Link
                             href={route('dashboard')}
@@ -56,6 +58,30 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </>
                     )}
                 </div>
+            </div>
+
+            <div className="flex pt-28">
+                <main>
+                    <div className='relative w-full h-screen'>
+                        <div className='flex flex-row gap-6 items-center justify-between sm:px-12 w-full'>
+                            <div className='flex flex-col w-full'>
+                                <span className='uppercase font-medium md:text-base sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
+                                <h3 className='capitalize text-secondary leading-18 font-black lg:text-8xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
+                                <p className='text-xs sm:text-sm mt-3 text-slate-800 font-light capitalize w-9/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
+                                <div className='mt-3 w-64'>
+                                    <button className="bg-primary hover:bg-blue-lagoon text-white btn sm:btn-xs md:btn-sm lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
+                                </div>
+                            </div>
+                            <div class="flex justify-center w-full h-full">
+                                <div class="relative w-full min-h-full">
+                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary"></div>
+                                    <img src="images/gedung-TI.jpg" class="object-contain hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2" alt="Gedung Teknologi Informasi" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </main>
             </div>
             {/* <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
                 <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">

@@ -18,7 +18,26 @@ export default {
             colors: {
                 'primary' : "#0D79B9",
                 'secondary' : "#1D4489",
+                "blue-lagoon": "#1E96C8",
                 
+            },
+            fontSize: {
+                '3xl': '1.953rem',
+                '4xl': '2.441rem',
+                '5xl': '3.052rem',
+                '6xl': '3.441rem',
+                '7xl': '4.052rem',
+                '8xl': '4.441rem',
+            },
+            lineHeight: {
+                '11': '2.6rem',
+                '12': '2.8rem',
+                '13': '3rem',
+                '14': '3.2rem',
+                '15': '3.4rem',
+                '16': '3.6rem',
+                '17': '3.8rem',
+                '18': '4rem',
             }
         },
     },

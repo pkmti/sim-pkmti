@@ -1,4 +1,9 @@
-import { Bars3Icon, UserIcon } from "@heroicons/react/24/solid";
+import {
+    ArrowLeftEndOnRectangleIcon,
+    Bars3Icon,
+    UserIcon,
+} from "@heroicons/react/24/solid";
+import { Link } from "@inertiajs/react";
 
 export default function Sidebar({ user, navigations, children }) {
     return (
@@ -29,7 +34,7 @@ export default function Sidebar({ user, navigations, children }) {
                         className="h-32 w-32 mx-auto my-4"
                     />
 
-                    <ul className="">
+                    <ul className="font-bold">
                         {navigations.map((navigation, i) => (
                             <li key={i} className="my-2">
                                 <a>
@@ -41,12 +46,18 @@ export default function Sidebar({ user, navigations, children }) {
 
                     <div className="divider"></div>
 
-                    <ul className="">
-                        <li>
+                    <ul className="font-bold">
+                        <li className="my-2">
                             <a>
                                 <UserIcon className="h-6 w-6" />
                                 {user.nim}
                             </a>
+                        </li>
+                        <li className="my-2">
+                            <Link method="post" href={route("logout")} as="a">
+                                <ArrowLeftEndOnRectangleIcon className="h-6 w-6" />
+                                Keluar
+                            </Link>
                         </li>
                     </ul>
                 </div>

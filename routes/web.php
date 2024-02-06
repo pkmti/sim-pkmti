@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix('test/admin')->group(function () {
+Route::middleware('auth')->prefix('test/admin')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     });

@@ -17,6 +17,19 @@ export default {
     },
     plugins: [require("daisyui"), require("@tailwindcss/typography")],
     daisyui: {
-        themes: ["dark", "light"],
+        themes: [
+            {
+                dark: {
+                    ...require("daisyui/src/theming/themes")["dark"],
+                    primary: "#0079B9",
+                    secondary: "#94D8E9",
+                },
+                light: {
+                    ...require("daisyui/src/theming/themes")["light"],
+                    primary: "#0079B9",
+                    secondary: "#94D8E9",
+                },
+            },
+        ],
     },
 };

@@ -48,8 +48,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/proposals', [ProposalController::class, 'showProposals'])->name('proposals.index');
     Route::post('/proposals', [ProposalController::class, 'submit'])->name('proposal.submit');
-    Route::patch('/proposals/{id}/accept', [ProposalController::class, 'accept'])->name('proposal.accept');
-    Route::patch('/proposals/{id}/reject', [ProposalController::class, 'reject'])->name('proposal.reject');
+
+    Route::middleware(['role:admin|lecturer'])->group(function () {
+        Route::patch('/proposals/{id}/accept', [ProposalController::class, 'accept'])->name('proposal.accept');
+        Route::patch('/proposals/{id}/reject', [ProposalController::class, 'reject'])->name('proposal.reject');
+    });
+
     Route::patch('/proposals/{id}', [ProposalController::class, 'update'])->name('proposal.update');
     Route::delete('/proposals/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
 });

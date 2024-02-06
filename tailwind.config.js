@@ -15,10 +15,15 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary' : "#0D79B9",
+                'secondary' : "#1D4489",
+                
+            }
         },
     },
     plugins: [require("daisyui"), require("@tailwindcss/typography"), forms],
     daisyui: {
-        themes: ["dark", "light"],
+        themes: ["light", "dark"],
     },
 };

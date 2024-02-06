@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('team_name');
             $table->unsignedBigInteger('leader_id');
             $table->string('token')->unique();
-            $table->boolean('is_passed')->default(false);
             $table->timestamps();
 
             $table->foreign('leader_id')->references('id')->on('users')->onDelete('cascade');

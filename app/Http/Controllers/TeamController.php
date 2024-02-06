@@ -91,10 +91,8 @@ class TeamController extends Controller
     {
         $request->validate([
             'team_name' => 'required|string|max:255',
-            'is_passed' => 'required|boolean',
         ], [
             'team_name.required' => 'Nama tim tidak boleh kosong',
-            'is_passed.required' => 'Status kelulusan tidak boleh kosong',
         ]);
 
         $team = Team::find($id);

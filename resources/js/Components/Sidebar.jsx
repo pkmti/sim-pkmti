@@ -1,16 +1,12 @@
 import {
-    ArrowLeftEndOnRectangleIcon,
     Bars3Icon,
     DocumentTextIcon,
     HomeIcon,
-    PhoneIcon,
-    QuestionMarkCircleIcon,
     UserGroupIcon,
     UserIcon,
 } from "@heroicons/react/24/solid";
 
 export default function Sidebar({ user, children }) {
-    console.log(user);
     const navigations = [
         { icon: <HomeIcon className="h-6 w-6" />, text: "Beranda" },
         { icon: <UserGroupIcon className="h-6 w-6" />, text: "Tim" },
@@ -48,7 +44,7 @@ export default function Sidebar({ user, children }) {
                         className="h-32 w-32 mx-auto my-4"
                     />
 
-                    <ul className="font-bold">
+                    <ul className="">
                         {navigations.map((navigation, i) => (
                             <li key={i} className="my-2">
                                 <a>
@@ -60,8 +56,7 @@ export default function Sidebar({ user, children }) {
 
                     <div className="divider"></div>
 
-                    <ul className="font-bold">
-                        {/* Profile */}
+                    <ul className="">
                         <li>
                             <a>
                                 <UserIcon className="h-6 w-6" />

@@ -70,8 +70,12 @@ class ProposalController extends Controller
 
     public function update(Request $request, $id)
     {
-        $proposal = Proposal::find($id);
-        $proposal->update($request->all());
+        Proposal::find($id)->update($request->all());
+
+        // if updated by participant, set status to pending
+        if ($request->user()->role == 'participant') {
+            Proposal::find($id)->update(['status' => 'pending']);
+        }
 
         // set your redirect page here
     }

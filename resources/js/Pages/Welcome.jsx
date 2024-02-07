@@ -92,7 +92,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         Agenda Acara 
                                     </span>
 
-                                    <p className='text-sm md:text-base font-light'>
+                                    <p className='text-base md:text-sm font-light'>
                                         Pembukaan PKM-TI 2024
                                     </p>
                                 </div>
@@ -107,8 +107,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         Date
                                     </span>
 
-                                    <p className='text-sm md:text-base font-light'>
-                                        Pembukaan PKM-TI 2024
+                                    <p className='text-base md:text-sm font-light'>
+                                        Minggu, 4 Februari 2024
                                     </p>
                                 </div>
                             </div>
@@ -124,7 +124,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         Lokasi Acara 
                                     </span>
 
-                                    <p className='text-sm md:text-base font-light w-11/12'>
+                                    <p className='text-base md:text-sm leading-[0.45rem] font-light w-11/12'>
                                         Gedung Teknologi Informasi Fakultas Teknik Universitas Udayana
                                     </p>
                                 </div>

@@ -1,6 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
 import DarkMode from '@/Components/darkMode';
-import { BookOpenIcon } from "@heroicons/react/24/outline";
+import { BookOpenIcon} from "@heroicons/react/24/outline";
+import { MapPinIcon, CalendarDaysIcon,BookmarkSquareIcon    } from "@heroicons/react/24/solid";
 
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
@@ -44,14 +45,14 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <>
                             <Link
                                 href={route('login')}
-                                className="font-medium bg-primary px-6 py-2 rounded-md text-white hover:text-white hover:bg-sky-600 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 transition-all duration-300"
+                                className="font-medium bg-primary px-6 py-2 rounded-md text-white hover:text-white hover:bg-sky-600 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 transition-all duration-300"
                             >
                                 Log in
                             </Link>
 
                             <Link
                                 href={route('register')}
-                                className="font-medium px-6 py-2 rounded-md text-primary outline outline-primary outline-2 -outline-offset-2 hover:text-white hover:bg-primary dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 transition-all duration-300"
+                                className="font-medium px-6 py-2 rounded-md text-primary outline outline-primary outline-2 -outline-offset-2 hover:text-white hover:bg-primary dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 transition-all duration-300"
                             >
                                 Register
                             </Link>
@@ -62,7 +63,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
             <div className="flex pt-28">
                 <main>
-                    <div className='relative w-full h-screen'>
+                    <div className='relative w-full h-full'>
                         <div className='flex flex-row gap-6 items-center justify-between sm:px-12 w-full'>
                             <div className='flex flex-col w-full'>
                                 <span className='uppercase font-medium md:text-base sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
@@ -80,6 +81,56 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
 
                         </div>
+                    </div>
+
+                    <div className='flex flex-row w-full justify-center items-center mt-6'>
+                        <div className='flex flex-row gap-4 justify-between items-start'>
+                            <div className='flex flex-row gap-4 pr-10'>
+                                <BookmarkSquareIcon  className='w-6 h-6 font-extrabold' />
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Agenda Acara 
+                                    </span>
+
+                                    <p className='text-sm md:text-base font-light'>
+                                        Pembukaan PKM-TI 2024
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+                            <div className='flex flex-row gap-4'>
+                                <CalendarDaysIcon className='w-6 h-6 font-extrabold' />
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Date
+                                    </span>
+
+                                    <p className='text-sm md:text-base font-light'>
+                                        Pembukaan PKM-TI 2024
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+
+                            <div className='flex flex-row gap-4'>
+                                <MapPinIcon className='w-6 h-6 font-extrabold' />
+                                
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Lokasi Acara 
+                                    </span>
+
+                                    <p className='text-sm md:text-base font-light w-11/12'>
+                                        Gedung Teknologi Informasi Fakultas Teknik Universitas Udayana
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                 </main>
             </div>

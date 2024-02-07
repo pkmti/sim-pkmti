@@ -18,8 +18,7 @@ export default {
             colors: {
                 'primary' : "#0D79B9",
                 'secondary' : "#1D4489",
-                
-            }
+            },
         },
     },
     plugins: [require("daisyui"), require("@tailwindcss/typography"), forms],

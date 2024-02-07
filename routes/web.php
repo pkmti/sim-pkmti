@@ -35,4 +35,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::middleware('auth')->prefix('test/admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Admin/Dashboard');
+    });
+    Route::get('/participants', function () {
+        return Inertia::render('Admin/Participants');
+    });
+    Route::get('/teams', function () {
+        return Inertia::render('Admin/Teams');
+    });
+    Route::get('/proposals', function () {
+        return Inertia::render('Admin/Proposals');
+    });
+});
+
 require __DIR__.'/auth.php';

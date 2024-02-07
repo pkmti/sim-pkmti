@@ -37,10 +37,16 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->prefix('test/admin')->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Admin/Dashboard');
     });
     Route::get('/participants', function () {
-        return Inertia::render('Team');
+        return Inertia::render('Admin/Participants');
+    });
+    Route::get('/teams', function () {
+        return Inertia::render('Admin/Teams');
+    });
+    Route::get('/proposals', function () {
+        return Inertia::render('Admin/Proposals');
     });
 });
 

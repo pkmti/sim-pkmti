@@ -16,13 +16,13 @@ class TeamController extends Controller
     public function showTeam($token)
     {
         $team = Team::with('members', 'proposal')->find($token);
-        return Inertia::render('Team/Show', compact('team'));
+        return Inertia::render('Team', compact('team'));
     }
 
     public function showTeams()
     {
         $teams = Team::with('members', 'proposal')->get();
-        return Inertia::render('Team/Index', compact('teams'));
+        return Inertia::render('Admin/Teams', compact('teams'));
     }
 
     public function create(Request $request)

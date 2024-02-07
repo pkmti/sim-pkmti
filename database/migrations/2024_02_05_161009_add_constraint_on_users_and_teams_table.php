@@ -12,12 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->after('email_verified_at', function ($table) {
-                $table->string('nim', 10);
-                $table->string('phone');
-                $table->string('line_id');
-                $table->enum('role', ['admin', 'participant', 'lecturer'])->default('participant');
-            });
+            $table->unsignedBigInteger('team_id')->nullable();
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('set null');
         });
     }
 
@@ -27,10 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('nim');
-            $table->dropColumn('phone');
-            $table->dropColumn('line_id');
-            $table->dropColumn('role');
+            $table->dropForeign(['team_id']);
+            $table->dropColumn('team_id');
         });
     }
 };

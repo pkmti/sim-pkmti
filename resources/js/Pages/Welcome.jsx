@@ -1,7 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
 import DarkMode from '@/Components/darkMode';
 import { BookOpenIcon} from "@heroicons/react/24/outline";
-import { MapPinIcon, CalendarDaysIcon,BookmarkSquareIcon    } from "@heroicons/react/24/solid";
+import { MapPinIcon, CalendarDaysIcon,BookmarkSquareIcon, ArrowLongRightIcon , ArrowLongLeftIcon } from "@heroicons/react/24/solid";
 
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
@@ -63,7 +63,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
             <div className="flex pt-28">
                 <main>
-                    <div className='relative w-full h-full'>
+                    <div className='relative w-full'>
                         <div className='flex flex-row gap-6 items-center justify-between sm:px-12 w-full'>
                             <div className='flex flex-col w-full'>
                                 <span className='uppercase font-medium md:text-base sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
@@ -83,8 +83,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                     </div>
 
-                    <div className='flex flex-row w-full justify-center items-center mt-6'>
-                        <div className='flex flex-row gap-4 justify-between items-start'>
+                    <div className='flex flex-row w-full justify-center items-center mt-32'>
+                        <div className='flex flex-row gap-4 justify-between items-start bg-slate-200 shadow-2xl px-6 py-6 rounded-lg'>
                             <div className='flex flex-row gap-4 pr-10'>
                                 <BookmarkSquareIcon  className='w-6 h-6 font-extrabold' />
                                 <div className='block'>
@@ -132,6 +132,28 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                         
                     </div>
+
+
+                    <section className='flex flex-row w-full gap-6 sm:px-12 mt-20'>
+                        <div className='grid md:grid-cols-3 w-3/4'>
+                            <img src='https://satujam.com/wp-content/uploads/2017/01/1-1.jpg' className='rounded-lg h-72 w-64  object-fill cursor-pointer'/>
+                            <img src='https://mundomaya.travel/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2021/08/Gunung-Bromo.jpg.webp' className='rounded-lg h-72 w-64 object-fill cursor-pointer'/>
+                            <img src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Xnk9H92N756VtYCg3aNC47ZJVi78Y0gGy4Op-qz7Xu1_87cuQwj9zNPa23IJnpaSZ_GJxxpdytnNsxTJNSu9e3asNPSg6Sj4Si9KwbCe9qPVQP3AQz8YiDbR4LUM7TnnErWZ-UjKrGwI/s640/Gunung-Bromo-Jawa-timur.jpg' className='rounded-lg h-72 w-72 object-fill cursor-pointer'/>
+                        </div>
+
+                        <div className='flex flex-col w-5/12'>
+                            <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>
+                            <h3 className='capitalize text-2xl md:text-4xl font-extrabold text-secondary leading-11'>Bertemu dengan mereka yang sudah profesional</h3>
+                            <p className='text-sm md:text-xs font-light text-gray-500 mt-3 capitalize w-4/5'>
+                            Selamatkan tempat di barisan terdepan karena kami mempersembahkan Narasumber yang luar biasa di acara spesial PKM kami! Bersiaplah untuk terinspirasi, berinteraksi, dan mengambil momentum positif dari pandangan hidup yang penuh semangat. Tunggu apa lagi? Bergabunglah dengan kami untuk pengalaman yang mengesankan! 🚀
+                            </p>
+
+                            <div className='flex flex-row gap-4 flex-shrink-0 mt-5'>
+                                    <button className="btn btn-sm shadow-2xl rounded-lg"><ArrowLongLeftIcon className='w-7 h-7 font-black'/></button>
+                                    <button className="btn btn-sm shadow-2xl shadow-slate-200 rounded-lg"><ArrowLongRightIcon className='w-7 h-7 font-black'/></button>
+                            </div>
+                        </div>
+                    </section>      
                 </main>
             </div>
             {/* <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">

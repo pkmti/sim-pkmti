@@ -16,6 +16,11 @@ class Team extends Model
         return $this->hasMany(User::class);
     }
 
+    public function leader()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function proposal()
     {
         return $this->hasOne(Proposal::class);

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AcceptProposal;
+use App\Mail\RejectProposal;
 use App\Models\Proposal;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class ProposalController extends Controller
@@ -51,7 +54,11 @@ class ProposalController extends Controller
     {
         Proposal::find($id)->update(['status' => 'accepted']);
 
-        // send notif email here
+        // send email to team leader
+        $proposalTitle = Proposal::find($id)->title;
+        $leaderId = Proposal::with('team')->find($id)->team->leader_id;
+        $leader = User::find($leaderId)->first();
+        Mail::to($leader->email)->send(new AcceptProposal($leader->name, $proposalTitle));
 
         return back()->with('success', 'Proposal telah disetujui');
     }
@@ -69,7 +76,11 @@ class ProposalController extends Controller
             'note' => $request->note,
         ]);
 
-        // send notif email here
+        // send email to team leader
+        $proposalTitle = Proposal::find($id)->title;
+        $leaderId = Proposal::with('team')->find($id)->team->leader_id;
+        $leader = User::find($leaderId)->first();
+        Mail::to($leader->email)->send(new RejectProposal($leader->name, $proposalTitle, $request->note));
 
         return back()->with('success', 'Proposal telah ditolak');
     }

@@ -13,12 +13,15 @@ class AcceptProposal extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $name, $proposal_title;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($name, $proposal_title)
     {
-        //
+        $this->name = $name;
+        $this->proposal_title = $proposal_title;
     }
 
     /**
@@ -27,7 +30,7 @@ class AcceptProposal extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Accept Proposal',
+            subject: 'Selamat! Proposal PKM Kalian Telah Disetujui! 🎉',
         );
     }
 
@@ -37,7 +40,7 @@ class AcceptProposal extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.accept-proposal',
         );
     }
 

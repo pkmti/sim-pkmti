@@ -13,12 +13,16 @@ class RejectProposal extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $name, $proposal_title, $note;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($name, $proposal_title, $note)
     {
-        //
+        $this->name = $name;
+        $this->proposal_title = $proposal_title;
+        $this->note = $note;
     }
 
     /**
@@ -27,7 +31,7 @@ class RejectProposal extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Reject Proposal',
+            subject: 'Yuk, Semangat! Proposal PKM Kalian Masih Bisa Direvisi! 💪',
         );
     }
 
@@ -37,7 +41,7 @@ class RejectProposal extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.reject-proposal',
         );
     }
 

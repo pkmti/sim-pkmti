@@ -44,7 +44,7 @@ class ProposalController extends Controller
             'status' => 'pending',
         ]);
 
-        // set your redirect page here
+        return back()->with('success', 'Tim-mu telah berhasil mengajukan proposal');
     }
 
     public function accept($id)
@@ -53,7 +53,7 @@ class ProposalController extends Controller
 
         // send notif email here
 
-        // set your redirect page here
+        return back()->with('success', 'Proposal telah disetujui');
     }
 
     public function reject($id, Request $request)
@@ -71,7 +71,7 @@ class ProposalController extends Controller
 
         // send notif email here
 
-        // set your redirect page here
+        return back()->with('success', 'Proposal telah ditolak');
     }
 
 
@@ -84,13 +84,13 @@ class ProposalController extends Controller
             Proposal::find($id)->update(['status' => 'pending']);
         }
 
-        // set your redirect page here
+        return back()->with('success', 'Proposal telah diperbarui');
     }
 
     public function delete($id)
     {
         Proposal::find($id)->delete();
 
-        // set your redirect page here
+        return back()->with('success', 'Proposal telah dihapus');
     }
 }

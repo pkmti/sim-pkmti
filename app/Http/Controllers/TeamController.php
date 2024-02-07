@@ -13,9 +13,9 @@ class TeamController extends Controller
 {
     const MAX_PARTICIPANTS = 5;
 
-    public function showTeam($id)
+    public function showTeam($token)
     {
-        $team = Team::with('members', 'proposal')->find($id);
+        $team = Team::with('members', 'proposal')->find($token);
         return Inertia::render('Team/Show', compact('team'));
     }
 
@@ -43,7 +43,7 @@ class TeamController extends Controller
 
         User::find(Auth::id())->update(['team_id' => $team->id]);
 
-        // set your redirect page here
+        return to_route('team.index', $token);
     }
 
     public function search(Request $request)
@@ -54,9 +54,10 @@ class TeamController extends Controller
             'token.required' => 'Mohon masukkan token tim',
         ]);
 
-        $teams = Team::with('members')->where('token', $request->token)->get();
+        $team = Team::with('members')->where('token', $request->token)->first();
+        if(!$team) return back()->with('error', 'Tim tidak ditemukan');
 
-        // set your redirect page here
+        return to_route('team.result', $team)->with('success', 'Tim ditemukan');
     }
 
     public function join($token)
@@ -70,21 +71,21 @@ class TeamController extends Controller
 
         User::find(Auth::id())->update(['team_id' => $teamId]);
 
-        // set your redirect page here
+        return to_route('team.index', $token)->with('success', 'Selamat bergabung!');
     }
 
     public function leave()
     {
         User::find(Auth::id())->update(['team_id' => null]);
 
-        // set your redirect page here
+        return to_route('dashboard')->with('success', 'Kamu berhasil keluar dari tim');
     }
 
     public function kickMember($userId)
     {
         User::find($userId)->update(['team_id' => null]);
 
-        // set your redirect page here
+        return back()->with('success', 'Anggota tim berhasil dikeluarkan');
     }
 
     public function changeLeader($id, Request $request)
@@ -97,7 +98,7 @@ class TeamController extends Controller
 
         Team::find($id)->update(['leader_id' => $request->leader_id]);
 
-        // set your redirect page here
+        return back()->with('success', 'Ketua tim berhasil diubah');
     }
 
     public function update($id, Request $request)
@@ -111,13 +112,13 @@ class TeamController extends Controller
         $team = Team::find($id);
         $team->update(request()->all());
 
-        // set your redirect page here
+        return back()->with('success', 'Tim berhasil diupdate');
     }
 
     public function disband($id) // or delete
     {
         Team::find($id)->delete();
 
-        // set your redirect page here
+        return to_route('dashboard')->with('success', 'Tim berhasil dibubarkan 🥲');
     }
 }

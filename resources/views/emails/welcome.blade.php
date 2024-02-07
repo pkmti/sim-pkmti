@@ -90,6 +90,10 @@
       line-height: inherit !important;
     }
 
+    p {
+      color: #666666
+    }
+
     /* MOBILE STYLES */
     @media screen and (max-width: 600px) {
       h1 {
@@ -158,59 +162,59 @@
                   line-height: 25px;
                 ">
               <p style="margin: 0">Hai {{ $name }}, 👋</p>
-              <p>
+              <p style="color: #666666">
                 Wah, kabar baik nih! Kamu udah resmi terdaftar di Program
                 Kreativitas Mahasiswa Teknologi Informasi (PKM TI)! Keren
                 banget loh kamu mau ikutan dan jadi bagian dari perjalanan
                 kreatif ini.
-              </p>
+              </p style="color: #666666">
               <p>
                 Ada beberapa langkah nih yang bisa kamu lakuin untuk
                 melancarkan perjalananmu di PKM:
               </p>
               <ul>
-                <li>
+                <li style="color: #666666">
                   <strong>Membentuk Tim:</strong>
                   Buat tim PKM kamu dengan teman-teman yang punya ide keren
                   dan semangat yang sama. Jangan lupa mendaftarkan tim kamu di
                   web PKM TI yah!
                 </li>
-                <li>
+                <li style="color: #666666">
                   <strong>Baca Panduan:</strong>
                   Download panduan PKM buat lebih paham tentang aturan
                   mainnya. Gak perlu bingung, semua info penting ada di sana!
                 </li>
-                <li>
+                <li style="color: #666666">
                   <strong>Menentukan Ide:</strong>
                   Buat daftar ide-idemu, gak perlu ragu-ragu. Nanti bisa
                   dipilah-pilah, siapa tahu ada yang bisa jadi bahan PKM yang
                   keren!
                 </li>
-                <li>
+                <li style="color: #666666">
                   <strong>Merancang Proposal:</strong>
                   Proposal itu kayak cerita, jadi jangan lupa buat pembaca
                   tertarik dari awal. Jelaskan ide, tujuan, dan rencana dengan
                   gaya yang menyenangkan. Inget yah, patuhi juga aturan
                   penulisan proposal PKM sesuai panduan.
                 </li>
-                <li>
+                <li style="color: #666666">
                   <strong>Mencari Dosen Pembimbing:</strong>
                   Cari dosen pembimbing yang punya pengalaman atau minat
                   serupa dengan topik PKM-mu. Ini penting agar kamu
                   mendapatkan bimbingan yang tepat.
                 </li>
-                <li>
+                <li style="color: #666666">
                   <strong>Tanya-Tanya Aja:</strong>
                   Kalo ada yang bingung atau mau diskusi ide, langsung aja nih
                   tanya para panitia PKM TI. Mereka ramah banget loh!
                 </li>
               </ul>
 
-              <p>
+              <p style="color: #666666">
                 Terima kasih sudah mendaftar. Selamat menikmati serunya PKM
                 TI, yuk buat kegiatan ini berkesan! 🥳
               </p>
-              <p>
+              <p style="color: #666666">
                 Cheers,<br />
                 Tim Ilmiah PKM TI
               </p>
@@ -233,7 +237,7 @@
                   font-weight: 400;
                   line-height: 25px;
                 ">
-              <p>PKM TI 2024<br />
+              <p style="color: white">PKM TI 2024<br />
                 Grow Up The Passion, Change The Vision
               </p>
               <div class="flex flex-row gap-6">

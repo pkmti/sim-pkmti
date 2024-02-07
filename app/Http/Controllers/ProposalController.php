@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\AcceptProposal;
-use App\Mail\RejectProposal;
+use App\Jobs\SendEmailJob;
 use App\Models\Proposal;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class ProposalController extends Controller
@@ -58,7 +56,17 @@ class ProposalController extends Controller
         $proposalTitle = Proposal::find($id)->title;
         $leaderId = Proposal::with('team')->find($id)->team->leader_id;
         $leader = User::find($leaderId)->first();
-        Mail::to($leader->email)->send(new AcceptProposal($leader->name, $proposalTitle));
+        $emailArgs = [
+            'email' => $leader->email,
+            'subject' => 'Selamat! Proposal PKM Kalian Telah Disetujui! 🎉',
+            'view' => 'emails.accept-proposal',
+            'data' => [
+                'name' => $leader->name,
+                'proposal_title' => $proposalTitle,
+            ],
+            'attachments' => []
+        ];
+        dispatch(new SendEmailJob($emailArgs));
 
         return back()->with('success', 'Proposal telah disetujui');
     }
@@ -80,7 +88,18 @@ class ProposalController extends Controller
         $proposalTitle = Proposal::find($id)->title;
         $leaderId = Proposal::with('team')->find($id)->team->leader_id;
         $leader = User::find($leaderId)->first();
-        Mail::to($leader->email)->send(new RejectProposal($leader->name, $proposalTitle, $request->note));
+        $emailArgs = [
+            'email' => $leader->email,
+            'subject' => 'Yuk, Semangat! Proposal PKM Kalian Masih Bisa Direvisi! 💪',
+            'view' => 'emails.reject-proposal',
+            'data' => [
+                'name' => $leader->name,
+                'proposal_title' => $proposalTitle,
+                'note' => $request->note,
+            ],
+            'attachments' => []
+        ];
+        dispatch(new SendEmailJob($emailArgs));
 
         return back()->with('success', 'Proposal telah ditolak');
     }

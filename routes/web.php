@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\TeamController;
+use App\Jobs\SendEmailJob;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,6 +18,21 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/test-email', function () {
+    $emailArgs = [
+        'email' => 'ptadityamahendrap@gmail.com',
+        'subject' => 'Selamat Datang di PKM TI',
+        'view' => 'emails.reject-proposal',
+        'data' => [
+            'name' => 'Aditya Mahendra',
+            'proposal_title' => 'HAHAHA',
+            'note' => 'Skill Issue'
+        ],
+        'attachments' => []
+    ];
+    dispatch(new SendEmailJob($emailArgs));
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -76,4 +92,4 @@ Route::middleware('auth')->prefix('test/admin')->group(function () {
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

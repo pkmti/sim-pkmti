@@ -80,6 +80,10 @@
       width: 100% !important;
     }
 
+    p {
+      color: #666666
+    }
+
     /* iOS BLUE LINKS */
     a[x-apple-data-detectors] {
       color: inherit !important;
@@ -158,34 +162,33 @@
                   line-height: 25px;
                 ">
               <p style="margin: 0">Hai {{ $name }}, 💀</p>
-              <p>
-                Tenang, jangan kecewa dulu ya! Kami ingin memberi tahu bahwa
-                proposal PKM kalian dengan judul
-                <span style="font-weight: bold; color: red">
+              <p style="color: #666666">
+                Kami ingin memberi tahu bahwa proposal PKM kalian dengan judul
+                <span style="font-weight: bold;">
                   "{{ $proposal_title }}"
                 </span>
                 masih
                 <span style="font-weight: bold; color: red">
                   BELUM BISA DISETUJUI
                 </span>
-                saat ini. Tapi, bukan berarti itu akhir dari semuanya!
+                saat ini.
               </p>
-              <p style="color: red; text-align: center; font-style: italic">
+              <p style="text-align: center; font-weight: bold; color: #666666">
                 "{{ $note }}"
               </p>
-              <p>
+              <p style="color: #666666">
                 Diatas merupakan alasan dari penolakan proposal kalian. Tapi
                 hey, jangan down dulu! Kalian masih punya kesempatan buat
                 revisi dan submit kembali proposal kalian. Revisi dapat
                 disubmit pada web resmi PKM TI.
               </p>
 
-              <p>
+              <p style="color: #666666">
                 Tetap semangat yah teman-teman, sekarang ayo kerjakan
                 revisinya! 😋
               </p>
 
-              <p>
+              <p style="color: #666666">
                 Cheers,<br />
                 Tim Ilmiah PKM TI
               </p>
@@ -208,7 +211,7 @@
                   font-weight: 400;
                   line-height: 25px;
                 ">
-              <p>
+              <p style="color: white">
                 PKM TI 2024<br />
                 Grow Up The Passion, Change The Vision
               </p>

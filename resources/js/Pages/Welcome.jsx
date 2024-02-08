@@ -1,19 +1,17 @@
 import { Link, Head } from '@inertiajs/react';
 import DarkMode from '@/Components/darkMode';
-import CardTopic from '@/Components/CardTopic';
-import {ArrowLongDownIcon} from '@heroicons/react/24/solid';
 import { BookOpenIcon } from "@heroicons/react/24/outline";
-import { MapPinIcon, CalendarDaysIcon, BookmarkSquareIcon, ArrowLongRightIcon, ArrowLongLeftIcon, CalendarIcon } from "@heroicons/react/24/solid";
+import { MapPinIcon, CalendarDaysIcon, BookmarkSquareIcon, ArrowLongRightIcon, ArrowLongLeftIcon, CalendarIcon, ArrowLongDownIcon } from "@heroicons/react/24/solid";
 
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="PKM TI" />
-            <div className="navbar bg-white shadow-md fixed sm:px-12 z-10">
+            <nav className="container navbar bg-white shadow-md fixed sm:px-12 z-10">
                 <div className="navbar-start">
                     <a href='#' className="cursor-pointer w-14">
-                        <img src="/images/Logo PKM TI.png" alt="" />
+                        <img src="/images/Logo-PKM-TI.png" alt="" />
                     </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -47,7 +45,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <>
                             <Link
                                 href={route('login')}
-                                className="font-medium bg-primary px-6 py-2 rounded-md text-white hover:text-white hover:bg-sky-600 dark:text-gray-400 dark:hover:text-white transition-all duration-300"
+                                className="font-medium bg-primary px-6 py-2 rounded-md text-white hover:text-white hover:bg-blue-lagoon dark:text-gray-400 dark:hover:text-white transition-all duration-300"
                             >
                                 Log in
                             </Link>
@@ -61,9 +59,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </>
                     )}
                 </div>
-            </div>
+            </nav>
 
-            <div className="flex pt-28">
+            <div className="flex pt-28 container">
                 <main>
                     <div className='relative w-full'>
                         <div className='flex flex-row gap-6 items-center justify-between sm:px-12 w-full'>
@@ -84,7 +82,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                         </div>
                     </div>
-
+                    
+                    {/* important date section */}
                     <div className='flex flex-row w-full justify-center items-center mt-32'>
                         <div className='flex flex-row gap-4 justify-between items-start bg-slate-200 shadow-2xl px-6 py-6 rounded-lg'>
                             <div className='flex flex-row gap-4 pr-10'>
@@ -132,10 +131,72 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    {/* end imporatant date section */}
 
+                    {/* section about us */}
+                    <section id="about-us" className="mt-32 px-10 flex justify-center align-center space-x-10">
+                        <div className="sm:w-1/2 overflow-hidden">
+                            <img src="/images/pkm-ti-2023.jpg" className="mx-auto w-[450px] h-[450px] rounded-tr-3xl rounded-bl-3xl shadow-[-35px_35px_0_0_#0D79B9]" alt="" />
+                        </div>
+                        <div className="sm:w-1/2">
+                            <div className="flex items-center space-x-2 mb-4">
+                                <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
+                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
+                            </div>
+                            <h2 className="text-5xl font-bold text-secondary mb-2">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
+                            <p>
+                                <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
+                                Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas. 
+                            </p>
+                            <a href="#pkm-topik" className="flex mt-4 text-sm text-slate-500 cursor-pointer">
+                                <ArrowLongDownIcon class="w-6 h-6 mr-3 animate-bounce"/>
+                                scroll down
+                            </a>
+                        </div>
+                    </section>
+                    {/* end about us section */}
 
+                    {/* pkm topic section */}
+                    <section id="pkm-topik" className="p-10 mt-20">
+                        <div className="relative">
+                            <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-75 before:-z-[1]">
+                                <div className="flex items-center space-x-2 mb-4">
+                                    <span className="inline h-1 w-32 bg-white rounded-full"></span>
+                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                    <p className="uppercase font-semibold text-white px-6">Eksplorasi topik pkm</p>
+                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                    <span className="inline h-1 w-32 bg-white rounded-full"></span>
+                                </div>
+                                <h2 className="capitalize text-5xl font-bold text-white mb-2">Kembangkan Ide Cemerlang Anda</h2>
+                                <p className="text-slate-200 text-center">
+                                Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
+                                </p>
+                            </div>
+                            <div className="relative -mt-32 z-[5] flex justify-center space-x-4">
+                                <div className="block max-w-[250px] text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
+                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
+                                </div>
+                                <div className="block max-w-[250px] text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
+                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
+                                </div>
+                                <div className="block max-w-[250px] text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
+                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
+                                </div>
+                                <div className="block max-w-[250px] text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
+                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {/* end pkm topic section */}
+
+                    {/*  speakers section */}
                     <section className='flex flex-row w-full gap-6 sm:px-12 mt-20'>
                         <div className='grid md:grid-cols-3 items-center gap-5'>
                             <div className='relative'>
@@ -229,70 +290,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                         </div>
                     </section>
+                    {/* end speakers section */}
+
                 </main>
             </div>
-
-
-            {/* section about us */}
-            <section id="about-us" className="min-h-screen px-10 flex justify-center align-center space-x-10">
-                <div className="sm:w-1/2 overflow-hidden">
-                    <img src="/images/pkm ti 2023.jpg" className="mx-auto w-[450px] h-[450px] rounded-tr-[60px] rounded-bl-[60px] shadow-[-35px_35px_0_0_#0D79B9]" alt="" />
-                </div>
-                <div className="sm:w-1/2">
-                    <div className="flex items-center space-x-2 mb-4">
-                        <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
-                        <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
-                        <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
-                    </div>
-                    <h2 className="text-5xl font-bold text-secondary mb-2">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
-                    <p>
-                        <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
-                        Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas. 
-                    </p>
-                    <a href="#pkm-topik" className="flex mt-4 text-sm text-slate-500 cursor-pointer">
-                        <ArrowLongDownIcon class="w-6 h-6 mr-3 animate-bounce"/>
-                        scroll down
-                    </a>
-                </div>
-            </section>
-            <section id="pkm-topik" className="min-h-screen p-10">
-                <div className="bg-blue-400 h-[400px] w-full rounded-3xl flex flex-col justify-start items-center p-10">
-                    <div className="flex items-center space-x-2 mb-4">
-                        <span className="inline h-1 w-32 bg-white rounded-full"></span>
-                        <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                        <p className="uppercase font-semibold text-white px-6">Eksplorasi topik pkm</p>
-                        <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                        <span className="inline h-1 w-32 bg-white rounded-full"></span>
-                    </div>
-                    <h2 className="capitalize text-5xl font-bold text-white mb-2">Kembangkan Ide Cemerlang Anda</h2>
-                    <p className="text-slate-200 text-center">
-                    Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
-                    </p>
-                    <div className="mt-8 flex space-x-6">
-                        <CardTopic
-                        title="PKM-KC"
-                        description="Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya."
-                        />
-                        <CardTopic
-                        title="PKM-PM"
-                        description="Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya."
-                        />
-                        <CardTopic
-                        title="PKM-K"
-                        description="Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya."
-                        />
-                        <CardTopic
-                        title="PKM-PI"
-                        description="Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya."
-                        />
-                    </div>
-                </div>
-            </section>
-
-            {/* section speakers */}
-            <section id="speakers" className="min-h-screen">
-
-            </section>
         </>
     );
 }

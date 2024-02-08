@@ -64,7 +64,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 </div>
             </nav>
 
-            <div className="flex pt-28 container">
+            <div className="flex flex-col pt-28 container">
                 <main>
                     <div className='relative w-full'>
                         <div className='flex flex-row gap-6 items-center justify-between sm:px-12 w-full'>
@@ -428,7 +428,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </section>
                     
                     {/* Contact section */}
-                    <section id='Contac-us' className='flex flex-col justify-center  w-full text-center items-center sm:px-12'>
+                    <section id='Contac-us' className='min-h-screen flex flex-col justify-start w-full text-center items-center px-12 sm:pt-20 sm:pb-12'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
                             <h3 className='capitalize text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 
@@ -461,8 +461,35 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                         </div>
                     </section>
-
                 </main>
+
+                <footer className="footer p-12 bg-base-200 text-base-content grid-cols-6 gap-x-20">
+                    <aside className='col-span-2'>
+                        <img src="images/Logo-PKM-TI.png" className='w-32' alt="" />
+                        <p className='text-lg text-slate-600 font-semibold'>Pelatihan PKM TI 2024<br/> Program Kreativitas Mahasiswa</p>
+                    </aside> 
+                    <nav className='col-span-2'>
+                        <h6 className="footer-title mb-0">Alamat</h6> 
+                        <a className="link link-hover mb-4">Jl. Kampus Udayana Bukit Jimbaran, Jimbaran, Kuta Selatan, Kabupaten Badung, Bali 80361</a>
+
+                        <h6 className="footer-title mb-0">Telepon</h6> 
+                        <a className="link link-hover mb-4">(0361) 701806</a>
+
+                        <h6 className="footer-title mb-0">Email</h6> 
+                        <a className="link link-hover mb-4">hmti@unud.ac.id</a>
+                    </nav> 
+                    <nav className='col-span-2'>
+                        <h6 className="footer-title mb-0">Terkait</h6> 
+                        <a className="link link-hover mb-2">UNUD | Teknologi Informasi</a>
+
+                        <a className="link link-hover mb-2">BEM PM Udayna</a>
+
+                        <a className="link link-hover mb-2">SMFT Udayana</a>
+                    </nav>
+                </footer>
+                <footer className='py-5 px-12 bg-base-300 text-slate-600'>
+                    <p>© 2024 Ilmiah PKM TI </p>
+                </footer>
             </div>
         </>
     );

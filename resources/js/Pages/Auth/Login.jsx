@@ -1,3 +1,4 @@
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { useEffect } from "react";
 
@@ -55,20 +56,43 @@ export default function Login({ status, canResetPassword }) {
                             <p className="mt-2 text-error">{errors.nim}</p>
                         </div>
 
-                        <div className="form-control">
-                            <label htmlFor="nim" className="font-bold mb-2">
+                        {/* Input password */}
+                        <div className="form-control my-2">
+                            <label
+                                htmlFor="password"
+                                className="font-bold mb-2"
+                            >
                                 Password
                             </label>
-                            <input
-                                id="password"
-                                type="password"
-                                name="password"
-                                value={data.password}
-                                onChange={(e) =>
-                                    setData("password", e.target.value)
-                                }
-                                className="input input-bordered w-full"
-                            />
+                            <div className="join">
+                                <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    value={data.password}
+                                    onChange={(e) =>
+                                        setData("password", e.target.value)
+                                    }
+                                    className="input input-bordered w-full join-item"
+                                />
+                                <label className="btn btn-square join-item swap">
+                                    <input
+                                        type="checkbox"
+                                        onClick={() => {
+                                            let x =
+                                                document.getElementById(
+                                                    "password"
+                                                );
+                                            x.type =
+                                                x.type === "password"
+                                                    ? "text"
+                                                    : "password";
+                                        }}
+                                    />
+                                    <EyeSlashIcon className="h-6 w-6 swap-on" />
+                                    <EyeIcon className="h-6 w-6 swap-off" />
+                                </label>
+                            </div>
 
                             <p className="mt-2 text-error">{errors.password}</p>
                         </div>

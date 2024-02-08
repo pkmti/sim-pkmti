@@ -26,10 +26,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <a href='#about-us'>About Us</a>
                         </li>
                         <li>
-                            <a href='#'>FAQ</a>
+                            <a href='#FaQ'>FAQ</a>
                         </li>
                         <li>
-                            <a href='#'>Contact Us</a>
+                            <a href='#Contac-us'>Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -328,7 +328,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
 
                     {/* FAQ section */}
-                        <section id='#FaQ' className='block w-full mt-20 py-16'>
+                        <section id='FaQ' className='block w-full mt-20 py-16'>
                             <div className='flex flex-col w-full'>
                                 <div className='px-8 lg:px-10'>
                                     <span className='uppercase text-sm font-semibold md:text-base text-primary'>MAlu Bertanya nanti gatau</span>
@@ -361,7 +361,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </section>
                     
                     {/* Contact section */}
-                    <section className='flex flex-col justify-center  w-full text-center items-center sm:px-12'>
+                    <section id='Contac-us' className='flex flex-col justify-center  w-full text-center items-center sm:px-12'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
                             <h3 className='capitalize text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-linear-blue'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 

@@ -70,16 +70,16 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <div className='flex flex-row gap-6 items-center justify-between sm:px-12 w-full'>
                             <div className='flex flex-col w-full'>
                                 <span className='uppercase font-medium md:text-base sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
-                                <h3 className='capitalize text-secondary leading-19 font-black lg:text-8xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
-                                <p className='text-xs sm:text-sm mt-3 font-light capitalize w-9/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
+                                <h3 className='capitalize text-secondary leading-19 font-bold lg:text-6xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
+                                <p className='text-xs sm:text-base mt-3 font-light capitalize w-11/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
                                 <div className='mt-3 w-64'>
                                     <button className="bg-primary hover:bg-blue-lagoon text-white btn sm:btn-xs md:btn-sm lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
                                 </div>
                             </div>
                             <div class="flex justify-center w-full h-full">
                                 <div class="relative w-full min-h-full">
-                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary"></div>
-                                    <img src="images/gedung-TI.jpg" class="object-contain hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2" alt="Gedung Teknologi Informasi" />
+                                    <div class="w-[450px] h-[450px] mx-auto transform rotate-y-45 translate-x-8 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary"></div>
+                                    <img src="images/gedung-TI.jpg" class="w-[450px] h-[450px] mx-auto object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
                                 </div>
                             </div>
 
@@ -87,8 +87,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
 
                     {/* important date section */}
-                    <div className='flex flex-row w-full justify-center items-center mt-32'>
-                        <div className='flex flex-row gap-4 justify-between items-start bg-slate-200 shadow-2xl px-6 py-6 rounded-lg'>
+                    <div className='flex flex-row w-full justify-center items-center mt-24'>
+                        <div className='flex flex-row gap-4 justify-between items-start bg-white shadow-lg border border-gray-200 px-6 py-6 rounded-lg'>
                             <div className='flex flex-row gap-4 pr-10'>
                                 <BookmarkSquareIcon className='w-6 h-6 font-extrabold' />
                                 <div className='block'>
@@ -139,8 +139,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                     {/* section about us */}
                     <section id="about-us" className="mt-32 px-10 flex justify-center align-center space-x-10">
-                        <div className="sm:w-1/2 overflow-hidden">
-                            <img src="/images/pkm-ti-2023.jpg" className="mx-auto w-[450px] h-[450px] rounded-tr-3xl rounded-bl-3xl shadow-[-35px_35px_0_0_#0D79B9]" alt="" />
+                        <div className="relative w-full sm:w-1/2">
+                            <div class="mx-auto w-[450px] h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
+                            <img src="images/gedung-TI.jpg" class="mx-auto w-[450px] h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
                         </div>
                         <div className="sm:w-1/2">
                             <div className="flex items-center space-x-2 mb-4">
@@ -148,7 +149,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
                                 <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
                             </div>
-                            <h2 className="text-5xl font-bold text-secondary mb-2">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
+                            <h2 className="text-5xl font-bold text-secondary mb-2 leading-17">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
                             <p>
                                 <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
                                 Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas.
@@ -164,8 +165,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     {/* pkm topic section */}
                     <section id="pkm-topik" className="p-10 mt-20">
                         <div className="relative">
-                            <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-75 before:-z-[1]">
-                                <div className="flex items-center space-x-2 mb-4">
+                            <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                                <div className="flex items-center space-x-2 mb-2">
                                     <span className="inline h-1 w-32 bg-white rounded-full"></span>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <p className="uppercase font-semibold text-white px-6">Eksplorasi topik pkm</p>
@@ -280,10 +281,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                         </div>
 
-                        <div className='flex flex-col w-5/12'>
+                        <div className='flex flex-col w-6/12'>
                             <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>
-                            <h3 className='capitalize text-2xl md:text-4xl font-extrabold text-secondary leading-11'>Bertemu dengan mereka yang sudah profesional</h3>
-                            <p className='text-sm md:text-xs font-light text-gray-500 mt-3 capitalize w-4/5'>
+                            <h3 className='capitalize text-2xl md:text-5xl font-extrabold text-secondary leading-17'>Bertemu dengan mereka yang sudah profesional</h3>
+                            <p className='text-sm md:text-base font-light text-gray-500 mt-3 capitalize'>
                                 Selamatkan tempat di barisan terdepan karena kami mempersembahkan Narasumber yang luar biasa di acara spesial PKM kami! Bersiaplah untuk terinspirasi, berinteraksi, dan mengambil momentum positif dari pandangan hidup yang penuh semangat. Tunggu apa lagi? Bergabunglah dengan kami untuk pengalaman yang mengesankan! 🚀
                             </p>
 
@@ -296,8 +297,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                     {/* Suhu section */}
                     <section className='flex flex-col w-full py-4 mt-28 sm:px-12'>
-                        <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-75 before:-z-[1]">
-                            <div className="flex items-center space-x-2 mb-4">
+                        <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                            <div className="flex items-center space-x-2 mb-2">
                                 <span className="inline h-1 w-32 bg-white rounded-full"></span>
                                 <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                 <p className="uppercase font-semibold text-white px-6">Para Suhu Berbicara</p>
@@ -311,7 +312,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
 
                         <div className="relative -mt-32 z-[5] flex justify-center space-x-4">
-                            <div className="block max-w-[40rem] text-center p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <div className="block max-w-[40rem] text-center p-4 bg-white/70 backdrop-blur-2xl backdrop-brightness-150 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                 <div className='w-full flex justify-center items-center mb-4'>
                                     <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' />
                                 </div>
@@ -332,7 +333,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <div className='flex flex-col w-full'>
                                 <div className='px-8 lg:px-10'>
                                     <span className='uppercase text-sm font-semibold md:text-base text-primary'>MAlu Bertanya nanti gatau</span>
-                                    <h3 className='capitalize font-black text-5xl mt-2 text-linear-blue'>Frequently Asked Questions</h3>
+                                    <h3 className='capitalize font-black text-5xl mt-2 text-secondary'>Frequently Asked Questions</h3>
                                     <p className='capitalize text-slate-500 mt-2 w-4/5'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
                                 </div>
 
@@ -363,7 +364,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     {/* Contact section */}
                     <section id='Contac-us' className='flex flex-col justify-center  w-full text-center items-center sm:px-12'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
-                            <h3 className='capitalize text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-linear-blue'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
+                            <h3 className='capitalize text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 
                             <div className='flex w-full items-center text-center justify-center'>
                                 <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>

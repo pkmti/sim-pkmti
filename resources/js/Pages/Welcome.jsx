@@ -295,8 +295,74 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                     </section>
 
+                    {/* Section Roundown Acara */}
+                    <section id='roundown-acara' className='flex flex-col justify-start items-center sm:px-12 mt-24'>
+                        <div className="flex items-center space-x-2 mb-2">
+                            <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
+                            <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                            <p className="uppercase font-semibold text-blue-lagoon px-6">Roundown Acara</p>
+                            <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                            <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
+                        </div>
+                        <h2 className="capitalize text-5xl font-bold text-secondary mb-2">Jangan Lewatkan Kesempatan Ini</h2>
+                        <p className="text-center">
+                            Setiap detik adalah kesempatan untuk belajar, berbagi, dan terhubung dengan komunitas kreatif. Catat tanggalnya dan pastikan Anda tidak melewatkan momen magis di PKM Wonderland. Ayo, mari jadwalkan momen berharga kita bersama!
+                        </p>
+
+                        <div className="overflow-x-auto w-full mt-6">
+                            <table className="table overflow-hidden">
+                                {/* head */}
+                                <thead>
+                                <tr className='bg-white-blue text-base uppercase text-slate-600'>
+                                    <th>Waktu</th>
+                                    <th>Acara</th>
+                                    <th>Lokasi</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {/* row 1 */}
+                                    <tr className='border-b-2 hover'>
+                                        <td className='block min-w-[250px]'>
+                                            <p className='text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
+                                            <p className='capitalize'>selasa, 6 februari</p>
+                                        </td>
+                                        <td>Sosialisasi Program Kreativitas Mahasiswa 2024</td>
+                                        <td>Live Youtube Channel Direktorat Pembelajaran dan Kemahasiswaan</td>
+                                    </tr>
+                                    {/* row 2 */}
+                                    <tr className='border-b-2 hover'>
+                                        <td className='block min-w-[250px]'>
+                                            <p className='text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
+                                            <p className='capitalize'>selasa, 6 februari</p>
+                                        </td>
+                                        <td>Pelatihan Membuat Proposal LOLOS Pimnas</td>
+                                        <td>Gedung Teknologi Informasi</td>
+                                    </tr>
+                                    {/* row 3 */}
+                                    <tr className='border-b-2 hover'>
+                                        <td className='block min-w-[250px]'>
+                                            <p className='text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
+                                            <p className='capitalize'>selasa, 6 februari</p>
+                                        </td>
+                                        <td>Sosialisasi Program Kreativitas Mahasiswa 2024</td>
+                                        <td>Live Youtube Channel Direktorat Pembelajaran dan Kemahasiswaan</td>
+                                    </tr>
+                                    {/* row 4 */}
+                                    <tr className='border-b-2 hover'>
+                                        <td className='block min-w-[250px]'>
+                                            <p className='text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
+                                            <p className='capitalize'>selasa, 6 februari</p>
+                                        </td>
+                                        <td>Sosialisasi Program Kreativitas Mahasiswa 2024</td>
+                                        <td>Live Youtube Channel Direktorat Pembelajaran dan Kemahasiswaan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
                     {/* Suhu section */}
-                    <section className='flex flex-col w-full py-4 mt-28 sm:px-12'>
+                    <section className='flex flex-col w-full py-4 mt-24 sm:px-12'>
                         <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
                             <div className="flex items-center space-x-2 mb-2">
                                 <span className="inline h-1 w-32 bg-white rounded-full"></span>

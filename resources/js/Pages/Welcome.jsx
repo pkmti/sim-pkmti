@@ -2,12 +2,15 @@ import { Link, Head } from '@inertiajs/react';
 import DarkMode from '@/Components/darkMode';
 import CardTopic from '@/Components/CardTopic';
 import {ArrowLongDownIcon} from '@heroicons/react/24/solid';
+import { BookOpenIcon} from "@heroicons/react/24/outline";
+import { MapPinIcon, CalendarDaysIcon,BookmarkSquareIcon    } from "@heroicons/react/24/solid";
+
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="PKM TI" />
-            <div className="navbar bg-white shadow-md fixed sm:px-10 z-10">
+            <div className="navbar bg-white shadow-md fixed sm:px-12 z-10">
                 <div className="navbar-start">
                     <a href='#' className="cursor-pointer w-14">
                         <img src="/images/Logo PKM TI.png" alt="" />
@@ -31,8 +34,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 </div>
                 <div className="navbar-end space-x-4">
 
-                    <DarkMode/>
-                    
+                    <DarkMode />
+
                     {auth.user ? (
                         <Link
                             href={route('dashboard')}
@@ -60,10 +63,80 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 </div>
             </div>
 
-            {/* hero section */}
-            <section className='min-h-screen'>
+            <div className="flex pt-28">
+                <main>
+                    <div className='relative w-full h-full'>
+                        <div className='flex flex-row gap-6 items-center justify-between sm:px-12 w-full'>
+                            <div className='flex flex-col w-full'>
+                                <span className='uppercase font-medium md:text-base sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
+                                <h3 className='capitalize text-secondary leading-18 font-black lg:text-8xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
+                                <p className='text-xs sm:text-sm mt-3 font-light capitalize w-9/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
+                                <div className='mt-3 w-64'>
+                                    <button className="bg-primary hover:bg-blue-lagoon text-white btn sm:btn-xs md:btn-sm lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
+                                </div>
+                            </div>
+                            <div class="flex justify-center w-full h-full">
+                                <div class="relative w-full min-h-full">
+                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary"></div>
+                                    <img src="images/gedung-TI.jpg" class="object-contain hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2" alt="Gedung Teknologi Informasi" />
+                                </div>
+                            </div>
 
-            </section>
+                        </div>
+                    </div>
+
+                    <div className='flex flex-row w-full justify-center items-center mt-6'>
+                        <div className='flex flex-row gap-4 justify-between items-start'>
+                            <div className='flex flex-row gap-4 pr-10'>
+                                <BookmarkSquareIcon  className='w-6 h-6 font-extrabold' />
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Agenda Acara 
+                                    </span>
+
+                                    <p className='text-base md:text-sm font-light'>
+                                        Pembukaan PKM-TI 2024
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+                            <div className='flex flex-row gap-4'>
+                                <CalendarDaysIcon className='w-6 h-6 font-extrabold' />
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Date
+                                    </span>
+
+                                    <p className='text-base md:text-sm font-light'>
+                                        Minggu, 4 Februari 2024
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+
+                            <div className='flex flex-row gap-4'>
+                                <MapPinIcon className='w-6 h-6 font-extrabold' />
+                                
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Lokasi Acara 
+                                    </span>
+
+                                    <p className='text-base md:text-sm leading-[0.45rem] font-light w-11/12'>
+                                        Gedung Teknologi Informasi Fakultas Teknik Universitas Udayana
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </main>
+            </div>
+
 
             {/* section about us */}
             <section id="about-us" className="min-h-screen px-10 flex justify-center align-center space-x-10">

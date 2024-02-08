@@ -20,7 +20,8 @@ export default {
                 'secondary' : "#1D4489",
                 "linear-blue" : "#121B75",
                 "blue-lagoon": "#1E96C8",
-                "cloud-blue" : "#96D8E8"
+                "cloud-blue" : "#96D8E8",
+                "white-blue" : "#D6F0F6"
                 
             },
             fontSize: {

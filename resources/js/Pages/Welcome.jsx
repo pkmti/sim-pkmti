@@ -1,7 +1,8 @@
 import { Link, Head } from '@inertiajs/react';
 import DarkMode from '@/Components/darkMode';
 import { BookOpenIcon } from "@heroicons/react/24/outline";
-import { MapPinIcon, CalendarDaysIcon, BookmarkSquareIcon, ArrowLongRightIcon, ArrowLongLeftIcon, CalendarIcon, ArrowLongDownIcon} from "@heroicons/react/24/solid";
+import { MapPinIcon, CalendarDaysIcon, BookmarkSquareIcon, ArrowLongRightIcon, ArrowLongLeftIcon, CalendarIcon, ArrowLongDownIcon,
+    ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import Accordion from '@/Components/Accordion';
 
@@ -342,7 +343,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                             <div className='flex flex-row w-full mt-10 justify-between items-center'>
                                 <div className='mt-5 items-start'>
-                                    <img src='images/faq.png?version=1.0' className='max-h-[500px]' />
+                                    <img src='images/image-FAQ.png?version=1.0' className='max-h-[450px]' />
                                 </div>
 
                                 <div className='md:w-6/12 flex flex-col gap-4'>
@@ -359,6 +360,40 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </section>
 
 
+                    </section>
+
+                    <section className='flex flex-col justify-center  w-full text-center items-center sm:px-12'>
+                        <div className='mt-4 block justify-center  w-full text-center items-center'>
+                            <h3 className='capitalize text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-linear-blue'>Find More</span> <span className='text-primary'>about us</span></h3>
+
+                            <div className='flex w-full items-center text-center justify-center'>
+                                <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>
+                                Dapatkan info terkini tentang kegiatan yang diselenggarakan Technology Artisan pada Official Accounts Technology Artisan. Ikuti terus perkembangannya !
+                                </p>
+                            </div>
+
+                            <div className='flex flex-row justify-center items-center relative w-full gap-4 mt-5'>
+                                    <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                        <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                        <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
+                                    </button>
+
+                                    <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                        <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                        <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
+                                    </button>
+
+                                    <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                        <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                        <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
+                                    </button>
+
+                                    <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                        <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                        <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
+                                    </button>
+                            </div>
+                        </div>
                     </section>
 
                 </main>

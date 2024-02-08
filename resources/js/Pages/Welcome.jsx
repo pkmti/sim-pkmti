@@ -3,13 +3,11 @@ import DarkMode from '@/Components/darkMode';
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import { MapPinIcon, CalendarDaysIcon, BookmarkSquareIcon, ArrowLongRightIcon, ArrowLongLeftIcon, CalendarIcon, ArrowLongDownIcon,
     ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
 import Accordion from '@/Components/Accordion';
 
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
-    const [accordionOpen, setAccordionOpen] = useState(false);
     return (
         <>
             <Head title="PKM TI" />
@@ -296,7 +294,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                     </section>
 
-                    {/* FAQ section */}
+                    {/* Suhu section */}
                     <section className='flex flex-col w-full py-4 mt-28 sm:px-12'>
                         <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-75 before:-z-[1]">
                             <div className="flex items-center space-x-2 mb-4">
@@ -315,7 +313,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <div className="relative -mt-32 z-[5] flex justify-center space-x-4">
                             <div className="block max-w-[40rem] text-center p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                 <div className='w-full flex justify-center items-center mb-4'>
-                                    <img src='https://cdn-icons-png.flaticon.com/512/3001/3001764.png' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' />
+                                    <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' />
                                 </div>
                                 <p className="text-center text-slate-500 mb-2">“ Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya. “</p>
                                 <h3 className="text-xl text-primary font-bold mb-2">Bayu</h3>
@@ -329,7 +327,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <button className="shadow-xl rounded-md px-3 py-2"><ArrowLongRightIcon className='w-6 h-6 font-black' /></button>
                         </div>
 
-
+                    {/* FAQ section */}
                         <section id='#FaQ' className='block w-full mt-20 py-16'>
                             <div className='flex flex-col w-full'>
                                 <div className='px-8 lg:px-10'>

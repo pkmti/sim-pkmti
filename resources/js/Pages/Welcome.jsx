@@ -296,7 +296,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                     </section>
 
-
+                    {/* FAQ section */}
                     <section className='flex flex-col w-full py-4 mt-28 sm:px-12'>
                         <div className="relative z-[1] h-fit pb-40 w-full rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-75 before:-z-[1]">
                             <div className="flex items-center space-x-2 mb-4">
@@ -361,10 +361,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
 
                     </section>
-
+                    
+                    {/* Contact section */}
                     <section className='flex flex-col justify-center  w-full text-center items-center sm:px-12'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
-                            <h3 className='capitalize text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-linear-blue'>Find More</span> <span className='text-primary'>about us</span></h3>
+                            <h3 className='capitalize text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-linear-blue'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 
                             <div className='flex w-full items-center text-center justify-center'>
                                 <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>

@@ -18,6 +18,7 @@ export default {
             colors: {
                 'primary' : "#0D79B9",
                 'secondary' : "#1D4489",
+                "linear-blue" : "#121B75",
                 "blue-lagoon": "#1E96C8",
                 
             },
@@ -38,6 +39,7 @@ export default {
                 '16': '3.6rem',
                 '17': '3.8rem',
                 '18': '4rem',
+                '19': '4.2rem',
             }
         },
     },

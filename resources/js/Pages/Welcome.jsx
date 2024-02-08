@@ -227,6 +227,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                         </div>
                     </section>
+
+
+                    <section className='flex flex-col w-full py-4 pt-12 sm:px-12'>
+                        
+                    </section>
                 </main>
             </div>
             {/* <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">

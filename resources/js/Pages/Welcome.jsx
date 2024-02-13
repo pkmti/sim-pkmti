@@ -10,7 +10,7 @@ import Accordion from '@/Components/Accordion';
 // import { Carousel } from 'react-responsive-carousel';
 import CustomCarousel from '@/Components/CustomCorausel';
 import NavBar from '@/Components/NavBar';
-
+import ScrollToTop from '@/Components/ScrollTop';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
@@ -460,6 +460,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <p>© 2024 Ilmiah PKM TI </p>
                 </footer>
             </div>
+
+
+            <ScrollToTop/>
         </>
     );
 }

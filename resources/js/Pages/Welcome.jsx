@@ -1,9 +1,14 @@
 import { Link, Head } from '@inertiajs/react';
+// import { useState } from 'react';
 import DarkMode from '@/Components/darkMode';
 import { BookOpenIcon } from "@heroicons/react/24/outline";
-import { MapPinIcon, CalendarDaysIcon, BookmarkSquareIcon, ArrowLongRightIcon, ArrowLongLeftIcon, CalendarIcon, ArrowLongDownIcon,
-    ChatBubbleLeftEllipsisIcon } from "@heroicons/react/24/solid";
+import {
+    MapPinIcon, CalendarDaysIcon, BookmarkSquareIcon, ArrowLongRightIcon, ArrowLongLeftIcon, CalendarIcon, ArrowLongDownIcon,
+    ChatBubbleLeftEllipsisIcon
+} from "@heroicons/react/24/solid";
 import Accordion from '@/Components/Accordion';
+// import { Carousel } from 'react-responsive-carousel';
+import CustomCarousel from '@/Components/CustomCorausel';
 import NavBar from '@/Components/NavBar';
 
 
@@ -28,8 +33,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                             <div class="hidden justify-center w-full h-full md:flex">
                                 <div class="relative w-full min-h-full">
-                                    <div class="w-[450px] h-[450px] mx-auto transform rotate-y-45 translate-x-8 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary"></div>
-                                    <img src="images/gedung-TI.jpg" class="w-[450px] h-[450px] mx-auto object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
+                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary"></div>
+                                    <img src="images/gedung-TI.jpg" class="object-contain hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2" alt="Gedung Teknologi Informasi" />
                                 </div>
                             </div>
 
@@ -231,10 +236,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                         </div>
 
-                        <div className='flex flex-col w-6/12'>
+                        <div className='flex flex-col w-5/12'>
                             <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>
-                            <h3 className='capitalize text-2xl md:text-5xl font-extrabold text-secondary leading-17'>Bertemu dengan mereka yang sudah profesional</h3>
-                            <p className='text-sm md:text-base font-light text-gray-500 mt-3 capitalize'>
+                            <h3 className='capitalize text-2xl md:text-4xl font-extrabold text-secondary leading-11'>Bertemu dengan mereka yang sudah profesional</h3>
+                            <p className='text-sm md:text-xs font-light text-gray-500 mt-3 capitalize w-4/5'>
                                 Selamatkan tempat di barisan terdepan karena kami mempersembahkan Narasumber yang luar biasa di acara spesial PKM kami! Bersiaplah untuk terinspirasi, berinteraksi, dan mengambil momentum positif dari pandangan hidup yang penuh semangat. Tunggu apa lagi? Bergabunglah dengan kami untuk pengalaman yang mengesankan! 🚀
                             </p>
 
@@ -327,30 +332,46 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </p>
                         </div>
 
-                        <div className="relative -mt-16 sm:-mt-32 z-[5] flex justify-center space-x-4">
-                            <div className="block w-11/12 sm:max-w-[40rem] text-center p-4 bg-white/70 backdrop-blur-2xl backdrop-brightness-150 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
-                                <div className='w-full flex justify-center items-center mb-4'>
-                                    <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' />
+                        <div className="relative -mt-32 z-[5] flex justify-center items-center">
+                            <CustomCarousel className="flex justify-center items-center text-center space-x-4">
+                                <div className='relative flex justify-center items-center'>
+                                    <div className="flex flex-col max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <div className='w-full flex justify-center items-center mb-4'>
+                                            <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' alt="Bayu" />
+                                        </div>
+                                        <p className="text-center text-slate-500 mb-2">“Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.”</p>
+                                        <h3 className="text-xl text-primary font-bold mb-2">Bayu</h3>
+                                        <p className='capitalize text-slate-400'>mahasiswa aktif teknologi informasi</p>
+                                    </div>
                                 </div>
-                                <p className="text-center text-slate-500 mb-2">“ Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya. “</p>
-                                <h3 className="text-xl text-primary font-bold mb-2">Bayu</h3>
-                                <p className='capitalize text-slate-400 '>mahasiswa aktif teknologi informasi</p>
 
-                            </div>
+                                <div className='relative flex justify-center items-center'>
+                                    <div className="flex flex-col max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <div className='w-full flex justify-center items-center mb-4'>
+                                            <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' alt="Bayu" />
+                                        </div>
+                                        <p className="text-center text-slate-500 mb-2">“Program Kreativitas Mahasiswa-Karsa test (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.”</p>
+                                        <h3 className="text-xl text-primary font-bold mb-2">Bayu</h3>
+                                        <p className='capitalize text-slate-400'>mahasiswa aktif teknologi informasi</p>
+                                    </div>
+                                </div>
+                            </CustomCarousel>
                         </div>
 
-                        <div className='flex flex-row gap-4 flex-shrink-0 mt-5 items-center justify-center'>
-                            <button className="btn btn-sm shadow-2xl rounded-lg"><ArrowLongLeftIcon className='w-6 h-6 font-black' /></button>
-                            <button className="shadow-xl rounded-md px-3 py-2"><ArrowLongRightIcon className='w-6 h-6 font-black' /></button>
-                        </div>
+                        {/* <div className='flex flex-row gap-4 flex-shrink-0 mt-5 items-center justify-center'>
+                            <button className="btn btn-sm shadow-2xl rounded-lg" onClick={handlePrevClick}><ArrowLongLeftIcon className='w-6 h-6 font-black' /></button>
+                            <button className="shadow-xl rounded-md px-3 py-2" onClick={handleNextClick}><ArrowLongRightIcon className='w-6 h-6 font-black' /></button>
+                        </div> */}
 
-                    {/* FAQ section */}
+                        {/* FAQ section */}
                         <section id='FaQ' className='block w-full mt-20 py-16'>
                             <div className='flex flex-col w-full'>
                                 <div className='px-0 md:px-8 lg:px-10'>
                                     <span className='uppercase text-sm font-semibold md:text-base text-primary'>MAlu Bertanya nanti gatau</span>
                                     <h3 className='capitalize font-black text-4xl sm:text-5xl mt-2 text-secondary'>Frequently Asked Questions</h3>
                                     <p className='capitalize text-slate-500 mt-2 w-4/5 text-sm sm:text-base'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
+                                    <h3 className='capitalize font-black text-5xl mt-2 text-linear-blue'>Frequently Asked Questions</h3>
+                                    <p className='capitalize text-slate-500 mt-2 w-4/5'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
                                 </div>
                             </div>
 
@@ -371,7 +392,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
 
                     </section>
-                    
+
                     {/* Contact section */}
                     <section id='contact-us' className='min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
@@ -379,7 +400,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                             <div className='flex w-full items-center text-center justify-center'>
                                 <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>
-                                Dapatkan info terkini tentang kegiatan yang diselenggarakan Technology Artisan pada Official Accounts Technology Artisan. Ikuti terus perkembangannya !
+                                    Dapatkan info terkini tentang kegiatan yang diselenggarakan Technology Artisan pada Official Accounts Technology Artisan. Ikuti terus perkembangannya !
                                 </p>
                             </div>
 
@@ -410,6 +431,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             </div>
                         </div>
                     </section>
+
                 </main>
 
                 <footer className="footer p-12 bg-base-200 text-base-content grid-cols-2 md:grid-cols-6 gap-x-20">

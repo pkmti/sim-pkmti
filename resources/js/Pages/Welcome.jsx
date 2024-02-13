@@ -9,6 +9,7 @@ import {
 import Accordion from '@/Components/Accordion';
 // import { Carousel } from 'react-responsive-carousel';
 import CustomCarousel from '@/Components/CustomCorausel';
+import ScrollToTop from '@/Components/ScrollTop';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
@@ -415,6 +416,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                 </main>
             </div>
+
+
+            <ScrollToTop/>
         </>
     );
 }

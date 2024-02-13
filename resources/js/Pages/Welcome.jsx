@@ -370,8 +370,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <span className='uppercase text-sm font-semibold md:text-base text-primary'>MAlu Bertanya nanti gatau</span>
                                     <h3 className='capitalize font-black text-4xl sm:text-5xl mt-2 text-secondary'>Frequently Asked Questions</h3>
                                     <p className='capitalize text-slate-500 mt-2 w-4/5 text-sm sm:text-base'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
-                                    <h3 className='capitalize font-black text-5xl mt-2 text-linear-blue'>Frequently Asked Questions</h3>
-                                    <p className='capitalize text-slate-500 mt-2 w-4/5'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
                                 </div>
                             </div>
 
@@ -410,20 +408,20 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
 
-                                <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
-                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
-                                    <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
-                                </button>
+                                    <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                        <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                        <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
+                                    </button>
 
-                                <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
-                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
-                                    <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
-                                </button>
+                                    <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                        <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                        <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
+                                    </button>
 
-                                <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
-                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
-                                    <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
-                                </button>
+                                    <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                        <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                        <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
+                                    </button>
                             </div>
 
                             <div>

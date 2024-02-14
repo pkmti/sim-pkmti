@@ -76,7 +76,7 @@ const ScrollToTop = () => {
             )}
             <div className="h-1 w-full bg-gray-200 relative">
                 <div
-                    className="h-full bg-linear-blue absolute"
+                    className="h-full bg-linear-blue absolute rounded-lg"
                     style={{ width: `${scrollProgress}%` }}
                 />
             </div>

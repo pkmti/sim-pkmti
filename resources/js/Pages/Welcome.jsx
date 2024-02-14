@@ -28,13 +28,13 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <h3 className='capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
                                 <p className='text-sm sm:text-base mt-3 font-light capitalize w-11/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
                                 <div className='mt-3 w-64 none'>
-                                    <button className="bg-primary hover:bg-blue-lagoon text-white btn sm:btn-xs md:btn-sm lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
+                                    <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
                                 </div>
                             </div>
-                            <div class="hidden justify-center w-full h-full md:flex">
-                                <div class="relative w-full min-h-full">
-                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary"></div>
-                                    <img src="images/gedung-TI.jpg" class="object-contain hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2" alt="Gedung Teknologi Informasi" />
+                            <div class="hidden justify-center items-center w-full h-full md:flex">
+                                <div class="relative min-h-full">
+                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+                                    <img src="images/gedung-TI.jpg" class="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
                                 </div>
                             </div>
 
@@ -42,8 +42,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
 
                     {/* important date section */}
-                    <div className='flex flex-row w-full justify-center items-center mt-16 sm:mt-24'>
-                        <div className='flex flex-col sm:flex-row gap-4 justify-between items-start w-full bg-white shadow-lg border border-gray-200 px-6 py-6 rounded-lg'>
+                    <div className='flex flex-row w-full justify-center items-center mt-16 sm:mt-24 sm:px-12'>
+                        <div className='flex flex-col md:flex-row gap-4 justify-between items-start w-full md:w-11/12 bg-base-100 shadow-lg border border-base-300 px-6 py-6 rounded-lg'>
                             <div className='flex flex-row gap-4 sm:pr-10'>
                                 <BookmarkSquareIcon className='w-6 h-6 font-extrabold' />
                                 <div className='block'>
@@ -93,18 +93,18 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     {/* end imporatant date section */}
 
                     {/* section about us */}
-                    <section id="about-us" className="pt-10 md:pt-28 sm:pt-32 px-0 sm:px-10 flex flex-col sm:flex-row justify-center align-center sm:space-x-10">
-                        <div className="relative w-full sm:w-1/2">
-                            <div class="mx-auto hidden md:block md:w-[450px] md:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
-                            <img src="images/gedung-TI.jpg" class="mx-auto hidden md:block md:w-[450px] md:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
+                    <section id="about-us" className="pt-10 md:pt-28 sm:pt-32 px-0 sm:px-10 flex flex-col md:flex-row justify-center items-center md:space-x-0">
+                        <div className="relative h-fit items-center w-full md:w-1/2">
+                            <div class="mx-auto hidden md:block md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
+                            <img src="images/gedung-TI.jpg" class="mx-auto hidden md:block md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
                         </div>
-                        <div className="w-full ml-0 mt-14 sm:mt-0 sm:w-1/2">
+                        <div className="w-full ml-0 mt-14 sm:mt-0 md:w-1/2">
                             <div className="flex items-center space-x-2 mb-4">
                                 <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
                                 <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
                                 <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
                             </div>
-                            <h2 className="text-4xl sm:text-5xl font-bold text-secondary mb-2 leading-17">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
                             <p className='text-sm sm:text-base'>
                                 <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
                                 Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas.
@@ -128,25 +128,25 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                 </div>
-                                <h2 className="capitalize text-3xl sm:text-5xl font-bold text-white mb-2 text-center">Kembangkan Ide Cemerlang Anda</h2>
+                                <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">Kembangkan Ide Cemerlang Anda</h2>
                                 <p className="text-sm sm:text-base text-slate-200 text-center">
                                     Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
                                 </p>
                             </div>
-                            <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-x-4">
-                                <div className="block w-11/12 sm:max-w-[250px] border border-[1] border-gray-200 text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                            <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col md:flex-row justify-center items-center space-y-6 md:space-x-4 md:space-y-0">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
-                                <div className="block w-11/12 sm:max-w-[250px] border border-[1] border-gray-200 text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
-                                <div className="block w-11/12 sm:max-w-[250px] border border-[1] border-gray-200 text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
-                                <div className="block w-11/12 sm:max-w-[250px] border border-[1] border-gray-200 text-center p-4 bg-white rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
@@ -259,7 +259,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
                             <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
                         </div>
-                        <h2 className="capitalize text-3xl sm:text-5xl text-center font-bold text-secondary mb-2">Jangan Lewatkan Kesempatan Ini</h2>
+                        <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl text-center font-bold text-secondary mb-2">Jangan Lewatkan Kesempatan Ini</h2>
                         <p className="text-center text-sm sm:text-base">
                             Setiap detik adalah kesempatan untuk belajar, berbagi, dan terhubung dengan komunitas kreatif. Catat tanggalnya dan pastikan Anda tidak melewatkan momen magis di PKM Wonderland. Ayo, mari jadwalkan momen berharga kita bersama!
                         </p>
@@ -276,7 +276,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </thead>
                                 <tbody>
                                     {/* row 1 */}
-                                    <tr className='border-b-2 hover'>
+                                    <tr className='hover'>
                                         <td className='block w-[150px] sm:min-w-[250px]'>
                                             <p className='text-base sm:text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
                                             <p className='capitalize text-sm sm:text-base'>selasa, 6 februari</p>
@@ -285,7 +285,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         <td>Live Youtube Channel Direktorat Pembelajaran dan Kemahasiswaan</td>
                                     </tr>
                                     {/* row 2 */}
-                                    <tr className='border-b-2 hover'>
+                                    <tr className='hover'>
                                         <td className='block w-[150px] sm:min-w-[250px]'>
                                             <p className='text-base sm:text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
                                             <p className='capitalize text-sm sm:text-base'>selasa, 6 februari</p>
@@ -294,7 +294,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         <td>Gedung Teknologi Informasi</td>
                                     </tr>
                                     {/* row 3 */}
-                                    <tr className='border-b-2 hover'>
+                                    <tr className='hover'>
                                         <td className='block w-[150px] sm:min-w-[250px]'>
                                             <p className='text-base sm:text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
                                             <p className='capitalize text-sm sm:text-base'>selasa, 6 februari</p>
@@ -303,7 +303,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                         <td>Live Youtube Channel Direktorat Pembelajaran dan Kemahasiswaan</td>
                                     </tr>
                                     {/* row 4 */}
-                                    <tr className='border-b-2 hover'>
+                                    <tr className='hover'>
                                         <td className='block w-[150px] sm:min-w-[250px]'>
                                             <p className='text-base sm:text-xl text-blue-lagoon font-semibold'>08.30 - 11.30</p>
                                             <p className='capitalize text-sm sm:text-base'>selasa, 6 februari</p>
@@ -318,7 +318,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                     {/* Suhu section */}
                     <section className='flex flex-col w-full py-4 mt-24 sm:px-12'>
-                        <div className="relative z-[1] h-fit pb-24 sm:pb-40 w-full rounded-2xl sm:rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                        <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
                             <div className="flex items-center space-x-2 mb-2">
                                 <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                 <span className="inline h-2 w-2 bg-white rounded-full"></span>
@@ -326,16 +326,16 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                 <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                             </div>
-                            <h2 className="capitalize text-3xl sm:text-5xl font-bold text-white text-center mb-2">Bergabung Dengan Mereka</h2>
+                            <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-2">Bergabung Dengan Mereka</h2>
                             <p className="text-slate-200 text-center text-sm sm:text-base">
                                 Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
                             </p>
                         </div>
 
-                        <div className="relative -mt-32 z-[5] flex justify-center items-center">
+                        <div className="relative -mt-24 sm:-mt-32 z-[5] flex justify-center items-center">
                             <CustomCarousel className="flex justify-center items-center text-center space-x-4">
-                                <div className='relative flex justify-center items-center'>
-                                    <div className="flex flex-col max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className='relative flex justify-center items-center pb-5'>
+                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                                         <div className='w-full flex justify-center items-center mb-4'>
                                             <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' alt="Bayu" />
                                         </div>
@@ -345,8 +345,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     </div>
                                 </div>
 
-                                <div className='relative flex justify-center items-center'>
-                                    <div className="flex flex-col max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className='relative flex justify-center items-center pb-5'>
+                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                                         <div className='w-full flex justify-center items-center mb-4'>
                                             <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' alt="Bayu" />
                                         </div>
@@ -368,7 +368,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             <div className='flex flex-col w-full'>
                                 <div className='px-0 md:px-8 lg:px-10'>
                                     <span className='uppercase text-sm font-semibold md:text-base text-primary'>MAlu Bertanya nanti gatau</span>
-                                    <h3 className='capitalize font-black text-4xl sm:text-5xl mt-2 text-secondary'>Frequently Asked Questions</h3>
+                                    <h3 className='capitalize font-black text-4xl md:text-5xl mt-2 text-secondary'>Frequently Asked Questions</h3>
                                     <p className='capitalize text-slate-500 mt-2 w-4/5 text-sm sm:text-base'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
                                 </div>
                             </div>
@@ -394,7 +394,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     {/* Contact section */}
                     <section id='contact-us' className='min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
-                            <h3 className='capitalize text-4xl sm:text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
+                            <h3 className='capitalize text-4xl md:text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 
                             <div className='flex w-full items-center text-center justify-center'>
                                 <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>

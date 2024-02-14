@@ -11,20 +11,24 @@ export default function NavBar(auth){
     }
 
     return(
-        <nav className="navbar bg-white shadow-md px-6 sm:px-10 z-10 fixed top-0 flex-col items-start lg:items-center lg:flex-row">
-            <div className="flex justify-between w-full lg:navbar-start">
+        <nav className="navbar bg-base-100 shadow-md p-0 lg:px-12 z-10 fixed top-0 flex-col items-start lg:items-center lg:flex-row">
+            <div className="flex justify-between w-full lg:navbar-start px-6 lg:px-0 py-2 sm:px-10 bg-base-100">
                 <a href='#' className="cursor-pointer w-14">
                     <img src="/images/Logo-PKM-TI.png" alt="w-full" />
                 </a>
-                <button onClick={toggleNav} className="block lg:hidden">
-                    {!openNav ? 
-                    <Bars3Icon className="w-10"/>
-                    : <XMarkIcon className="w-10"/>
-                    }
-                </button>
+
+                <div className="flex space-x-6 lg:hidden">
+                    <DarkMode />
+                    <button onClick={toggleNav} >
+                        {!openNav ? 
+                        <Bars3Icon className="w-10"/>
+                        : <XMarkIcon className="w-10"/>
+                        }
+                    </button>
+                    </div>
             </div>
 
-            <div className={`${openNav ? "flex" : "hidden"} w-full flex-col items-start py-4 lg:py-0 lg:flex lg:flex-row lg:justify-between lg:items-center duration-300`}>
+            <div className={`${openNav ? "translate-y-16" : "-translate-y-full"} z-[-5] absolute pl-6 left-0 bg-base-100 w-full flex-col items-start pt-6 pb-10 shadow-md lg:relative lg:translate-y-0 lg:px-0 lg:shadow-none lg:py-0 lg:flex lg:flex-row lg:justify-between lg:items-center ease-out duration-500`}>
                 <div className="lg:navbar-center flex-col lg:flex">
                     <ul className="menu menu-vertical lg:menu-horizontal px-1">
                         <li>
@@ -43,8 +47,10 @@ export default function NavBar(auth){
                 </div>
 
                 <div className="flex flex-col space-y-4 lg:flex-row lg:navbar-end lg:space-y-0 lg:space-x-4 lg:items-center">
-                
-                    <DarkMode />
+
+                    <div className="hidden lg:block">
+                        <DarkMode />
+                    </div>
                 
                     {auth.user ? (
                         <Link

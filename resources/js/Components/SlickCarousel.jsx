@@ -12,7 +12,10 @@ function SlickCarousel({children}) {
         centerMode: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        variableWidth: true
+        variableWidth: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        pauseOnHover: true
     };
     return (
         <div className="slider-container">

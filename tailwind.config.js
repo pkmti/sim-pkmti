@@ -23,8 +23,7 @@ export default {
                 "linear-blue" : "#121B75",
                 "blue-lagoon": "#1E96C8",
                 "cloud-blue" : "#96D8E8",
-                "white-blue" : "#D6F0F6"
-                
+                "white-blue" : "#D6F0F6",
             },
             fontSize: {
                 '3xl': '1.953rem',
@@ -44,6 +43,9 @@ export default {
                 '17': '3.8rem',
                 '18': '4rem',
                 '19': '4.2rem',
+            },
+            backgroundImage: {
+                "gradient-blue" : "linear-gradient(180deg, rgba(54,116,217,0.7) 0%, rgba(29,68,137,1) 100%)"
             }
         },
     },

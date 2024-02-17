@@ -74,9 +74,9 @@ const ScrollToTop = () => {
                     <ChevronDownIcon className="h-6 w-6" />
                 </button>
             )}
-            <div className="h-1 w-full bg-gray-200 relative">
+            <div className="h-1 w-full bg-slate-300 rounded-2xl relative">
                 <div
-                    className="h-full bg-linear-blue absolute rounded-lg"
+                    className="h-full bg-linear-blue absolute rounded-2xl"
                     style={{ width: `${scrollProgress}%` }}
                 />
             </div>

@@ -394,7 +394,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     {/* Contact section */}
                     <section id='contact-us' className='min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
-                            <h3 className='capitalize text-4xl md:text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
+                            <h3 className='capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 
                             <div className='flex w-full items-center text-center justify-center'>
                                 <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>

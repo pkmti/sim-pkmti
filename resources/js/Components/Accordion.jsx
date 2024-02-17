@@ -9,14 +9,14 @@ const Accordion = ({ title, answer }) => {
                 <button className="flex justify-between w-full "
                     onClick={() => setAccordionOpen(!accordionOpen)}
                 >
-                    <div className="text-lg font-semibold">
+                    <div className="text-lg text-slate-900 font-semibold">
                         {title}
                     </div>
 
                     {accordionOpen ?
-                        <ChevronUpIcon className='w-5 h-5' />
+                        <ChevronUpIcon className='text-slate-900 w-5 h-5' />
                         :
-                        <ChevronDownIcon className='w-5 h-5' />}
+                        <ChevronDownIcon className='text-slate-900 cw-5 h-5' />}
 
                 </button>
 

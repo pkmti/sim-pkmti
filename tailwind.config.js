@@ -23,7 +23,7 @@ export default {
                 "linear-blue" : "#121B75",
                 "blue-lagoon": "#1E96C8",
                 "cloud-blue" : "#96D8E8",
-                "white-blue" : "#D6F0F6"
+                "white-blue" : "#C0D8DD"
                 
             },
             fontSize: {

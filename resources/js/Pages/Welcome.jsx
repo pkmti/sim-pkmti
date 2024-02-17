@@ -158,7 +158,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                     {/*  speakers section */}
                     <section className='flex flex-col-reverse lg:flex-row items-center w-full gap-6 sm:px-12 mt-20'>
-                        <div className='w-full lg:w-1/2 h-fit'>
                             <SlickCarousel>
                                 <div>
                                     <div className='relative mx-2 overflow-hidden group rounded-lg'>
@@ -246,7 +245,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 </div>
                                 
                             </SlickCarousel>
-                        </div>
+                        
 
                         <div className='flex flex-col w-full'>
                             <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>

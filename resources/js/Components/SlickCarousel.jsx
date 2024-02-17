@@ -70,11 +70,11 @@ function SlickCarousel({ children }) {
                 </Slider>
 
                 <div className="flex flex-row md:justify-start justify-center gap-4 mt-4">
-                    <button className="btn" onClick={handlePrevClick}>
-                        <ArrowLongLeftIcon className="w-5 h-5" />
+                    <button className="btn glass btn-sm" onClick={handlePrevClick}>
+                        <ArrowLongLeftIcon className="w-7 h-7 font-black " />
                     </button>
-                    <button className="btn" onClick={handleNextClick}>
-                        <ArrowLongRightIcon className="w-5 h-5" />
+                    <button className="btn glass btn-sm" onClick={handleNextClick}>
+                        <ArrowLongRightIcon className="w-7 h-7 font-black" />
                     </button>
                 </div>
             </div>

@@ -32,10 +32,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
                                 </div>
                             </div>
-                            <div class="hidden justify-center items-center w-full h-full lg:flex">
-                                <div class="relative min-h-full">
-                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
-                                    <img src="images/gedung-TI.jpg" class="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
+                            <div className="hidden justify-center items-center w-full h-full lg:flex">
+                                <div className="relative min-h-full">
+                                    <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+                                    <img src="images/gedung-TI.jpg" className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
                                 </div>
                             </div>
 
@@ -125,7 +125,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <div className="flex items-center space-x-2 mb-2">
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                                    <p className="uppercase font-semibold text-white text-sm sm:text-base px-6">Eksplorasi topik pkm</p>
+                                    <p className="uppercase font-semibold text-center text-white text-sm sm:text-base px-6">Eksplorasi topik pkm</p>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                 </div>

@@ -30,6 +30,17 @@ class ProposalController extends Controller
             'draft_proposal_url.required' => 'Mohon masukkan URL proposal draft',
         ]);
 
+        // validate submit timeline
+        $from = strtotime('2024-04-01'); // ??
+        $to = strtotime('2024-04-07'); // ??
+        $current = strtotime(date('Y-m-d'));
+        if ((env('APP_ENV') != 'local') && ($current < $from)) {
+            return back()->with('error', 'Masa pengajuan proposal dimulai dari x-y blablabla 2024');
+        }
+        if((env('APP_ENV') != 'local') && ($current > $to)) {
+            return back()->with('error', 'Masa pengajuan proposal telah berakhir');
+        }
+
         // allow submit when team member count if more than 3
         $teamMembersCount = User::where('team_id', $request->team_id)->count();
         if ($teamMembersCount < 3) {

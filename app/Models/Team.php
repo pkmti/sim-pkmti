@@ -25,4 +25,9 @@ class Team extends Model
     {
         return $this->hasOne(Proposal::class);
     }
+
+    public function assistanceProofs()
+    {
+        return $this->hasMany(AssistanceProof::class);
+    }
 }

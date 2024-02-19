@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssistanceProofController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\TeamController;
@@ -57,7 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/teams', [TeamController::class, 'create'])->name('team.create');
     Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('team.join');
     Route::delete('/teams/leave', [TeamController::class, 'leave'])->name('team.leave');
-
     Route::middleware(['role:admin|leader'])->group(function () {
         Route::delete('/teams/kick/{userId}', [TeamController::class, 'kickMember'])->name('team.kick');
         Route::patch('/teams/{id}/leader', [TeamController::class, 'changeLeader'])->name('team.changeLeader');
@@ -66,15 +66,26 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/proposals', [ProposalController::class, 'showProposals'])->name('proposals.index');
-    Route::post('/proposals', [ProposalController::class, 'submit'])->name('proposal.submit');
-
+    Route::middleware(['role:admin|leader'])->group(function () {
+        Route::post('/proposals', [ProposalController::class, 'submit'])->name('proposal.submit');
+        Route::patch('/proposals/{id}', [ProposalController::class, 'update'])->name('proposal.update');
+        Route::delete('/proposals/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
+    });
     Route::middleware(['role:admin|lecturer'])->group(function () {
         Route::patch('/proposals/{id}/accept', [ProposalController::class, 'accept'])->name('proposal.accept');
         Route::patch('/proposals/{id}/reject', [ProposalController::class, 'reject'])->name('proposal.reject');
     });
 
-    Route::patch('/proposals/{id}', [ProposalController::class, 'update'])->name('proposal.update');
-    Route::delete('/proposals/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
+    Route::get('/assistance-proofs/me', [AssistanceProofController::class, 'showByMyTeam'])->name('assistance-proofs.my-team');
+    Route::middleware(['role:admin'])->group(function () {
+        Route::get('/assistance-proofs/{teamId}', [AssistanceProofController::class, 'showByTeam'])->name('assistance-proofs.team');
+        Route::get('/assistance-proofs', [AssistanceProofController::class, 'showByTeams'])->name('assistance-proofs.teams');
+    });
+    Route::middleware(['role:admin|lecturer|leader'])->group(function () {
+        Route::post('/assistance-proofs', [AssistanceProofController::class, 'add'])->name('assistance-proofs.add');
+        Route::delete('/assistance-proofs', [AssistanceProofController::class, 'delete'])->name('assistance-proofs.delete');
+        Route::patch('/assistance-proofs/{id}', [AssistanceProofController::class, 'update'])->name('assistance-proofs.update');
+    });
 });
 
 Route::middleware('auth')->prefix('test/admin')->group(function () {

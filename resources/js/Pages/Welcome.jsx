@@ -12,16 +12,8 @@ import CustomCarousel from '@/Components/CustomCorausel';
 import NavBar from '@/Components/NavBar';
 import ScrollToTop from '@/Components/ScrollTop';
 import SlickCarousel from '@/Components/SlickCarousel';
-import Aos from 'aos';
-import 'aos/dist/aos.css';
 
 export default function Welcome({ auth}) {
-    useEffect(()=> {
-        Aos.init({
-            duration: 700
-        })
-    }, [])
-
     return (
         <>
             <Head title="PKM TI" />
@@ -31,7 +23,7 @@ export default function Welcome({ auth}) {
                 <main className='px-6 sm:px-0'>
                     <div className='relative w-full'>
                         <div className='flex flex-col sm:flex-row gap-6 items-center justify-between sm:px-12 w-full'>
-                            <div data-aos="fade-right"  className='flex flex-col w-full'>
+                            <div  className='flex flex-col w-full'>
                                 <span className='uppercase font-medium sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
                                 <h3 className='capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
                                 <p className='text-sm sm:text-base mt-3 font-light capitalize w-11/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
@@ -39,7 +31,7 @@ export default function Welcome({ auth}) {
                                     <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
                                 </div>
                             </div>
-                            <div data-aos="fade-left"  className="hidden justify-center items-center w-full h-full lg:flex">
+                            <div  className="hidden justify-center items-center w-full h-full lg:flex">
                                 <div className="relative min-h-full">
                                     <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
                                     <img src="images/gedung-TI.jpg" className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
@@ -50,7 +42,7 @@ export default function Welcome({ auth}) {
                     </div>
 
                     {/* important date section */}
-                    <div data-aos="fade-up" className='flex flex-row w-full justify-center items-center mt-16 sm:mt-24 sm:px-12'>
+                    <div className='flex flex-row w-full justify-center items-center mt-16 sm:mt-24 sm:px-12'>
                         <div className='flex flex-col md:flex-row gap-4 justify-between items-start w-full md:w-11/12 bg-base-100 shadow-lg border border-base-300 px-6 py-6 rounded-lg'>
                             <div className='flex flex-row gap-4 sm:pr-10'>
                                 <BookmarkSquareIcon className='w-6 h-6 font-extrabold' />
@@ -102,11 +94,11 @@ export default function Welcome({ auth}) {
 
                     {/* section about us */}
                     <section id="about-us" className="pt-10 md:pt-28 sm:pt-32 px-0 sm:px-10 flex flex-col lg:flex-row justify-center items-center md:space-x-0">
-                        <div data-aos="fade-right"  className="relative h-fit items-center w-full lg:w-1/2">
+                        <div  className="relative h-fit items-center w-full lg:w-1/2">
                             <div class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
                             <img src="images/gedung-TI.jpg" class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
                         </div>
-                        <div data-aos="fade-left"  className="w-full ml-0 mt-14 sm:mt-0 lg:w-1/2">
+                        <div  className="w-full ml-0 mt-14 sm:mt-0 lg:w-1/2">
                             <div className="flex items-center space-x-2 mb-4">
                                 <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
                                 <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
@@ -129,32 +121,32 @@ export default function Welcome({ auth}) {
                     <section id="pkm-topik" className="p-0 sm:p-10 mt-20">
                         <div className="relative">
                             <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl flex flex-col justify-start items-center overflow-hidden p-6 sm:p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
-                                <div data-aos="zoom-in" className="flex items-center space-x-2 mb-2">
+                                <div className="flex items-center space-x-2 mb-2">
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <p className="uppercase font-semibold text-center text-white text-sm sm:text-base px-6">Eksplorasi topik pkm</p>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                 </div>
-                                <h2 data-aos="zoom-in" className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">Kembangkan Ide Cemerlang Anda</h2>
-                                <p data-aos="zoom-in" className="text-sm sm:text-base text-slate-200 text-center">
+                                <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">Kembangkan Ide Cemerlang Anda</h2>
+                                <p className="text-sm sm:text-base text-slate-200 text-center">
                                     Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
                                 </p>
                             </div>
                             <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col md:flex-row justify-center items-center space-y-6 md:space-x-4 md:space-y-0">
-                                <div data-aos="zoom-in" className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
-                                <div data-aos="zoom-in" className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
-                                <div data-aos="zoom-in" className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
-                                <div data-aos="zoom-in" className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
                                     <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
                                 </div>
@@ -253,7 +245,7 @@ export default function Welcome({ auth}) {
                                 
                             </SlickCarousel>
 
-                        <div data-aos="fade-left" className='flex flex-col w-full lg:w-1/2'>
+                        <div className='flex flex-col w-full lg:w-1/2'>
                             <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>
                             <h3 className='capitalize text-3xl md:text-4xl lg:text-5xl font-extrabold text-secondary leading-12 md:leading-16'>Bertemu dengan mereka yang sudah profesional</h3>
                             <p className='text-sm sm:text-base font-light text-gray-500 mt-3 capitalize'>
@@ -264,19 +256,19 @@ export default function Welcome({ auth}) {
 
                     {/* Section Roundown Acara */}
                     <section id='roundown-acara' className='flex flex-col justify-start items-center sm:px-12 mt-24'>
-                        <div data-aos="zoom-in" className="flex items-center space-x-2 mb-2">
+                        <div className="flex items-center space-x-2 mb-2">
                             <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
                             <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
                             <p className="uppercase font-semibold text-blue-lagoon px-6 text-center text-sm sm:text-base">Roundown Acara</p>
                             <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
                             <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
                         </div>
-                        <h2 data-aos="zoom-in" className="capitalize text-3xl md:text-4xl lg:text-5xl text-center font-bold text-secondary mb-2">Jangan Lewatkan Kesempatan Ini</h2>
-                        <p data-aos="zoom-in" className="text-center text-sm sm:text-base">
+                        <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl text-center font-bold text-secondary mb-2">Jangan Lewatkan Kesempatan Ini</h2>
+                        <p className="text-center text-sm sm:text-base">
                             Setiap detik adalah kesempatan untuk belajar, berbagi, dan terhubung dengan komunitas kreatif. Catat tanggalnya dan pastikan Anda tidak melewatkan momen magis di PKM Wonderland. Ayo, mari jadwalkan momen berharga kita bersama!
                         </p>
 
-                        <div data-aos="zoom-in" className="overflow-x-auto w-full mt-6">
+                        <div className="overflow-x-auto w-full mt-6">
                             <table className="table overflow-hidden">
                                 {/* head */}
                                 <thead>
@@ -331,20 +323,20 @@ export default function Welcome({ auth}) {
                     {/* Suhu section */}
                     <section className='flex flex-col w-full py-4 mt-24 sm:px-12'>
                         <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
-                            <div data-aos="zoom-in" className="flex items-center space-x-2 mb-2">
+                            <div className="flex items-center space-x-2 mb-2">
                                 <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                 <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                 <p className="uppercase font-semibold text-sm sm:text-base text-center text-white px-6">saatnya kamu buktikan</p>
                                 <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                 <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                             </div>
-                            <h2 data-aos="zoom-in" className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-2">Bergabung Dengan Mereka</h2>
-                            <p data-aos="zoom-in" className="text-slate-200 text-center text-sm sm:text-base">
+                            <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-2">Bergabung Dengan Mereka</h2>
+                            <p className="text-slate-200 text-center text-sm sm:text-base">
                                 Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
                             </p>
                         </div>
 
-                        <div data-aos="fade-up" className="relative -mt-24 sm:-mt-32 z-[5] flex justify-center items-center">
+                        <div className="relative -mt-24 sm:-mt-32 z-[5] flex justify-center items-center">
                             <CustomCarousel className="flex justify-center items-center text-center space-x-4">
                                 <div className='relative flex justify-center items-center pb-5'>
                                     <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -378,7 +370,7 @@ export default function Welcome({ auth}) {
                         {/* FAQ section */}
                         <section id='FaQ' className='block w-full mt-20 py-16'>
                             <div className='flex flex-col w-full'>
-                                <div data-aos="fade-right" className='px-0 md:px-8 lg:px-10'>
+                                <div className='px-0 md:px-8 lg:px-10'>
                                     <span className='uppercase text-sm font-semibold md:text-base text-primary'>Malu Bertanya nanti gatau</span>
                                     <h3 className='capitalize font-black text-4xl md:text-5xl mt-2 text-secondary'>Frequently Asked Questions</h3>
                                     <p className='capitalize text-slate-500 mt-2 w-4/5 text-sm sm:text-base'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
@@ -386,11 +378,11 @@ export default function Welcome({ auth}) {
                             </div>
 
                             <div className='flex flex-col-reverse md:flex-row w-full mt-10 justify-between items-center'>
-                                <div data-aos="fade-right" className='mt-5 items-start'>
+                                <div className='mt-5 items-start'>
                                     <img src='images/image-FAQ.png?version=1.0' className='max-h-[450px]' />
                                 </div>
 
-                                <div data-aos="fade-up" className='md:w-6/12 flex flex-col gap-4'>
+                                <div className='md:w-6/12 flex flex-col gap-4'>
                                     <Accordion title="Siapa yang boleh ikut PKM TI?" answer="Khusus untuk mahasiswa Fakultas Teknik Universitas Udayana saja yang boleh bergabung dalam Kelompok Studi TecArt"/>
                                     <Accordion title="Emang Wajib Kak?" answer="Pakek nanya wajib lah 🥶"/>
                                     <Accordion title="Kalo menang dapet PC Gaming gak?" answer="Mang eak Dapet hadiah Pc 😊🥶"/>
@@ -406,37 +398,37 @@ export default function Welcome({ auth}) {
                     {/* Contact section */}
                     <section id='contact-us' className='min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
-                            <h3 data-aos="zoom-in" className='capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
+                            <h3 className='capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 
                             <div className='flex w-full items-center text-center justify-center'>
-                                <p data-aos="zoom-in" className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>
+                                <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>
                                     Dapatkan info terkini tentang kegiatan yang diselenggarakan Technology Artisan pada Official Accounts Technology Artisan. Ikuti terus perkembangannya !
                                 </p>
                             </div>
 
                             <div className='flex flex-wrap md:flex-row justify-center items-center relative w-full gap-4 mt-5'>
-                                <button data-aos="zoom-in" data-aos-delay="50" className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
                                     <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
 
-                                <button data-aos="zoom-in" data-aos-delay="100" className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
                                     <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
 
-                                <button data-aos="zoom-in" data-aos-delay="150" className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
                                     <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
 
-                                <button data-aos="zoom-in" data-aos-delay="200" className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
+                                <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
                                     <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
                             </div>
 
-                            <div data-aos="fade-up">
+                            <div>
                                 <img src="images/contact-us-bro.png" className='mx-auto max-h-[450px] mt-10' alt="contact us illustration" />
                             </div>
                         </div>

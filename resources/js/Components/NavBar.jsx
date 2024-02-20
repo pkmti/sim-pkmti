@@ -28,7 +28,7 @@ export default function NavBar(auth){
                     </div>
             </div>
 
-            <div className={`${openNav ? "translate-y-16" : "-translate-y-full"} z-[-5] absolute pl-6 left-0 bg-base-100 w-full flex-col items-start pt-6 pb-10 shadow-md lg:relative lg:translate-y-0 lg:px-0 lg:shadow-none lg:py-0 lg:flex lg:flex-row lg:justify-between lg:items-center ease-out duration-500`}>
+            <div className={`${openNav ? "translate-y-16" : "-translate-y-full"} z-[-5] absolute pl-6 left-0 bg-base-100 w-full flex-col items-start pt-6 pb-10 shadow-md lg:bg-transparent lg:relative lg:translate-y-0 lg:px-0 lg:shadow-none lg:py-0 lg:flex lg:flex-row lg:justify-between lg:items-center ease-out duration-500`}>
                 <div className="lg:navbar-center flex-col lg:flex">
                     <ul className="menu menu-vertical lg:menu-horizontal px-1">
                         <li>

@@ -14,7 +14,7 @@ export default function NavBar(auth){
         <nav className="navbar bg-base-100 shadow-md p-0 lg:px-12 z-10 fixed top-0 flex-col items-start lg:items-center lg:flex-row">
             <div className="flex justify-between w-full lg:navbar-start px-6 lg:px-0 py-2 sm:px-10 bg-base-100">
                 <a href='#' className="cursor-pointer w-14">
-                    <img src="/images/Logo-PKM-TI.png" alt="w-full" />
+                    <img src="/images/Logo-PKM-TI.png?v=1.0" alt="w-full" />
                 </a>
 
                 <div className="flex space-x-6 lg:hidden">

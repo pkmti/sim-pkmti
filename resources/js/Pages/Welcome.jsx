@@ -39,10 +39,10 @@ export default function Welcome({ auth}) {
                                     <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
                                 </div>
                             </div>
-                            <div data-aos="fade-left"  class="hidden justify-center items-center w-full h-full lg:flex">
-                                <div class="relative min-h-full">
-                                    <div class="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
-                                    <img src="images/gedung-TI.jpg" class="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
+                            <div data-aos="fade-left"  className="hidden justify-center items-center w-full h-full lg:flex">
+                                <div className="relative min-h-full">
+                                    <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+                                    <img src="images/gedung-TI.jpg" className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
                                 </div>
                             </div>
 
@@ -132,7 +132,7 @@ export default function Welcome({ auth}) {
                                 <div data-aos="zoom-in" className="flex items-center space-x-2 mb-2">
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                                    <p className="uppercase font-semibold text-white text-sm sm:text-base px-6">Eksplorasi topik pkm</p>
+                                    <p className="uppercase font-semibold text-center text-white text-sm sm:text-base px-6">Eksplorasi topik pkm</p>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                 </div>
@@ -165,11 +165,10 @@ export default function Welcome({ auth}) {
 
                     {/*  speakers section */}
                     <section className='flex flex-col-reverse lg:flex-row items-center w-full gap-6 sm:px-12 mt-20'>
-                        <div className='w-full lg:w-1/2 h-fit'>
                             <SlickCarousel>
                                 <div>
                                     <div className='relative mx-2 overflow-hidden group rounded-lg'>
-                                        <img src='images/prabowo.png' className='w-64 h-80 rounded-lg object-fill cursor-pointer group-hover:scale-125 duration-300'
+                                        <img src='images/prabowo.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
                                         />
                                         <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
                                             <div className='px-4'>
@@ -197,7 +196,7 @@ export default function Welcome({ auth}) {
                                 </div>
                                 <div>
                                     <div className='relative mx-2 overflow-hidden group rounded-lg'>
-                                        <img src='images/nadiem.png' className='w-64 h-80 rounded-lg object-fill cursor-pointer group-hover:scale-125 duration-300'
+                                        <img src='images/nadiem.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
                                         />
                                         <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
                                             <div className='px-4'>
@@ -225,7 +224,7 @@ export default function Welcome({ auth}) {
                                 </div>
                                 <div>
                                     <div className='relative mx-2 overflow-hidden group rounded-lg'>
-                                        <img src='images/rektor.png' className='w-64 h-80 rounded-lg object-fill cursor-pointer group-hover:scale-125 duration-300'
+                                        <img src='images/rektor.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
                                         />
                                         <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
                                             <div className='px-4'>
@@ -253,7 +252,6 @@ export default function Welcome({ auth}) {
                                 </div>
                                 
                             </SlickCarousel>
-                        </div>
 
                         <div data-aos="fade-left" className='flex flex-col w-full lg:w-1/2'>
                             <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>
@@ -408,7 +406,7 @@ export default function Welcome({ auth}) {
                     {/* Contact section */}
                     <section id='contact-us' className='min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
-                            <h3 data-aos="zoom-in" className='capitalize text-4xl md:text-5xl font-black flex gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
+                            <h3 data-aos="zoom-in" className='capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
 
                             <div className='flex w-full items-center text-center justify-center'>
                                 <p data-aos="zoom-in" className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>

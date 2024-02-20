@@ -1,5 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 import DarkMode from '@/Components/darkMode';
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import {
@@ -13,7 +15,17 @@ import NavBar from '@/Components/NavBar';
 import ScrollToTop from '@/Components/ScrollTop';
 import SlickCarousel from '@/Components/SlickCarousel';
 
-export default function Welcome({ auth}) {
+export default function Welcome({ auth }) {
+    const controls = useAnimation();
+
+    useEffect(() => {
+        controls.start({
+            x: 0,
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.8 }
+        });
+    }, [controls]);
     return (
         <>
             <Head title="PKM TI" />
@@ -21,99 +33,138 @@ export default function Welcome({ auth}) {
 
             <div className="flex flex-col pt-28 overflow-y-hidden">
                 <main className='px-6 sm:px-0'>
+
                     <div className='relative w-full'>
+
                         <div className='flex flex-col sm:flex-row gap-6 items-center justify-between sm:px-12 w-full'>
-                            <div  className='flex flex-col w-full'>
-                                <span className='uppercase font-medium sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
-                                <h3 className='capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
-                                <p className='text-sm sm:text-base mt-3 font-light capitalize w-11/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
-                                <div className='mt-3 w-64 none'>
-                                    <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
+                            <motion.div
+                                initial={{ x: -100, opacity: 0 }}
+                                animate={controls}
+                                className='relative w-full'
+                            >
+                                <div className='flex flex-col w-full'>
+                                    <span className='uppercase font-medium sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
+                                    <h3 className='capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
+                                    <p className='text-sm sm:text-base mt-3 font-light capitalize w-11/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
+                                    <div className='mt-3 w-64 none'>
+                                        <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div  className="hidden justify-center items-center w-full h-full lg:flex">
-                                <div className="relative min-h-full">
-                                    <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
-                                    <img src="images/gedung-TI.jpg" className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
+
+                            </motion.div>
+
+
+                            <motion.div
+                                initial={{ x: 100, opacity: 0 }}
+                                animate={controls}
+                                className='relative w-full'
+                            >
+                                <div className="hidden justify-center items-center w-full h-full lg:flex">
+                                    <div className="relative min-h-full">
+                                        <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+                                        <img src="images/gedung-TI.jpg" className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
+                                    </div>
                                 </div>
-                            </div>
+                            </motion.div>
+
 
                         </div>
                     </div>
 
                     {/* important date section */}
                     <div className='flex flex-row w-full justify-center items-center mt-16 sm:mt-24 sm:px-12'>
-                        <div className='flex flex-col md:flex-row gap-4 justify-between items-start w-full md:w-11/12 bg-base-100 shadow-lg border border-base-300 px-6 py-6 rounded-lg'>
-                            <div className='flex flex-row gap-4 sm:pr-10'>
-                                <BookmarkSquareIcon className='w-6 h-6 font-extrabold' />
-                                <div className='block'>
-                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
-                                        Agenda Acara
-                                    </span>
+                        <motion.div
+                            initial={{ y: -100, x: 0, opacity: 0 }}
+                            animate={controls}
+                            className='relative w-full'
+                        >
+                            <div className='flex flex-col md:flex-row gap-4 justify-between items-start w-full md:w-11/12 bg-base-100 shadow-lg border border-base-300 px-6 py-6 rounded-lg'>
+                                <div className='flex flex-row gap-4 sm:pr-10'>
+                                    <BookmarkSquareIcon className='w-6 h-6 font-extrabold' />
+                                    <div className='block'>
+                                        <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                            Agenda Acara
+                                        </span>
 
-                                    <p className='text-base md:text-sm font-light'>
-                                        Pembukaan PKM-TI 2024
-                                    </p>
+                                        <p className='text-base md:text-sm font-light'>
+                                            Pembukaan PKM-TI 2024
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+                                <div className='flex flex-row gap-4'>
+                                    <CalendarDaysIcon className='w-6 h-6 font-extrabold' />
+                                    <div className='block'>
+                                        <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                            Date
+                                        </span>
+
+                                        <p className='text-base md:text-sm font-light'>
+                                            Minggu, 4 Februari 2024
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+
+                                <div className='flex flex-row gap-4'>
+                                    <MapPinIcon className='w-6 h-6 font-extrabold' />
+
+                                    <div className='block'>
+                                        <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                            Lokasi Acara
+                                        </span>
+
+                                        <p className='text-base md:text-sm font-light'>
+                                            Gedung Teknologi Informasi Fakultas Teknik Universitas Udayana
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                        </motion.div>
 
-                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
-
-                            <div className='flex flex-row gap-4'>
-                                <CalendarDaysIcon className='w-6 h-6 font-extrabold' />
-                                <div className='block'>
-                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
-                                        Date
-                                    </span>
-
-                                    <p className='text-base md:text-sm font-light'>
-                                        Minggu, 4 Februari 2024
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
-
-
-                            <div className='flex flex-row gap-4'>
-                                <MapPinIcon className='w-6 h-6 font-extrabold' />
-
-                                <div className='block'>
-                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
-                                        Lokasi Acara
-                                    </span>
-
-                                    <p className='text-base md:text-sm font-light'>
-                                        Gedung Teknologi Informasi Fakultas Teknik Universitas Udayana
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     {/* end imporatant date section */}
 
                     {/* section about us */}
                     <section id="about-us" className="pt-10 md:pt-28 sm:pt-32 px-0 sm:px-10 flex flex-col lg:flex-row justify-center items-center md:space-x-0">
-                        <div  className="relative h-fit items-center w-full lg:w-1/2">
-                            <div class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
-                            <img src="images/gedung-TI.jpg" class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
-                        </div>
-                        <div  className="w-full ml-0 mt-14 sm:mt-0 lg:w-1/2">
-                            <div className="flex items-center space-x-2 mb-4">
-                                <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
-                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
-                                <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
+                        <motion.div
+                            initial={{ y: -100, x: 0, opacity: 0 }}
+                            animate={controls}
+                            className='relative w-full'
+                        >
+                            <div className="relative h-fit items-center w-full lg:w-1/2">
+                                <div class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
+                                <img src="images/gedung-TI.jpg" class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
                             </div>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
-                            <p className='text-sm sm:text-base'>
-                                <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
-                                Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas.
-                            </p>
-                            <a href="#pkm-topik" className="flex mt-4 text-sm text-slate-500 cursor-pointer">
-                                <ArrowLongDownIcon class="w-6 h-6 mr-3 animate-bounce" />
-                                scroll down
-                            </a>
-                        </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ y: -100, x: 0, opacity: 0 }}
+                            animate={controls}
+                            className='relative w-full'
+                        >
+                            <div className="w-full ml-0 mt-14 sm:mt-0 lg:w-1/2">
+                                <div className="flex items-center space-x-2 mb-4">
+                                    <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
+                                    <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                    <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
+                                </div>
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
+                                <p className='text-sm sm:text-base'>
+                                    <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
+                                    Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas.
+                                </p>
+                                <a href="#pkm-topik" className="flex mt-4 text-sm text-slate-500 cursor-pointer">
+                                    <ArrowLongDownIcon class="w-6 h-6 mr-3 animate-bounce" />
+                                    scroll down
+                                </a>
+                            </div>
+                        </motion.div>
+
                     </section>
                     {/* end about us section */}
 
@@ -157,93 +208,93 @@ export default function Welcome({ auth}) {
 
                     {/*  speakers section */}
                     <section className='flex flex-col-reverse lg:flex-row items-center w-full gap-6 sm:px-12 mt-20'>
-                            <SlickCarousel>
-                                <div>
-                                    <div className='relative mx-2 overflow-hidden group rounded-lg'>
-                                        <img src='images/prabowo.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
-                                        />
-                                        <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
-                                            <div className='px-4'>
-                                                <p className='text-white opacity-100 text-lg font-bold leading-5'>“Tips and Trik Membuat Proposal PKM Lolos Pimnas 1”</p>
-                                                <div className="divider before:bg-white after:bg-white"></div>
-                                                <div className='flex flex-col'>
-                                                    <span className='font-bold capitalize text-sm text-white'>Bayu Rizkyyy</span>
-                                                    <p className='font-light text-sm md:text-xs text-white'>Koordinator Sie Ilmiah PKM TI 2023</p>
+                        <SlickCarousel>
+                            <div>
+                                <div className='relative mx-2 overflow-hidden group rounded-lg'>
+                                    <img src='images/prabowo.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
+                                    />
+                                    <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
+                                        <div className='px-4'>
+                                            <p className='text-white opacity-100 text-lg font-bold leading-5'>“Tips and Trik Membuat Proposal PKM Lolos Pimnas 1”</p>
+                                            <div className="divider before:bg-white after:bg-white"></div>
+                                            <div className='flex flex-col'>
+                                                <span className='font-bold capitalize text-sm text-white'>Bayu Rizkyyy</span>
+                                                <p className='font-light text-sm md:text-xs text-white'>Koordinator Sie Ilmiah PKM TI 2023</p>
+                                            </div>
+
+                                            <div className='flex flex-col mt-4 gap-3'>
+                                                <div className='flex flex-row gap-4 items-center'>
+                                                    <CalendarIcon className='w-4 h-4 text-white' />
+                                                    <p className='text-xs font-thin capitalize text-white'>Senin, 4 Februari 2024</p>
                                                 </div>
-                                    
-                                                <div className='flex flex-col mt-4 gap-3'>
-                                                    <div className='flex flex-row gap-4 items-center'>
-                                                        <CalendarIcon className='w-4 h-4 text-white' />
-                                                        <p className='text-xs font-thin capitalize text-white'>Senin, 4 Februari 2024</p>
-                                                    </div>
-                                    
-                                                    <div className='flex flex-row gap-4 items-center'>
-                                                        <MapPinIcon className='w-8 h-8 text-white' />
-                                                        <p className='text-xs font-thin capitalize text-white'>Gedung Teknologi Informasi, Fakultas Teknik Universitas Udayana</p>
-                                                    </div>
+
+                                                <div className='flex flex-row gap-4 items-center'>
+                                                    <MapPinIcon className='w-8 h-8 text-white' />
+                                                    <p className='text-xs font-thin capitalize text-white'>Gedung Teknologi Informasi, Fakultas Teknik Universitas Udayana</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className='relative mx-2 overflow-hidden group rounded-lg'>
-                                        <img src='images/nadiem.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
-                                        />
-                                        <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
-                                            <div className='px-4'>
-                                                <p className='text-white opacity-100 text-lg font-bold leading-5'>“Tips and Trik Membuat Proposal PKM Lolos Pimnas 1”</p>
-                                                <div className="divider before:bg-white after:bg-white"></div>
-                                                <div className='flex flex-col'>
-                                                    <span className='font-bold capitalize text-sm text-white'>Bayu Rizkyyy</span>
-                                                    <p className='font-light text-sm md:text-xs text-white'>Koordinator Sie Ilmiah PKM TI 2023</p>
+                            </div>
+                            <div>
+                                <div className='relative mx-2 overflow-hidden group rounded-lg'>
+                                    <img src='images/nadiem.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
+                                    />
+                                    <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
+                                        <div className='px-4'>
+                                            <p className='text-white opacity-100 text-lg font-bold leading-5'>“Tips and Trik Membuat Proposal PKM Lolos Pimnas 1”</p>
+                                            <div className="divider before:bg-white after:bg-white"></div>
+                                            <div className='flex flex-col'>
+                                                <span className='font-bold capitalize text-sm text-white'>Bayu Rizkyyy</span>
+                                                <p className='font-light text-sm md:text-xs text-white'>Koordinator Sie Ilmiah PKM TI 2023</p>
+                                            </div>
+
+                                            <div className='flex flex-col mt-4 gap-3'>
+                                                <div className='flex flex-row gap-4 items-center'>
+                                                    <CalendarIcon className='w-4 h-4 text-white' />
+                                                    <p className='text-xs font-thin capitalize text-white'>Senin, 4 Februari 2024</p>
                                                 </div>
-                                    
-                                                <div className='flex flex-col mt-4 gap-3'>
-                                                    <div className='flex flex-row gap-4 items-center'>
-                                                        <CalendarIcon className='w-4 h-4 text-white' />
-                                                        <p className='text-xs font-thin capitalize text-white'>Senin, 4 Februari 2024</p>
-                                                    </div>
-                                    
-                                                    <div className='flex flex-row gap-4 items-center'>
-                                                        <MapPinIcon className='w-8 h-8 text-white' />
-                                                        <p className='text-xs font-thin capitalize text-white'>Gedung Teknologi Informasi, Fakultas Teknik Universitas Udayana</p>
-                                                    </div>
+
+                                                <div className='flex flex-row gap-4 items-center'>
+                                                    <MapPinIcon className='w-8 h-8 text-white' />
+                                                    <p className='text-xs font-thin capitalize text-white'>Gedung Teknologi Informasi, Fakultas Teknik Universitas Udayana</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className='relative mx-2 overflow-hidden group rounded-lg'>
-                                        <img src='images/rektor.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
-                                        />
-                                        <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
-                                            <div className='px-4'>
-                                                <p className='text-white opacity-100 text-lg font-bold leading-5'>“Tips and Trik Membuat Proposal PKM Lolos Pimnas 1”</p>
-                                                <div className="divider before:bg-white after:bg-white"></div>
-                                                <div className='flex flex-col'>
-                                                    <span className='font-bold capitalize text-sm text-white'>Bayu Rizkyyy</span>
-                                                    <p className='font-light text-sm md:text-xs text-white'>Koordinator Sie Ilmiah PKM TI 2023</p>
+                            </div>
+                            <div>
+                                <div className='relative mx-2 overflow-hidden group rounded-lg'>
+                                    <img src='images/rektor.png' className='w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300'
+                                    />
+                                    <div className='absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center'>
+                                        <div className='px-4'>
+                                            <p className='text-white opacity-100 text-lg font-bold leading-5'>“Tips and Trik Membuat Proposal PKM Lolos Pimnas 1”</p>
+                                            <div className="divider before:bg-white after:bg-white"></div>
+                                            <div className='flex flex-col'>
+                                                <span className='font-bold capitalize text-sm text-white'>Bayu Rizkyyy</span>
+                                                <p className='font-light text-sm md:text-xs text-white'>Koordinator Sie Ilmiah PKM TI 2023</p>
+                                            </div>
+
+                                            <div className='flex flex-col mt-4 gap-3'>
+                                                <div className='flex flex-row gap-4 items-center'>
+                                                    <CalendarIcon className='w-4 h-4 text-white' />
+                                                    <p className='text-xs font-thin capitalize text-white'>Senin, 4 Februari 2024</p>
                                                 </div>
-                                    
-                                                <div className='flex flex-col mt-4 gap-3'>
-                                                    <div className='flex flex-row gap-4 items-center'>
-                                                        <CalendarIcon className='w-4 h-4 text-white' />
-                                                        <p className='text-xs font-thin capitalize text-white'>Senin, 4 Februari 2024</p>
-                                                    </div>
-                                    
-                                                    <div className='flex flex-row gap-4 items-center'>
-                                                        <MapPinIcon className='w-8 h-8 text-white' />
-                                                        <p className='text-xs font-thin capitalize text-white'>Gedung Teknologi Informasi, Fakultas Teknik Universitas Udayana</p>
-                                                    </div>
+
+                                                <div className='flex flex-row gap-4 items-center'>
+                                                    <MapPinIcon className='w-8 h-8 text-white' />
+                                                    <p className='text-xs font-thin capitalize text-white'>Gedung Teknologi Informasi, Fakultas Teknik Universitas Udayana</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                            </SlickCarousel>
+                            </div>
+
+                        </SlickCarousel>
 
                         <div className='flex flex-col w-full lg:w-1/2'>
                             <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>
@@ -272,11 +323,11 @@ export default function Welcome({ auth}) {
                             <table className="table overflow-hidden">
                                 {/* head */}
                                 <thead>
-                                <tr className='bg-white-blue text-base uppercase text-slate-600'>
-                                    <th>Waktu</th>
-                                    <th>Acara</th>
-                                    <th>Lokasi</th>
-                                </tr>
+                                    <tr className='bg-white-blue text-base uppercase text-slate-600'>
+                                        <th>Waktu</th>
+                                        <th>Acara</th>
+                                        <th>Lokasi</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     {/* row 1 */}
@@ -383,10 +434,10 @@ export default function Welcome({ auth}) {
                                 </div>
 
                                 <div className='md:w-6/12 flex flex-col gap-4'>
-                                    <Accordion title="Siapa yang boleh ikut PKM TI?" answer="Khusus untuk mahasiswa Fakultas Teknik Universitas Udayana saja yang boleh bergabung dalam Kelompok Studi TecArt"/>
-                                    <Accordion title="Emang Wajib Kak?" answer="Pakek nanya wajib lah 🥶"/>
-                                    <Accordion title="Kalo menang dapet PC Gaming gak?" answer="Mang eak Dapet hadiah Pc 😊🥶"/>
-                                    <Accordion title="Kalo pake jasa joki gapapa kan kak?" answer="yang bener aje rugi dong !"/>
+                                    <Accordion title="Siapa yang boleh ikut PKM TI?" answer="Khusus untuk mahasiswa Fakultas Teknik Universitas Udayana saja yang boleh bergabung dalam Kelompok Studi TecArt" />
+                                    <Accordion title="Emang Wajib Kak?" answer="Pakek nanya wajib lah 🥶" />
+                                    <Accordion title="Kalo menang dapet PC Gaming gak?" answer="Mang eak Dapet hadiah Pc 😊🥶" />
+                                    <Accordion title="Kalo pake jasa joki gapapa kan kak?" answer="yang bener aje rugi dong !" />
                                 </div>
                             </div>
 
@@ -408,22 +459,22 @@ export default function Welcome({ auth}) {
 
                             <div className='flex flex-wrap md:flex-row justify-center items-center relative w-full gap-4 mt-5'>
                                 <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
-                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary' />
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
 
                                 <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
-                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary' />
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
 
                                 <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
-                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary' />
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
 
                                 <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
-                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary'/>
+                                    <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary' />
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
                             </div>
@@ -440,19 +491,19 @@ export default function Welcome({ auth}) {
                     <aside className='col-span-2 w-4/5 md:w-full'>
                         <img src="images/Logo-PKM-TI.png" className='w-32' alt="" />
                         <p className='capitalize text-lg text-slate-700 font-semibold dark:text-white'>program studi sarjana teknologi informasi fakultas teknik universitas udayana</p>
-                    </aside> 
+                    </aside>
                     <nav className='col-span-1 md:col-span-2'>
-                        <h6 className="footer-title mb-0">Alamat</h6> 
+                        <h6 className="footer-title mb-0">Alamat</h6>
                         <a className="link link-hover mb-4">Jl. Kampus Udayana Bukit Jimbaran, Jimbaran, Kuta Selatan, Kabupaten Badung, Bali 80361</a>
 
-                        <h6 className="footer-title mb-0">Telepon</h6> 
+                        <h6 className="footer-title mb-0">Telepon</h6>
                         <a className="link link-hover mb-4">(0361) 701806</a>
 
-                        <h6 className="footer-title mb-0">Email</h6> 
+                        <h6 className="footer-title mb-0">Email</h6>
                         <a className="link link-hover mb-4">hmti@unud.ac.id</a>
-                    </nav> 
+                    </nav>
                     <nav className='col-span-1 md:col-span-2'>
-                        <h6 className="footer-title mb-0">Terkait</h6> 
+                        <h6 className="footer-title mb-0">Terkait</h6>
                         <a className="link link-hover mb-2">UNUD | Teknologi Informasi</a>
 
                         <a className="link link-hover mb-2">BEM PM Udayna</a>
@@ -466,7 +517,7 @@ export default function Welcome({ auth}) {
             </div>
 
 
-            <ScrollToTop/>
+            <ScrollToTop />
         </>
     );
 }

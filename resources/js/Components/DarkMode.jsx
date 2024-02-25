@@ -1,16 +1,18 @@
-import {useState, useEffect} from "react";
-import { SunIcon, MoonIcon  } from "@heroicons/react/24/outline";
+import { useState, useEffect } from "react";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 
-export default function DarkMode  ({}) {
-    const [theme, setThemes] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+export default function DarkMode({}) {
+    const [theme, setThemes] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    );
 
     const handleToggle = (e) => {
-        if(e.target.checked){
+        if (e.target.checked) {
             setThemes("dark");
-        }else{
+        } else {
             setThemes("light");
         }
-    }
+    };
 
     useEffect(() => {
         localStorage.setItem("theme", theme);
@@ -22,17 +24,19 @@ export default function DarkMode  ({}) {
     return (
         <>
             <div className="toggle-them  cursor-pointer">
-                    <label className="swap swap-rotate bg-primary p-2 rounded-full">
+                <label className="swap swap-rotate bg-primary p-2 rounded-full">
+                    <input
+                        type="checkbox"
+                        onChange={handleToggle}
+                        className="hidden"
+                        checked={theme === "light" ? false : true}
+                    />
 
-                        <input type="checkbox" onChange={handleToggle} className='hidden' checked={theme === 'light' ? false : true} />
+                    <SunIcon className="swap-on dark:text-yellow-400 text-white fill-current w-5 h-5" />
 
-                        <SunIcon className="swap-on dark:text-yellow-400 text-white fill-current w-5 h-5" />
-
-                        <MoonIcon className="swap-off text-white fill-current w-5 h-5" />
-
-                    </label>
+                    <MoonIcon className="swap-off text-white fill-current w-5 h-5" />
+                </label>
             </div>
         </>
-    )
-
+    );
 }

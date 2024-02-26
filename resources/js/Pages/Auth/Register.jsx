@@ -208,7 +208,7 @@ export default function Register() {
                                     <input
                                         type="checkbox"
                                         onClick={() => {
-                                            let x = document.getElementBxId(
+                                            let x = document.getElementById(
                                                 "password_confirmation"
                                             );
                                             x.type =

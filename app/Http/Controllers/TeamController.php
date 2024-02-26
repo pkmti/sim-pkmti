@@ -22,7 +22,7 @@ class TeamController extends Controller
     public function showTeams()
     {
         $teams = Team::with('members', 'proposal')->get();
-        return Inertia::render('Admin/Teams', compact('teams'));
+        return Inertia::render('Team', compact('teams'));
     }
 
     public function create(Request $request)

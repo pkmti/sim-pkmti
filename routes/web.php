@@ -61,19 +61,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/proposals/{id}', [ProposalController::class, 'delete'])->name('proposal.delete');
 });
 
-Route::middleware('auth')->prefix('test/admin')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Admin/Dashboard');
-    });
+    })->name('admin.dashboard');
     Route::get('/participants', function () {
         return Inertia::render('Admin/Participants');
-    });
+    })->name('admin.participants');
     Route::get('/teams', function () {
         return Inertia::render('Admin/Teams');
-    });
+    })->name('admin.teams');
     Route::get('/proposals', function () {
         return Inertia::render('Admin/Proposals');
-    });
+    })->name('admin.proposals');
 });
 
 require __DIR__.'/auth.php';

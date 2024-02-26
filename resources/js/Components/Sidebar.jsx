@@ -49,7 +49,7 @@ export default function Sidebar({ user, navigations, children }) {
 
                         <ul className="font-bold">
                             <li className="my-2">
-                                <Link>
+                                <Link href={route("profile.edit")}>
                                     <UserIcon className="h-6 w-6" />
                                     {user.nim}
                                 </Link>

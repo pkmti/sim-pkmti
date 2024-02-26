@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -18,7 +19,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
-        return Inertia::render('Profile/Edit', [
+        return Inertia::render('Profile', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
@@ -35,9 +36,14 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
 
-        return Redirect::route('profile.edit');
+        if (empty($request->user()->password)) {
+            unset($request->user()->password);
+        }
+
+        $request->user()->save();
+        
+        return Redirect::route('profile.edit')->with('success', 'Profil berhasil diperbaharui');
     }
 
     /**

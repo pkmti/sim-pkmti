@@ -81,6 +81,7 @@ export default function Sidebar({ user, navigations, children }) {
                     <div className="modal-action">
                         <form method="dialog">
                             <Link
+                                as="a"
                                 className="btn btn-error me-1"
                                 method="post"
                                 href={route("logout")}

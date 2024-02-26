@@ -49,7 +49,7 @@ export default function Register() {
                                 name="name"
                                 value={data.name}
                                 autoComplete="name"
-                                isFocused={true}
+                                isfocused="true"
                                 onChange={(e) =>
                                     setData("name", e.target.value)
                                 }
@@ -70,7 +70,7 @@ export default function Register() {
                                 name="nim"
                                 value={data.nim}
                                 autoComplete="nim"
-                                isFocused={true}
+                                isfocused="true"
                                 onChange={(e) => setData("nim", e.target.value)}
                                 className="input input-bordered"
                             />
@@ -89,7 +89,7 @@ export default function Register() {
                                 name="email"
                                 value={data.email}
                                 autoComplete="email"
-                                isFocused={true}
+                                isfocused="true"
                                 onChange={(e) =>
                                     setData("email", e.target.value)
                                 }
@@ -110,7 +110,7 @@ export default function Register() {
                                 name="phone"
                                 value={data.phone}
                                 autoComplete="phone"
-                                isFocused={true}
+                                isfocused="true"
                                 onChange={(e) =>
                                     setData("phone", e.target.value)
                                 }
@@ -131,7 +131,7 @@ export default function Register() {
                                 name="line_id"
                                 value={data.line_id}
                                 autoComplete="line_id"
-                                isFocused={true}
+                                isfocused="true"
                                 onChange={(e) =>
                                     setData("line_id", e.target.value)
                                 }

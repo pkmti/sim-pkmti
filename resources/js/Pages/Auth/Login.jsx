@@ -48,7 +48,7 @@ export default function Login({ status, canResetPassword }) {
                                 name="nim"
                                 value={data.nim}
                                 autoComplete="nim"
-                                isFocused={true}
+                                isfocused="true"
                                 onChange={(e) => setData("nim", e.target.value)}
                                 className="input input-bordered"
                             />

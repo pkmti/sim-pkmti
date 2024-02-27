@@ -158,7 +158,7 @@ export default function Register() {
                                     onChange={(e) =>
                                         setData("password", e.target.value)
                                     }
-                                    className="input input-bordered w-full join-item"
+                                    className="input input-bordered w-full join-item z-[1]"
                                 />
                                 <label className="btn btn-square join-item swap">
                                     <input
@@ -202,7 +202,7 @@ export default function Register() {
                                             e.target.value
                                         )
                                     }
-                                    className="input input-bordered w-full join-item"
+                                    className="input input-bordered w-full join-item z-[1]"
                                 />
                                 <label className="btn btn-square join-item swap">
                                     <input

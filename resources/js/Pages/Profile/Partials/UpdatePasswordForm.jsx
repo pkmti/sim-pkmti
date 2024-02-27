@@ -75,7 +75,7 @@ export default function UpdatePasswordForm() {
                             onChange={(e) =>
                                 setData("current_password", e.target.value)
                             }
-                            className="input input-bordered w-full join-item"
+                            className="input input-bordered w-full join-item z-[1]"
                         />
                         <label className="btn btn-square join-item swap">
                             <input
@@ -113,7 +113,7 @@ export default function UpdatePasswordForm() {
                             onChange={(e) =>
                                 setData("password", e.target.value)
                             }
-                            className="input input-bordered w-full join-item"
+                            className="input input-bordered w-full join-item z-[1]"
                         />
                         <label className="btn btn-square join-item swap">
                             <input
@@ -151,7 +151,7 @@ export default function UpdatePasswordForm() {
                             onChange={(e) =>
                                 setData("password_confirmation", e.target.value)
                             }
-                            className="input input-bordered w-full join-item"
+                            className="input input-bordered w-full join-item z-[1]"
                         />
                         <label className="btn btn-square join-item swap">
                             <input

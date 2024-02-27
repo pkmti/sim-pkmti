@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/teams/{token}', [TeamController::class, 'showTeam'])->name('team.index');
-    Route::get('/teams', [TeamController::class, 'showTeams'])->name('teams.index');
+    Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
     Route::post('/teams', [TeamController::class, 'create'])->name('team.create');
     Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('team.join');
     Route::delete('/teams/leave', [TeamController::class, 'leave'])->name('team.leave');
@@ -68,9 +68,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/participants', function () {
         return Inertia::render('Admin/Participants');
     })->name('admin.participants');
-    Route::get('/teams', function () {
-        return Inertia::render('Admin/Teams');
-    })->name('admin.teams');
+    Route::get('/teams', [TeamController::class, 'showTeams'])->name('admin.teams');
     Route::get('/proposals', function () {
         return Inertia::render('Admin/Proposals');
     })->name('admin.proposals');

@@ -97,7 +97,7 @@ const suffixes = [
     "Guru",
 ];
 
-export default function useRandomTeamName() {
+const useRandomTeamName = () => {
     const baseWord = baseWords[Math.floor(Math.random() * baseWords.length)];
     const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
     const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
@@ -116,4 +116,21 @@ export default function useRandomTeamName() {
         default:
             return baseWord;
     }
-}
+};
+
+const useRandomString = (length) => {
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    let result = "";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(
+            Math.floor(Math.random() * charactersLength)
+        );
+    }
+
+    return result;
+};
+
+export { useRandomString, useRandomTeamName };

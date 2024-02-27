@@ -13,22 +13,39 @@ class TeamController extends Controller
 {
     const MAX_PARTICIPANTS = 5;
 
+    public function index()
+    {
+        if (Auth::getUser()->team_id) {
+            $token = Team::find(Auth::getUser()->team_id)->token;
+            return to_route('team.index', $token);
+        }
+
+        return Inertia::render('Team/NotTeamed');
+    }
+
     public function showTeam($token)
     {
-        $team = Team::with('members', 'proposal')->find($token);
-        return Inertia::render('Team', compact('team'));
+        $team = Team::with('leader', 'members', 'proposal')->where('token', $token)->first();
+        if (!$team) abort(404);
+        return Inertia::render('Team/Index', compact('team'));
     }
 
     public function showTeams()
     {
         $teams = Team::with('members', 'proposal')->get();
-        return Inertia::render('Team', compact('teams'));
+        return Inertia::render('Admin/Teams', compact('teams'));
     }
 
     public function create(Request $request)
     {
+        if (Auth::getUser()->team_id) {
+            $token = Team::find(Auth::getUser()->team_id)->token;
+            return to_route('team.index', $token);
+        }
+
         $request->validate([
             'team_name' => 'required|string|max:255|unique:'.Team::class,
+            'token' => 'required|string|min:8|max:8|unique:'.Team::class
         ], [
             'team_name.required' => 'Mohon masukkan nama tim',
         ]);
@@ -41,7 +58,11 @@ class TeamController extends Controller
             'leader_id' => Auth::id(),
         ]);
 
-        User::find(Auth::id())->update(['team_id' => $team->id]);
+        $user = User::find(Auth::id());
+        $user->team_id = $team->id;
+        $user->save();
+
+        usleep(1);
 
         return to_route('team.index', $token);
     }

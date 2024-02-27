@@ -1,13 +1,18 @@
-import ParticipantLayout from "@/Layouts/ParticipantLayout";
 import useRandomTeamName from "@/utils";
-import { ArrowPathIcon } from "@heroicons/react/24/solid";
+import { ArrowPathIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import { useForm } from "@inertiajs/react";
+import { useEffect } from "react";
 
-export default function Team({ auth, team }) {
-    const { user } = auth;
+export default function CreateTeam() {
     const { data, setData, post, processing, errors, reset } = useForm({
         team_name: "",
     });
+
+    useEffect(() => {
+        return () => {
+            reset("team_name");
+        };
+    }, []);
 
     const submit = (e) => {
         e.preventDefault();
@@ -16,8 +21,10 @@ export default function Team({ auth, team }) {
     };
 
     return (
-        <ParticipantLayout user={user} title="Tim">
+        <>
             <form onSubmit={submit}>
+                <UserPlusIcon className="h-10 w-10 mb-4" />
+                <h3 className="font-bold text-xs">BUAT TIM</h3>
                 <div className="form-control my-4">
                     <label htmlFor="team_name" className="font-bold mb-2">
                         Nama Tim
@@ -46,7 +53,10 @@ export default function Team({ auth, team }) {
                             </label>
                         </div>
                     </div>
-                    <p className="mt-2 text-error">{errors.team_name}</p>
+
+                    {errors.team_name && (
+                        <p className="mt-2 text-error">{errors.team_name}</p>
+                    )}
                 </div>
                 <button
                     className="btn btn-primary w-full mb-2"
@@ -55,6 +65,6 @@ export default function Team({ auth, team }) {
                     Buat Tim
                 </button>
             </form>
-        </ParticipantLayout>
+        </>
     );
 }

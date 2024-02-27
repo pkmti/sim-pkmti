@@ -22,7 +22,6 @@ class ProfileUpdateRequest extends FormRequest
             'nim' => ['required', 'string', 'min:10', 'max:10', Rule::unique(User::class)->ignore($this->user()->id)],
             'phone' => ['required', 'regex:/^08[0-9]+$/'],
             'line_id' => ['required', 'string'],
-            'password' => ['nullable', 'confirmed'],
         ];
     }
 }

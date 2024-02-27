@@ -6,7 +6,7 @@ export default function DarkMode({}) {
         localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
     );
 
-    const handleToggle = (e) => {
+    const handleTheme = (e) => {
         if (e.target.checked) {
             setThemes("dark");
         } else {
@@ -23,11 +23,11 @@ export default function DarkMode({}) {
 
     return (
         <>
-            <div className="toggle-them  cursor-pointer">
+            <div className="toggle-theme cursor-pointer">
                 <label className="swap swap-rotate bg-primary p-2 rounded-full">
                     <input
                         type="checkbox"
-                        onChange={handleToggle}
+                        onChange={handleTheme}
                         className="hidden"
                         checked={theme === "light" ? false : true}
                     />

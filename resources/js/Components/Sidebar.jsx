@@ -1,11 +1,35 @@
 import {
+    AcademicCapIcon,
     ArrowLeftEndOnRectangleIcon,
     Bars3Icon,
+    MoonIcon,
+    ShieldExclamationIcon,
+    SunIcon,
     UserIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "@inertiajs/react";
+import { useEffect, useState } from "react";
 
 export default function Sidebar({ user, navigations, children }) {
+    const [theme, setThemes] = useState(
+        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    );
+
+    const handleTheme = (e) => {
+        if (e.target.checked) {
+            setThemes("dark");
+        } else {
+            setThemes("light");
+        }
+    };
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        const deviceTheme = localStorage.getItem("theme");
+
+        document.querySelector("html").setAttribute("data-theme", deviceTheme);
+    }, [theme]);
+
     return (
         <>
             <div className="drawer lg:drawer-open">
@@ -54,6 +78,42 @@ export default function Sidebar({ user, navigations, children }) {
                                     {user.nim}
                                 </Link>
                             </li>
+
+                            <li className="my-2">
+                                <label className="swap swap-rotate justify-start">
+                                    <input
+                                        type="checkbox"
+                                        onChange={handleTheme}
+                                        className="hidden"
+                                        checked={
+                                            theme === "light" ? false : true
+                                        }
+                                    />
+                                    <SunIcon className="swap-on h-6 w-6" />
+                                    <MoonIcon className="swap-off h-6 w-6" />
+                                    {theme === "light"
+                                        ? "Mode Gelap"
+                                        : "Mode Terang"}
+                                </label>
+                            </li>
+
+                            {(user.role === "admin" &&
+                                location.pathname.search(/admin/) === -1 && (
+                                    <li className="my-2">
+                                        <Link href={route("admin.dashboard")}>
+                                            <ShieldExclamationIcon className="h-6 w-6" />
+                                            Menu Admin
+                                        </Link>
+                                    </li>
+                                )) || (
+                                <li className="my-2">
+                                    <Link href={route("dashboard")}>
+                                        <AcademicCapIcon className="h-6 w-6" />
+                                        Menu Utama
+                                    </Link>
+                                </li>
+                            )}
+
                             <li className="my-2">
                                 <a
                                     onClick={() =>

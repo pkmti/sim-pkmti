@@ -28,12 +28,12 @@ class TeamController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'team_name' => 'required|string|max:255',
+            'team_name' => 'required|string|max:255|unique:'.Team::class,
         ], [
             'team_name.required' => 'Mohon masukkan nama tim',
         ]);
 
-        $token = 'PKM-TI-' . Str::random(6);
+        $token = Str::random(8);
 
         $team = Team::create([
             'team_name' => $request->team_name,

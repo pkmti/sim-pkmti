@@ -1,4 +1,4 @@
-import useRandomTeamName from "@/utils";
+import { useRandomTeamName } from "@/utils";
 import { ArrowPathIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import { useForm } from "@inertiajs/react";
 import { useEffect } from "react";

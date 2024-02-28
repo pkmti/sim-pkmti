@@ -1,14 +1,32 @@
+import Toast from "@/Components/Toast";
 import { UserGroupIcon } from "@heroicons/react/24/solid";
-import { Link, useForm } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
+import { useState } from "react";
 
-export default function GotoTeamByToken() {
-    const { data, setData } = useForm({
+export default function JoinTeam() {
+    const [isTokenEmpty, setIsTokenEmpty] = useState(false);
+
+    const { data, setData, get } = useForm({
         token: "",
     });
 
+    const submit = (e) => {
+        e.preventDefault();
+
+        if (data.token) get(route("team.join", data.token));
+        else setIsTokenEmpty(true);
+    };
+
     return (
         <>
-            <form>
+            {isTokenEmpty && (
+                <Toast
+                    id="input-token-information"
+                    content="Mohon masukkan token."
+                />
+            )}
+
+            <form onSubmit={submit}>
                 <UserGroupIcon className="h-10 w-10 mb-4" />
                 <h3 className="font-bold text-xs">GABUNG TIM</h3>
                 <div className="form-control my-4">
@@ -28,14 +46,9 @@ export default function GotoTeamByToken() {
                         />
                     </div>
                 </div>
-
-                <Link
-                    as="button"
-                    href={route("team.index", data.token)}
-                    className="btn btn-primary w-full mb-2"
-                >
+                <button className="btn btn-primary w-full mb-2">
                     Gabung Tim
-                </Link>
+                </button>
             </form>
         </>
     );

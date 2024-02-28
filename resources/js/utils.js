@@ -133,4 +133,8 @@ const useRandomString = (length) => {
     return result;
 };
 
-export { useRandomString, useRandomTeamName };
+const useParam = (index) => {
+    return location.pathname.split("/").filter((e) => e)[index];
+};
+
+export { useRandomString, useRandomTeamName, useParam };

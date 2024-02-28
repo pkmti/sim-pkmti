@@ -13,19 +13,13 @@ class TeamController extends Controller
 {
     const MAX_PARTICIPANTS = 5;
 
-    public function index()
-    {
-        if (Auth::getUser()->team_id) {
-            $token = Team::find(Auth::getUser()->team_id)->token;
-            return to_route('team.index', $token);
+    public function index($id)
+    {   
+        if (!Auth::getUser()->team_id) {
+            return to_route('team.notTeamed');
         }
 
-        return Inertia::render('Team/NotTeamed');
-    }
-
-    public function showTeam($token)
-    {
-        $team = Team::with('leader', 'members', 'proposal')->where('token', $token)->first();
+        $team = Team::with('leader', 'members', 'proposal')->find($id);
         if (!$team) abort(404);
         return Inertia::render('Team/Index', compact('team'));
     }
@@ -45,7 +39,6 @@ class TeamController extends Controller
 
         $request->validate([
             'team_name' => 'required|string|max:255|unique:'.Team::class,
-            'token' => 'required|string|min:8|max:8|unique:'.Team::class
         ], [
             'team_name.required' => 'Mohon masukkan nama tim',
         ]);
@@ -62,67 +55,66 @@ class TeamController extends Controller
         $user->team_id = $team->id;
         $user->save();
 
-        usleep(1);
-
-        return to_route('team.index', $token);
-    }
-
-    public function search(Request $request)
-    {
-        $request->validate([
-            'token' => 'required|string|max:255',
-        ], [
-            'token.required' => 'Mohon masukkan token tim',
-        ]);
-
-        $team = Team::with('members')->where('token', $request->token)->first();
-        if(!$team) return back()->with('error', 'Tim tidak ditemukan');
-
-        return to_route('team.result', $team)->with('success', 'Tim ditemukan');
+        return to_route('team.index', $team->id);
     }
 
     public function join($token)
-    {
-        $teamId = Team::where('token', $token)->first()->id;
+    { 
+        $team = Team::where('token', $token)->first();
+        if (!$team) return back()->with('msg', 'Tim tidak ditemukan.');
+
+        $teamId = $team->id;
         $teamMembersCount = User::where('team_id', $teamId)->count();
 
         if ($teamMembersCount == self::MAX_PARTICIPANTS) {
-            return back()->with('error', 'Tim sudah penuh!');
+            return back()->with('msg', 'Tim sudah penuh!');
         }
 
         User::find(Auth::id())->update(['team_id' => $teamId]);
 
-        return to_route('team.index', $token)->with('success', 'Selamat bergabung!');
+        return to_route('team.index', $teamId)->with('msg', 'Selamat bergabung!');
     }
 
     public function leave()
     {
-        User::find(Auth::id())->update(['team_id' => null]);
+        $user = User::find(Auth::id());
+        $teamId = $user->team_id;
+        
+        $teamMembersCount = User::where('team_id', $teamId)->count();
+        $user->team_id = null;
+        $user->save();
 
-        return to_route('dashboard')->with('success', 'Kamu berhasil keluar dari tim');
+        if ($teamMembersCount == 1) {
+            // logic if he/she was alone
+            Team::find(Auth::user()->team_id)->delete();
+        } else {
+            // logic if he/she was a leader at the team 
+            $pastTeam = Team::with('members')->find($teamId);
+            
+            if ($pastTeam->leader_id == $user->id) {
+                $pastTeam->leader_id = $pastTeam->members()->first()->id;
+                $pastTeam->save();
+            }
+        }
+            
+        return to_route('dashboard')->with('msg', 'Kamu berhasil keluar dari tim.');
     }
 
     public function kickMember($userId)
     {
         User::find($userId)->update(['team_id' => null]);
 
-        return back()->with('success', 'Anggota tim berhasil dikeluarkan');
+        return redirect()->back()->with('msg', 'Anggota tim berhasil dikeluarkan.');
     }
 
-    public function changeLeader($id, Request $request)
+    public function changeLeader($id, $userId)
     {
-        $request->validate([
-            'leader_id' => 'required|integer|exists:users,id',
-        ], [
-            'leader_id.required' => 'Mohon pilih ketua tim',
-        ]);
+        Team::find($id)->update(['leader_id' => $userId]);
 
-        Team::find($id)->update(['leader_id' => $request->leader_id]);
-
-        return back()->with('success', 'Ketua tim berhasil diubah');
+        return redirect()->back()->with('msg', 'Ketua tim berhasil diganti.');
     }
 
-    public function update($id, Request $request)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'team_name' => 'required|string|max:255',
@@ -130,16 +122,15 @@ class TeamController extends Controller
             'team_name.required' => 'Nama tim tidak boleh kosong',
         ]);
 
-        $team = Team::find($id);
-        $team->update(request()->all());
+        Team::find($id)->update($request->all());
 
-        return back()->with('success', 'Tim berhasil diupdate');
+        return to_route('team.index', $request->id)->with('msg', 'Informasi tim berhasil diubah.');
     }
 
-    public function disband($id) // or delete
+    public function disband($id)
     {
         Team::find($id)->delete();
 
-        return to_route('dashboard')->with('success', 'Tim berhasil dibubarkan 🥲');
+        return to_route('dashboard')->with('msg', 'Tim berhasil dibubarkan.');
     }
 }

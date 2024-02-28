@@ -15,8 +15,8 @@ export default function ParticipantLayout({ user, title, children }) {
         },
         {
             icon: <UserGroupIcon className="h-6 w-6" />,
-            text: "Tim",
-            link: route("teams.index"),
+            text: "Tim Saya",
+            link: route("team.myTeam"),
         },
         {
             icon: <DocumentTextIcon className="h-6 w-6" />,

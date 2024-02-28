@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { InformationCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 
 export default function Toast({ id, content }) {
-    const toastEl = document.getElementById(id);
-
+    const [closed, setClosed] = useState(false);
     const time = 300;
     const [remainingTime, setRemainingTime] = useState(time);
 
@@ -17,13 +16,25 @@ export default function Toast({ id, content }) {
         return () => clearInterval(interval);
     }, [remainingTime]);
 
+    useEffect(() => {
+        if (remainingTime <= 0) {
+            const timeout = setTimeout(() => {
+                setClosed(true);
+            }, 10);
+
+            return () => clearTimeout(timeout);
+        }
+    }, [remainingTime]);
+
     const closeToast = () => {
-        if (toastEl) toastEl.remove();
+        setClosed(true);
     };
 
-    const progress = ((time - remainingTime) / time) * 100;
+    if (closed) {
+        return null;
+    }
 
-    if (progress == 100) closeToast();
+    const progress = ((time - remainingTime) / time) * 100;
 
     return (
         <div

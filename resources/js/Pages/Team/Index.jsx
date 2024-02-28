@@ -1,15 +1,19 @@
 import ParticipantLayout from "@/Layouts/ParticipantLayout";
 import TeamInformation from "./Partials/TeamInformation";
 import Members from "./Partials/Members";
+import Toast from "@/Components/Toast";
 
-export default function Index({ auth, team }) {
+export default function Index({ auth, team, flash }) {
     const { user } = auth;
-    console.log(team);
 
     return (
         <ParticipantLayout user={user} title="Tim">
-            <TeamInformation team={team} />
-            <Members members={team.members} />
+            {flash.msg && <Toast content={flash.msg} id="team_information" />}
+            <div className="lg:flex lg:gap-10 lg:overflow-x-visible overflow-x-auto">
+                <TeamInformation user={user} team={team} />
+                <div className="my-8 lg:hidden"></div>
+                <Members user={user} team={team} />
+            </div>
         </ParticipantLayout>
     );
 }

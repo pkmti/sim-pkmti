@@ -36,7 +36,6 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-
         if (empty($request->user()->password)) {
             unset($request->user()->password);
         }

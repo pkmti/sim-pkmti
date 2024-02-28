@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Team;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Role
@@ -14,26 +15,39 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        $currentUser = auth()->user();
+        $user = Auth::user();
 
-        // check semi role (leader)
-        if ($role == 'leader' && $currentUser->id == Team::find($currentUser->team_id)->leader_id) {
-            return $next($request);
-        }
-
-        // check semi role (member)
-        if ($role == 'member' && $currentUser->team_id) {
-            $members = Team::with("members")->find($currentUser->team_id)->members()->get();
-            foreach ($members as $member) {
-                if ($currentUser->id == $member->id) return $next($request);
+        foreach ($roles as $role) {
+            switch ($role) {
+                case 'admin':
+                    if ($user->role == $role) 
+                        return $next($request);
+                    break;
+                case 'lecturer':
+                    break;
+                case 'participant':
+                    break;
+                case 'leader':
+                    if ($user->team_id && 
+                        $user->id == Team::find($user->team_id)->leader_id) 
+                            return $next($request);
+                    break;
+                case 'member':
+                    if ($user->team_id) {
+                        $members = Team::with("members")->find($user->team_id)->members()->get();
+                        foreach ($members as $member) {
+                            if ($user->id == $member->id) return $next($request);
+                        }
+                    }
+                    break;
+                case 'not-teamed':
+                    if (!$user->team_id) return $next($request);
+                    break;
+                default:
+                    abort(403);
             }
-        }
-        
-        // check primary role
-        if ($request->user()->role == $role) {
-            return $next($request);
         }
 
         abort(403);

@@ -1,36 +1,31 @@
-import { useRandomString } from "@/utils";
+import { useParam, useRandomString } from "@/utils";
 import {
+    ArrowLeftEndOnRectangleIcon,
     ArrowPathIcon,
     ClipboardDocumentIcon,
     PencilIcon,
+    PowerIcon,
     UserGroupIcon,
 } from "@heroicons/react/24/solid";
-import { useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 
-export default function TeamInformation({ team }) {
-    const { data, setData, patch, processing, errors, recentlySuccessful } =
-        useForm({
-            team_name: team.team_name,
-            token: team.token,
-        });
+export default function TeamInformation({ user, team }) {
+    const { data, setData, patch, processing, errors } = useForm({
+        team_name: team.team_name,
+        token: team.token,
+    });
 
-    const updateProfile = (e) => {
+    const updateTeam = (e) => {
         e.preventDefault();
 
-        patch(route("profile.update"));
+        patch(route("team.update", useParam(1)));
     };
     return (
         <>
-            {recentlySuccessful && (
-                <Toast
-                    id="update_password_success"
-                    content="Perubahan profil berhasil disimpan."
-                />
-            )}
             <div>
                 <UserGroupIcon className="h-10 w-10 mb-4" />
-                <h3 className="font-bold text-xs">INFORMASI TIM</h3>
-                <form onSubmit={updateProfile}>
+                <h3 className="font-bold text-xs mb-4">INFORMASI TIM</h3>
+                <form onSubmit={updateTeam}>
                     {/* Team name */}
                     <div className="form-control my-2">
                         <label htmlFor="team_name" className="font-bold mb-2">
@@ -46,7 +41,7 @@ export default function TeamInformation({ team }) {
                             onChange={(e) =>
                                 setData("team_name", e.target.value)
                             }
-                            className="input input-bordered"
+                            className="input input-bordered w-full"
                         />
 
                         <p className="mt-2 text-error">{errors.team_name}</p>
@@ -65,7 +60,7 @@ export default function TeamInformation({ team }) {
                                 value={data.token}
                                 autoComplete="token"
                                 isfocused="true"
-                                className="input input-bordered join-item z-[1]"
+                                className="input input-bordered join-item z-[1] w-full"
                                 readOnly
                             />
                             <div className="tooltip" data-tip="Perbarui token">
@@ -96,8 +91,13 @@ export default function TeamInformation({ team }) {
                                 id="invitation_link"
                                 type="text"
                                 name="invitation_link"
-                                value={location.host + "/teams/" + data.token}
-                                className="input input-bordered join-item z-[1]"
+                                value={
+                                    location.host +
+                                    "/teams/" +
+                                    data.token +
+                                    "/join"
+                                }
+                                className="input input-bordered join-item z-[1] w-full"
                                 readOnly
                             />
                             <div className="tooltip" data-tip="Salin tautan">
@@ -107,7 +107,8 @@ export default function TeamInformation({ team }) {
                                         navigator.clipboard.writeText(
                                             location.host +
                                                 "/teams/" +
-                                                data.token
+                                                data.token +
+                                                "/join"
                                         )
                                     }
                                 >
@@ -117,15 +118,38 @@ export default function TeamInformation({ team }) {
                         </div>
                     </div>
 
-                    <button
-                        className="btn btn-warning mb-2 w-full"
-                        disabled={processing}
-                        type="submit"
-                    >
-                        <PencilIcon className="h-6 w-6" />
-                        Edit Tim
-                    </button>
+                    {(user.id === team.leader_id || user.role === "admin") && (
+                        <button
+                            className="btn btn-warning mb-2 w-full"
+                            disabled={processing}
+                            type="submit"
+                        >
+                            <PencilIcon className="h-6 w-6" />
+                            Edit Tim
+                        </button>
+                    )}
                 </form>
+
+                <Link
+                    as="button"
+                    method="delete"
+                    className="btn btn-error mb-2 w-full"
+                    href={route("team.leave", useParam(1))}
+                >
+                    <ArrowLeftEndOnRectangleIcon className="h-6 w-6" /> Keluar
+                    Tim
+                </Link>
+
+                {(user.id === team.leader_id || user.role === "admin") && (
+                    <Link
+                        as="button"
+                        method="delete"
+                        className="btn btn-error mb-2 w-full"
+                        href={route("team.disband", useParam(1))}
+                    >
+                        <PowerIcon className="h-6 w-6" /> Bubarkan Tim
+                    </Link>
+                )}
             </div>
         </>
     );

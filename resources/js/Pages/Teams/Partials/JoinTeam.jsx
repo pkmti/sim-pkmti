@@ -13,7 +13,7 @@ export default function JoinTeam() {
     const submit = (e) => {
         e.preventDefault();
 
-        if (data.token) get(route("team.join", data.token));
+        if (data.token) get(route("teams.join", data.token));
         else setIsTokenEmpty(true);
     };
 
@@ -21,6 +21,7 @@ export default function JoinTeam() {
         <>
             {isTokenEmpty && (
                 <Toast
+                    key={useRandomInt()}
                     id="input-token-information"
                     content="Mohon masukkan token."
                 />

@@ -17,7 +17,7 @@ export default function CreateTeam() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("team.create"));
+        post(route("teams.create"));
     };
 
     return (

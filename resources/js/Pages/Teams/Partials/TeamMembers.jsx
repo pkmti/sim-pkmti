@@ -13,7 +13,7 @@ function KickMember({ memberId }) {
                 as="button"
                 method="delete"
                 className="btn btn-square btn-error btn-sm"
-                href={route("team.kick", [useParam(1), memberId])}
+                href={route("teams.kick", [useParam(1), memberId])}
             >
                 <UserMinusIcon className="h-5 w-5" />
             </Link>
@@ -28,7 +28,7 @@ function ChangeLeader({ memberId }) {
                 as="button"
                 method="patch"
                 className="btn btn-square btn-warning btn-sm"
-                href={route("team.changeLeader", [useParam(1), memberId])}
+                href={route("teams.changeLeader", [useParam(1), memberId])}
             >
                 <ArrowsRightLeftIcon className="h-5 w-5" />
             </Link>
@@ -36,8 +36,8 @@ function ChangeLeader({ memberId }) {
     );
 }
 
-export default function Members({ user, team }) {
-    console.log(team);
+export default function TeamMembers({ user, team }) {
+    // console.log(team.members.filter((member) => member.id === team.leader_id));
     return (
         <>
             <div>

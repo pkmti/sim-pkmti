@@ -22,6 +22,7 @@ export default function UpdateProfileForm({ user }) {
         <>
             {recentlySuccessful && (
                 <Toast
+                    key={useRandomInt()}
                     id="update_password_success"
                     content="Perubahan profil berhasil disimpan."
                 />

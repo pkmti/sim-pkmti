@@ -13,28 +13,23 @@ class TeamController extends Controller
 {
     const MAX_PARTICIPANTS = 5;
 
-    public function index($id)
+    public function show($id)
     {   
         if (!Auth::getUser()->team_id) {
-            return to_route('team.notTeamed');
+            return to_route('teams.notTeamed');
         }
 
         $team = Team::with('leader', 'members', 'proposal')->find($id);
         if (!$team) abort(404);
-        return Inertia::render('Team/Index', compact('team'));
+        return Inertia::render('Teams/Show', compact('team'));
     }
-
-    public function showTeams()
-    {
-        $teams = Team::with('members', 'proposal')->get();
-        return Inertia::render('Admin/Teams', compact('teams'));
-    }
+    
 
     public function create(Request $request)
     {
         if (Auth::getUser()->team_id) {
             $token = Team::find(Auth::getUser()->team_id)->token;
-            return to_route('team.index', $token);
+            return to_route('teams.show', $token);
         }
 
         $request->validate([
@@ -55,7 +50,7 @@ class TeamController extends Controller
         $user->team_id = $team->id;
         $user->save();
 
-        return to_route('team.index', $team->id);
+        return to_route('teams.show', $team->id);
     }
 
     public function join($token)
@@ -72,7 +67,7 @@ class TeamController extends Controller
 
         User::find(Auth::id())->update(['team_id' => $teamId]);
 
-        return to_route('team.index', $teamId)->with('msg', 'Selamat bergabung!');
+        return to_route('teams.show', $teamId)->with('msg', 'Selamat bergabung!');
     }
 
     public function leave()
@@ -124,10 +119,10 @@ class TeamController extends Controller
 
         Team::find($id)->update($request->all());
 
-        return to_route('team.index', $request->id)->with('msg', 'Informasi tim berhasil diubah.');
+        return to_route('teams.show', $request->id)->with('msg', 'Informasi tim berhasil diubah.');
     }
 
-    public function disband($id)
+    public function destroy($id)
     {
         Team::find($id)->delete();
 

@@ -12,10 +12,10 @@ use Inertia\Inertia;
 
 class ProposalController extends Controller
 {
-    public function showProposals()
+    public function show($teamId)
     {
-        $proposals = Proposal::with('team')->get();
-        return Inertia::render('Proposal/Show', compact('proposal'));
+        $proposals = Proposal::with('team')->where('team_id', $teamId)->first();
+        return Inertia::render('Proposals/Show', compact('proposals'));
     }
 
     public function submit(Request $request)
@@ -24,7 +24,6 @@ class ProposalController extends Controller
             'team_id' => 'required|exists:teams,id',
             'scheme' => 'required|string|max:255',
             'title' => 'required|string|max:255',
-            'description' => '',
             'draft_proposal_url' => 'required|url',
         ], [
             'scheme.required' => 'Mohon pilih bidang PKM',
@@ -86,21 +85,21 @@ class ProposalController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $teamId)
     {
-        Proposal::find($id)->update($request->all());
+        Proposal::where('team_id', $teamId)->first()->update($request->all());
 
         // if updated by participant, set status to pending
         if ($request->user()->role == 'participant') {
-            Proposal::find($id)->update(['status' => 'pending']);
+            Proposal::where('team_id', $teamId)->first()->update(['status' => 'pending']);
         }
 
         return back()->with('success', 'Proposal telah diperbarui');
     }
 
-    public function delete($id)
+    public function delete($teamId)
     {
-        Proposal::find($id)->delete();
+        Proposal::where('team_id', $teamId)->first()->delete();
 
         return back()->with('success', 'Proposal telah dihapus');
     }

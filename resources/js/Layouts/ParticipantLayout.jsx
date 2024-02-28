@@ -1,4 +1,5 @@
 import Sidebar from "@/Components/Sidebar";
+import { useParam } from "@/utils";
 import {
     DocumentTextIcon,
     HomeIcon,
@@ -16,12 +17,14 @@ export default function ParticipantLayout({ user, title, children }) {
         {
             icon: <UserGroupIcon className="h-6 w-6" />,
             text: "Tim Saya",
-            link: route("team.myTeam"),
+            link: route("teams.myTeam"),
         },
         {
             icon: <DocumentTextIcon className="h-6 w-6" />,
             text: "Proposal PKM",
-            link: route("proposals.index"),
+            link: user.team_id
+                ? route("proposals.show", user.team_id)
+                : route("teams.myTeam"),
         },
     ];
 

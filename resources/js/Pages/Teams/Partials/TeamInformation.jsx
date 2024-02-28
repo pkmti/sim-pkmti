@@ -18,7 +18,7 @@ export default function TeamInformation({ user, team }) {
     const updateTeam = (e) => {
         e.preventDefault();
 
-        patch(route("team.update", useParam(1)));
+        patch(route("teams.update", useParam(1)));
     };
     return (
         <>
@@ -134,7 +134,7 @@ export default function TeamInformation({ user, team }) {
                     as="button"
                     method="delete"
                     className="btn btn-error mb-2 w-full"
-                    href={route("team.leave", useParam(1))}
+                    href={route("teams.leave", useParam(1))}
                 >
                     <ArrowLeftEndOnRectangleIcon className="h-6 w-6" /> Keluar
                     Tim
@@ -145,7 +145,7 @@ export default function TeamInformation({ user, team }) {
                         as="button"
                         method="delete"
                         className="btn btn-error mb-2 w-full"
-                        href={route("team.disband", useParam(1))}
+                        href={route("teams.destroy", useParam(1))}
                     >
                         <PowerIcon className="h-6 w-6" /> Bubarkan Tim
                     </Link>

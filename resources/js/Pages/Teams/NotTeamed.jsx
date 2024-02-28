@@ -8,7 +8,13 @@ export default function NotTeamed({ auth, flash }) {
 
     return (
         <ParticipantLayout user={user} title="Tim">
-            {flash.msg && <Toast id="information" content={flash.msg} />}
+            {flash.msg && (
+                <Toast
+                    key={useRandomInt()}
+                    id="team_information"
+                    content={flash.msg}
+                />
+            )}
             <div className="lg:flex lg:gap-10">
                 <JoinTeam />
                 <div className="my-8 lg:hidden divider">Atau</div>

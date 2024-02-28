@@ -1,4 +1,5 @@
 import Toast from "@/Components/Toast";
+import { useRandomInt } from "@/utils";
 import {
     EyeIcon,
     EyeSlashIcon,
@@ -52,7 +53,8 @@ export default function UpdatePasswordForm() {
         <>
             {recentlySuccessful && (
                 <Toast
-                    id="update_password_success"
+                    key={useRandomInt()}
+                    id="update_password_information"
                     content="Password berhasil diganti."
                 />
             )}

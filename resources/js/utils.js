@@ -137,4 +137,8 @@ const useParam = (index) => {
     return location.pathname.split("/").filter((e) => e)[index];
 };
 
-export { useRandomString, useRandomTeamName, useParam };
+const useRandomInt = () => {
+    return Math.floor(Math.random() * 999999);
+};
+
+export { useRandomString, useRandomTeamName, useParam, useRandomInt };

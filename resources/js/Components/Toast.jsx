@@ -18,7 +18,7 @@ export default function Toast({ id, content }) {
     }, [remainingTime]);
 
     const closeToast = () => {
-        toastEl.remove();
+        if (toastEl) toastEl.remove();
     };
 
     const progress = ((time - remainingTime) / time) * 100;

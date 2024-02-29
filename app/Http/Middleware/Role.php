@@ -29,21 +29,23 @@ class Role
                     break;
                 case 'participant':
                     break;
-                case 'leader':
-                    if ($user->team_id && 
-                        $user->id == Team::find($user->team_id)->leader_id) 
-                            return $next($request);
-                    break;
                 case 'member':
                     if ($user->team_id) {
-                        $members = Team::with("members")->find($user->team_id)->members()->get();
+                        $teamId = $request->route('teamId');
+                        $members = Team::with("members")->find($teamId)->members()->get();
                         foreach ($members as $member) {
                             if ($user->id == $member->id) return $next($request);
                         }
                     }
                     break;
+                case 'leader':
+                    if ($user->team_id && 
+                        $user->id == Team::find($user->team_id)->leader_id) 
+                            return $next($request);
+                    break;
                 case 'not-teamed':
                     if (!$user->team_id) return $next($request);
+                    else return to_route('teams.show', $user->team_id);
                     break;
                 default:
                     abort(403);

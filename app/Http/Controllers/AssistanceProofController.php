@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AssistanceProofController extends Controller
 {
-    public function showByMyTeam()
+    public function show()
     {
         $teamId = auth()->user()->team_id;
         if(!$teamId) {
@@ -54,18 +54,7 @@ class AssistanceProofController extends Controller
             'assistance_date' => $request->assistance_date,
         ]);
 
-        return back()->with('success', 'Bukti asistensi berhasil diunggah');
-    }
-
-    public function delete(Request $request)
-    {
-        $request->validate([
-            'id' => 'required',
-        ]);
-
-        AssistanceProof::find($request->id)->delete();
-
-        return back()->with('success', 'Bukti asistensi berhasil dihapus');
+        return back()->with('msg', 'Bukti asistensi berhasil diunggah');
     }
 
     public function update(Request $request)
@@ -80,6 +69,19 @@ class AssistanceProofController extends Controller
 
         AssistanceProof::find($request->id)->update($request->all());
 
-        return back()->with('success', 'Bukti asistensi berhasil diubah');
+        return back()->with('msg', 'Bukti asistensi berhasil diubah');
     }
+
+    public function destroy(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+        ]);
+
+        AssistanceProof::find($request->id)->delete();
+
+        return back()->with('msg', 'Bukti asistensi berhasil dihapus');
+    }
+
+    
 }

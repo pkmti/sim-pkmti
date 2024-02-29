@@ -39,26 +39,22 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/teams', function () {
-        if (Auth::getUser()->team_id) return to_route('teams.show', Auth::getUser()->team_id);
-        return Inertia::render('Teams/NotTeamed');
-    })->name('teams.myTeam');
-
     Route::middleware(['role:not-teamed'])->group(function () {
+        Route::get('/teams', fn () => Inertia::render('Teams/NotTeamed'))->name('teams.myTeam');
         Route::post('/teams', [TeamController::class, 'create'])->name('teams.create');
         Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('teams.join');
     });
 
     Route::middleware(['role:admin,member'])->group(function () {
-        Route::get('/teams/{id}', [TeamController::class, 'show'])->name('teams.show');
-        Route::delete('/teams/{id}/leave', [TeamController::class, 'leave'])->name('teams.leave');
+        Route::get('/teams/{teamId}', [TeamController::class, 'show'])->name('teams.show');
+        Route::delete('/teams/{teamId}/leave', [TeamController::class, 'leave'])->name('teams.leave');
     });
 
-    Route::middleware(['role:leader,admin'])->group(function () {
-        Route::delete('/teams/{id}/kick/{userId}', [TeamController::class, 'kickMember'])->name('teams.kick');
-        Route::patch('/teams/{id}/leader/{userId}', [TeamController::class, 'changeLeader'])->name('teams.changeLeader');
-        Route::patch('/teams/{id}', [TeamController::class, 'update'])->name('teams.update');
-        Route::delete('/teams/{id}', [TeamController::class, 'destroy'])->name('teams.destroy');
+    Route::middleware(['role:admin,leader'])->group(function () {
+        Route::delete('/teams/{teamId}/kick/{userId}', [TeamController::class, 'kickMember'])->name('teams.kick');
+        Route::patch('/teams/{teamId}/leader/{userId}', [TeamController::class, 'changeLeader'])->name('teams.changeLeader');
+        Route::patch('/teams/{teamId}', [TeamController::class, 'update'])->name('teams.update');
+        Route::delete('/teams/{teamId}', [TeamController::class, 'destroy'])->name('teams.destroy');
     });
 
     Route::prefix('/teams')->middleware(['role:member'])->group(function () {

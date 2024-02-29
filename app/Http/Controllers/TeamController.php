@@ -13,13 +13,13 @@ class TeamController extends Controller
 {
     const MAX_PARTICIPANTS = 5;
 
-    public function show($id)
+    public function show($teamId)
     {   
         if (!Auth::getUser()->team_id) {
             return to_route('teams.notTeamed');
         }
 
-        $team = Team::with('leader', 'members', 'proposal')->find($id);
+        $team = Team::with('leader', 'members', 'proposal')->find($teamId);
         if (!$team) abort(404);
         return Inertia::render('Teams/Show', compact('team'));
     }
@@ -102,14 +102,14 @@ class TeamController extends Controller
         return redirect()->back()->with('msg', 'Anggota tim berhasil dikeluarkan.');
     }
 
-    public function changeLeader($id, $userId)
+    public function changeLeader($teamId, $userId)
     {
-        Team::find($id)->update(['leader_id' => $userId]);
+        Team::find($teamId)->update(['leader_id' => $userId]);
 
         return redirect()->back()->with('msg', 'Ketua tim berhasil diganti.');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $teamId)
     {
         $request->validate([
             'team_name' => 'required|string|max:255',
@@ -117,14 +117,14 @@ class TeamController extends Controller
             'team_name.required' => 'Nama tim tidak boleh kosong',
         ]);
 
-        Team::find($id)->update($request->all());
+        Team::find($teamId)->update($request->all());
 
         return to_route('teams.show', $request->id)->with('msg', 'Informasi tim berhasil diubah.');
     }
 
-    public function destroy($id)
+    public function destroy($teamId)
     {
-        Team::find($id)->delete();
+        Team::find($teamId)->delete();
 
         return to_route('dashboard')->with('msg', 'Tim berhasil dibubarkan.');
     }

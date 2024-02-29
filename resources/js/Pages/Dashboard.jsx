@@ -1,5 +1,6 @@
 import Toast from "@/Components/Toast";
 import ParticipantLayout from "@/Layouts/ParticipantLayout";
+import { useRandomInt } from "@/utils";
 
 export default function Dashboard({ auth, flash }) {
     return (

@@ -3,6 +3,8 @@ import {
     UserMinusIcon,
     ArrowsRightLeftIcon,
     UserIcon,
+    TagIcon,
+    CodeBracketSquareIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "@inertiajs/react";
 
@@ -37,7 +39,10 @@ function ChangeLeader({ memberId }) {
 }
 
 export default function TeamMembers({ user, team }) {
-    // console.log(team.members.filter((member) => member.id === team.leader_id));
+    const leaderFirst = team.members.sort((a) =>
+        a.id === team.leader_id ? -1 : 0
+    );
+
     return (
         <>
             <div>
@@ -69,9 +74,26 @@ export default function TeamMembers({ user, team }) {
                                         <td>{member.nim}</td>
                                         <td>{member.name}</td>
                                         <td>20{member.nim.substring(0, 2)}</td>
-                                        <td>
-                                            {(team.leader_id == member.id &&
-                                                "Ketua") ||
+                                        <td className="flex">
+                                            {member.id === user.id && (
+                                                <div
+                                                    className="tooltip"
+                                                    data-tip="Saya"
+                                                >
+                                                    <TagIcon className="h-5 w-5 me-2" />
+                                                </div>
+                                            )}
+                                            {(team.leader_id === member.id && (
+                                                <>
+                                                    <div
+                                                        className="tooltip"
+                                                        data-tip="Ketua"
+                                                    >
+                                                        <CodeBracketSquareIcon className="h-5 w-5 me-2" />
+                                                    </div>
+                                                    Ketua
+                                                </>
+                                            )) ||
                                                 "Anggota"}
                                         </td>
                                         <td>{member.email}</td>

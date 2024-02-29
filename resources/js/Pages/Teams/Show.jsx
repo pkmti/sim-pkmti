@@ -4,9 +4,8 @@ import TeamMembers from "./Partials/TeamMembers";
 import Toast from "@/Components/Toast";
 import { useRandomInt } from "@/utils";
 
-export default function Index({ auth, team, flash }) {
+export default function Show({ auth, team, flash }) {
     const { user } = auth;
-    console.log(flash);
 
     return (
         <ParticipantLayout user={user} title="Tim">

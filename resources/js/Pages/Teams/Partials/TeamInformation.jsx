@@ -84,7 +84,7 @@ export default function TeamInformation({ user, team }) {
                             htmlFor="invitation_link"
                             className="font-bold mb-2"
                         >
-                            Tautan undangan
+                            Tautan Undangan
                         </label>
                         <div className="join">
                             <input

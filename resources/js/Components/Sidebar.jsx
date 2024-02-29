@@ -97,22 +97,22 @@ export default function Sidebar({ user, navigations, children }) {
                                 </label>
                             </li>
 
-                            {(user.role === "admin" &&
-                                location.pathname.search(/admin/) === -1 && (
+                            {user.role === "admin" &&
+                                (location.pathname.search(/admin/) === -1 ? (
                                     <li className="my-2">
                                         <Link href={route("admin.dashboard")}>
                                             <ShieldExclamationIcon className="h-6 w-6" />
                                             Menu Admin
                                         </Link>
                                     </li>
-                                )) || (
-                                <li className="my-2">
-                                    <Link href={route("dashboard")}>
-                                        <AcademicCapIcon className="h-6 w-6" />
-                                        Menu Utama
-                                    </Link>
-                                </li>
-                            )}
+                                ) : (
+                                    <li className="my-2">
+                                        <Link href={route("dashboard")}>
+                                            <AcademicCapIcon className="h-6 w-6" />
+                                            Menu Utama
+                                        </Link>
+                                    </li>
+                                ))}
 
                             <li className="my-2">
                                 <a

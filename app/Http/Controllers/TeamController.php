@@ -15,12 +15,14 @@ class TeamController extends Controller
 
     public function show($teamId)
     {   
-        if (!Auth::getUser()->team_id) {
-            return to_route('teams.notTeamed');
+        if (!Auth::getUser()->team_id && Auth::getUser()->role != 'admin') {
+            return to_route('teams.not-teamed');
         }
 
         $team = Team::with('leader', 'members', 'proposal')->find($teamId);
+
         if (!$team) abort(404);
+
         return Inertia::render('Teams/Show', compact('team'));
     }
     
@@ -28,8 +30,7 @@ class TeamController extends Controller
     public function create(Request $request)
     {
         if (Auth::getUser()->team_id) {
-            $token = Team::find(Auth::getUser()->team_id)->token;
-            return to_route('teams.show', $token);
+            return to_route('teams.show', Auth::getUser()->team_id);
         }
 
         $request->validate([
@@ -70,36 +71,47 @@ class TeamController extends Controller
         return to_route('teams.show', $teamId)->with('msg', 'Selamat bergabung!');
     }
 
-    public function leave()
+    public function leave($teamId)
     {
         $user = User::find(Auth::id());
-        $teamId = $user->team_id;
-        
         $teamMembersCount = User::where('team_id', $teamId)->count();
-        $user->team_id = null;
-        $user->save();
+        $pastTeam = Team::with('members')->find($teamId);
 
         if ($teamMembersCount == 1) {
             // logic if he/she was alone
-            Team::find(Auth::user()->team_id)->delete();
+            $pastTeam->delete();
         } else {
             // logic if he/she was a leader at the team 
-            $pastTeam = Team::with('members')->find($teamId);
-            
             if ($pastTeam->leader_id == $user->id) {
-                $pastTeam->leader_id = $pastTeam->members()->first()->id;
-                $pastTeam->save();
+                $pastTeam->update(['leader_id' =>  $pastTeam->members()->first()->id]);
             }
         }
+        
+        $user->update(['team_id' => null]);
             
         return to_route('dashboard')->with('msg', 'Kamu berhasil keluar dari tim.');
     }
 
     public function kickMember($teamId, $userId)
     {
+        $pastTeam = Team::with('members')->find($teamId);
+        $teamMembersCount = User::where('team_id', $teamId)->count();
+        $pastTeam = Team::with('members')->find($teamId);
+
+        if ($teamMembersCount == 1) {
+            // logic if he/she was alone
+            $pastTeam->delete();
+            return to_route('dashboard')->with('msg', 'Tim dibubarkan.');
+        } else {
+            // logic if he/she was a leader at the team 
+            if ($pastTeam->leader_id == $userId) {
+                $pastTeam->update(['leader_id' =>  $pastTeam->members()->first()->id]);
+            }
+        }
+
         User::find($userId)->update(['team_id' => null]);
 
-        return redirect()->back()->with('msg', 'Anggota tim berhasil dikeluarkan.');
+        return back()->with('msg', 'Anggota tim berhasil dikeluarkan.');
     }
 
     public function changeLeader($teamId, $userId)

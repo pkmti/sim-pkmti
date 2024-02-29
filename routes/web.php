@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware(['role:not-teamed'])->group(function () {
-        Route::get('/teams', fn () => Inertia::render('Teams/NotTeamed'))->name('teams.my-team');
+        Route::get('/teams', fn () => Inertia::render('Teams/NotTeamed'))->name('teams.not-teamed');
         Route::post('/teams', [TeamController::class, 'create'])->name('teams.create');
         Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('teams.join');
     });

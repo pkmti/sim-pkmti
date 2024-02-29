@@ -80,7 +80,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:admin,member'])->prefix('/teams/{teamId}')->group(function () {
         Route::get('/proposals', [ProposalController::class, 'show'])->name('proposals.show');
-        Route::post('/proposals', [ProposalController::class, 'create'])->middleware('have-no-proposal')->name('proposals.create');
+        Route::post('/proposals', [ProposalController::class, 'create'])->middleware('has-no-proposal')->name('proposals.create');
         Route::patch('/proposals', [ProposalController::class, 'update'])->name('proposals.update');
         Route::delete('/proposals', [ProposalController::class, 'destroy'])->name('proposals.destroy');
 

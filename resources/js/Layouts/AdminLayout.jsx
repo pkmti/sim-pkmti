@@ -9,12 +9,25 @@ import { Head } from "@inertiajs/react";
 
 export default function AdminLayout({ user, title, children }) {
     const navigations = [
-        { icon: <HomeIcon className="h-6 w-6" />, text: "Beranda" },
-        { icon: <UserIcon className="h-6 w-6" />, text: "Partisipan" },
-        { icon: <UserGroupIcon className="h-6 w-6" />, text: "Tim" },
+        {
+            icon: <HomeIcon className="h-6 w-6" />,
+            text: "Beranda",
+            link: route("admin.dashboard"),
+        },
+        {
+            icon: <UserIcon className="h-6 w-6" />,
+            text: "Partisipan",
+            link: route("admin.participants"),
+        },
+        {
+            icon: <UserGroupIcon className="h-6 w-6" />,
+            text: "Tim",
+            link: route("admin.teams"),
+        },
         {
             icon: <DocumentTextIcon className="h-6 w-6" />,
             text: "Proposal PKM",
+            link: route("admin.proposals"),
         },
     ];
 

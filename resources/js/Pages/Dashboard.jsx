@@ -1,17 +1,18 @@
+import Toast from "@/Components/Toast";
 import ParticipantLayout from "@/Layouts/ParticipantLayout";
-import AdminLayout from "@/Layouts/AdminLayout";
+import { useRandomInt } from "@/utils";
 
-export default function Dashboard({ auth }) {
+export default function Dashboard({ auth, flash }) {
     return (
-        <>
-            {auth.user.role == "participant" ? (
-                <ParticipantLayout
-                    user={auth.user}
-                    title="Beranda"
-                ></ParticipantLayout>
-            ) : (
-                <AdminLayout user={auth.user} title="Admin"></AdminLayout>
+        <ParticipantLayout user={auth.user} title="Beranda">
+            {flash.msg && (
+                <Toast
+                    key={useRandomInt()}
+                    content={flash.msg}
+                    id="team_information"
+                />
             )}
-        </>
+            ini dashboard.
+        </ParticipantLayout>
     );
 }

@@ -5,29 +5,28 @@ namespace App\Http\Controllers;
 use App\Jobs\SendEmailJob;
 use App\Models\Proposal;
 use App\Models\User;
+use App\Rules\MaxWordCount;
+use App\Rules\ValidProposalScheme;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ProposalController extends Controller
 {
-    public function showProposals()
+    public function show($teamId)
     {
-        $proposals = Proposal::with('team')->get();
-        return Inertia::render('Proposal/Show', compact('proposal'));
+        $proposal = Proposal::with('team')->where('team_id', $teamId)->first();
+        return Inertia::render('Proposals/Show', compact('proposal'));
     }
 
-    public function submit(Request $request)
+    public function create(Request $request, $teamId)
     {
         $request->validate([
-            'team_id' => 'required|exists:teams,id',
-            'scheme' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'description' => '',
-            'draft_proposal_url' => 'required|url',
+            'scheme' => ['required', 'string', 'max:255', new ValidProposalScheme],
+            'title' => ['required', 'string', 'max:255', new MaxWordCount(20)],
+            'description' => ['string', 'max:512', 'nullable'],
         ], [
             'scheme.required' => 'Mohon pilih bidang PKM',
             'title.required' => 'Mohon masukkan judul proposal',
-            'draft_proposal_url.required' => 'Mohon masukkan URL proposal draft',
         ]);
 
         // validate submit timeline
@@ -43,29 +42,53 @@ class ProposalController extends Controller
 
         // allow submit when team member count if more than 3
         $teamMembersCount = User::where('team_id', $request->team_id)->count();
+        
         if ($teamMembersCount < 3) {
-            return back()->with('error', 'Tim terdiri dari minimal 3 orang untuk mengajukan proposal');
+            return back()->with('msg', 'Tim terdiri dari minimal 3 orang untuk mengajukan proposal');
         }
 
         Proposal::create([
-            'team_id' => $request->team_id,
+            'team_id' => $teamId,
             'scheme' => $request->scheme,
             'title' => $request->title,
             'description' => $request->description,
-            'draft_proposal_url' => $request->draft_proposal_url,
             'status' => 'pending',
         ]);
 
-        return back()->with('success', 'Tim-mu telah berhasil mengajukan proposal');
+        return back()->with('msg', 'Timmu telah berhasil mengajukan proposal');
     }
 
-    public function accept($id)
+    public function update(Request $request, $teamId)
     {
-        Proposal::find($id)->update(['status' => 'accepted']);
+        $request->validate([
+            'scheme' => ['required', 'string', 'max:255', new ValidProposalScheme],
+            'title' => ['required', 'string', 'max:255', new MaxWordCount(20)],
+            'description' => ['string', 'max:255', 'nullable'],
+            'draft_proposal_url' => ['url', 'nullable'],
+            'final_proposal_url' => ['url', 'nullable'],
+            'note' => ['string', 'nullable']
+        ], [
+            'scheme.required' => 'Mohon pilih bidang PKM',
+            'title.required' => 'Mohon masukkan judul proposal',
+        ]);
+
+        Proposal::where('team_id', $teamId)->first()->update($request->all());
+
+        // if updated by participant, set status to pending
+        if ($request->user()->role == 'participant') {
+            Proposal::where('team_id', $teamId)->first()->update(['status' => 'pending']);
+        }
+
+        return back()->with('msg', 'Proposal telah diperbarui');
+    }
+
+    public function accept($proposalId)
+    {
+        Proposal::find($proposalId)->update(['status' => 'accepted']);
 
         // send email to team leader
-        $proposalTitle = Proposal::find($id)->title;
-        $leaderId = Proposal::with('team')->find($id)->team->leader_id;
+        $proposalTitle = Proposal::find($proposalId)->title;
+        $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
         $leader = User::find($leaderId)->first();
         $emailArgs = [
             'email' => $leader->email,
@@ -79,10 +102,10 @@ class ProposalController extends Controller
         ];
         dispatch(new SendEmailJob($emailArgs));
 
-        return back()->with('success', 'Proposal telah disetujui');
+        return back()->with('msg', 'Proposal telah disetujui');
     }
 
-    public function reject($id, Request $request)
+    public function reject($proposalId, Request $request)
     {
         $request->validate([
             'note' => 'required|string',
@@ -90,14 +113,14 @@ class ProposalController extends Controller
             'note.required' => 'Mohon masukkan alasan penolakan',
         ]);
 
-        Proposal::find($id)->update([
+        Proposal::find($proposalId)->update([
             'status' => 'rejected',
             'note' => $request->note,
         ]);
 
         // send email to team leader
-        $proposalTitle = Proposal::find($id)->title;
-        $leaderId = Proposal::with('team')->find($id)->team->leader_id;
+        $proposalTitle = Proposal::find($proposalId)->title;
+        $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
         $leader = User::find($leaderId)->first();
         $emailArgs = [
             'email' => $leader->email,
@@ -112,26 +135,13 @@ class ProposalController extends Controller
         ];
         dispatch(new SendEmailJob($emailArgs));
 
-        return back()->with('success', 'Proposal telah ditolak');
+        return back()->with('msg', 'Proposal telah ditolak');
     }
 
-
-    public function update(Request $request, $id)
+    public function destroy($teamId)
     {
-        Proposal::find($id)->update($request->all());
+        Proposal::where('team_id', $teamId)->first()->delete();
 
-        // if updated by participant, set status to pending
-        if ($request->user()->role == 'participant') {
-            Proposal::find($id)->update(['status' => 'pending']);
-        }
-
-        return back()->with('success', 'Proposal telah diperbarui');
-    }
-
-    public function delete($id)
-    {
-        Proposal::find($id)->delete();
-
-        return back()->with('success', 'Proposal telah dihapus');
+        return back()->with('msg', 'Proposalmu telah dihapus');
     }
 }

@@ -1,346 +1,948 @@
-import { Link, Head } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
+import { motion, useAnimation } from "framer-motion";
+import { BookOpenIcon } from "@heroicons/react/24/outline";
+import {
+    MapPinIcon,
+    CalendarDaysIcon,
+    BookmarkSquareIcon,
+    CalendarIcon,
+    ArrowLongDownIcon,
+    ChatBubbleLeftEllipsisIcon,
+} from "@heroicons/react/24/solid";
+import Accordion from "@/Components/Accordion";
+import CustomCarousel from "@/Components/CustomCorausel";
+import NavBar from "@/Components/NavBar";
+import ScrollToTop from "@/Components/ScrollTop";
+import SlickCarousel from "@/Components/SlickCarousel";
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome({ auth }) {
+    const controls = useAnimation();
+
+    const variantFade = (x, y) => {
+        return {
+            visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.8 } },
+            hidden: { opacity: 0, x: x, y: y, transition: { duration: 0.5 } },
+        };
+    };
+
+    const variantZoom = {
+        visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
+        hidden: { opacity: 0, scale: 0.5, transition: { duration: 0.5 } },
+    };
+
     return (
         <>
-            <Head title="Welcome" />
-            <div className="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-                <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
-                    {auth.user ? (
-                        <Link
-                            href={route("dashboard")}
-                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                        >
-                            Dashboard
-                        </Link>
-                    ) : (
-                        <>
-                            <Link
-                                href={route("login")}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Log in
-                            </Link>
+            <Head title="PKM TI" />
+            <NavBar auth={auth} />
 
-                            <Link
-                                href={route("register")}
-                                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+            <div className="flex flex-col pt-28 overflow-x-hidden">
+                <main className="px-6 sm:px-0">
+                    <div className="relative w-full">
+                        <div className="flex flex-col sm:flex-row gap-6 items-center justify-between sm:px-12 w-full">
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantFade(-100, 0)}
+                                initial="hidden"
+                                animate={controls}
+                                className="flex flex-col w-full"
                             >
-                                Register
-                            </Link>
-                        </>
-                    )}
-                </div>
+                                <span className="uppercase font-medium sm:text-lg mb-1 text-blue-lagoon">
+                                    Dunia Baru Bersama PKM
+                                </span>
+                                <h3 className="capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full">
+                                    Berkarya Tanpa Batas Selamat Datang di dunia
+                                    PKM
+                                </h3>
+                                <p className="text-sm sm:text-base mt-3 font-light capitalize w-11/12">
+                                    Selamat datang di Pangkalan Kreativitas
+                                    Mahasiswa (PKM), tempat di mana inovasi
+                                    bertemu dengan inspirasi. Jelajahi potensi
+                                    tak terbatas ide-ide kreatif, riset
+                                    terdepan, dan solusi revolusioner. Bersama
+                                    PKM, kita bukan hanya mengamati perubahan,
+                                    tapi menjadi agen perubahannya.
+                                </p>
+                                <div className="mt-3 w-64 none">
+                                    <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md">
+                                        {" "}
+                                        <BookOpenIcon className="w-5 h-5" />{" "}
+                                        Buku Panduan
+                                    </button>
+                                </div>
+                            </motion.div>
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantFade(100, 0)}
+                                initial="hidden"
+                                animate={controls}
+                                className="hidden justify-center items-center w-full h-full lg:flex"
+                            >
+                                <div className="relative min-h-full">
+                                    <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+                                    <img
+                                        src="images/gedung-TI.jpg"
+                                        className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"
+                                        alt="Gedung Teknologi Informasi"
+                                    />
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
 
-                <div className="max-w-7xl mx-auto p-6 lg:p-8">
-                    <div className="flex justify-center">
-                        <svg
-                            viewBox="0 0 62 65"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-16 w-auto bg-gray-100 dark:bg-gray-900"
+                    {/* important date section */}
+                    <div className="flex flex-row w-full justify-center items-center mt-16 sm:mt-24 sm:px-12">
+                        <motion.div
+                            whileInView="visible"
+                            variants={variantFade(0, 100)}
+                            initial="hidden"
+                            animate={controls}
+                            className="flex flex-col md:flex-row gap-4 justify-between items-start w-full md:w-11/12 bg-base-100 shadow-lg border border-base-300 px-6 py-6 rounded-lg"
                         >
-                            <path
-                                d="M61.8548 14.6253C61.8778 14.7102 61.8895 14.7978 61.8897 14.8858V28.5615C61.8898 28.737 61.8434 28.9095 61.7554 29.0614C61.6675 29.2132 61.5409 29.3392 61.3887 29.4265L49.9104 36.0351V49.1337C49.9104 49.4902 49.7209 49.8192 49.4118 49.9987L25.4519 63.7916C25.3971 63.8227 25.3372 63.8427 25.2774 63.8639C25.255 63.8714 25.2338 63.8851 25.2101 63.8913C25.0426 63.9354 24.8666 63.9354 24.6991 63.8913C24.6716 63.8838 24.6467 63.8689 24.6205 63.8589C24.5657 63.8389 24.5084 63.8215 24.456 63.7916L0.501061 49.9987C0.348882 49.9113 0.222437 49.7853 0.134469 49.6334C0.0465019 49.4816 0.000120578 49.3092 0 49.1337L0 8.10652C0 8.01678 0.0124642 7.92953 0.0348998 7.84477C0.0423783 7.8161 0.0598282 7.78993 0.0697995 7.76126C0.0884958 7.70891 0.105946 7.65531 0.133367 7.6067C0.152063 7.5743 0.179485 7.54812 0.20192 7.51821C0.230588 7.47832 0.256763 7.43719 0.290416 7.40229C0.319084 7.37362 0.356476 7.35243 0.388883 7.32751C0.425029 7.29759 0.457436 7.26518 0.498568 7.2415L12.4779 0.345059C12.6296 0.257786 12.8015 0.211853 12.9765 0.211853C13.1515 0.211853 13.3234 0.257786 13.475 0.345059L25.4531 7.2415H25.4556C25.4955 7.26643 25.5292 7.29759 25.5653 7.32626C25.5977 7.35119 25.6339 7.37362 25.6625 7.40104C25.6974 7.43719 25.7224 7.47832 25.7523 7.51821C25.7735 7.54812 25.8021 7.5743 25.8196 7.6067C25.8483 7.65656 25.8645 7.70891 25.8844 7.76126C25.8944 7.78993 25.9118 7.8161 25.9193 7.84602C25.9423 7.93096 25.954 8.01853 25.9542 8.10652V33.7317L35.9355 27.9844V14.8846C35.9355 14.7973 35.948 14.7088 35.9704 14.6253C35.9792 14.5954 35.9954 14.5692 36.0053 14.5405C36.0253 14.4882 36.0427 14.4346 36.0702 14.386C36.0888 14.3536 36.1163 14.3274 36.1375 14.2975C36.1674 14.2576 36.1923 14.2165 36.2272 14.1816C36.2559 14.1529 36.292 14.1317 36.3244 14.1068C36.3618 14.0769 36.3942 14.0445 36.4341 14.0208L48.4147 7.12434C48.5663 7.03694 48.7383 6.99094 48.9133 6.99094C49.0883 6.99094 49.2602 7.03694 49.4118 7.12434L61.3899 14.0208C61.4323 14.0457 61.4647 14.0769 61.5021 14.1055C61.5333 14.1305 61.5694 14.1529 61.5981 14.1803C61.633 14.2165 61.6579 14.2576 61.6878 14.2975C61.7103 14.3274 61.7377 14.3536 61.7551 14.386C61.7838 14.4346 61.8 14.4882 61.8199 14.5405C61.8312 14.5692 61.8474 14.5954 61.8548 14.6253ZM59.893 27.9844V16.6121L55.7013 19.0252L49.9104 22.3593V33.7317L59.8942 27.9844H59.893ZM47.9149 48.5566V37.1768L42.2187 40.4299L25.953 49.7133V61.2003L47.9149 48.5566ZM1.99677 9.83281V48.5566L23.9562 61.199V49.7145L12.4841 43.2219L12.4804 43.2194L12.4754 43.2169C12.4368 43.1945 12.4044 43.1621 12.3682 43.1347C12.3371 43.1097 12.3009 43.0898 12.2735 43.0624L12.271 43.0586C12.2386 43.0275 12.2162 42.9888 12.1887 42.9539C12.1638 42.9203 12.1339 42.8916 12.114 42.8567L12.1127 42.853C12.0903 42.8156 12.0766 42.7707 12.0604 42.7283C12.0442 42.6909 12.023 42.656 12.013 42.6161C12.0005 42.5688 11.998 42.5177 11.9931 42.4691C11.9881 42.4317 11.9781 42.3943 11.9781 42.3569V15.5801L6.18848 12.2446L1.99677 9.83281ZM12.9777 2.36177L2.99764 8.10652L12.9752 13.8513L22.9541 8.10527L12.9752 2.36177H12.9777ZM18.1678 38.2138L23.9574 34.8809V9.83281L19.7657 12.2459L13.9749 15.5801V40.6281L18.1678 38.2138ZM48.9133 9.14105L38.9344 14.8858L48.9133 20.6305L58.8909 14.8846L48.9133 9.14105ZM47.9149 22.3593L42.124 19.0252L37.9323 16.6121V27.9844L43.7219 31.3174L47.9149 33.7317V22.3593ZM24.9533 47.987L39.59 39.631L46.9065 35.4555L36.9352 29.7145L25.4544 36.3242L14.9907 42.3482L24.9533 47.987Z"
-                                fill="#FF2D20"
+                            <div className="flex flex-row gap-4 sm:pr-10">
+                                <BookmarkSquareIcon className="w-6 h-6 font-extrabold" />
+                                <div className="block">
+                                    <span className="capitalize text-gray-400 font-normal text-sm md:text-base">
+                                        Agenda Acara
+                                    </span>
+
+                                    <p className="text-base md:text-sm font-light">
+                                        Pembukaan PKM-TI 2024
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+                            <div className="flex flex-row gap-4">
+                                <CalendarDaysIcon className="w-6 h-6 font-extrabold" />
+                                <div className="block">
+                                    <span className="capitalize text-gray-400 font-normal text-sm md:text-base">
+                                        Date
+                                    </span>
+
+                                    <p className="text-base md:text-sm font-light">
+                                        Minggu, 4 Februari 2024
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+
+                            <div className="flex flex-row gap-4">
+                                <MapPinIcon className="w-6 h-6 font-extrabold" />
+
+                                <div className="block">
+                                    <span className="capitalize text-gray-400 font-normal text-sm md:text-base">
+                                        Lokasi Acara
+                                    </span>
+
+                                    <p className="text-base md:text-sm font-light">
+                                        Gedung Teknologi Informasi Fakultas
+                                        Teknik Universitas Udayana
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                    {/* end imporatant date section */}
+
+                    {/* section about us */}
+                    <section
+                        id="about-us"
+                        className="pt-10 md:pt-28 sm:pt-32 px-0 sm:px-10 flex flex-col lg:flex-row justify-center items-center md:space-x-0"
+                    >
+                        <motion.div
+                            whileInView="visible"
+                            variants={variantFade(-100, 0)}
+                            initial="hidden"
+                            animate={controls}
+                            className="relative h-fit items-center w-full lg:w-1/2"
+                        >
+                            <div className="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
+                            <img
+                                src="images/gedung-TI.jpg"
+                                className="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300"
+                                alt="Gedung Teknologi Informasi"
                             />
-                        </svg>
-                    </div>
-
-                    <div className="mt-16">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                        </motion.div>
+                        <motion.div
+                            whileInView="visible"
+                            variants={variantFade(100, 0)}
+                            initial="hidden"
+                            animate={controls}
+                            className="w-full ml-0 mt-14 sm:mt-0 lg:w-1/2"
+                        >
+                            <div className="flex items-center space-x-2 mb-4">
+                                <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
+                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
+                            </div>
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17">
+                                Semangat Berkarya Menciptakan Ide-ide Kreatif
+                                Untuk Kemajuan Indonesia
+                            </h2>
+                            <p className="text-sm sm:text-base">
+                                <span className="block font-semibold leading-8">
+                                    apa sih itu PKM? Emang Penting?
+                                </span>
+                                Pelatihan PKM TI 2023 adalah salah satu program
+                                kerja Himpunan MahasiswaTeknologi
+                                Informasi(HMTI) yang bertujuan untuk memberikan
+                                wadah bagi mahasiswa untukmengetahui dan
+                                menambah pengetahuan mengenai PKM. Pelatihan PKM
+                                tahun 2023mengusung tema “Gelorakan Mahasiswa
+                                Teknologi Informasi yang Aktif, Kreatif
+                                danInovatif”. Dengan adanya kegiatan ini
+                                diharapkan mahasiswa Teknologi Informasidapat
+                                mengembangkan kompetensi dan semangat berkarya
+                                untuk menciptakan ide-idekreatif kemudian
+                                nantinya dapat disusun menjadi proposal PKM yang
+                                dapatbermanfaat bagi masyarakat luas.
+                            </p>
                             <a
-                                href="https://laravel.com/docs"
-                                className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
+                                href="#pkm-topik"
+                                className="flex mt-4 text-sm text-slate-500 cursor-pointer"
                             >
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Documentation
-                                    </h2>
-
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laravel has wonderful documentation
-                                        covering every aspect of the framework.
-                                        Whether you are a newcomer or have prior
-                                        experience with Laravel, we recommend
-                                        reading our documentation from beginning
-                                        to end.
-                                    </p>
-                                </div>
-
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    className="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
+                                <ArrowLongDownIcon className="w-6 h-6 mr-3 animate-bounce" />
+                                scroll down
                             </a>
+                        </motion.div>
+                    </section>
+                    {/* end about us section */}
 
-                            <a
-                                href="https://laracasts.com"
-                                className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-                            >
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Laracasts
-                                    </h2>
-
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laracasts offers thousands of video
-                                        tutorials on Laravel, PHP, and
-                                        JavaScript development. Check them out,
-                                        see for yourself, and massively level up
-                                        your development skills in the process.
-                                    </p>
-                                </div>
-
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    className="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6"
+                    {/* pkm topic section */}
+                    <section id="pkm-topik" className="p-0 sm:p-10 mt-20">
+                        <div className="relative">
+                            <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl overflow-hidden p-6 sm:p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="flex flex-col justify-start items-center"
                                 >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
-                            </a>
-
-                            <a
-                                href="https://laravel-news.com"
-                                className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500"
-                            >
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
-                                            />
-                                        </svg>
+                                    <div className="flex items-center space-x-2 mb-2">
+                                        <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
+                                        <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                        <p className="uppercase font-semibold text-center text-white text-sm sm:text-base px-6">
+                                            Eksplorasi topik pkm
+                                        </p>
+                                        <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                        <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     </div>
-
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Laravel News
+                                    <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">
+                                        Kembangkan Ide Cemerlang Anda
                                     </h2>
-
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laravel News is a community driven
-                                        portal and newsletter aggregating all of
-                                        the latest and most important news in
-                                        the Laravel ecosystem, including new
-                                        package releases and tutorials.
+                                    <p className="text-sm sm:text-base text-slate-200 text-center">
+                                        Jelajahi kategori-kategori sub topik PKM
+                                        kami dan temukan passion yang
+                                        menggetarkan hati Anda. Mulai dari
+                                        keberlanjutan hingga teknologi,
+                                        kesehatan hingga seni, kami mengundang
+                                        Anda untuk meresapi setiap sub topik
+                                        dengan penuh antusiasme. Temukan tempat
+                                        Anda di dunia PKM, di mana setiap
+                                        kategori adalah panggung bagi idealisasi
+                                        dan perubahan.
                                     </p>
-                                </div>
-
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="1.5"
-                                    className="self-center shrink-0 stroke-red-500 w-6 h-6 mx-6"
+                                </motion.div>
+                            </div>
+                            <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col md:flex-row justify-center items-center space-y-6 md:space-x-4 md:space-y-0">
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                                    />
-                                </svg>
-                            </a>
-
-                            <div className="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-                                <div>
-                                    <div className="h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            className="w-7 h-7 stroke-red-500"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M6.115 5.19l.319 1.913A6 6 0 008.11 10.36L9.75 12l-.387.775c-.217.433-.132.956.21 1.298l1.348 1.348c.21.21.329.497.329.795v1.089c0 .426.24.815.622 1.006l.153.076c.433.217.956.132 1.298-.21l.723-.723a8.7 8.7 0 002.288-4.042 1.087 1.087 0 00-.358-1.099l-1.33-1.108c-.251-.21-.582-.299-.905-.245l-1.17.195a1.125 1.125 0 01-.98-.314l-.295-.295a1.125 1.125 0 010-1.591l.13-.132a1.125 1.125 0 011.3-.21l.603.302a.809.809 0 001.086-1.086L14.25 7.5l1.256-.837a4.5 4.5 0 001.528-1.732l.146-.292M6.115 5.19A9 9 0 1017.18 4.64M6.115 5.19A8.965 8.965 0 0112 3c1.929 0 3.716.607 5.18 1.64"
-                                            />
-                                        </svg>
-                                    </div>
-
-                                    <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                                        Vibrant Ecosystem
-                                    </h2>
-
-                                    <p className="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Laravel's robust library of first-party
-                                        tools and libraries, such as{" "}
-                                        <a
-                                            href="https://forge.laravel.com"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Forge
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="https://vapor.laravel.com"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Vapor
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="https://nova.laravel.com"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Nova
-                                        </a>
-                                        , and{" "}
-                                        <a
-                                            href="https://envoyer.io"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Envoyer
-                                        </a>{" "}
-                                        help you take your projects to the next
-                                        level. Pair them with powerful open
-                                        source libraries like{" "}
-                                        <a
-                                            href="https://laravel.com/docs/billing"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Cashier
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="https://laravel.com/docs/dusk"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Dusk
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="https://laravel.com/docs/broadcasting"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Echo
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="https://laravel.com/docs/horizon"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Horizon
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="https://laravel.com/docs/sanctum"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Sanctum
-                                        </a>
-                                        ,{" "}
-                                        <a
-                                            href="https://laravel.com/docs/telescope"
-                                            className="underline hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                        >
-                                            Telescope
-                                        </a>
-                                        , and more.
+                                    <h3 className="text-2xl text-primary font-bold mb-2">
+                                        PKM-KC
+                                    </h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">
+                                        Program Kreativitas Mahasiswa-Karsa
+                                        Cipta (PKM-KC) merupakan program
+                                        penciptaan yang didasari atas karsa dan
+                                        nalar mahasiswa, bersifat konstruktif
+                                        serta menghasilkan suatu sistem, desain,
+                                        model/barang atau prototipe dan
+                                        sejenisnya.
                                     </p>
-                                </div>
+                                </motion.div>
+
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                >
+                                    <h3 className="text-2xl text-primary font-bold mb-2">
+                                        PKM-K
+                                    </h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">
+                                        Program Kreativitas Mahasiswa
+                                        Kewirausahaan (PKM-K) merupakan program
+                                        kreativitas mahasiswa dalam menciptakan
+                                        aktivitas usaha. Dalam PKM-K, tim
+                                        mahasiswa berlatih membuat kreativitas
+                                        produk usaha yang dibutuhkan masyarakat
+                                        (pasar). Melalui program PKM-K,
+                                        mahasiswa memiliki kesempatan yang luas
+                                        untuk merealisasikan ide kreatif produk
+                                        (barang/jasa), berinovasi menciptakan
+                                        produk baru, serta meningkatkan
+                                        kompetensi, wawasan dan pengalaman dalam
+                                        berwirausaha
+                                    </p>
+                                </motion.div>
+
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                >
+                                    <h3 className="text-2xl text-primary font-bold mb-2">
+                                        PKM-PM
+                                    </h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">
+                                        PKM-PM adalah program penerapan ilmu
+                                        pengetahuan, teknologi dan seni yang
+                                        berorientasi non profit dalam upaya
+                                        untuk membantu mengakhiri kemiskinan,
+                                        mengurangi kesenjangan dan melindungi
+                                        lingkungan.
+                                    </p>
+                                </motion.div>
+
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                >
+                                    <h3 className="text-2xl text-primary font-bold mb-2">
+                                        PKM-PI
+                                    </h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">
+                                        Program Kreativitas Mahasiswa
+                                        Penerapan-IPTEK (PKM-PI) termasuk
+                                        kedalam salah satu kelompok PKM 5 bidang
+                                        yang menerapkan ilmu pengetahuan dan
+                                        teknologi untuk menjadi solusi tepat
+                                        dalam menyelesaikan permasalahan yang
+                                        ada di masyarakat.
+                                    </p>
+                                </motion.div>
+
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                >
+                                    <h3 className="text-2xl text-primary font-bold mb-2">
+                                        PKM-GFT
+                                    </h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">
+                                        PKM Gagasan Futuristik Tertulis
+                                        (PKM-GFT) merupakan gagasan kreatif yang
+                                        futuristik sebagai respons intelektual
+                                        atas persoalan aktual yang dihadapi
+                                        bangsa. Gagasan tersebut tidak terikat
+                                        bidang ilmu, bersifat unik dan
+                                        bermanfaat, sehingga kampus yang
+                                        diidealisasikan sebagai pusat solusi
+                                        dapat menjadi kenyataan.
+                                    </p>
+                                </motion.div>
                             </div>
                         </div>
-                    </div>
+                    </section>
+                    {/* end pkm topic section */}
 
-                    <div className="flex justify-center mt-16 px-6 sm:items-center sm:justify-between">
-                        <div className="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-start">
-                            <div className="flex items-center gap-4">
-                                <a
-                                    href="https://github.com/sponsors/taylorotwell"
-                                    className="group inline-flex items-center hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth="1.5"
-                                        className="-mt-px me-1 w-5 h-5 stroke-gray-400 dark:stroke-gray-600 group-hover:stroke-gray-600 dark:group-hover:stroke-gray-400"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                                        />
-                                    </svg>
-                                    Sponsor
-                                </a>
+                    {/*  speakers section */}
+                    <section className="flex flex-col-reverse lg:flex-row items-center w-full gap-6 sm:px-12 mt-20">
+                        <SlickCarousel>
+                            <div>
+                                <div className="relative mx-2 overflow-hidden group rounded-lg">
+                                    <img
+                                        src="images/prabowo.png"
+                                        className="w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300"
+                                    />
+                                    <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
+                                        <div className="px-4">
+                                            <p className="text-white opacity-100 text-lg font-bold leading-5">
+                                                “Tips and Trik Membuat Proposal
+                                                PKM Lolos Pimnas 1”
+                                            </p>
+                                            <div className="divider before:bg-white after:bg-white"></div>
+                                            <div className="flex flex-col">
+                                                <span className="font-bold capitalize text-sm text-white">
+                                                    Bayu Rizkyyy
+                                                </span>
+                                                <p className="font-light text-sm md:text-xs text-white">
+                                                    Koordinator Sie Ilmiah PKM
+                                                    TI 2023
+                                                </p>
+                                            </div>
+
+                                            <div className="flex flex-col mt-4 gap-3">
+                                                <div className="flex flex-row gap-4 items-center">
+                                                    <CalendarIcon className="w-4 h-4 text-white" />
+                                                    <p className="text-xs font-thin capitalize text-white">
+                                                        Senin, 4 Februari 2024
+                                                    </p>
+                                                </div>
+
+                                                <div className="flex flex-row gap-4 items-center">
+                                                    <MapPinIcon className="w-8 h-8 text-white" />
+                                                    <p className="text-xs font-thin capitalize text-white">
+                                                        Gedung Teknologi
+                                                        Informasi, Fakultas
+                                                        Teknik Universitas
+                                                        Udayana
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div>
+                                <div className="relative mx-2 overflow-hidden group rounded-lg">
+                                    <img
+                                        src="images/nadiem.png"
+                                        className="w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300"
+                                    />
+                                    <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
+                                        <div className="px-4">
+                                            <p className="text-white opacity-100 text-lg font-bold leading-5">
+                                                “Tips and Trik Membuat Proposal
+                                                PKM Lolos Pimnas 1”
+                                            </p>
+                                            <div className="divider before:bg-white after:bg-white"></div>
+                                            <div className="flex flex-col">
+                                                <span className="font-bold capitalize text-sm text-white">
+                                                    Bayu Rizkyyy
+                                                </span>
+                                                <p className="font-light text-sm md:text-xs text-white">
+                                                    Koordinator Sie Ilmiah PKM
+                                                    TI 2023
+                                                </p>
+                                            </div>
+
+                                            <div className="flex flex-col mt-4 gap-3">
+                                                <div className="flex flex-row gap-4 items-center">
+                                                    <CalendarIcon className="w-4 h-4 text-white" />
+                                                    <p className="text-xs font-thin capitalize text-white">
+                                                        Senin, 4 Februari 2024
+                                                    </p>
+                                                </div>
+
+                                                <div className="flex flex-row gap-4 items-center">
+                                                    <MapPinIcon className="w-8 h-8 text-white" />
+                                                    <p className="text-xs font-thin capitalize text-white">
+                                                        Gedung Teknologi
+                                                        Informasi, Fakultas
+                                                        Teknik Universitas
+                                                        Udayana
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="relative mx-2 overflow-hidden group rounded-lg">
+                                    <img
+                                        src="images/rektor.png"
+                                        className="w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300"
+                                    />
+                                    <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
+                                        <div className="px-4">
+                                            <p className="text-white opacity-100 text-lg font-bold leading-5">
+                                                “Tips and Trik Membuat Proposal
+                                                PKM Lolos Pimnas 1”
+                                            </p>
+                                            <div className="divider before:bg-white after:bg-white"></div>
+                                            <div className="flex flex-col">
+                                                <span className="font-bold capitalize text-sm text-white">
+                                                    Bayu Rizkyyy
+                                                </span>
+                                                <p className="font-light text-sm md:text-xs text-white">
+                                                    Koordinator Sie Ilmiah PKM
+                                                    TI 2023
+                                                </p>
+                                            </div>
+
+                                            <div className="flex flex-col mt-4 gap-3">
+                                                <div className="flex flex-row gap-4 items-center">
+                                                    <CalendarIcon className="w-4 h-4 text-white" />
+                                                    <p className="text-xs font-thin capitalize text-white">
+                                                        Senin, 4 Februari 2024
+                                                    </p>
+                                                </div>
+
+                                                <div className="flex flex-row gap-4 items-center">
+                                                    <MapPinIcon className="w-8 h-8 text-white" />
+                                                    <p className="text-xs font-thin capitalize text-white">
+                                                        Gedung Teknologi
+                                                        Informasi, Fakultas
+                                                        Teknik Universitas
+                                                        Udayana
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </SlickCarousel>
+
+                        <motion.div
+                            whileInView="visible"
+                            variants={variantFade(100, 0)}
+                            initial="hidden"
+                            animate={controls}
+                            className="flex flex-col w-full lg:w-1/2"
+                        >
+                            <span className="uppercase text-sm md:text-base text-primary font-medium mb-1">
+                                Pembicara
+                            </span>
+                            <h3 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-secondary leading-12 md:leading-16">
+                                Bertemu dengan mereka yang sudah profesional
+                            </h3>
+                            <p className="text-sm sm:text-base font-light text-gray-500 mt-3 capitalize">
+                                Selamatkan tempat di barisan terdepan karena
+                                kami mempersembahkan Narasumber yang luar biasa
+                                di acara spesial PKM kami! Bersiaplah untuk
+                                terinspirasi, berinteraksi, dan mengambil
+                                momentum positif dari pandangan hidup yang penuh
+                                semangat. Tunggu apa lagi? Bergabunglah dengan
+                                kami untuk pengalaman yang mengesankan! 🚀
+                            </p>
+                        </motion.div>
+                    </section>
+
+                    {/* Section Roundown Acara */}
+                    <section
+                        id="roundown-acara"
+                        className="block sm:px-12 mt-24"
+                    >
+                        <motion.div
+                            whileInView="visible"
+                            variants={variantZoom}
+                            initial="hidden"
+                            animate={controls}
+                            className="flex flex-col items-center"
+                        >
+                            <div className="flex items-center space-x-2 mb-2">
+                                <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
+                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                <p className="uppercase font-semibold text-blue-lagoon px-6 text-center text-sm sm:text-base">
+                                    Roundown Acara
+                                </p>
+                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
+                            </div>
+                            <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl text-center font-bold text-secondary mb-2">
+                                Jangan Lewatkan Kesempatan Ini
+                            </h2>
+                            <p className="text-center text-sm sm:text-base">
+                                Setiap detik adalah kesempatan untuk belajar,
+                                berbagi, dan terhubung dengan komunitas kreatif.
+                                Catat tanggalnya dan pastikan Anda tidak
+                                melewatkan momen magis di PKM Wonderland. Ayo,
+                                mari jadwalkan momen berharga kita bersama!
+                            </p>
+                        </motion.div>
+
+                        <motion.div
+                            whileInView="visible"
+                            variants={variantZoom}
+                            initial="hidden"
+                            animate={controls}
+                            className="overflow-x-auto w-full mt-6"
+                        >
+                            <table className="table overflow-hidden">
+                                {/* head table */}
+                                <thead>
+                                    <tr className="bg-white-blue text-base uppercase text-slate-600">
+                                        <th>Waktu</th>
+                                        <th>Acara</th>
+                                        <th>Lokasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {/* row 1 */}
+                                    <tr className="hover">
+                                        <td className="block w-[150px] sm:min-w-[250px]">
+                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
+                                                08.30 - 11.30
+                                            </p>
+                                            <p className="capitalize text-sm sm:text-base">
+                                                selasa, 6 februari
+                                            </p>
+                                        </td>
+                                        <td>
+                                            Sosialisasi Program Kreativitas
+                                            Mahasiswa 2024
+                                        </td>
+                                        <td>
+                                            Live Youtube Channel Direktorat
+                                            Pembelajaran dan Kemahasiswaan
+                                        </td>
+                                    </tr>
+                                    {/* row 2 */}
+                                    <tr className="hover">
+                                        <td className="block w-[150px] sm:min-w-[250px]">
+                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
+                                                08.30 - 11.30
+                                            </p>
+                                            <p className="capitalize text-sm sm:text-base">
+                                                selasa, 6 februari
+                                            </p>
+                                        </td>
+                                        <td>
+                                            Pelatihan Membuat Proposal LOLOS
+                                            Pimnas
+                                        </td>
+                                        <td>Gedung Teknologi Informasi</td>
+                                    </tr>
+                                    {/* row 3 */}
+                                    <tr className="hover">
+                                        <td className="block w-[150px] sm:min-w-[250px]">
+                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
+                                                08.30 - 11.30
+                                            </p>
+                                            <p className="capitalize text-sm sm:text-base">
+                                                selasa, 6 februari
+                                            </p>
+                                        </td>
+                                        <td>
+                                            Sosialisasi Program Kreativitas
+                                            Mahasiswa 2024
+                                        </td>
+                                        <td>
+                                            Live Youtube Channel Direktorat
+                                            Pembelajaran dan Kemahasiswaan
+                                        </td>
+                                    </tr>
+                                    {/* row 4 */}
+                                    <tr className="hover">
+                                        <td className="block w-[150px] sm:min-w-[250px]">
+                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
+                                                08.30 - 11.30
+                                            </p>
+                                            <p className="capitalize text-sm sm:text-base">
+                                                selasa, 6 februari
+                                            </p>
+                                        </td>
+                                        <td>
+                                            Sosialisasi Program Kreativitas
+                                            Mahasiswa 2024
+                                        </td>
+                                        <td>
+                                            Live Youtube Channel Direktorat
+                                            Pembelajaran dan Kemahasiswaan
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </motion.div>
+                    </section>
+
+                    {/* Suhu section */}
+                    <section className="flex flex-col w-full py-4 mt-24 sm:px-12">
+                        <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="flex flex-col justify-start items-center"
+                            >
+                                <div className="flex items-center space-x-2 mb-2">
+                                    <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
+                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                    <p className="uppercase font-semibold text-sm sm:text-base text-center text-white px-6">
+                                        saatnya kamu buktikan
+                                    </p>
+                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                    <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
+                                </div>
+                                <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-2">
+                                    Bergabung Dengan Mereka
+                                </h2>
+                                <p className="text-slate-200 text-center text-sm sm:text-base">
+                                    Jelajahi kategori-kategori sub topik PKM
+                                    kami dan temukan passion yang menggetarkan
+                                    hati Anda. Mulai dari keberlanjutan hingga
+                                    teknologi, kesehatan hingga seni, kami
+                                    mengundang Anda untuk meresapi setiap sub
+                                    topik dengan penuh antusiasme. Temukan
+                                    tempat Anda di dunia PKM, di mana setiap
+                                    kategori adalah panggung bagi idealisasi dan
+                                    perubahan.
+                                </p>
+                            </motion.div>
                         </div>
 
-                        <div className="ms-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-end sm:ms-0">
-                            Laravel v{laravelVersion} (PHP v{phpVersion})
+                        <div className="relative -mt-24 sm:-mt-32 z-[5] flex justify-center items-center">
+                            <CustomCarousel className="flex justify-center items-center text-center space-x-4">
+                                <div className="relative flex justify-center items-center pb-5">
+                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-3xl transition-shadow duration-300">
+                                        <div className="w-full flex justify-center items-center mb-4">
+                                            <img
+                                                src="images/emot-bayu.png?v=1"
+                                                className="max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary"
+                                                alt="Bayu"
+                                            />
+                                        </div>
+                                        <p className="text-center text-slate-500 mb-2">
+                                            “Program Kreativitas Mahasiswa-Karsa
+                                            Cipta (PKM-KC) merupakan program
+                                            penciptaan yang didasari atas karsa
+                                            dan nalar mahasiswa, bersifat
+                                            konstruktif serta menghasilkan suatu
+                                            sistem, desain, model/barang atau
+                                            prototipe dan sejenisnya.”
+                                        </p>
+                                        <h3 className="text-xl text-primary font-bold mb-2">
+                                            Bayu
+                                        </h3>
+                                        <p className="capitalize text-slate-400">
+                                            mahasiswa aktif teknologi informasi
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="relative flex justify-center items-center pb-5">
+                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <div className="w-full flex justify-center items-center mb-4">
+                                            <img
+                                                src="images/emot-bayu.png?v=1"
+                                                className="max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary"
+                                                alt="Bayu"
+                                            />
+                                        </div>
+                                        <p className="text-center text-slate-500 mb-2">
+                                            “Program Kreativitas Mahasiswa-Karsa
+                                            test (PKM-KC) merupakan program
+                                            penciptaan yang didasari atas karsa
+                                            dan nalar mahasiswa, bersifat
+                                            konstruktif serta menghasilkan suatu
+                                            sistem, desain, model/barang atau
+                                            prototipe dan sejenisnya.”
+                                        </p>
+                                        <h3 className="text-xl text-primary font-bold mb-2">
+                                            Bayu
+                                        </h3>
+                                        <p className="capitalize text-slate-400">
+                                            mahasiswa aktif teknologi informasi
+                                        </p>
+                                    </div>
+                                </div>
+                            </CustomCarousel>
                         </div>
-                    </div>
-                </div>
+
+                        {/* FAQ section */}
+                        <section id="FaQ" className="block w-full mt-20 py-16">
+                            <div className="flex flex-col w-full">
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantFade(-100, 0)}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="px-0 md:px-8 lg:px-10"
+                                >
+                                    <span className="uppercase text-sm font-semibold md:text-base text-primary">
+                                        Malu Bertanya nanti gatau
+                                    </span>
+                                    <h3 className="capitalize font-black text-4xl md:text-5xl mt-2 text-secondary">
+                                        Frequently Asked Questions
+                                    </h3>
+                                    <p className="capitalize text-slate-500 mt-2 w-4/5 text-sm sm:text-base">
+                                        Pertanyaan umum mengenai Kelompok Studi
+                                        Tech Artisan. Jika masih ada yang ingin
+                                        ditanyakan, kalian bisa hubungi kontak
+                                        dibawah ini.
+                                    </p>
+                                </motion.div>
+                            </div>
+
+                            <div className="flex flex-col-reverse md:flex-row w-full mt-10 justify-between items-center">
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="mt-5 items-start"
+                                >
+                                    <img
+                                        src="images/image-FAQ.png?version=1.0"
+                                        className="max-h-[450px]"
+                                    />
+                                </motion.div>
+
+                                <motion.div
+                                    whileInView="visible"
+                                    variants={variantZoom}
+                                    initial="hidden"
+                                    animate={controls}
+                                    className="md:w-6/12 flex flex-col gap-4"
+                                >
+                                    <Accordion
+                                        title="Siapa yang boleh ikut PKM TI?"
+                                        answer="Khusus untuk mahasiswa Fakultas Teknik Universitas Udayana saja yang boleh bergabung dalam Kelompok Studi TecArt"
+                                    />
+                                    <Accordion
+                                        title="Emang Wajib Kak?"
+                                        answer="Pakek nanya wajib lah 🥶"
+                                    />
+                                    <Accordion
+                                        title="Kalo menang dapet PC Gaming gak?"
+                                        answer="Mang eak Dapet hadiah Pc 😊🥶"
+                                    />
+                                    <Accordion
+                                        title="Kalo pake jasa joki gapapa kan kak?"
+                                        answer="yang bener aje rugi dong !"
+                                    />
+                                </motion.div>
+                            </div>
+                        </section>
+                    </section>
+
+                    {/* Contact section */}
+                    <section
+                        id="contact-us"
+                        className="min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0"
+                    >
+                        <div className="mt-4 block justify-center  w-full text-center items-center">
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                            >
+                                <h3 className="capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center">
+                                    <span className="text-secondary">
+                                        Find More
+                                    </span>{" "}
+                                    <span className="text-blue-lagoon">
+                                        about us
+                                    </span>
+                                </h3>
+
+                                <div className="flex w-full items-center text-center justify-center">
+                                    <p className="font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 ">
+                                        Dapatkan info terkini tentang kegiatan
+                                        yang diselenggarakan Technology Artisan
+                                        pada Official Accounts Technology
+                                        Artisan. Ikuti terus perkembangannya !
+                                    </p>
+                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="flex flex-wrap md:flex-row justify-center items-center relative w-full gap-4 mt-5"
+                            >
+                                <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
+                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
+                                    <span className="text-linear-blue lowercase font-medium text-sm">
+                                        hmti.udayana
+                                    </span>
+                                </button>
+
+                                <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
+                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
+                                    <span className="text-linear-blue lowercase font-medium text-sm">
+                                        hmti.udayana
+                                    </span>
+                                </button>
+
+                                <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
+                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
+                                    <span className="text-linear-blue lowercase font-medium text-sm">
+                                        hmti.udayana
+                                    </span>
+                                </button>
+
+                                <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
+                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
+                                    <span className="text-linear-blue lowercase font-medium text-sm">
+                                        hmti.udayana
+                                    </span>
+                                </button>
+                            </motion.div>
+
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                            >
+                                <img
+                                    src="images/contact-us-bro.png"
+                                    className="mx-auto max-h-[450px] mt-10"
+                                    alt="contact us illustration"
+                                />
+                            </motion.div>
+                        </div>
+                    </section>
+                </main>
+
+                <footer className="footer p-12 bg-base-200 text-base-content grid-flow-row sm:grid-cols-2 md:grid-cols-6 gap-x-20">
+                    <aside className="col-span-2 w-4/5 md:w-full">
+                        <img
+                            src="images/Logo-PKM-TI.png"
+                            className="w-32"
+                            alt=""
+                        />
+                        <p className="capitalize text-lg font-semibold">
+                            program studi sarjana teknologi informasi fakultas
+                            teknik universitas udayana
+                        </p>
+                    </aside>
+                    <nav className="col-span-1 md:col-span-2">
+                        <h6 className="footer-title mb-0">Alamat</h6>
+                        <a className="link link-hover mb-4">
+                            Jl. Kampus Udayana Bukit Jimbaran, Jimbaran, Kuta
+                            Selatan, Kabupaten Badung, Bali 80361
+                        </a>
+
+                        <h6 className="footer-title mb-0">Telepon</h6>
+                        <a className="link link-hover mb-4">(0361) 701806</a>
+
+                        <h6 className="footer-title mb-0">Email</h6>
+                        <a className="link link-hover mb-4">hmti@unud.ac.id</a>
+                    </nav>
+                    <nav className="col-span-1 md:col-span-2">
+                        <h6 className="footer-title mb-0">Terkait</h6>
+                        <a className="link link-hover mb-2">
+                            UNUD | Teknologi Informasi
+                        </a>
+
+                        <a className="link link-hover mb-2">BEM PM Udayna</a>
+
+                        <a className="link link-hover mb-2">SMFT Udayana</a>
+                    </nav>
+                </footer>
+                <footer className="py-5 px-12 bg-base-300 text-slate-600">
+                    <p>© 2024 Ilmiah PKM TI </p>
+                </footer>
             </div>
 
-            <style>{`
-                .bg-dots-darker {
-                    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E");
-                }
-                @media (prefers-color-scheme: dark) {
-                    .dark\\:bg-dots-lighter {
-                        background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
-                    }
-                }
-            `}</style>
+            <ScrollToTop />
         </>
     );
 }

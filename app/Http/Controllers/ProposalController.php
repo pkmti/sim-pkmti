@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\AcceptProposal;
-use App\Mail\RejectProposal;
+use App\Jobs\SendEmailJob;
 use App\Models\Proposal;
 use App\Models\User;
 use App\Rules\MaxWordCount;
 use App\Rules\ValidProposalScheme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Inertia\Inertia;
 
 class ProposalController extends Controller
@@ -31,8 +29,20 @@ class ProposalController extends Controller
             'title.required' => 'Mohon masukkan judul proposal',
         ]);
 
-        // allow submit when team member count is more than 3
-        $teamMembersCount = User::where('team_id', $teamId)->count();
+        // validate submit timeline
+        $from = strtotime('2024-04-01'); // ??
+        $to = strtotime('2024-04-07'); // ??
+        $current = strtotime(date('Y-m-d'));
+        if ((env('APP_ENV') != 'local') && ($current < $from)) {
+            return back()->with('error', 'Masa pengajuan proposal dimulai dari x-y blablabla 2024');
+        }
+        if((env('APP_ENV') != 'local') && ($current > $to)) {
+            return back()->with('error', 'Masa pengajuan proposal telah berakhir');
+        }
+
+        // allow submit when team member count if more than 3
+        $teamMembersCount = User::where('team_id', $request->team_id)->count();
+        
         if ($teamMembersCount < 3) {
             return back()->with('msg', 'Tim terdiri dari minimal 3 orang untuk mengajukan proposal');
         }
@@ -80,7 +90,17 @@ class ProposalController extends Controller
         $proposalTitle = Proposal::find($proposalId)->title;
         $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
         $leader = User::find($leaderId)->first();
-        Mail::to($leader->email)->send(new AcceptProposal($leader->name, $proposalTitle));
+        $emailArgs = [
+            'email' => $leader->email,
+            'subject' => 'Selamat! Proposal PKM Kalian Telah Disetujui! 🎉',
+            'view' => 'emails.accept-proposal',
+            'data' => [
+                'name' => $leader->name,
+                'proposal_title' => $proposalTitle,
+            ],
+            'attachments' => []
+        ];
+        dispatch(new SendEmailJob($emailArgs));
 
         return back()->with('msg', 'Proposal telah disetujui');
     }
@@ -102,7 +122,18 @@ class ProposalController extends Controller
         $proposalTitle = Proposal::find($proposalId)->title;
         $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
         $leader = User::find($leaderId)->first();
-        Mail::to($leader->email)->send(new RejectProposal($leader->name, $proposalTitle, $request->note));
+        $emailArgs = [
+            'email' => $leader->email,
+            'subject' => 'Yuk, Semangat! Proposal PKM Kalian Masih Bisa Direvisi! 💪',
+            'view' => 'emails.reject-proposal',
+            'data' => [
+                'name' => $leader->name,
+                'proposal_title' => $proposalTitle,
+                'note' => $request->note,
+            ],
+            'attachments' => []
+        ];
+        dispatch(new SendEmailJob($emailArgs));
 
         return back()->with('msg', 'Proposal telah ditolak');
     }

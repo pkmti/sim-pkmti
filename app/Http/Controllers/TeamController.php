@@ -95,7 +95,7 @@ class TeamController extends Controller
         return to_route('dashboard')->with('msg', 'Kamu berhasil keluar dari tim.');
     }
 
-    public function kickMember($userId)
+    public function kickMember($teamId, $userId)
     {
         User::find($userId)->update(['team_id' => null]);
 

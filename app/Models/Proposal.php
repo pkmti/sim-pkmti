@@ -9,7 +9,16 @@ class Proposal extends Model
 {
     use HasFactory;
 
-    protected $protected = [];
+    protected $fillable = [
+        'team_id',
+        'scheme',
+        'title', 
+        'description', 
+        'draft_proposal_url', 
+        'final_proposal_url', 
+        'status', 
+        'note', 
+    ];
 
     public function team()
     {

@@ -57,18 +57,17 @@ Route::middleware('auth')->group(function () {
         Route::delete('/teams/{teamId}', [TeamController::class, 'destroy'])->name('teams.destroy');
     });
 
-    Route::prefix('/teams')->middleware(['role:member'])->group(function () {
+    Route::prefix('/teams')->middleware(['role:admin,member'])->group(function () {
         Route::get('/{teamId}/proposals', [ProposalController::class, 'show'])->name('proposals.show');
-        Route::post('/{teamId}/proposals', [ProposalController::class, 'submit'])->name('proposal.submit');
-        Route::patch('/{teamId}/proposals', [ProposalController::class, 'update'])->name('proposal.update');
-        Route::delete('/{teamId}/proposals', [ProposalController::class, 'delete'])->name('proposal.delete');
+        Route::post('/{teamId}/proposals', [ProposalController::class, 'create'])->middleware('have-no-proposal')->name('proposals.create');
+        Route::patch('/{teamId}/proposals', [ProposalController::class, 'update'])->name('proposals.update');
+        Route::delete('/{teamId}/proposals', [ProposalController::class, 'destroy'])->name('proposals.destroy');
     });
 
     Route::middleware(['role:admin,lecturer'])->group(function () {
-        Route::patch('/proposals/{id}/accept', [ProposalController::class, 'accept'])->name('proposal.accept');
-        Route::patch('/proposals/{id}/reject', [ProposalController::class, 'reject'])->name('proposal.reject');
+        Route::patch('/proposals/{proposalId}/accept', [ProposalController::class, 'accept'])->name('proposals.accept');
+        Route::patch('/proposals/{proposalId}/reject', [ProposalController::class, 'reject'])->name('proposals.reject');
     });
-
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {

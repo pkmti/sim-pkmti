@@ -9,36 +9,31 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ForgotPassword extends Mailable
+class SetupEmail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    private $args;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($args)
     {
-        //
+        $this->args = $args;
     }
 
     /**
-     * Get the message envelope.
+     * Build the message.
+     *
+     * @return $this
      */
-    public function envelope(): Envelope
+    public function build()
     {
-        return new Envelope(
-            subject: 'Forgot Password',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
+        return $this->from(env('MAIL_USERNAME'), 'PKM TI')
+            ->subject($this->args['subject'])
+            ->view($this->args['view'])
+            ->with($this->args['data']);
     }
 
     /**
@@ -48,6 +43,6 @@ class ForgotPassword extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return $this->args['attachments'];
     }
 }

@@ -90,6 +90,10 @@
       line-height: inherit !important;
     }
 
+    p {
+      color: #666666
+    }
+
     /* MOBILE STYLES */
     @media screen and (max-width: 600px) {
       h1 {
@@ -158,26 +162,28 @@
                   line-height: 25px;
                 ">
               <p style="margin: 0">Hai {{ $name }}, 👋</p>
-              <p>
+
+              <p style="color: #666666">
                 Wah, ada kabar gembira nih buat tim kamu! Proposal PKM dengan
                 judul
-                <span style="font-weight: bold; color: #1d4489">
+                <span style="font-weight: bold">
                   "{{ $proposal_title }}"
                 </span>
-                udah
+                sudah
                 <span style="font-weight: bold; color: #1d4489">
                   DISETUJUI</span>, loh!
               </p>
-              <p>
+              <p style="color: #666666">
                 Yuk, langsung persiapkan tim-mu untuk melangkah ke tahap
                 selanjutnya. Selamat berjuang, dan jangan lupa tetap enjoy
                 setiap langkahnya yah! 🥳
               </p>
 
-              <p>
+              <p style="color: #666666">
                 Cheers,<br />
                 Tim Ilmiah PKM TI
               </p>
+
             </td>
           </tr>
         </table>
@@ -197,7 +203,7 @@
                   font-weight: 400;
                   line-height: 25px;
                 ">
-              <p>
+              <p style="color: white">
                 PKM TI 2024<br />
                 Grow Up The Passion, Change The Vision
               </p>

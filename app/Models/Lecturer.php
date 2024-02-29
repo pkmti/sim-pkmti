@@ -15,4 +15,9 @@ class Lecturer extends Model
     {
         return $this->hasMany(AssistanceProof::class);
     }
+
+    public function teams()
+    {
+        return $this->hasMany(Team::class);
+    }
 }

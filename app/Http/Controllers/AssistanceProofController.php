@@ -3,34 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssistanceProof;
+use App\Models\Lecturer;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class AssistanceProofController extends Controller
 {
-    public function show()
+    public function show($teamId)
     {
-        $teamId = auth()->user()->team_id;
-        if(!$teamId) {
-            return back()->with('error', 'Kamu belum tergabung dalam tim');
-        }
-
-        $proofs = AssistanceProof::with('lecturer')->where('team_id', $teamId)->orderBy('assistance_date', 'asc')->get();
-
-        dd($proofs);
-    }
-
-    public function showByTeam($teamId)
-    {
-        $proofs = AssistanceProof::with('lecturer')->where('team_id', $teamId)->orderBy('assistance_date', 'asc')->get();
-
-        dd($proofs);
-    }
-
-    public function showByTeams()
-    {
-        $proofs = AssistanceProof::with('lecturer')->orderBy('assistance_date', 'asc')->get();
-
-        dd($proofs);
+        $lecturers = Lecturer::all();
+        $proofs = AssistanceProof::with('team', 'lecturer')->where('team_id', $teamId)->orderBy('assistance_date', 'asc')->get();
+        
+        return Inertia::render('AssistanceProofs/Show', compact('proofs', 'lecturers'));
     }
 
     public function add(Request $request)

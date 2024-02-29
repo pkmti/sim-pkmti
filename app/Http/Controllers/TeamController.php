@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lecturer;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -20,12 +21,13 @@ class TeamController extends Controller
         }
 
         $team = Team::with('leader', 'members', 'proposal')->find($teamId);
-
+        
         if (!$team) abort(404);
 
-        return Inertia::render('Teams/Show', compact('team'));
+        $lecturers = Lecturer::all();
+
+        return Inertia::render('Teams/Show', compact('team', 'lecturers'));
     }
-    
 
     public function create(Request $request)
     {
@@ -131,7 +133,7 @@ class TeamController extends Controller
 
         Team::find($teamId)->update($request->all());
 
-        return to_route('teams.show', $request->id)->with('msg', 'Informasi tim berhasil diubah.');
+        return to_route('teams.show', $teamId)->with('msg', 'Informasi tim berhasil diubah.');
     }
 
     public function destroy($teamId)

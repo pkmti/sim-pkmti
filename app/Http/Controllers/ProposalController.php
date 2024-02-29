@@ -34,10 +34,10 @@ class ProposalController extends Controller
         $to = strtotime('2024-04-07'); // ??
         $current = strtotime(date('Y-m-d'));
         if ((env('APP_ENV') != 'local') && ($current < $from)) {
-            return back()->with('error', 'Masa pengajuan proposal dimulai dari x-y blablabla 2024');
+            return back()->with('msg', 'Masa pengajuan proposal dimulai dari x-y blablabla 2024');
         }
         if((env('APP_ENV') != 'local') && ($current > $to)) {
-            return back()->with('error', 'Masa pengajuan proposal telah berakhir');
+            return back()->with('msg', 'Masa pengajuan proposal telah berakhir');
         }
 
         // allow submit when team member count if more than 3

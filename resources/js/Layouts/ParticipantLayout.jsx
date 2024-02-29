@@ -17,14 +17,14 @@ export default function ParticipantLayout({ user, title, children }) {
         {
             icon: <UserGroupIcon className="h-6 w-6" />,
             text: "Tim Saya",
-            link: route("teams.myTeam"),
+            link: route("teams.my-team"),
         },
         {
             icon: <DocumentTextIcon className="h-6 w-6" />,
             text: "Proposal PKM",
             link: user.team_id
                 ? route("proposals.show", user.team_id)
-                : route("teams.myTeam"),
+                : route("teams.my-team"),
         },
     ];
 

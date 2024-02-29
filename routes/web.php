@@ -80,7 +80,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware(['role:not-teamed'])->group(function () {
-        Route::get('/teams', fn () => Inertia::render('Teams/NotTeamed'))->name('teams.myTeam');
+        Route::get('/teams', fn () => Inertia::render('Teams/NotTeamed'))->name('teams.my-team');
         Route::post('/teams', [TeamController::class, 'create'])->name('teams.create');
         Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('teams.join');
     });
@@ -107,7 +107,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['role:admin,lecturer'])->group(function () {
         Route::patch('/proposals/{proposalId}/accept', [ProposalController::class, 'accept'])->name('proposals.accept');
         Route::patch('/proposals/{proposalId}/reject', [ProposalController::class, 'reject'])->name('proposals.reject');
-      
+    });
+
     Route::get('/assistance-proofs/me', [AssistanceProofController::class, 'showByMyTeam'])->name('assistance-proofs.my-team');
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/assistance-proofs/{teamId}', [AssistanceProofController::class, 'showByTeam'])->name('assistance-proofs.team');

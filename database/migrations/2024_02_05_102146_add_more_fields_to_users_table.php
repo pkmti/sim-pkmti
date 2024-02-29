@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->string('nim', 10);
                 $table->string('phone');
                 $table->string('line_id');
-                $table->string('role');
+                $table->enum('role', ['admin', 'participant', 'lecturer'])->default('participant');
             });
         });
     }

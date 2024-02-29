@@ -12,6 +12,8 @@ use Inertia\Inertia;
 
 class ProposalController extends Controller
 {
+    public const MAX_GFT_TEAMS = 5;
+    
     public function show($teamId)
     {
         $proposal = Proposal::with('team')->where('team_id', $teamId)->first();
@@ -29,19 +31,28 @@ class ProposalController extends Controller
             'title.required' => 'Mohon masukkan judul proposal',
         ]);
 
-        // validate submit timeline
-        $from = strtotime('2024-04-01'); // ??
-        $to = strtotime('2024-04-07'); // ??
-        $current = strtotime(date('Y-m-d'));
-        if ((env('APP_ENV') != 'local') && ($current < $from)) {
-            return back()->with('msg', 'Masa pengajuan proposal dimulai dari x-y blablabla 2024');
-        }
-        if((env('APP_ENV') != 'local') && ($current > $to)) {
-            return back()->with('msg', 'Masa pengajuan proposal telah berakhir');
+        // validate quota for PKM-GFT
+        if ($request->scheme == 'PKM-GFT') {
+            $gftTeamsCount = Proposal::where('scheme', 'PKM-GFT')->count();
+
+            if ($gftTeamsCount == self::MAX_GFT_TEAMS) return back()->with('msg', 'Kuota skema PKM-GFT sudah penuh');
         }
 
+        // validate submit timeline
+        // $from = strtotime('2024-04-01'); // ??
+        // $to = strtotime('2024-04-07'); // ??
+        // $current = strtotime(date('Y-m-d'));
+
+        // if ((env('APP_ENV') != 'local') && ($current < $from)) {
+        //     return back()->with('msg', 'Masa pengajuan proposal dimulai dari x-y blablabla 2024');
+        // }
+
+        // if ((env('APP_ENV') != 'local') && ($current > $to)) {
+        //     return back()->with('msg', 'Masa pengajuan proposal telah berakhir');
+        // }
+
         // allow submit when team member count if more than 3
-        $teamMembersCount = User::where('team_id', $request->team_id)->count();
+        $teamMembersCount = User::where('team_id', $teamId)->count();
         
         if ($teamMembersCount < 3) {
             return back()->with('msg', 'Tim terdiri dari minimal 3 orang untuk mengajukan proposal');
@@ -61,8 +72,8 @@ class ProposalController extends Controller
     public function update(Request $request, $teamId)
     {
         $request->validate([
-            'scheme' => ['required', 'string', 'max:255', new ValidProposalScheme],
             'title' => ['required', 'string', 'max:255', new MaxWordCount(20)],
+            'scheme' => ['required', 'string', 'max:255', new ValidProposalScheme],
             'description' => ['string', 'max:255', 'nullable'],
             'draft_proposal_url' => ['url', 'nullable'],
             'final_proposal_url' => ['url', 'nullable'],
@@ -71,6 +82,13 @@ class ProposalController extends Controller
             'scheme.required' => 'Mohon pilih bidang PKM',
             'title.required' => 'Mohon masukkan judul proposal',
         ]);
+        
+        // validate quota for PKM-GFT
+        if ($request->scheme == 'PKM-GFT') {
+            $gftTeamsCount = Proposal::where('scheme', 'PKM-GFT')->count();
+
+            if ($gftTeamsCount >= self::MAX_GFT_TEAMS) return back()->with('msg', 'Kuota skema PKM-GFT sudah penuh');
+        }
 
         Proposal::where('team_id', $teamId)->first()->update($request->all());
 

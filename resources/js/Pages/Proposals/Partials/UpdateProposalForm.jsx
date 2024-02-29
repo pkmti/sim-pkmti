@@ -1,12 +1,15 @@
 import { useParam } from "@/utils";
 import { DocumentArrowUpIcon } from "@heroicons/react/24/outline";
-import { DocumentIcon, TrashIcon } from "@heroicons/react/24/solid";
+import {
+    ArrowUturnRightIcon,
+    DocumentIcon,
+    InformationCircleIcon,
+    TrashIcon,
+} from "@heroicons/react/24/solid";
 import { Link, useForm } from "@inertiajs/react";
 
 export default function UpdateProposalForm({ user, proposal }) {
     const validSchemes = ["PKM-GFT", "PKM-K", "PKM-KC", "PKM-PI", "PKM-PM"];
-    console.log(proposal);
-    console.log(user);
 
     const { data, setData, patch, processing, errors } = useForm({
         title: proposal.title,
@@ -46,6 +49,16 @@ export default function UpdateProposalForm({ user, proposal }) {
             <ProposalStatus />
 
             <form onSubmit={submit}>
+                {proposal.note && (
+                    <div className="alert alert-info" role="alert">
+                        <InformationCircleIcon className="h-6 w-6" />
+                        <div>
+                            <h3 className="font-bold">Catatan</h3>
+                            <div className="text-xs">{proposal.note}</div>
+                        </div>
+                    </div>
+                )}
+
                 {/* Input Title */}
                 <div className="form-control my-2">
                     <label htmlFor="title" className="font-bold mb-2">
@@ -58,7 +71,7 @@ export default function UpdateProposalForm({ user, proposal }) {
                         rows={2}
                         autoComplete="title"
                         onChange={(e) => setData("title", e.target.value)}
-                        className="textarea textarea-bordered"
+                        className="textarea textarea-bordered lg:resize-none"
                     ></textarea>
 
                     <p className="mt-2 text-error">{errors.title}</p>
@@ -72,12 +85,12 @@ export default function UpdateProposalForm({ user, proposal }) {
                     <select
                         id="scheme"
                         name="scheme"
-                        className="select select-bordered w-full"
+                        className="select select-bordered w-full text-base"
                         value={data.scheme}
                         onChange={(e) => setData("scheme", e.target.value)}
                     >
                         <option value="" disabled>
-                            Pilih skema PKM ...
+                            Pilih skema PKM
                         </option>
                         {validSchemes.map((scheme, i) => (
                             <option key={i} value={scheme}>
@@ -114,17 +127,28 @@ export default function UpdateProposalForm({ user, proposal }) {
                     >
                         Link Proposal Draf (.pdf)
                     </label>
-                    <input
-                        id="draft_proposal_url"
-                        type="text"
-                        name="draft_proposal_url"
-                        value={data.draft_proposal_url}
-                        autoComplete="draft_proposal_url"
-                        onChange={(e) =>
-                            setData("draft_proposal_url", e.target.value)
-                        }
-                        className="input input-bordered"
-                    />
+                    <div className="join">
+                        <input
+                            id="draft_proposal_url"
+                            type="text"
+                            name="draft_proposal_url"
+                            value={data.draft_proposal_url}
+                            autoComplete="draft_proposal_url"
+                            onChange={(e) =>
+                                setData("draft_proposal_url", e.target.value)
+                            }
+                            className="input input-bordered join-item z-[1] w-full"
+                        />
+
+                        <div className="tooltip" data-tip="Kunjungi tautan">
+                            <a
+                                href={proposal.draft_proposal_url}
+                                className="join-item btn btn-square"
+                            >
+                                <ArrowUturnRightIcon className="h-6 w-6" />
+                            </a>
+                        </div>
+                    </div>
 
                     <p className="mt-2 text-error">
                         {errors.draft_proposal_url}
@@ -139,18 +163,28 @@ export default function UpdateProposalForm({ user, proposal }) {
                     >
                         Link Proposal Final (.pdf)
                     </label>
-                    <input
-                        id="final_proposal_url"
-                        type="text"
-                        name="final_proposal_url"
-                        value={data.final_proposal_url}
-                        autoComplete="final_proposal_url"
-                        disabled={true && !proposal.draft_proposal_url}
-                        onChange={(e) =>
-                            setData("final_proposal_url", e.target.value)
-                        }
-                        className="input input-bordered"
-                    />
+                    <div className="join">
+                        <input
+                            id="final_proposal_url"
+                            type="text"
+                            name="final_proposal_url"
+                            value={data.final_proposal_url}
+                            autoComplete="final_proposal_url"
+                            disabled={true && !proposal.draft_proposal_url}
+                            onChange={(e) =>
+                                setData("final_proposal_url", e.target.value)
+                            }
+                            className="input input-bordered join-item z-[1] w-full"
+                        />
+                        <div className="tooltip" data-tip="Kunjungi tautan">
+                            <a
+                                href={proposal.final_proposal_url}
+                                className="join-item btn btn-square"
+                            >
+                                <ArrowUturnRightIcon className="h-6 w-6" />
+                            </a>
+                        </div>
+                    </div>
 
                     <p className="mt-2 text-error">
                         {errors.final_proposal_url}

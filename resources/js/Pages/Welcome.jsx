@@ -53,7 +53,7 @@ export default function Welcome({ auth }) {
                                     Sistem Informasi Pelatihan PKM TI Udayana
                                 </h3>
                                 <p className="text-sm sm:text-base my-5 font-light w-full">
-                                Pelatihan PKM TI 2024 merupakan bagian dari program kerja Himpunan Mahasiswa Teknologi Informasi Universitas Udayana periode 2024, yang bertujuan membimbing mahasiswa dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi.
+                                    Pelatihan PKM TI 2024 merupakan bagian dari program kerja Himpunan Mahasiswa Teknologi Informasi Universitas Udayana periode 2024, yang bertujuan membimbing mahasiswa dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi.
                                 </p>
                                 <div className="mt-3 w-64 none">
                                     <a href={route('guidebook')} className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md">
@@ -215,10 +215,10 @@ export default function Welcome({ auth }) {
                                         <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     </div>
                                     <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">
-                                    Hasilkan Karya yang Inovatif dan Kreatif
+                                        Hasilkan Karya yang Inovatif dan Kreatif
                                     </h2>
                                     <p className="text-sm sm:text-base text-slate-200 text-center">
-                                    Pada PKM TI 2024 Bidang PKM yang diperbolehkan adalah PKM Kewirausahaan (PKM-K), Pengabdian Masyarakat (PKM-PM), Penalaran Iptek (PKM-PI), Karsa Cipta (PKM-KC), dan Gagasan Futuristik Tertulis (PKM-GFT). Adapun judul yang dibuat oleh masing-masing tim harus relevan dengan bidang Teknologi Informasi, disarankan menggunakan istilah seperti AI, Machine Learning, IoT, AR, VR, atau XR.
+                                        Pada PKM TI 2024 Bidang PKM yang diperbolehkan adalah PKM Kewirausahaan (PKM-K), Pengabdian Masyarakat (PKM-PM), Penalaran Iptek (PKM-PI), Karsa Cipta (PKM-KC), dan Gagasan Futuristik Tertulis (PKM-GFT). Adapun judul yang dibuat oleh masing-masing tim harus relevan dengan bidang Teknologi Informasi, disarankan menggunakan istilah seperti AI, Machine Learning, IoT, AR, VR, atau XR.
                                     </p>
 
                                 </motion.div>
@@ -383,7 +383,7 @@ export default function Welcome({ auth }) {
                                                 <div className="flex flex-row gap-4 items-center">
                                                     <CalendarIcon className="w-4 h-4 text-white" />
                                                     <p className="text-xs font-thin capitalize text-white">
-                                                       Sabtu, 30 Maret 2024
+                                                        Sabtu, 30 Maret 2024
                                                     </p>
                                                 </div>
 
@@ -427,7 +427,7 @@ export default function Welcome({ auth }) {
                                                 <div className="flex flex-row gap-4 items-center">
                                                     <CalendarIcon className="w-4 h-4 text-white" />
                                                     <p className="text-xs font-thin capitalize text-white">
-                                                       Sabtu, 30 Maret 2024
+                                                        Sabtu, 30 Maret 2024
                                                     </p>
                                                 </div>
 
@@ -471,7 +471,7 @@ export default function Welcome({ auth }) {
                                                 <div className="flex flex-row gap-4 items-center">
                                                     <CalendarIcon className="w-4 h-4 text-white" />
                                                     <p className="text-xs font-thin capitalize text-white">
-                                                       Sabtu, 30 Maret 2024
+                                                        Sabtu, 30 Maret 2024
                                                     </p>
                                                 </div>
 
@@ -569,9 +569,7 @@ export default function Welcome({ auth }) {
                                     {/* row 1 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 8 - 14 Maret 2024
                                             </p>
@@ -580,15 +578,13 @@ export default function Welcome({ auth }) {
                                             Pendaftaran dan Pengumpulan Judul
                                         </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
                                         </td>
                                     </tr>
                                     {/* row 2 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 8 - 21 Maret 2024
                                             </p>
@@ -596,14 +592,14 @@ export default function Welcome({ auth }) {
                                         <td>
                                             Seleksi Judul
                                         </td>
-                                        <td>Online</td>
+                                        <td>
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+                                        </td>
                                     </tr>
                                     {/* row 3 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 22 Maret 2024
                                             </p>
@@ -612,15 +608,14 @@ export default function Welcome({ auth }) {
                                             Pengumuman Tim Terdaftar Pengumuman Tim Terdaftar
                                         </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+
                                         </td>
                                     </tr>
                                     {/* row 4 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 23 Maret 2024
                                             </p>
@@ -629,16 +624,15 @@ export default function Welcome({ auth }) {
                                             Pengumuman Tim Terdaftar Pengumuman Tim Terdaftar
                                         </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+
                                         </td>
                                     </tr>
 
                                     {/* row 5 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 30 Maret 2024
                                             </p>
@@ -647,16 +641,14 @@ export default function Welcome({ auth }) {
                                             Pelatihan PKM TI 2024
                                         </td>
                                         <td>
-                                            Aula Suastika
+                                            <button className="btn btn-sm bg-blue-lagoon hover:bg-primary text-white"> Aula Suastika</button>
                                         </td>
                                     </tr>
 
                                     {/* row 6 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 30 Maret – 17 Mei 2024
                                             </p>
@@ -671,9 +663,7 @@ export default function Welcome({ auth }) {
                                     {/* row 7 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 31 Maret – 16 Mei 2024
                                             </p>
@@ -682,16 +672,15 @@ export default function Welcome({ auth }) {
                                             Pengumpulan Bukti Asistensi
                                         </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+
                                         </td>
                                     </tr>
 
                                     {/* row 8 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 11 – 17 Mei 2024
                                             </p>
@@ -700,16 +689,15 @@ export default function Welcome({ auth }) {
                                             Pengumpulan Draf Proposal
                                         </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+
                                         </td>
                                     </tr>
 
                                     {/* row 9 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 8 Juni 2024
                                             </p>
@@ -718,16 +706,15 @@ export default function Welcome({ auth }) {
                                             Klinik PKM TI 2024
                                         </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+
                                         </td>
                                     </tr>
 
                                     {/* row 10 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 12 – 15 Juni 2024
                                             </p>
@@ -735,16 +722,15 @@ export default function Welcome({ auth }) {
                                         <td>
                                             Pengumpulan Proposal Final	                                        </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+
                                         </td>
                                     </tr>
 
                                     {/* row 11 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-                                            <p className="text-base sm:text-xl text-blue-lagoon font-semibold">
-                                                -
-                                            </p>
+
                                             <p className="capitalize text-sm sm:text-base">
                                                 22 Juni 2024
                                             </p>
@@ -752,7 +738,8 @@ export default function Welcome({ auth }) {
                                         <td>
                                             Pengumuman Kelulusan Pelatihan PKM TI 2024	                                        </td>
                                         <td>
-                                            Online
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -774,7 +761,7 @@ export default function Welcome({ auth }) {
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <p className="uppercase font-semibold text-sm sm:text-base text-center text-white px-6">
-                                        testimoni peserta 
+                                        testimoni peserta
                                     </p>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
@@ -783,7 +770,7 @@ export default function Welcome({ auth }) {
                                     Apa kata mereka?
                                 </h2>
                                 <p className="text-slate-200 text-center text-sm sm:text-base">
-                                Inilah pandangan langsung dari peserta yang telah mengikuti pelatihan PKM Teknologi Informasi periode sebelumnya. Mereka berbagi pengalaman, kesan, dan manfaat yang diperoleh dari program pelatihan ini.
+                                    Inilah pandangan langsung dari peserta yang telah mengikuti pelatihan PKM Teknologi Informasi periode sebelumnya. Mereka berbagi pengalaman, kesan, dan manfaat yang diperoleh dari program pelatihan ini.
                                 </p>
                             </motion.div>
                         </div>
@@ -933,7 +920,7 @@ export default function Welcome({ auth }) {
 
                                 <div className="flex w-full items-center text-center justify-center">
                                     <p className="font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 ">
-                                    Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi narahubung yang tertera di bawah ini.
+                                        Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi narahubung yang tertera di bawah ini.
                                     </p>
                                 </div>
                             </motion.div>
@@ -952,15 +939,15 @@ export default function Welcome({ auth }) {
                                             Putri
                                         </p>
                                         <a
-                                        href="https://wa.me/+6281381090336"
-                                        target="_blank"
-                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            href="https://wa.me/+6281381090336"
+                                            target="_blank"
+                                            className="text-linear-blue font-medium text-sm block hover:underline">
                                             WA : 0813-8109-0336
                                         </a>
                                         <a
-                                        href="http://line.me/ti/p/~niputucans"
-                                        target="_blank"
-                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            href="http://line.me/ti/p/~niputucans"
+                                            target="_blank"
+                                            className="text-linear-blue font-medium text-sm block hover:underline">
                                             LINE : niputucans
                                         </a>
                                     </div>
@@ -973,15 +960,15 @@ export default function Welcome({ auth }) {
                                             Inna
                                         </p>
                                         <a
-                                        href="https://wa.me/+6285739490558"
-                                        target="_blank"
-                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            href="https://wa.me/+6285739490558"
+                                            target="_blank"
+                                            className="text-linear-blue font-medium text-sm block hover:underline">
                                             WA: 0857-3949-0558
                                         </a>
                                         <a
-                                        href="http://line.me/ti/p/~tiksnaapsr."
-                                        target="_blank"
-                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            href="http://line.me/ti/p/~tiksnaapsr."
+                                            target="_blank"
+                                            className="text-linear-blue font-medium text-sm block hover:underline">
                                             LINE: tiksnaapsr.
                                         </a>
                                     </div>
@@ -994,21 +981,21 @@ export default function Welcome({ auth }) {
                                             Bay
                                         </p>
                                         <a
-                                        href="https://wa.me/+62895321697691"
-                                        target="_blank"
-                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            href="https://wa.me/+62895321697691"
+                                            target="_blank"
+                                            className="text-linear-blue font-medium text-sm block hover:underline">
                                             WA: 0895-3216-97691
                                         </a>
                                         <a
-                                        href="http://line.me/ti/p/~baay9"
-                                        target="_blank"
-                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            href="http://line.me/ti/p/~baay9"
+                                            target="_blank"
+                                            className="text-linear-blue font-medium text-sm block hover:underline">
                                             LINE: baay9
                                         </a>
                                     </div>
                                 </button>
 
-                                
+
                             </motion.div>
 
                             <motion.div

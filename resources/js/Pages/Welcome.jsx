@@ -47,22 +47,15 @@ export default function Welcome({ auth }) {
                                 className="flex flex-col w-full"
                             >
                                 <span className="uppercase font-medium sm:text-lg mb-1 text-blue-lagoon">
-                                    Dunia Baru Bersama PKM
+                                    Pelatihan PKM TI 2024
                                 </span>
                                 <h3 className="capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full">
-                                    Berkarya Tanpa Batas Selamat Datang di dunia
-                                    PKM
+                                    Sistem Informasi Pelatihan PKM TI Udayana
                                 </h3>
-                                <p className="text-sm sm:text-base mt-3 font-light capitalize w-11/12">
-                                    Selamat datang di Pangkalan Kreativitas
-                                    Mahasiswa (PKM), tempat di mana inovasi
-                                    bertemu dengan inspirasi. Jelajahi potensi
-                                    tak terbatas ide-ide kreatif, riset
-                                    terdepan, dan solusi revolusioner. Bersama
-                                    PKM, kita bukan hanya mengamati perubahan,
-                                    tapi menjadi agen perubahannya.
+                                <p className="text-sm sm:text-base my-5 font-light w-full">
+                                Pelatihan PKM TI 2024 merupakan bagian dari program kerja Himpunan Mahasiswa Teknologi Informasi Universitas Udayana periode 2024, yang bertujuan membimbing mahasiswa dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi.
                                 </p>
-                                <div className="mt-3 w-64 none">
+                                <div className="w-64 none">
                                     <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md">
                                         {" "}
                                         <BookOpenIcon className="w-5 h-5" />{" "}
@@ -177,34 +170,25 @@ export default function Welcome({ auth }) {
                                 <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
                                 <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
                             </div>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17">
-                                Semangat Berkarya Menciptakan Ide-ide Kreatif
-                                Untuk Kemajuan Indonesia
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17 capitalize">
+                                mengenal lebih dekat PKM TI 2024
                             </h2>
                             <p className="text-sm sm:text-base">
                                 <span className="block font-semibold leading-8">
-                                    apa sih itu PKM? Emang Penting?
+                                    Apa itu PKM TI 2024?
                                 </span>
-                                Pelatihan PKM TI 2023 adalah salah satu program
-                                kerja Himpunan MahasiswaTeknologi
-                                Informasi(HMTI) yang bertujuan untuk memberikan
-                                wadah bagi mahasiswa untukmengetahui dan
-                                menambah pengetahuan mengenai PKM. Pelatihan PKM
-                                tahun 2023mengusung tema “Gelorakan Mahasiswa
-                                Teknologi Informasi yang Aktif, Kreatif
-                                danInovatif”. Dengan adanya kegiatan ini
-                                diharapkan mahasiswa Teknologi Informasidapat
-                                mengembangkan kompetensi dan semangat berkarya
-                                untuk menciptakan ide-idekreatif kemudian
-                                nantinya dapat disusun menjadi proposal PKM yang
-                                dapatbermanfaat bagi masyarakat luas.
+                                Pelatihan PKM Teknologi Informasi 2024 merupakan salah satu inisiatif dari Himpunan Mahasiswa Teknologi Informasi (HMTI) yang bertujuan untuk memberikan platform bagi mahasiswa dalam memperluas pengetahuan mereka terkait Program Kreativitas Mahasiswa (PKM). Pelatihan ini akan mengeksplorasi tema
+                                <span className="font-bold text-bold">
+                                    “Membangkitkan Generasi Dengan Kreativitas Visioner Untuk Menghasilkan Karya Inovatif, dan Kreatif Melalui PKM”
+                                </span>
+                                yang bermakna harapan agar generasi muda Teknologi Informasi dapat termotivasi dalam mengembangkan kreativitas visioner dan mampu memperhitungkan tren masa depan dengan berkarya melalui PKM. Dengan melibatkan mahasiswa dalam pelatihan ini, diharapkan mahasiswa dapat memperoleh pemahaman mendalam mengenai pengembangan judul, penyesuaian format berdasarkan pedoman, teknik penelitian, serta keterampilan teknis yang diperlukan untuk mengimplementasikan ide-ide tersebut.
                             </p>
                             <a
                                 href="#pkm-topik"
                                 className="flex mt-4 text-sm text-slate-500 cursor-pointer"
                             >
                                 <ArrowLongDownIcon className="w-6 h-6 mr-3 animate-bounce" />
-                                scroll down
+                                Jelajahi Bidang PKM TI 2024
                             </a>
                         </motion.div>
                     </section>
@@ -225,35 +209,26 @@ export default function Welcome({ auth }) {
                                         <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                         <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                         <p className="uppercase font-semibold text-center text-white text-sm sm:text-base px-6">
-                                            Eksplorasi topik pkm
+                                            Bidang PKM TI 2024
                                         </p>
                                         <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                         <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     </div>
                                     <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">
-                                        Kembangkan Ide Cemerlang Anda
+                                    Hasilkan Karya yang Inovatif dan Kreatif
                                     </h2>
                                     <p className="text-sm sm:text-base text-slate-200 text-center">
-                                        Jelajahi kategori-kategori sub topik PKM
-                                        kami dan temukan passion yang
-                                        menggetarkan hati Anda. Mulai dari
-                                        keberlanjutan hingga teknologi,
-                                        kesehatan hingga seni, kami mengundang
-                                        Anda untuk meresapi setiap sub topik
-                                        dengan penuh antusiasme. Temukan tempat
-                                        Anda di dunia PKM, di mana setiap
-                                        kategori adalah panggung bagi idealisasi
-                                        dan perubahan.
+                                    Pada PKM TI 2024 Bidang PKM yang diperbolehkan adalah PKM Kewirausahaan (PKM-K), Pengabdian Masyarakat (PKM-PM), Penalaran Iptek (PKM-PI), Karsa Cipta (PKM-KC), dan Gagasan Futuristik Tertulis (PKM-GFT). Adapun judul yang dibuat oleh masing-masing tim harus relevan dengan bidang Teknologi Informasi, disarankan menggunakan istilah seperti AI, Machine Learning, IoT, AR, VR, atau XR.
                                     </p>
                                 </motion.div>
                             </div>
-                            <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col md:flex-row justify-center items-center space-y-6 md:space-x-4 md:space-y-0">
+                            <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col justify-center items-center lg:flex-row lg:items-start space-y-6 lg:space-x-4 lg:space-y-0">
                                 <motion.div
                                     whileInView="visible"
                                     variants={variantZoom}
                                     initial="hidden"
                                     animate={controls}
-                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                    className="block w-11/12 lg:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
                                     <h3 className="text-2xl text-primary font-bold mb-2">
                                         PKM-KC
@@ -274,7 +249,7 @@ export default function Welcome({ auth }) {
                                     variants={variantZoom}
                                     initial="hidden"
                                     animate={controls}
-                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                    className="block w-11/12 lg:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
                                     <h3 className="text-2xl text-primary font-bold mb-2">
                                         PKM-K
@@ -301,7 +276,7 @@ export default function Welcome({ auth }) {
                                     variants={variantZoom}
                                     initial="hidden"
                                     animate={controls}
-                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                    className="block w-11/12 lg:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
                                     <h3 className="text-2xl text-primary font-bold mb-2">
                                         PKM-PM
@@ -321,7 +296,7 @@ export default function Welcome({ auth }) {
                                     variants={variantZoom}
                                     initial="hidden"
                                     animate={controls}
-                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                    className="block w-11/12 lg:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
                                     <h3 className="text-2xl text-primary font-bold mb-2">
                                         PKM-PI
@@ -342,7 +317,7 @@ export default function Welcome({ auth }) {
                                     variants={variantZoom}
                                     initial="hidden"
                                     animate={controls}
-                                    className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
+                                    className="block w-11/12 lg:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300"
                                 >
                                     <h3 className="text-2xl text-primary font-bold mb-2">
                                         PKM-GFT
@@ -671,24 +646,16 @@ export default function Welcome({ auth }) {
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <p className="uppercase font-semibold text-sm sm:text-base text-center text-white px-6">
-                                        saatnya kamu buktikan
+                                        testimoni peserta 
                                     </p>
                                     <span className="inline h-2 w-2 bg-white rounded-full"></span>
                                     <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
                                 </div>
                                 <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-2">
-                                    Bergabung Dengan Mereka
+                                    Apa kata mereka?
                                 </h2>
                                 <p className="text-slate-200 text-center text-sm sm:text-base">
-                                    Jelajahi kategori-kategori sub topik PKM
-                                    kami dan temukan passion yang menggetarkan
-                                    hati Anda. Mulai dari keberlanjutan hingga
-                                    teknologi, kesehatan hingga seni, kami
-                                    mengundang Anda untuk meresapi setiap sub
-                                    topik dengan penuh antusiasme. Temukan
-                                    tempat Anda di dunia PKM, di mana setiap
-                                    kategori adalah panggung bagi idealisasi dan
-                                    perubahan.
+                                Inilah pandangan langsung dari peserta yang telah mengikuti pelatihan PKM Teknologi Informasi periode sebelumnya. Mereka berbagi pengalaman, kesan, dan manfaat yang diperoleh dari program pelatihan ini.
                                 </p>
                             </motion.div>
                         </div>
@@ -696,7 +663,7 @@ export default function Welcome({ auth }) {
                         <div className="relative -mt-24 sm:-mt-32 z-[5] flex justify-center items-center">
                             <CustomCarousel className="flex justify-center items-center text-center space-x-4">
                                 <div className="relative flex justify-center items-center pb-5">
-                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-3xl transition-shadow duration-300">
+                                    <div className="flex flex-col w-11/12 lg:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-3xl transition-shadow duration-300">
                                         <div className="w-full flex justify-center items-center mb-4">
                                             <img
                                                 src="images/emot-bayu.png?v=1"
@@ -759,24 +726,21 @@ export default function Welcome({ auth }) {
                                     variants={variantFade(-100, 0)}
                                     initial="hidden"
                                     animate={controls}
-                                    className="px-0 md:px-8 lg:px-10"
+                                    className="px-0 lg:px-10"
                                 >
                                     <span className="uppercase text-sm font-semibold md:text-base text-primary">
-                                        Malu Bertanya nanti gatau
+                                        Pertanyaan Umum
                                     </span>
                                     <h3 className="capitalize font-black text-4xl md:text-5xl mt-2 text-secondary">
-                                        Frequently Asked Questions
+                                        Hal yang sering ditanyakan
                                     </h3>
-                                    <p className="capitalize text-slate-500 mt-2 w-4/5 text-sm sm:text-base">
-                                        Pertanyaan umum mengenai Kelompok Studi
-                                        Tech Artisan. Jika masih ada yang ingin
-                                        ditanyakan, kalian bisa hubungi kontak
-                                        dibawah ini.
+                                    <p className="text-slate-500 mt-2 w-4/5 text-sm sm:text-base">
+                                        Pertanyaan umum yang sering ditanyakan terkait PKM TI 2024. Jika masih ada yang ingin ditanyakan lebih lanjut, kalian bisa hubungi narahubung dibawah ini.
                                     </p>
                                 </motion.div>
                             </div>
 
-                            <div className="flex flex-col-reverse md:flex-row w-full mt-10 justify-between items-center">
+                            <div className="flex flex-col-reverse lg:flex-row w-full mt-10 justify-between items-start lg:items-center">
                                 <motion.div
                                     whileInView="visible"
                                     variants={variantZoom}
@@ -795,23 +759,23 @@ export default function Welcome({ auth }) {
                                     variants={variantZoom}
                                     initial="hidden"
                                     animate={controls}
-                                    className="md:w-6/12 flex flex-col gap-4"
+                                    className="lg:w-1/2 flex flex-col gap-4"
                                 >
                                     <Accordion
-                                        title="Siapa yang boleh ikut PKM TI?"
-                                        answer="Khusus untuk mahasiswa Fakultas Teknik Universitas Udayana saja yang boleh bergabung dalam Kelompok Studi TecArt"
+                                        title="Apakah mahasiswa program studi Teknologi Informasi Universitas Udayana wajib mengikuti Pelatihan PKM TI 2024?"
+                                        answer="Mahasiswa yang belum mengikuti Pelatihan PKM TI periode sebelumnya atau belum lulus pada pelatihan sebelumnya wajib untuk mengikuti Pelatihan PKM TI 2024. Dan bagi mahasiswa yang sudah mengikuti Pelatihan PKM TI periode sebelumnya juga boleh mengikuti Pelatihan PKM TI 2024."
                                     />
                                     <Accordion
-                                        title="Emang Wajib Kak?"
-                                        answer="Pakek nanya wajib lah 🥶"
+                                        title="Apa yang akan dilakukan mahasiswa selama Pelatihan PKM TI 2024?"
+                                        answer="Selama Pelatihan PKM TI 2024, mahasiswa akan dibimbing dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi."
                                     />
                                     <Accordion
-                                        title="Kalo menang dapet PC Gaming gak?"
-                                        answer="Mang eak Dapet hadiah Pc 😊🥶"
+                                        title="Apa yang diharapkan mahasiswa peroleh setelah mengikuti Pelatihan PKM TI 2024?"
+                                        answer="Setelah mengikuti Pelatihan PKM TI 2024, diharapkan mahasiswa akan memperoleh pemahaman mendalam mengenai pengembangan judul, penyesuaian format berdasarkan pedoman, teknik penelitian, serta keterampilan teknis yang diperlukan untuk mengimplementasikan ide-ide tersebut."
                                     />
                                     <Accordion
-                                        title="Kalo pake jasa joki gapapa kan kak?"
-                                        answer="yang bener aje rugi dong !"
+                                        title="Apa luaran yang dihasilkan oleh mahasiswa setelah mengikuti Pelatihan PKM TI 2024?"
+                                        answer="Luaran dari kegiatan ini berupa proposal PKM yang memiliki potensi memberikan manfaat signifikan dalam konteks Teknologi Informasi dan dapat diajukan untuk mendapatkan dukungan dan pendanaan pada tahun 2025."
                                     />
                                 </motion.div>
                             </div>
@@ -832,19 +796,16 @@ export default function Welcome({ auth }) {
                             >
                                 <h3 className="capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center">
                                     <span className="text-secondary">
-                                        Find More
+                                        Kontak
                                     </span>{" "}
                                     <span className="text-blue-lagoon">
-                                        about us
+                                        Kami
                                     </span>
                                 </h3>
 
                                 <div className="flex w-full items-center text-center justify-center">
                                     <p className="font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 ">
-                                        Dapatkan info terkini tentang kegiatan
-                                        yang diselenggarakan Technology Artisan
-                                        pada Official Accounts Technology
-                                        Artisan. Ikuti terus perkembangannya !
+                                    Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi narahubung yang tertera di bawah ini.
                                     </p>
                                 </div>
                             </motion.div>
@@ -857,32 +818,69 @@ export default function Welcome({ auth }) {
                                 className="flex flex-wrap md:flex-row justify-center items-center relative w-full gap-4 mt-5"
                             >
                                 <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
-                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
-                                    <span className="text-linear-blue lowercase font-medium text-sm">
-                                        hmti.udayana
-                                    </span>
+                                    <ChatBubbleLeftEllipsisIcon className="w-12 h-12 text-primary" />
+                                    <div className="block text-start">
+                                        <p className="text-linear-blue font-semibold text-lg">
+                                            Putri
+                                        </p>
+                                        <a
+                                        href="https://wa.me/+6281381090336"
+                                        target="_blank"
+                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            WA : 0813-8109-0336
+                                        </a>
+                                        <a
+                                        href="http://line.me/ti/p/~niputucans"
+                                        target="_blank"
+                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            LINE : niputucans
+                                        </a>
+                                    </div>
                                 </button>
 
                                 <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
-                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
-                                    <span className="text-linear-blue lowercase font-medium text-sm">
-                                        hmti.udayana
-                                    </span>
+                                    <ChatBubbleLeftEllipsisIcon className="w-12 h-12 text-primary" />
+                                    <div className="block text-start">
+                                        <p className="text-linear-blue font-semibold text-lg">
+                                            Inna
+                                        </p>
+                                        <a
+                                        href="https://wa.me/+6285739490558"
+                                        target="_blank"
+                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            WA: 0857-3949-0558
+                                        </a>
+                                        <a
+                                        href="http://line.me/ti/p/~tiksnaapsr."
+                                        target="_blank"
+                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            LINE: tiksnaapsr.
+                                        </a>
+                                    </div>
                                 </button>
 
                                 <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
-                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
-                                    <span className="text-linear-blue lowercase font-medium text-sm">
-                                        hmti.udayana
-                                    </span>
+                                    <ChatBubbleLeftEllipsisIcon className="w-12 h-12 text-primary" />
+                                    <div className="block text-start">
+                                        <p className="text-linear-blue font-semibold text-lg">
+                                            Bay
+                                        </p>
+                                        <a
+                                        href="https://wa.me/+62895321697691"
+                                        target="_blank"
+                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            WA: 0895-3216-97691
+                                        </a>
+                                        <a
+                                        href="http://line.me/ti/p/~baay9"
+                                        target="_blank"
+                                        className="text-linear-blue font-medium text-sm block hover:underline">
+                                            LINE: baay9
+                                        </a>
+                                    </div>
                                 </button>
 
-                                <button className="bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center">
-                                    <ChatBubbleLeftEllipsisIcon className="w-5 h-5 text-primary" />
-                                    <span className="text-linear-blue lowercase font-medium text-sm">
-                                        hmti.udayana
-                                    </span>
-                                </button>
+                                
                             </motion.div>
 
                             <motion.div

@@ -48,8 +48,8 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-Route::get('/guidebook', fn () => Redirect::to('https://drive.google.com/drive/folders/1fczvCUzj9yp-uJetouDcljul4hZ2rwtU?usp=drive_link'));
-Route::get('/panduan-belmawa', fn () => Redirect::to('https://drive.google.com/drive/folders/1rs3oFykE4d6NM7MUgxuNCqx291ORPqZI?usp=drive_link'));
+Route::get('/guidebook', fn () => Redirect::to('https://drive.google.com/drive/folders/1fczvCUzj9yp-uJetouDcljul4hZ2rwtU?usp=drive_link'))->name('guidebook');
+Route::get('/panduan-belmawa', fn () => Redirect::to('https://drive.google.com/drive/folders/1rs3oFykE4d6NM7MUgxuNCqx291ORPqZI?usp=drive_link'))->name('panduanbelmawa');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

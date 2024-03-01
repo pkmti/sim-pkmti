@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\AssistanceProofController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProposalController;
+use App\Http\Controllers\TeamController;
+use App\Jobs\SendEmailJob;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+use function Termwind\render;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +24,21 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('/test-email', function () {
+    $emailArgs = [
+        'email' => 'ptadityamahendrap@gmail.com',
+        'subject' => 'Selamat Datang di PKM TI',
+        'view' => 'emails.reject-proposal',
+        'data' => [
+            'name' => 'Aditya Mahendra',
+            'proposal_title' => 'HAHAHA',
+            'note' => 'Skill Issue'
+        ],
+        'attachments' => []
+    ];
+    dispatch(new SendEmailJob($emailArgs));
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -23,7 +46,10 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
+
+Route::get('/guidebook', fn () => Redirect::to('https://drive.google.com/drive/folders/1fczvCUzj9yp-uJetouDcljul4hZ2rwtU?usp=drive_link'));
+Route::get('/panduan-belmawa', fn () => Redirect::to('https://drive.google.com/drive/folders/1rs3oFykE4d6NM7MUgxuNCqx291ORPqZI?usp=drive_link'));
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -33,6 +59,55 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::middleware(['role:not-teamed'])->group(function () {
+        Route::get('/teams', fn () => Inertia::render('Teams/NotTeamed'))->name('teams.not-teamed');
+        Route::post('/teams', [TeamController::class, 'create'])->name('teams.create');
+        Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('teams.join');
+    });
+
+    Route::middleware(['role:admin,member'])->group(function () {
+        Route::get('/teams/{teamId}', [TeamController::class, 'show'])->name('teams.show');
+        Route::delete('/teams/{teamId}/leave', [TeamController::class, 'leave'])->name('teams.leave');
+    });
+
+    Route::middleware(['role:admin,leader'])->group(function () {
+        Route::delete('/teams/{teamId}/kick/{userId}', [TeamController::class, 'kickMember'])->name('teams.kick');
+        Route::patch('/teams/{teamId}/leader/{userId}', [TeamController::class, 'changeLeader'])->name('teams.changeLeader');
+        Route::patch('/teams/{teamId}', [TeamController::class, 'update'])->name('teams.update');
+        Route::delete('/teams/{teamId}', [TeamController::class, 'destroy'])->name('teams.destroy');
+    });
+
+    Route::middleware(['role:admin,member'])->prefix('/teams/{teamId}')->group(function () {
+        Route::get('/proposals', [ProposalController::class, 'show'])->name('proposals.show');
+        Route::post('/proposals', [ProposalController::class, 'create'])->middleware('has-no-proposal')->name('proposals.create');
+        Route::patch('/proposals', [ProposalController::class, 'update'])->name('proposals.update');
+        Route::delete('/proposals', [ProposalController::class, 'destroy'])->name('proposals.destroy');
+
+        Route::get('/assistance-proofs', [AssistanceProofController::class, 'show'])->name('assistance-proofs.show');
+        Route::post('/assistance-proofs', [AssistanceProofController::class, 'add'])->name('assistance-proofs.add');
+        Route::patch('/assistance-proofs/{id}', [AssistanceProofController::class, 'update'])->name('assistance-proofs.update');
+        Route::delete('/assistance-proofs/{id}', [AssistanceProofController::class, 'destroy'])->name('assistance-proofs.destroy');
+    });
+
+    Route::middleware(['role:admin,lecturer'])->group(function () {
+        Route::patch('/proposals/{proposalId}/accept', [ProposalController::class, 'accept'])->name('proposals.accept');
+        Route::patch('/proposals/{proposalId}/reject', [ProposalController::class, 'reject'])->name('proposals.reject');
+    });
+
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Admin/Dashboard');
+    })->name('admin.dashboard');
+    Route::get('/participants', function () {
+        return Inertia::render('Admin/Participants');
+    })->name('admin.participants');
+    Route::get('/teams', [TeamController::class, 'showTeams'])->name('admin.teams');
+    Route::get('/proposals', function () {
+        return Inertia::render('Admin/Proposals');
+    })->name('admin.proposals');
+});
+
+require __DIR__ . '/auth.php';

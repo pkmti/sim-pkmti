@@ -1,10 +1,6 @@
-import { useEffect } from "react";
-import GuestLayout from "@/Layouts/GuestLayout";
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { Head, Link, useForm } from "@inertiajs/react";
+import { useEffect } from "react";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -30,150 +26,224 @@ export default function Register() {
     };
 
     return (
-        <GuestLayout>
-            <Head title="Register" />
+        <>
+            <Head title="Registrasi" />
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Nama Lengkap" />
-
-                    <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        onChange={(e) => setData("name", e.target.value)}
-                        required
+            <div className="w-full flex justify-center items-center">
+                <div className="flex-col border-[1px] border-base-content border-opacity-20 rounded-lg p-8 my-8">
+                    <img
+                        src="/images/logo.png"
+                        alt="Logo PKM TI 2024"
+                        className="w-24 mx-auto mb-4"
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
-                </div>
+                    <form onSubmit={submit}>
+                        {/* Input name */}
+                        <div className="form-control my-2">
+                            <label htmlFor="name" className="font-bold mb-2">
+                                Nama Lengkap
+                            </label>
+                            <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                value={data.name}
+                                autoComplete="name"
+                                isfocused="true"
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
+                                className="input input-bordered"
+                            />
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
+                            <p className="mt-2 text-error">{errors.name}</p>
+                        </div>
 
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={(e) => setData("email", e.target.value)}
-                        required
-                    />
+                        {/* Input NIM */}
+                        <div className="form-control my-2">
+                            <label htmlFor="nim" className="font-bold mb-2">
+                                NIM
+                            </label>
+                            <input
+                                id="nim"
+                                type="text"
+                                name="nim"
+                                value={data.nim}
+                                autoComplete="nim"
+                                isfocused="true"
+                                onChange={(e) => setData("nim", e.target.value)}
+                                className="input input-bordered"
+                            />
 
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
+                            <p className="mt-2 text-error">{errors.nim}</p>
+                        </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="nim" value="NIM" />
+                        {/* Input email */}
+                        <div className="form-control my-2">
+                            <label htmlFor="email" className="font-bold mb-2">
+                                Email
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                value={data.email}
+                                autoComplete="email"
+                                isfocused="true"
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
+                                className="input input-bordered"
+                            />
 
-                    <TextInput
-                        id="nim"
-                        type="text"
-                        name="nim"
-                        value={data.nim}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={(e) => setData("nim", e.target.value)}
-                        required
-                    />
+                            <p className="mt-2 text-error">{errors.email}</p>
+                        </div>
 
-                    <InputError message={errors.nim} className="mt-2" />
-                </div>
+                        {/* Input phone */}
+                        <div className="form-control my-2">
+                            <label htmlFor="phone" className="font-bold mb-2">
+                                Telepon
+                            </label>
+                            <input
+                                id="phone"
+                                type="text"
+                                name="phone"
+                                value={data.phone}
+                                autoComplete="phone"
+                                isfocused="true"
+                                onChange={(e) =>
+                                    setData("phone", e.target.value)
+                                }
+                                className="input input-bordered"
+                            />
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="phone" value="Telepon" />
+                            <p className="mt-2 text-error">{errors.phone}</p>
+                        </div>
 
-                    <TextInput
-                        id="phone"
-                        type="text"
-                        name="phone"
-                        value={data.phone}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={(e) => setData("phone", e.target.value)}
-                        required
-                    />
+                        {/* Input Line ID */}
+                        <div className="form-control my-2">
+                            <label htmlFor="line_id" className="font-bold mb-2">
+                                ID Line
+                            </label>
+                            <input
+                                id="line_id"
+                                type="text"
+                                name="line_id"
+                                value={data.line_id}
+                                autoComplete="line_id"
+                                isfocused="true"
+                                onChange={(e) =>
+                                    setData("line_id", e.target.value)
+                                }
+                                className="input input-bordered"
+                            />
 
-                    <InputError message={errors.phone} className="mt-2" />
-                </div>
+                            <p className="mt-2 text-error">{errors.line_id}</p>
+                        </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="line_id" value="ID Line" />
+                        {/* Input password */}
+                        <div className="form-control my-2">
+                            <label
+                                htmlFor="password"
+                                className="font-bold mb-2"
+                            >
+                                Password
+                            </label>
+                            <div className="join">
+                                <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    value={data.password}
+                                    onChange={(e) =>
+                                        setData("password", e.target.value)
+                                    }
+                                    className="input input-bordered w-full join-item z-[1]"
+                                />
+                                <label className="btn btn-square join-item swap">
+                                    <input
+                                        type="checkbox"
+                                        onClick={() => {
+                                            let x =
+                                                document.getElementById(
+                                                    "password"
+                                                );
+                                            x.type =
+                                                x.type === "password"
+                                                    ? "text"
+                                                    : "password";
+                                        }}
+                                    />
+                                    <EyeSlashIcon className="h-6 w-6 swap-on" />
+                                    <EyeIcon className="h-6 w-6 swap-off" />
+                                </label>
+                            </div>
 
-                    <TextInput
-                        id="line_id"
-                        type="text"
-                        name="line_id"
-                        value={data.line_id}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={(e) => setData("line_id", e.target.value)}
-                        required
-                    />
+                            <p className="mt-2 text-error">{errors.password}</p>
+                        </div>
 
-                    <InputError message={errors.line_id} className="mt-2" />
-                </div>
+                        {/* Input confirmation password */}
+                        <div className="form-control my-2">
+                            <label
+                                htmlFor="password_confirmation"
+                                className="font-bold mb-2"
+                            >
+                                Konfirmasi Password
+                            </label>
+                            <div className="join">
+                                <input
+                                    id="password_confirmation"
+                                    type="password"
+                                    name="password_confirmation"
+                                    value={data.password_confirmation}
+                                    onChange={(e) =>
+                                        setData(
+                                            "password_confirmation",
+                                            e.target.value
+                                        )
+                                    }
+                                    className="input input-bordered w-full join-item z-[1]"
+                                />
+                                <label className="btn btn-square join-item swap">
+                                    <input
+                                        type="checkbox"
+                                        onClick={() => {
+                                            let x = document.getElementById(
+                                                "password_confirmation"
+                                            );
+                                            x.type =
+                                                x.type === "password"
+                                                    ? "text"
+                                                    : "password";
+                                        }}
+                                    />
+                                    <EyeSlashIcon className="h-6 w-6 swap-on" />
+                                    <EyeIcon className="h-6 w-6 swap-off" />
+                                </label>
+                            </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                            <p className="mt-2 text-error">
+                                {errors.password_confirmation}
+                            </p>
+                        </div>
 
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={(e) => setData("password", e.target.value)}
-                        required
-                    />
+                        <button
+                            className="btn btn-primary w-full mb-2"
+                            disabled={processing}
+                        >
+                            Buat akun
+                        </button>
+                    </form>
 
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Konfirmasi Password"
-                    />
-
-                    <TextInput
-                        id="password_confirmation"
-                        type="password"
-                        name="password_confirmation"
-                        value={data.password_confirmation}
-                        className="mt-1 block w-full"
-                        autoComplete="new-password"
-                        onChange={(e) =>
-                            setData("password_confirmation", e.target.value)
-                        }
-                        required
-                    />
-
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
-                    />
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
                     <Link
                         href={route("login")}
-                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="link link-hover flex justify-center"
+                        as="a"
                     >
-                        Already registered?
+                        Sudah punya akun?
                     </Link>
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
                 </div>
-            </form>
-        </GuestLayout>
+            </div>
+        </>
     );
 }

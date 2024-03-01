@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
+import React, { useState, useEffect } from "react";
+import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
 
 const ScrollToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -24,26 +24,26 @@ const ScrollToTop = () => {
             setScrollProgress(scrolled);
         };
 
-        window.addEventListener('scroll', toggleVisibility);
-        window.addEventListener('scroll', updateScrollProgress);
+        window.addEventListener("scroll", toggleVisibility);
+        window.addEventListener("scroll", updateScrollProgress);
 
         return () => {
-            window.removeEventListener('scroll', toggleVisibility);
-            window.removeEventListener('scroll', updateScrollProgress);
+            window.removeEventListener("scroll", toggleVisibility);
+            window.removeEventListener("scroll", updateScrollProgress);
         };
     }, []);
 
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            behavior: "smooth",
         });
     };
 
     const scrollToBottom = () => {
         window.scrollTo({
             top: document.body.scrollHeight,
-            behavior: 'smooth',
+            behavior: "smooth",
         });
     };
 
@@ -55,9 +55,9 @@ const ScrollToTop = () => {
                     onMouseLeave={() => setIsHovered(false)}
                     onClick={scrollToTop}
                     className={`bg-blue-500 transition-all duration-100 ease-in-out text-white rounded-full p-3 ${
-                        isHovered ? 'tooltip tooltip-open tooltip-left' : ''
+                        isHovered ? "tooltip tooltip-open tooltip-left" : ""
                     }`}
-                    {...(isHovered ? { 'data-tip': 'Click untuk naik' } : {})}
+                    {...(isHovered ? { "data-tip": "Click untuk naik" } : {})}
                 >
                     <ChevronUpIcon className="h-6 w-6" />
                 </button>
@@ -67,9 +67,9 @@ const ScrollToTop = () => {
                     onMouseLeave={() => setIsHovered(false)}
                     onClick={scrollToBottom}
                     className={`bg-blue-500 transition-all duration-100 ease-in-out text-white rounded-full p-3 ${
-                        isHovered ? 'tooltip tooltip-open tooltip-left' : ''
+                        isHovered ? "tooltip tooltip-open tooltip-left" : ""
                     }`}
-                    {...(isHovered ? { 'data-tip': 'Click untuk turun' } : {})}
+                    {...(isHovered ? { "data-tip": "Click untuk turun" } : {})}
                 >
                     <ChevronDownIcon className="h-6 w-6" />
                 </button>

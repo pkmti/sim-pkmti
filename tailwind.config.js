@@ -1,6 +1,4 @@
 import defaultTheme from "tailwindcss/defaultTheme";
-import forms from "@tailwindcss/forms";
-import daisyui from "daisyui";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -15,7 +13,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'primary' : "#0D79B9",
@@ -49,8 +47,21 @@ export default {
             }
         },
     },
-    plugins: [require("daisyui"), require("@tailwindcss/typography"), forms],
+    plugins: [require("daisyui"), require("@tailwindcss/typography")],
     daisyui: {
-        themes: ["light", "dark"],
+        themes: [
+            {
+                dark: {
+                    ...require("daisyui/src/theming/themes")["dark"],
+                    primary: "#0079B9",
+                    secondary: "#94D8E9",
+                },
+                light: {
+                    ...require("daisyui/src/theming/themes")["light"],
+                    primary: "#0079B9",
+                    secondary: "#94D8E9",
+                },
+            },
+        ],
     },
 };

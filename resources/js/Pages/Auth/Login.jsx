@@ -1,11 +1,6 @@
-import { useEffect } from "react";
-import Checkbox from "@/Components/Checkbox";
-import GuestLayout from "@/Layouts/GuestLayout";
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/solid";
 import { Head, Link, useForm } from "@inertiajs/react";
+import { useEffect } from "react";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -27,79 +22,126 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
-            <Head title="Log in" />
+        <>
+            <Head title="Masuk" />
 
-            {status && (
-                <div className="mb-4 font-medium text-sm text-green-600">
-                    {status}
-                </div>
-            )}
-
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="nim" value="NIM" />
-
-                    <TextInput
-                        id="nim"
-                        type="text"
-                        name="nim"
-                        value={data.nim}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        isFocused={true}
-                        onChange={(e) => setData("nim", e.target.value)}
+            <div className="w-full h-screen flex justify-center items-center">
+                {status && (
+                    <div className="mb-4 font-medium text-sm text-green-600">
+                        {status}
+                    </div>
+                )}
+                <div className="flex-col border-[1px] border-base-content border-opacity-20 rounded-lg p-8 mb-8">
+                    <img
+                        src="/images/logo.png"
+                        alt="Logo PKM TI 2024"
+                        className="w-24 mx-auto mb-4"
                     />
+                    <form onSubmit={submit}>
+                        <div className="form-control my-4">
+                            <label htmlFor="nim" className="font-bold mb-2">
+                                NIM
+                            </label>
+                            <input
+                                id="nim"
+                                type="text"
+                                name="nim"
+                                value={data.nim}
+                                autoComplete="nim"
+                                isfocused="true"
+                                onChange={(e) => setData("nim", e.target.value)}
+                                className="input input-bordered"
+                            />
 
-                    <InputError message={errors.nim} className="mt-2" />
-                </div>
+                            <p className="mt-2 text-error">{errors.nim}</p>
+                        </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                        {/* Input password */}
+                        <div className="form-control my-2">
+                            <label
+                                htmlFor="password"
+                                className="font-bold mb-2"
+                            >
+                                Password
+                            </label>
+                            <div className="join">
+                                <input
+                                    id="password"
+                                    type="password"
+                                    name="password"
+                                    value={data.password}
+                                    onChange={(e) =>
+                                        setData("password", e.target.value)
+                                    }
+                                    className="input input-bordered w-full join-item z-[1]"
+                                />
+                                <label className="btn btn-square join-item swap">
+                                    <input
+                                        type="checkbox"
+                                        onClick={() => {
+                                            let x =
+                                                document.getElementById(
+                                                    "password"
+                                                );
+                                            x.type =
+                                                x.type === "password"
+                                                    ? "text"
+                                                    : "password";
+                                        }}
+                                    />
+                                    <EyeSlashIcon className="h-6 w-6 swap-on" />
+                                    <EyeIcon className="h-6 w-6 swap-off" />
+                                </label>
+                            </div>
 
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        autoComplete="current-password"
-                        onChange={(e) => setData("password", e.target.value)}
-                    />
+                            <p className="mt-2 text-error">{errors.password}</p>
+                        </div>
 
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
+                        <div className="form-control mb-2">
+                            <label className="label cursor-pointer justify-normal">
+                                <input
+                                    id="remember"
+                                    type="checkbox"
+                                    name="remember"
+                                    checked={data.remember}
+                                    className="checkbox inline"
+                                    onChange={(e) =>
+                                        setData("remember", e.target.checked)
+                                    }
+                                />
+                                <span className="label-text ms-2">
+                                    Ingat saya
+                                </span>
+                            </label>
+                        </div>
 
-                <div className="block mt-4">
-                    <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) =>
-                                setData("remember", e.target.checked)
-                            }
-                        />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
-                    </label>
-                </div>
+                        <button
+                            className="btn btn-primary w-full mb-2"
+                            disabled={processing}
+                        >
+                            Masuk
+                        </button>
+                    </form>
 
-                <div className="flex items-center justify-end mt-4">
+                    <Link
+                        href={route("register")}
+                        className="btn btn-outline btn-primary w-full mb-4"
+                        as="button"
+                    >
+                        Buat akun
+                    </Link>
+
                     {canResetPassword && (
                         <Link
                             href={route("password.request")}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="link link-hover flex justify-center"
+                            as="a"
                         >
-                            Forgot your password?
+                            Lupa password?
                         </Link>
                     )}
-
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
                 </div>
-            </form>
-        </GuestLayout>
+            </div>
+        </>
     );
 }

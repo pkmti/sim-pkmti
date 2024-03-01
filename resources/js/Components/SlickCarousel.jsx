@@ -4,7 +4,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Slider from "react-slick";
 import {
-    ArrowLongRightIcon, ArrowLongLeftIcon
+    ArrowLongRightIcon,
+    ArrowLongLeftIcon,
 } from "@heroicons/react/24/solid";
 
 function SlickCarousel({ children }) {
@@ -12,11 +13,11 @@ function SlickCarousel({ children }) {
 
     const handleNextClick = () => {
         slickRef.slickNext();
-    }
+    };
 
     const handlePrevClick = () => {
         slickRef.slickPrev();
-    }
+    };
     const settings = {
         className: "slider variable-width",
         dots: false,
@@ -39,40 +40,48 @@ function SlickCarousel({ children }) {
                     slidesToShow: 3,
                     slidesToScroll: 3,
                     infinite: true,
-                }
+                },
             },
             {
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2
-                }
+                    initialSlide: 2,
+                },
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
     return (
-        <div className='w-full lg:w-1/2 h-fit'>
-
+        <div className="w-full lg:w-1/2 h-fit">
             <div className="slider-container">
-                <Slider {...settings} ref={slider => {
-                    slickRef = slider;
-                }}>
+                <Slider
+                    {...settings}
+                    ref={(slider) => {
+                        slickRef = slider;
+                    }}
+                >
                     {children}
                 </Slider>
 
                 <div className="flex flex-row md:justify-start justify-center gap-4 mt-4">
-                    <button className="btn glass btn-sm" onClick={handlePrevClick}>
+                    <button
+                        className="btn glass btn-sm"
+                        onClick={handlePrevClick}
+                    >
                         <ArrowLongLeftIcon className="w-7 h-7 font-black " />
                     </button>
-                    <button className="btn glass btn-sm" onClick={handleNextClick}>
+                    <button
+                        className="btn glass btn-sm"
+                        onClick={handleNextClick}
+                    >
                         <ArrowLongRightIcon className="w-7 h-7 font-black" />
                     </button>
                 </div>

@@ -8,49 +8,42 @@ import {
     ArrowPathIcon,
     CheckIcon,
     ExclamationTriangleIcon,
+    PaperAirplaneIcon,
     PencilIcon,
     TrashIcon,
     XMarkIcon,
 } from "@heroicons/react/24/solid";
-import { Link, router } from "@inertiajs/react";
+import { Link, router, useForm } from "@inertiajs/react";
 import Toast from "@/Components/Toast";
 import { useIsObjectEmpty, useRandomInt } from "@/utils";
 
-export default function ShowProposals({ auth, users, flash, errors }) {
+export default function ShowProposals({ auth, proposals, flash, errors }) {
     const { user } = auth;
 
-    const columns = [
-        {
-            field: "nim",
-            header: "NIM",
-        },
-        {
-            field: "name",
-            header: "Nama",
-        },
-        {
-            field: "phone",
-            header: "Nomor Telepon",
-        },
-        {
-            field: "line_id",
-            header: "ID Line",
-        },
-        {
-            field: "email",
-            header: "Email",
-        },
-    ];
-
+    // id
+    // title
+    // team_id
+    // team.team_name
+    // scheme
+    // draft_proposal_url
+    // final_proposal_url
+    // team.assistance_proofs[].proof_url
+    // note
+    // status
+    // Select field that want to display
     const [selectedFields, setSelectedFields] = useState(
-        users.map((user) => {
-            const selectedUser = {};
-            selectedUser["id"] = user["id"];
-            columns.forEach((column) => {
-                selectedUser[column.field] = user[column.field];
-            });
-            selectedUser["status"] = user["status"];
-            return selectedUser;
+        proposals.map((proposal) => {
+            return {
+                id: proposal.id,
+                title: proposal.title,
+                team_id: proposal.team.id,
+                team_name: proposal.team.team_name,
+                scheme: proposal.scheme,
+                draft_proposal_url: proposal.draft_proposal_url,
+                final_proposal_url: proposal.final_proposal_url,
+                note: proposal.note,
+                status: proposal.status,
+            };
         })
     );
 
@@ -75,18 +68,33 @@ export default function ShowProposals({ auth, users, flash, errors }) {
         let { newData, index } = e;
 
         _selectedFields[index] = newData;
-        router.patch(route("users.update", 1), newData);
+        const {
+            team_id,
+            title,
+            scheme,
+            draft_proposal_url,
+            final_proposal_url,
+            note,
+        } = newData;
+        const patchData = {
+            title,
+            scheme,
+            draft_proposal_url,
+            final_proposal_url,
+            note,
+        };
+        router.patch(route("proposals.update", e.data.team_id), patchData);
 
         setSelectedFields(_selectedFields);
     };
 
-    const textEditor = (options) => {
+    const textEditor = (rowData) => {
         return (
             <input
                 type="text"
                 className="input input-bordered input-sm"
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
+                value={rowData.value}
+                onChange={(e) => rowData.editorCallback(e.target.value)}
             />
         );
     };
@@ -95,8 +103,9 @@ export default function ShowProposals({ auth, users, flash, errors }) {
     const statusBadge = (rowData) => {
         const status = rowData.status;
         const statuses = {
-            passed: { style: "badge-success", content: "Lulus" },
-            failed: { style: "badge-error", content: "Gagal" },
+            approved: { style: "badge-success", content: "Diterima" },
+            rejected: { style: "badge-error", content: "Ditolak" },
+            pending: { style: "badge-warning", content: "Diperiksa" },
         };
 
         return (
@@ -106,13 +115,89 @@ export default function ShowProposals({ auth, users, flash, errors }) {
         );
     };
 
+    const rejectAction = (rowData) => {
+        const { data, setData, patch, errors } = useForm({
+            note: rowData.note,
+        });
+
+        const submit = (e) => {
+            e.preventDefault();
+
+            patch(route("proposals.reject", rowData.id));
+        };
+
+        return (
+            <>
+                <button
+                    onClick={() =>
+                        document
+                            .getElementById(
+                                "reject_proposal_modal" + rowData.id
+                            )
+                            .showModal()
+                    }
+                    className="btn btn-error btn-square btn-sm mx-1"
+                >
+                    <XMarkIcon className="h-4 w-4" />
+                </button>
+                <dialog
+                    id={"reject_proposal_modal" + rowData.id}
+                    className="modal"
+                >
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Catatan</h3>
+                        <form
+                            onSubmit={submit}
+                            id={"reject_proposal_form" + rowData.id}
+                        >
+                            <div className="form-control my-4">
+                                <p className="py-4">
+                                    Mohon berikan catatan kesalahan!
+                                </p>
+
+                                <textarea
+                                    id="note"
+                                    type="text"
+                                    name="note"
+                                    rows="3"
+                                    value={data.note}
+                                    onChange={(e) =>
+                                        setData("note", e.target.value)
+                                    }
+                                    className="textarea textarea-bordered"
+                                ></textarea>
+
+                                {errors.note && (
+                                    <p className="mt-2 text-error">
+                                        {errors.note}
+                                    </p>
+                                )}
+                            </div>
+                        </form>
+                        <div className="modal-action">
+                            <form method="dialog">
+                                <button
+                                    className="btn btn-error"
+                                    form={"reject_proposal_form" + rowData.id}
+                                >
+                                    Tolak Proposal
+                                </button>
+                                <button className="btn">Batal</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+            </>
+        );
+    };
+
     return (
         <>
             {flash.msg && (
                 <Toast
                     content={flash.msg}
                     key={useRandomInt()}
-                    id="users_update_information"
+                    id="proposals_update_information"
                 />
             )}
 
@@ -177,25 +262,92 @@ export default function ShowProposals({ auth, users, flash, errors }) {
                                 </div>
                             }
                         >
-                            {columns.map((col) => (
-                                <Column
-                                    editor={(options) => textEditor(options)}
-                                    key={col.field}
-                                    field={col.field}
-                                    header={
-                                        <span className="me-2">
-                                            {col.header}
-                                        </span>
-                                    }
-                                    sortable
-                                />
-                            ))}
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="title"
+                                field="title"
+                                header={<span className="me-2">Proposal</span>}
+                                sortable
+                            />
+                            <Column
+                                key="team_name"
+                                field="team_name"
+                                header={<span className="me-2">Nama Tim</span>}
+                                sortable
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="scheme"
+                                field="scheme"
+                                header={<span className="me-2">Skema PKM</span>}
+                                sortable
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="draft_proposal_url"
+                                field="draft_proposal_url"
+                                header="Proposal Draf"
+                                body={(rowData) => {
+                                    return (
+                                        <a
+                                            href={rowData.draft_proposal_url}
+                                            className="btn btn-sm btn-square"
+                                        >
+                                            <PaperAirplaneIcon className="h-4 w-4" />
+                                        </a>
+                                    );
+                                }}
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="final_proposal_url"
+                                field="final_proposal_url"
+                                header="Proposal Final"
+                                body={(rowData) => {
+                                    return (
+                                        <a
+                                            href={rowData.final_proposal_url}
+                                            className="btn btn-sm btn-square"
+                                        >
+                                            <PaperAirplaneIcon className="h-4 w-4" />
+                                        </a>
+                                    );
+                                }}
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="note"
+                                field="note"
+                                header={<span className="me-2">Note</span>}
+                                sortable
+                            />
                             <Column
                                 body={statusBadge}
+                                key="status"
+                                field="status"
                                 header={<span className="me-2">Status</span>}
                                 sortable
-                            ></Column>
-                            <Column rowEditor={true} header={"Edit"}></Column>
+                            />
+                            <Column
+                                header={"Setuju"}
+                                body={(rowData) => {
+                                    return (
+                                        <Link
+                                            as="button"
+                                            method="patch"
+                                            href={route(
+                                                "proposals.accept",
+                                                rowData.id
+                                            )}
+                                            className="btn btn-success btn-square btn-sm mx-1"
+                                        >
+                                            <CheckIcon className="h-4 w-4" />
+                                        </Link>
+                                    );
+                                }}
+                            />
+                            <Column header={"Tolak"} body={rejectAction} />
+                            <Column rowEditor={true} header={"Edit"} />
                             <Column
                                 header={"Hapus"}
                                 body={(rowData) => {
@@ -204,8 +356,8 @@ export default function ShowProposals({ auth, users, flash, errors }) {
                                             as="button"
                                             method="delete"
                                             href={route(
-                                                "users.destroy",
-                                                rowData.id
+                                                "proposals.destroy",
+                                                rowData.team_id
                                             )}
                                             className="btn btn-error btn-square btn-sm mx-1"
                                         >
@@ -213,7 +365,7 @@ export default function ShowProposals({ auth, users, flash, errors }) {
                                         </Link>
                                     );
                                 }}
-                            ></Column>
+                            />
                         </DataTable>
                     </div>
                 </div>

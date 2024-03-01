@@ -19,38 +19,18 @@ import { useIsObjectEmpty, useRandomInt } from "@/utils";
 export default function Users({ auth, users, flash, errors }) {
     const { user } = auth;
 
-    const columns = [
-        {
-            field: "nim",
-            header: "NIM",
-        },
-        {
-            field: "name",
-            header: "Nama",
-        },
-        {
-            field: "phone",
-            header: "Nomor Telepon",
-        },
-        {
-            field: "line_id",
-            header: "ID Line",
-        },
-        {
-            field: "email",
-            header: "Email",
-        },
-    ];
-
+    // Select field that want to display
     const [selectedFields, setSelectedFields] = useState(
         users.map((user) => {
-            const selectedUser = {};
-            selectedUser["id"] = user["id"];
-            columns.forEach((column) => {
-                selectedUser[column.field] = user[column.field];
-            });
-            selectedUser["status"] = user["status"];
-            return selectedUser;
+            return {
+                id: user.id,
+                nim: user.nim,
+                name: user.name,
+                phone: user.phone,
+                line_id: user.line_id,
+                email: user.email,
+                status: user.status,
+            };
         })
     );
 
@@ -75,18 +55,18 @@ export default function Users({ auth, users, flash, errors }) {
         let { newData, index } = e;
 
         _selectedFields[index] = newData;
-        router.patch(route("users.update", 1), newData);
+        router.patch(route("users.update", e.data.id), newData);
 
         setSelectedFields(_selectedFields);
     };
 
-    const textEditor = (options) => {
+    const textEditor = (rowData) => {
         return (
             <input
                 type="text"
                 className="input input-bordered input-sm"
-                value={options.value}
-                onChange={(e) => options.editorCallback(e.target.value)}
+                value={rowData.value}
+                onChange={(e) => rowData.editorCallback(e.target.value)}
             />
         );
     };
@@ -177,20 +157,37 @@ export default function Users({ auth, users, flash, errors }) {
                                 </div>
                             }
                         >
-                            {columns.map((col) => (
-                                <Column
-                                    editor={(options) => textEditor(options)}
-                                    key={col.field}
-                                    field={col.field}
-                                    header={
-                                        <span className="me-2">
-                                            {col.header}
-                                        </span>
-                                    }
-                                    sortable
-                                />
-                            ))}
                             <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="nim"
+                                field="nim"
+                                header={<span className="me-2">NIM</span>}
+                                sortable
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="name"
+                                field="name"
+                                header={<span className="me-2">Nama</span>}
+                                sortable
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="phone"
+                                field="phone"
+                                header={<span className="me-2">Telepon</span>}
+                                sortable
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="email"
+                                field="email"
+                                header={<span className="me-2">Email</span>}
+                                sortable
+                            />
+                            <Column
+                                key="status"
+                                field="status"
                                 body={statusBadge}
                                 header={<span className="me-2">Status</span>}
                                 sortable

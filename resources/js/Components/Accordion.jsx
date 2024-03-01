@@ -6,17 +6,17 @@ const Accordion = ({ title, answer }) => {
     return (
         <>
             <div
-                className={`px-4 rounded-xl items-center ${
+                className={`px-4 rounded-xl items-center border border-slate-200 ${
                     accordionOpen
                         ? "bg-white-blue py-5"
-                        : "bg-white shadow-lg py-5"
+                        : "bg-white shadow-md py-5"
                 }`}
             >
                 <button
                     className="flex justify-between w-full "
                     onClick={() => setAccordionOpen(!accordionOpen)}
                 >
-                    <div className="text-lg text-slate-900 font-semibold">
+                    <div className="w-11/12 text-lg text-slate-900 font-semibold text-start">
                         {title}
                     </div>
 
@@ -28,7 +28,7 @@ const Accordion = ({ title, answer }) => {
                 </button>
 
                 <div
-                    className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-800 text-base capitalize ${
+                    className={`grid overflow-hidden transition-all duration-300 ease-in-out text-slate-800 text-base ${
                         accordionOpen
                             ? "grid-rows-[1fr] opacity-100 mt-4"
                             : "grid-rows-[0] opacity-0"

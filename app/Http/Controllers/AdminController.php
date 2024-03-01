@@ -25,6 +25,10 @@ class AdminController extends Controller
             }
         }
 
-        return Inertia::render('Admin/Users', compact('users'));
+        return Inertia::render('Admin/ShowUsers', compact('users'));
+    }
+
+    public function showProposals() {
+
     }
 }

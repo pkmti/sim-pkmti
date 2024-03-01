@@ -7,29 +7,21 @@ import { FilterMatchMode } from "primereact/api";
 import {
     ArrowPathIcon,
     CheckIcon,
+    EllipsisHorizontalIcon,
     ExclamationTriangleIcon,
     PaperAirplaneIcon,
     PencilIcon,
+    PhotoIcon,
     TrashIcon,
     XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { Link, router, useForm } from "@inertiajs/react";
 import Toast from "@/Components/Toast";
-import { useIsObjectEmpty, useRandomInt } from "@/utils";
+import { useIsObjectEmpty, useRandomInt, useTruncatedString } from "@/utils";
 
 export default function ShowProposals({ auth, proposals, flash, errors }) {
     const { user } = auth;
 
-    // id
-    // title
-    // team_id
-    // team.team_name
-    // scheme
-    // draft_proposal_url
-    // final_proposal_url
-    // team.assistance_proofs[].proof_url
-    // note
-    // status
     // Select field that want to display
     const [selectedFields, setSelectedFields] = useState(
         proposals.map((proposal) => {
@@ -42,6 +34,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                 draft_proposal_url: proposal.draft_proposal_url,
                 final_proposal_url: proposal.final_proposal_url,
                 note: proposal.note,
+                assistance_proofs: proposal.team.assistance_proofs,
                 status: proposal.status,
             };
         })
@@ -59,7 +52,6 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
             ...prevFilter,
             global: { value, matchMode: FilterMatchMode.CONTAINS },
         }));
-        console.log(filter);
     };
 
     // Edit
@@ -124,6 +116,9 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
             e.preventDefault();
 
             patch(route("proposals.reject", rowData.id));
+            document
+                .getElementById("reject_proposal_modal" + rowData.id)
+                .close();
         };
 
         return (
@@ -177,12 +172,84 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                         <div className="modal-action">
                             <form method="dialog">
                                 <button
-                                    className="btn btn-error"
+                                    className="btn btn-error me-2"
                                     form={"reject_proposal_form" + rowData.id}
                                 >
                                     Tolak Proposal
                                 </button>
                                 <button className="btn">Batal</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+            </>
+        );
+    };
+
+    const displayAssistanceProofs = (rowData) => {
+        return (
+            <>
+                <button
+                    onClick={() =>
+                        document
+                            .getElementById("proofs_modal" + rowData.id)
+                            .showModal()
+                    }
+                    className="btn btn-square btn-sm mx-1"
+                >
+                    <EllipsisHorizontalIcon className="h-4 w-4" />
+                </button>
+                <dialog id={"proofs_modal" + rowData.id} className="modal">
+                    <div className="modal-box text-left">
+                        <h3 className="font-bold text-lg mb-2">
+                            Bukti Asistensi
+                        </h3>
+                        <p className="mb-4">
+                            Daftar bukti asistensi {rowData.team_name}
+                        </p>
+
+                        {rowData.assistance_proofs.map((proof, i) => {
+                            return (
+                                <div
+                                    key={proof.id}
+                                    className="flex items-center mb-4 justify-between mx-1"
+                                >
+                                    <div>
+                                        <p className="font-bold text-xs mb-1">
+                                            BUKTI {i + 1}
+                                        </p>
+                                        <p className="font-bold text-sm">
+                                            Tanggal :&nbsp;
+                                            {proof.assistance_date}
+                                        </p>
+                                        <a
+                                            href={proof.proof_url}
+                                            className="font-bold text-sm"
+                                        >
+                                            URL :&nbsp;
+                                            {useTruncatedString(
+                                                proof.proof_url,
+                                                15
+                                            )}
+                                        </a>
+                                    </div>
+                                    <div
+                                        className="tooltip"
+                                        data-tip="Kunjungi URL"
+                                    >
+                                        <a
+                                            href={proof.proof_url}
+                                            className="btn btn-square "
+                                        >
+                                            <PhotoIcon className="h-6 w-6" />
+                                        </a>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                        <div className="modal-action">
+                            <form method="dialog">
+                                <button className="btn">Tutup</button>
                             </form>
                         </div>
                     </div>
@@ -252,12 +319,12 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 </div>
                             }
                             rowEditorSaveIcon={
-                                <div className="btn btn-success btn-square btn-sm mx-1">
+                                <div className="btn btn-warning btn-square btn-sm mx-1">
                                     <CheckIcon className="h-4 w-4" />
                                 </div>
                             }
                             rowEditorCancelIcon={
-                                <div className="btn btn-error btn-square btn-sm mx-1">
+                                <div className="btn btn-square btn-sm mx-1">
                                     <XMarkIcon className="h-4 w-4" />
                                 </div>
                             }
@@ -266,7 +333,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 editor={(rowData) => textEditor(rowData)}
                                 key="title"
                                 field="title"
-                                header={<span className="me-2">Proposal</span>}
+                                header={<span className="me-2">Judul</span>}
                                 sortable
                             />
                             <Column
@@ -318,8 +385,15 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 editor={(rowData) => textEditor(rowData)}
                                 key="note"
                                 field="note"
-                                header={<span className="me-2">Note</span>}
+                                header={<span className="me-2">Catatan</span>}
                                 sortable
+                            />
+                            <Column
+                                key="assistance_proofs"
+                                field="assistance_proofs"
+                                body={displayAssistanceProofs}
+                                header="Bukti Asistensi"
+                                className="text-center"
                             />
                             <Column
                                 body={statusBadge}
@@ -330,6 +404,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                             />
                             <Column
                                 header={"Setuju"}
+                                key="accept"
                                 body={(rowData) => {
                                     return (
                                         <Link
@@ -346,8 +421,17 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                     );
                                 }}
                             />
-                            <Column header={"Tolak"} body={rejectAction} />
-                            <Column rowEditor={true} header={"Edit"} />
+                            <Column
+                                key="reject"
+                                header={"Tolak"}
+                                body={rejectAction}
+                            />
+                            <Column
+                                rowEditor={true}
+                                header={"Edit"}
+                                className="text-center"
+                                unstyled
+                            />
                             <Column
                                 header={"Hapus"}
                                 body={(rowData) => {

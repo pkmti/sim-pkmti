@@ -26,6 +26,7 @@ export default function Users({ auth, users, flash, errors }) {
                 id: user.id,
                 nim: user.nim,
                 name: user.name,
+                class_of: 20 + user.nim.substring(0, 2),
                 phone: user.phone,
                 line_id: user.line_id,
                 email: user.email,
@@ -147,12 +148,12 @@ export default function Users({ auth, users, flash, errors }) {
                                 </div>
                             }
                             rowEditorSaveIcon={
-                                <div className="btn btn-success btn-square btn-sm mx-1">
+                                <div className="btn btn-warning btn-square btn-sm mx-1">
                                     <CheckIcon className="h-4 w-4" />
                                 </div>
                             }
                             rowEditorCancelIcon={
-                                <div className="btn btn-error btn-square btn-sm mx-1">
+                                <div className="btn btn-square btn-sm mx-1">
                                     <XMarkIcon className="h-4 w-4" />
                                 </div>
                             }
@@ -169,6 +170,12 @@ export default function Users({ auth, users, flash, errors }) {
                                 key="name"
                                 field="name"
                                 header={<span className="me-2">Nama</span>}
+                                sortable
+                            />
+                            <Column
+                                key="class_of"
+                                field="class_of"
+                                header={<span className="me-2">Angkatan</span>}
                                 sortable
                             />
                             <Column

@@ -151,10 +151,19 @@ const useIsObjectEmpty = (object) => {
     return true;
 };
 
+const useTruncatedString = (str, num) => {
+    if (str.length > num) {
+        return str.slice(0, num) + "...";
+    } else {
+        return str;
+    }
+};
+
 export {
     useRandomString,
     useRandomTeamName,
     useParam,
     useRandomInt,
     useIsObjectEmpty,
+    useTruncatedString,
 };

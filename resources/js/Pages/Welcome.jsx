@@ -408,7 +408,7 @@ export default function Welcome({ auth }) {
                                                 <div className="flex flex-row gap-4 items-center">
                                                     <CalendarIcon className="w-4 h-4 text-white" />
                                                     <p className="text-xs font-thin capitalize text-white">
-                                                        Senin, 4 Februari 2024
+                                                       Sabtu, 30 Maret 2024
                                                     </p>
                                                 </div>
 
@@ -452,7 +452,7 @@ export default function Welcome({ auth }) {
                                                 <div className="flex flex-row gap-4 items-center">
                                                     <CalendarIcon className="w-4 h-4 text-white" />
                                                     <p className="text-xs font-thin capitalize text-white">
-                                                        Senin, 4 Februari 2024
+                                                       Sabtu, 30 Maret 2024
                                                     </p>
                                                 </div>
 
@@ -496,7 +496,7 @@ export default function Welcome({ auth }) {
                                                 <div className="flex flex-row gap-4 items-center">
                                                     <CalendarIcon className="w-4 h-4 text-white" />
                                                     <p className="text-xs font-thin capitalize text-white">
-                                                        Senin, 4 Februari 2024
+                                                       Sabtu, 30 Maret 2024
                                                     </p>
                                                 </div>
 

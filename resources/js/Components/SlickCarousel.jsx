@@ -28,7 +28,6 @@ function SlickCarousel({ children }) {
         variableWidth: true,
         autoplay: true,
         autoplaySpeed: 3000,
-        slidesToScroll: 1,
         adaptiveHeight: true,
         pauseOnHover: true,
         focusOnSelect: true,

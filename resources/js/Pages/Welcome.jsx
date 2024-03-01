@@ -1032,7 +1032,7 @@ export default function Welcome({ auth }) {
                         <img
                             src="images/Logo-PKM-TI.png"
                             className="w-32"
-                            alt=""
+                            alt="PKM TI Logo"
                         />
                         <p className="capitalize text-lg font-semibold">
                             program studi sarjana teknologi informasi fakultas
@@ -1041,16 +1041,16 @@ export default function Welcome({ auth }) {
                     </aside>
                     <nav className="col-span-1 md:col-span-2">
                         <h6 className="footer-title mb-0">Alamat</h6>
-                        <a className="link link-hover mb-4">
+                        <a className="link link-hover mb-4" href="https://maps.app.goo.gl/BxpnRYfHvLDrVYmZ8" target="_blank" rel="noopener noreferrer">
                             Jl. Kampus Udayana Bukit Jimbaran, Jimbaran, Kuta
                             Selatan, Kabupaten Badung, Bali 80361
                         </a>
 
                         <h6 className="footer-title mb-0">Telepon</h6>
-                        <a className="link link-hover mb-4">(0361) 701806</a>
+                        <a className="link link-hover mb-4" href="tel:0361701806">(0361) 701806</a>
 
                         <h6 className="footer-title mb-0">Email</h6>
-                        <a className="link link-hover mb-4">hmti@unud.ac.id</a>
+                        <a className="link link-hover mb-4" href="mailto:hmti@unud.ac.id">hmti@unud.ac.id</a>
                     </nav>
                     <nav className="col-span-1 md:col-span-2">
                         <h6 className="footer-title mb-0">Terkait</h6>

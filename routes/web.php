@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AssistanceProofController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\UserController;
 use App\Jobs\SendEmailJob;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
@@ -97,19 +99,17 @@ Route::middleware('auth')->group(function () {
         Route::patch('/proposals/{proposalId}/reject', [ProposalController::class, 'reject'])->name('proposals.reject');
     });
 
+    Route::middleware(['role:admin'])->resource('users', UserController::class);
 });
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Admin/Dashboard');
     })->name('admin.dashboard');
-    Route::get('/participants', function () {
-        return Inertia::render('Admin/Participants');
-    })->name('admin.participants');
-    Route::get('/teams', [TeamController::class, 'showTeams'])->name('admin.teams');
-    Route::get('/proposals', function () {
-        return Inertia::render('Admin/Proposals');
-    })->name('admin.proposals');
+    Route::get('/users', [AdminController::class, 'showUsers'])->name('admin.users');
+    Route::get('/teams', [AdminController::class, 'showTeams'])->name('admin.teams');
+    Route::get('/proposals', [AdminController::class, 'showProposals'])->name('admin.proposals');
+    Route::get('/assistance-proofs', [AdminController::class, 'showAssistanceProofs'])->name('admin.assistance-proofs');
 });
 
 require __DIR__ . '/auth.php';

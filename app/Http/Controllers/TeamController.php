@@ -98,7 +98,6 @@ class TeamController extends Controller
     {
         $pastTeam = Team::with('members')->find($teamId);
         $teamMembersCount = User::where('team_id', $teamId)->count();
-        $pastTeam = Team::with('members')->find($teamId);
 
         if ($teamMembersCount == 1) {
             // logic if he/she was alone

@@ -16,8 +16,8 @@ export default function AdminLayout({ user, title, children }) {
         },
         {
             icon: <UserIcon className="h-6 w-6" />,
-            text: "Partisipan",
-            link: route("admin.participants"),
+            text: "Pengguna",
+            link: route("admin.users"),
         },
         {
             icon: <UserGroupIcon className="h-6 w-6" />,

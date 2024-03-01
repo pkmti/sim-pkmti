@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::middleware(['role:not-teamed'])->group(function () {
+    Route::middleware('has.no-team')->group(function () {
         Route::get('/teams', fn () => Inertia::render('Teams/NotTeamed'))->name('teams.not-teamed');
         Route::post('/teams', [TeamController::class, 'create'])->name('teams.create');
         Route::get('/teams/{token}/join', [TeamController::class, 'join'])->name('teams.join');
@@ -80,14 +80,16 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['role:admin,member'])->prefix('/teams/{teamId}')->group(function () {
         Route::get('/proposals', [ProposalController::class, 'show'])->name('proposals.show');
-        Route::post('/proposals', [ProposalController::class, 'create'])->middleware('has-no-proposal')->name('proposals.create');
+        Route::post('/proposals', [ProposalController::class, 'create'])->middleware('has.no-proposal')->name('proposals.create');
         Route::patch('/proposals', [ProposalController::class, 'update'])->name('proposals.update');
         Route::delete('/proposals', [ProposalController::class, 'destroy'])->name('proposals.destroy');
 
         Route::get('/assistance-proofs', [AssistanceProofController::class, 'show'])->name('assistance-proofs.show');
-        Route::post('/assistance-proofs', [AssistanceProofController::class, 'add'])->name('assistance-proofs.add');
-        Route::patch('/assistance-proofs/{id}', [AssistanceProofController::class, 'update'])->name('assistance-proofs.update');
-        Route::delete('/assistance-proofs/{id}', [AssistanceProofController::class, 'destroy'])->name('assistance-proofs.destroy');
+        Route::middleware(['has.proposal', 'has.lecturer'])->group(function () {
+            Route::post('/assistance-proofs', [AssistanceProofController::class, 'add'])->name('assistance-proofs.add');
+            Route::patch('/assistance-proofs/{id}', [AssistanceProofController::class, 'update'])->name('assistance-proofs.update');
+            Route::delete('/assistance-proofs/{id}', [AssistanceProofController::class, 'destroy'])->name('assistance-proofs.destroy');
+        });
     });
 
     Route::middleware(['role:admin,lecturer'])->group(function () {

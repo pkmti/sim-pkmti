@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureTeamHaveNoProposal
+class EnsureTeamHasNoProposal
 {
     /**
      * Handle an incoming request.

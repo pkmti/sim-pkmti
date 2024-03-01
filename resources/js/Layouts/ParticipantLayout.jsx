@@ -1,6 +1,7 @@
 import Sidebar from "@/Components/Sidebar";
 import { useParam } from "@/utils";
 import {
+    CameraIcon,
     DocumentTextIcon,
     HomeIcon,
     UserGroupIcon,
@@ -16,17 +17,31 @@ export default function ParticipantLayout({ user, title, children }) {
         },
         {
             icon: <UserGroupIcon className="h-6 w-6" />,
-            text: "Tim Saya",
-            link: route("teams.myTeam"),
-        },
-        {
-            icon: <DocumentTextIcon className="h-6 w-6" />,
-            text: "Proposal PKM",
-            link: user.team_id
-                ? route("proposals.show", user.team_id)
-                : route("teams.myTeam"),
+            text: "Gabung Tim",
+            link: route("teams.not-teamed"),
         },
     ];
+
+    if (user.team_id) {
+        navigations.pop();
+        navigations.push(
+            {
+                icon: <UserGroupIcon className="h-6 w-6" />,
+                text: "Tim Saya",
+                link: route("teams.show", user.team_id),
+            },
+            {
+                icon: <DocumentTextIcon className="h-6 w-6" />,
+                text: "Proposal PKM",
+                link: route("proposals.show", user.team_id),
+            },
+            {
+                icon: <CameraIcon className="h-6 w-6" />,
+                text: "Bukti Asistensi",
+                link: route("assistance-proofs.show", user.team_id),
+            }
+        );
+    }
 
     return (
         <>

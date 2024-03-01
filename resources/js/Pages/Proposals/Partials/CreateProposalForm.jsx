@@ -16,7 +16,7 @@ export default function CreateProposalForm({ user }) {
         post(route("proposals.create", useParam(1)));
     };
 
-    const schemes = ["PKM-GFT", "PKM-K", "PKM-KCaa", "PKM-PI", "PKM-PM"];
+    const schemes = ["PKM-GFT", "PKM-K", "PKM-KC", "PKM-PI", "PKM-PM"];
 
     return (
         <div className="lg:w-1/2">
@@ -50,12 +50,12 @@ export default function CreateProposalForm({ user }) {
                     <select
                         id="scheme"
                         name="scheme"
-                        className="select select-bordered w-full"
+                        className="select select-bordered w-full text-base"
                         value={data.scheme}
                         onChange={(e) => setData("scheme", e.target.value)}
                     >
                         <option value="" disabled>
-                            Pilih skema PKM ...
+                            Pilih skema PKM
                         </option>
                         {schemes.map((scheme, i) => (
                             <option key={i} value={scheme}>

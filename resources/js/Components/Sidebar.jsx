@@ -54,10 +54,12 @@ export default function Sidebar({ user, navigations, children }) {
                         className="drawer-overlay"
                     ></label>
                     <div className="menu p-4 w-60 min-h-full bg-base-200 text-base-content">
-                        <img
-                            src="/images/logo.png"
-                            className="h-32 w-32 mx-auto my-4"
-                        />
+                        <Link href={route("welcome")} as="button">
+                            <img
+                                src="/images/logo.png"
+                                className="h-32 w-32 mx-auto my-4"
+                            />
+                        </Link>
 
                         <ul className="font-bold">
                             {navigations.map((navigation, i) => (

@@ -13,6 +13,7 @@ class Team extends Model
         'team_name',
         'token',
         'leader_id', 
+        'lecturer_id', 
     ];
 
     public function members()
@@ -28,6 +29,11 @@ class Team extends Model
     public function proposal()
     {
         return $this->hasOne(Proposal::class);
+    }
+
+    public function lecturer()  
+    {
+        return $this->belongsTo(Lecturer::class);
     }
 
     public function assistanceProofs()

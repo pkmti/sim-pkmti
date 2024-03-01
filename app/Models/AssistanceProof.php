@@ -11,13 +11,14 @@ class AssistanceProof extends Model
 
     protected $protected = [];
 
+    protected $fillable = [
+        'proof_url',
+        'team_id',
+        'assistance_date',
+    ];
+
     public function team()
     {
         return $this->belongsTo(Team::class);
-    }
-
-    public function lecturer()
-    {
-        return $this->belongsTo(Lecturer::class);
     }
 }

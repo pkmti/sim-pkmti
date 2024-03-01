@@ -1,17 +1,30 @@
 import { Link } from "@inertiajs/react";
 import DarkMode from "./DarkMode";
 import { Bars3Icon,  XMarkIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function NavBar(auth){
     const [openNav, setOpenNav] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
     function toggleNav(){
         setOpenNav(!openNav);
     }
 
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            scroll = window.scrollY;
+            if(scroll > 30 ){
+                setScrolled(true);
+            } else{
+                setScrolled(false)
+            }
+        })
+    }, [scrolled]);
+
+
     return(
-        <nav className="navbar bg-base-100 shadow-md p-0 lg:px-12 z-10 fixed top-0 flex-col items-start lg:items-center lg:flex-row">
+        <nav className={`navbar bg-base-100 p-0 lg:px-12 z-10 fixed top-0 flex-col items-start lg:items-center lg:flex-row ${scrolled ? 'shadow-md' : 'shadow-none'} duration-300`}>
             <div className="flex justify-between w-full lg:navbar-start px-6 lg:px-0 py-2 sm:px-10 bg-base-100">
                 <a href='#' className="cursor-pointer w-14">
                     <img src="/images/Logo-PKM-TI.png?v=1.0" alt="w-full" />

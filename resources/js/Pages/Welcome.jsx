@@ -1,7 +1,7 @@
 import { Link, Head } from '@inertiajs/react';
 // import { useEffect } from 'react';
 import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect} from "react";
 import DarkMode from '@/Components/darkMode';
 import { BookOpenIcon } from "@heroicons/react/24/outline";
 import {
@@ -18,189 +18,222 @@ import SlickCarousel from '@/Components/SlickCarousel';
 export default function Welcome({ auth }) {
     const controls = useAnimation();
 
-    useEffect(() => {
-        controls.start({
-            x: 0,
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.8 }
-        });
-    }, [controls]);
+    const variantFade = (x,y) => {
+        return{
+            visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.8 } },
+            hidden: { opacity: 0, x:x, y: y, transition: {duration: 0.5}}
+        }
+    };
+
+    const variantZoom = {
+            visible: { opacity: 1, scale:1, transition: { duration: 0.8 } },
+            hidden: { opacity: 0, scale:0.5, transition: {duration: 0.5}}
+        };
+
     return (
         <>
             <Head title="PKM TI" />
             <NavBar />
 
-            <div className="flex flex-col pt-28 overflow-y-hidden">
+            <div className="flex flex-col pt-28 overflow-x-hidden">
                 <main className='px-6 sm:px-0'>
 
                     <div className='relative w-full'>
 
                         <div className='flex flex-col sm:flex-row gap-6 items-center justify-between sm:px-12 w-full'>
                             <motion.div
-                                initial={{ x: -100, opacity: 0 }}
-                                animate={controls}
-                                className='relative w-full'
-                            >
-                                <div className='flex flex-col w-full'>
-                                    <span className='uppercase font-medium sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
-                                    <h3 className='capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
-                                    <p className='text-sm sm:text-base mt-3 font-light capitalize w-11/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
-                                    <div className='mt-3 w-64 none'>
-                                        <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
-                                    </div>
-                                </div>
-
-                            </motion.div>
-
-
-                            <motion.div
-                                initial={{ x: 100, opacity: 0 }}
-                                animate={controls}
-                                className='relative w-full'
-                            >
-                                <div className="hidden justify-center items-center w-full h-full lg:flex">
-                                    <div className="relative min-h-full">
-                                        <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
-                                        <img src="images/gedung-TI.jpg" className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
-                                    </div>
+                            // 
+                            whileInView="visible"
+                            variants={variantFade(-100, 0)}
+                            initial="hidden"
+                            animate={controls}
+                            className='flex flex-col w-full'>
+                                <span className='uppercase font-medium sm:text-lg mb-1 text-blue-lagoon'>Dunia Baru Bersama PKM</span>
+                                <h3 className='capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full'>Berkarya Tanpa Batas Selamat Datang di dunia PKM</h3>
+                                <p className='text-sm sm:text-base mt-3 font-light capitalize w-11/12'>Selamat datang di Pangkalan Kreativitas Mahasiswa (PKM), tempat di mana inovasi bertemu dengan inspirasi. Jelajahi potensi tak terbatas ide-ide kreatif, riset terdepan, dan solusi revolusioner. Bersama PKM, kita bukan hanya mengamati perubahan, tapi menjadi agen perubahannya.</p>
+                                <div className='mt-3 w-64 none'>
+                                    <button className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"> <BookOpenIcon className='w-5 h-5' /> Buku Panduan</button>
                                 </div>
                             </motion.div>
-
-
+                            <motion.div 
+                            whileInView="visible"
+                            variants={variantFade(100, 0)}
+                            initial="hidden"
+                            animate={controls}
+                            className="hidden justify-center items-center w-full h-full lg:flex">
+                                <div className="relative min-h-full">
+                                    <div className="transform rotate-y-45 translate-x-7 rounded-bl-3xl rounded-tr-3xl translate-y-8 absolute inset-0 bg-primary md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]"></div>
+                                    <img src="images/gedung-TI.jpg" className="object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 md:w-[350px] md:h-[350px] lg:w-[450px] lg:h-[450px]" alt="Gedung Teknologi Informasi" />
+                                </div>
+                            </motion.div>
                         </div>
                     </div>
 
                     {/* important date section */}
                     <div className='flex flex-row w-full justify-center items-center mt-16 sm:mt-24 sm:px-12'>
-                        <motion.div
-                            initial={{ y: -100, x: 0, opacity: 0 }}
-                            animate={controls}
-                            className='relative w-full'
-                        >
-                            <div className='flex flex-col md:flex-row gap-4 justify-between items-start w-full md:w-11/12 bg-base-100 shadow-lg border border-base-300 px-6 py-6 rounded-lg'>
-                                <div className='flex flex-row gap-4 sm:pr-10'>
-                                    <BookmarkSquareIcon className='w-6 h-6 font-extrabold' />
-                                    <div className='block'>
-                                        <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
-                                            Agenda Acara
-                                        </span>
+                        <motion.div 
+                        whileInView="visible"
+                        variants={variantFade(0, 100)}
+                        initial="hidden"
+                        animate={controls}
+                        className='flex flex-col md:flex-row gap-4 justify-between items-start w-full md:w-11/12 bg-base-100 shadow-lg border border-base-300 px-6 py-6 rounded-lg'>
+                            <div className='flex flex-row gap-4 sm:pr-10'>
+                                <BookmarkSquareIcon className='w-6 h-6 font-extrabold' />
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Agenda Acara
+                                    </span>
 
-                                        <p className='text-base md:text-sm font-light'>
-                                            Pembukaan PKM-TI 2024
-                                        </p>
-                                    </div>
+                                    <p className='text-base md:text-sm font-light'>
+                                        Pembukaan PKM-TI 2024
+                                    </p>
                                 </div>
+                            </div>
 
-                                <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
 
-                                <div className='flex flex-row gap-4'>
-                                    <CalendarDaysIcon className='w-6 h-6 font-extrabold' />
-                                    <div className='block'>
-                                        <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
-                                            Date
-                                        </span>
+                            <div className='flex flex-row gap-4'>
+                                <CalendarDaysIcon className='w-6 h-6 font-extrabold' />
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Date
+                                    </span>
 
-                                        <p className='text-base md:text-sm font-light'>
-                                            Minggu, 4 Februari 2024
-                                        </p>
-                                    </div>
+                                    <p className='text-base md:text-sm font-light'>
+                                        Minggu, 4 Februari 2024
+                                    </p>
                                 </div>
+                            </div>
 
-                                <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
+                            <div className="divider divider-horizontal before:bg-black after:bg-black"></div>
 
 
-                                <div className='flex flex-row gap-4'>
-                                    <MapPinIcon className='w-6 h-6 font-extrabold' />
+                            <div className='flex flex-row gap-4'>
+                                <MapPinIcon className='w-6 h-6 font-extrabold' />
 
-                                    <div className='block'>
-                                        <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
-                                            Lokasi Acara
-                                        </span>
+                                <div className='block'>
+                                    <span className='capitalize text-gray-400 font-normal text-sm md:text-base'>
+                                        Lokasi Acara
+                                    </span>
 
-                                        <p className='text-base md:text-sm font-light'>
-                                            Gedung Teknologi Informasi Fakultas Teknik Universitas Udayana
-                                        </p>
-                                    </div>
+                                    <p className='text-base md:text-sm font-light'>
+                                        Gedung Teknologi Informasi Fakultas Teknik Universitas Udayana
+                                    </p>
                                 </div>
                             </div>
                         </motion.div>
-
                     </div>
                     {/* end imporatant date section */}
 
                     {/* section about us */}
                     <section id="about-us" className="pt-10 md:pt-28 sm:pt-32 px-0 sm:px-10 flex flex-col lg:flex-row justify-center items-center md:space-x-0">
-                        <motion.div
-                            initial={{ y: -100, x: 0, opacity: 0 }}
-                            animate={controls}
-                            className='relative w-full'
-                        >
-                            <div className="relative h-fit items-center w-full lg:w-1/2">
-                                <div class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
-                                <img src="images/gedung-TI.jpg" class="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
-                            </div>
+                        <motion.div 
+                        whileInView="visible"
+                        variants={variantFade(-100, 0)}
+                        initial="hidden"
+                        animate={controls}
+                        className="relative h-fit items-center w-full lg:w-1/2">
+                            <div className="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] transform -translate-x-8 translate-y-8 rounded-bl-3xl rounded-tr-3xl absolute inset-0 bg-primary"></div>
+                            <img src="images/gedung-TI.jpg" className="mx-auto hidden lg:block  lg:w-[450px] lg:h-[450px] object-cover hover:brightness-75 rounded-bl-3xl rounded-tr-3xl shadow-lg transform rotate-y-2 ease-in-out duration-300" alt="Gedung Teknologi Informasi" />
                         </motion.div>
-
                         <motion.div
-                            initial={{ y: -100, x: 0, opacity: 0 }}
-                            animate={controls}
-                            className='relative w-full'
-                        >
-                            <div className="w-full ml-0 mt-14 sm:mt-0 lg:w-1/2">
-                                <div className="flex items-center space-x-2 mb-4">
-                                    <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
-                                    <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
-                                    <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
-                                </div>
-                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
-                                <p className='text-sm sm:text-base'>
-                                    <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
-                                    Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas.
-                                </p>
-                                <a href="#pkm-topik" className="flex mt-4 text-sm text-slate-500 cursor-pointer">
-                                    <ArrowLongDownIcon class="w-6 h-6 mr-3 animate-bounce" />
-                                    scroll down
-                                </a>
+                        whileInView="visible"
+                        variants={variantFade(100, 0)}
+                        initial="hidden"
+                        animate={controls}
+                        className="w-full ml-0 mt-14 sm:mt-0 lg:w-1/2">
+                            <div className="flex items-center space-x-2 mb-4">
+                                <span className="inline h-1 w-32 bg-secondary rounded-full"></span>
+                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                <span className="inline h-1 w-52 bg-secondary rounded-full"></span>
                             </div>
+                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-2 leading-17">Semangat Berkarya Menciptakan Ide-ide Kreatif Untuk Kemajuan Indonesia</h2>
+                            <p className='text-sm sm:text-base'>
+                                <span className="block font-semibold leading-8">apa sih itu PKM? Emang Penting?</span>
+                                Pelatihan PKM TI 2023 adalah salah satu program kerja Himpunan MahasiswaTeknologi Informasi(HMTI) yang bertujuan untuk memberikan wadah bagi mahasiswa untukmengetahui dan menambah pengetahuan mengenai PKM. Pelatihan PKM tahun 2023mengusung tema “Gelorakan Mahasiswa Teknologi Informasi yang Aktif, Kreatif danInovatif”. Dengan adanya kegiatan ini diharapkan mahasiswa Teknologi Informasidapat mengembangkan kompetensi dan semangat berkarya untuk menciptakan ide-idekreatif kemudian nantinya dapat disusun menjadi proposal PKM yang dapatbermanfaat bagi masyarakat luas.
+                            </p>
+                            <a href="#pkm-topik" className="flex mt-4 text-sm text-slate-500 cursor-pointer">
+                                <ArrowLongDownIcon className="w-6 h-6 mr-3 animate-bounce" />
+                                scroll down
+                            </a>
                         </motion.div>
-
                     </section>
                     {/* end about us section */}
 
                     {/* pkm topic section */}
                     <section id="pkm-topik" className="p-0 sm:p-10 mt-20">
                         <div className="relative">
-                            <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl flex flex-col justify-start items-center overflow-hidden p-6 sm:p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
-                                <div className="flex items-center space-x-2 mb-2">
-                                    <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
-                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                                    <p className="uppercase font-semibold text-center text-white text-sm sm:text-base px-6">Eksplorasi topik pkm</p>
-                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                                    <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
-                                </div>
-                                <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">Kembangkan Ide Cemerlang Anda</h2>
-                                <p className="text-sm sm:text-base text-slate-200 text-center">
-                                    Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
-                                </p>
+                            <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl overflow-hidden p-6 sm:p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className='flex flex-col justify-start items-center'
+                                >
+                                    <div className="flex items-center space-x-2 mb-2">
+                                        <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
+                                        <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                        <p className="uppercase font-semibold text-center text-white text-sm sm:text-base px-6">Eksplorasi topik pkm</p>
+                                        <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                        <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
+                                    </div>
+                                    <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl  font-bold text-white mb-2 text-center">Kembangkan Ide Cemerlang Anda</h2>
+                                    <p className="text-sm sm:text-base text-slate-200 text-center">
+                                        Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
+                                    </p>
+                                </motion.div>
                             </div>
                             <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col md:flex-row justify-center items-center space-y-6 md:space-x-4 md:space-y-0">
-                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
                                     <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
-                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
-                                </div>
-                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
-                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
-                                </div>
-                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
-                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
-                                </div>
-                                <div className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
-                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-KC</h3>
-                                    <p className="text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
-                                </div>
+                                    <p className="line-clamp-[10] text-center text-slate-500">Program Kreativitas Mahasiswa-Karsa Cipta (PKM-KC) merupakan program penciptaan yang didasari atas karsa dan nalar mahasiswa, bersifat konstruktif serta menghasilkan suatu sistem, desain, model/barang atau prototipe dan sejenisnya.</p>
+                                </motion.div>
+
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-K</h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">Program Kreativitas Mahasiswa Kewirausahaan (PKM-K) merupakan program kreativitas mahasiswa dalam menciptakan aktivitas usaha. Dalam PKM-K, tim mahasiswa berlatih membuat kreativitas produk usaha yang dibutuhkan masyarakat (pasar). Melalui program PKM-K, mahasiswa memiliki kesempatan yang luas untuk merealisasikan ide kreatif produk (barang/jasa), berinovasi menciptakan produk baru, serta meningkatkan kompetensi, wawasan dan pengalaman dalam berwirausaha</p>
+                                </motion.div>
+
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-PM</h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">PKM-PM adalah program penerapan ilmu pengetahuan, teknologi dan seni yang berorientasi non profit dalam upaya untuk membantu mengakhiri kemiskinan, mengurangi kesenjangan dan melindungi lingkungan.</p>
+                                </motion.div>
+
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-PI</h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">Program Kreativitas Mahasiswa Penerapan-IPTEK (PKM-PI) termasuk kedalam salah satu kelompok PKM 5 bidang yang menerapkan ilmu pengetahuan dan teknologi untuk menjadi solusi tepat dalam menyelesaikan permasalahan yang ada di masyarakat.</p>
+                                </motion.div>
+
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="block w-11/12 md:max-w-[250px] border border-[1] border-base-300 text-center p-4 bg-base-100 rounded-lg  shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <h3 className="text-2xl text-primary font-bold mb-2">PKM-GFT</h3>
+                                    <p className="line-clamp-[10] text-center text-slate-500">PKM Gagasan Futuristik Tertulis (PKM-GFT) merupakan gagasan kreatif yang futuristik sebagai respons intelektual atas persoalan aktual yang dihadapi bangsa. Gagasan tersebut tidak terikat bidang ilmu, bersifat unik dan bermanfaat, sehingga kampus yang diidealisasikan sebagai pusat solusi dapat menjadi kenyataan.</p>
+                                </motion.div>
                             </div>
                         </div>
                     </section>
@@ -296,32 +329,50 @@ export default function Welcome({ auth }) {
 
                         </SlickCarousel>
 
-                        <div className='flex flex-col w-full lg:w-1/2'>
+                        <motion.div
+                        whileInView="visible"
+                        variants={variantFade(100, 0)}
+                        initial="hidden"
+                        animate={controls}
+                        className='flex flex-col w-full lg:w-1/2'>
                             <span className='uppercase text-sm md:text-base text-primary font-medium mb-1'>Pembicara</span>
                             <h3 className='capitalize text-3xl md:text-4xl lg:text-5xl font-extrabold text-secondary leading-12 md:leading-16'>Bertemu dengan mereka yang sudah profesional</h3>
                             <p className='text-sm sm:text-base font-light text-gray-500 mt-3 capitalize'>
                                 Selamatkan tempat di barisan terdepan karena kami mempersembahkan Narasumber yang luar biasa di acara spesial PKM kami! Bersiaplah untuk terinspirasi, berinteraksi, dan mengambil momentum positif dari pandangan hidup yang penuh semangat. Tunggu apa lagi? Bergabunglah dengan kami untuk pengalaman yang mengesankan! 🚀
                             </p>
-                        </div>
+                        </motion.div>
                     </section>
 
                     {/* Section Roundown Acara */}
-                    <section id='roundown-acara' className='flex flex-col justify-start items-center sm:px-12 mt-24'>
-                        <div className="flex items-center space-x-2 mb-2">
-                            <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
-                            <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
-                            <p className="uppercase font-semibold text-blue-lagoon px-6 text-center text-sm sm:text-base">Roundown Acara</p>
-                            <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
-                            <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
-                        </div>
-                        <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl text-center font-bold text-secondary mb-2">Jangan Lewatkan Kesempatan Ini</h2>
-                        <p className="text-center text-sm sm:text-base">
-                            Setiap detik adalah kesempatan untuk belajar, berbagi, dan terhubung dengan komunitas kreatif. Catat tanggalnya dan pastikan Anda tidak melewatkan momen magis di PKM Wonderland. Ayo, mari jadwalkan momen berharga kita bersama!
-                        </p>
+                    <section id='roundown-acara' className='block sm:px-12 mt-24'>
+                        <motion.div
+                        whileInView="visible"
+                        variants={variantZoom}
+                        initial="hidden"
+                        animate={controls}
+                        className='flex flex-col items-center'
+                        >
+                            <div className="flex items-center space-x-2 mb-2">
+                                <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
+                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                <p className="uppercase font-semibold text-blue-lagoon px-6 text-center text-sm sm:text-base">Roundown Acara</p>
+                                <span className="inline h-2 w-2 bg-secondary rounded-full"></span>
+                                <span className="inline h-1 w-16 sm:w-32 bg-secondary rounded-full"></span>
+                            </div>
+                            <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl text-center font-bold text-secondary mb-2">Jangan Lewatkan Kesempatan Ini</h2>
+                            <p className="text-center text-sm sm:text-base">
+                                Setiap detik adalah kesempatan untuk belajar, berbagi, dan terhubung dengan komunitas kreatif. Catat tanggalnya dan pastikan Anda tidak melewatkan momen magis di PKM Wonderland. Ayo, mari jadwalkan momen berharga kita bersama!
+                            </p>
+                        </motion.div>
 
-                        <div className="overflow-x-auto w-full mt-6">
+                        <motion.div
+                        whileInView="visible"
+                        variants={variantZoom}
+                        initial="hidden"
+                        animate={controls}
+                        className="overflow-x-auto w-full mt-6">
                             <table className="table overflow-hidden">
-                                {/* head */}
+                                {/* head table */}
                                 <thead>
                                     <tr className='bg-white-blue text-base uppercase text-slate-600'>
                                         <th>Waktu</th>
@@ -368,29 +419,37 @@ export default function Welcome({ auth }) {
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                        </motion.div>
                     </section>
 
                     {/* Suhu section */}
                     <section className='flex flex-col w-full py-4 mt-24 sm:px-12'>
-                        <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl flex flex-col justify-start items-center overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
-                            <div className="flex items-center space-x-2 mb-2">
-                                <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
-                                <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                                <p className="uppercase font-semibold text-sm sm:text-base text-center text-white px-6">saatnya kamu buktikan</p>
-                                <span className="inline h-2 w-2 bg-white rounded-full"></span>
-                                <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
-                            </div>
-                            <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-2">Bergabung Dengan Mereka</h2>
-                            <p className="text-slate-200 text-center text-sm sm:text-base">
-                                Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
-                            </p>
+                        <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                            <motion.div
+                            whileInView="visible"
+                            variants={variantZoom}
+                            initial="hidden"
+                            animate={controls}
+                            className='flex flex-col justify-start items-center'
+                            >
+                                <div className="flex items-center space-x-2 mb-2">
+                                    <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
+                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                    <p className="uppercase font-semibold text-sm sm:text-base text-center text-white px-6">saatnya kamu buktikan</p>
+                                    <span className="inline h-2 w-2 bg-white rounded-full"></span>
+                                    <span className="inline h-1 w-16 sm:w-32 bg-white rounded-full"></span>
+                                </div>
+                                <h2 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center mb-2">Bergabung Dengan Mereka</h2>
+                                <p className="text-slate-200 text-center text-sm sm:text-base">
+                                    Jelajahi kategori-kategori sub topik PKM kami dan temukan passion yang menggetarkan hati Anda. Mulai dari keberlanjutan hingga teknologi, kesehatan hingga seni, kami mengundang Anda untuk meresapi setiap sub topik dengan penuh antusiasme. Temukan tempat Anda di dunia PKM, di mana setiap kategori adalah panggung bagi idealisasi dan perubahan.
+                                </p>
+                            </motion.div>
                         </div>
 
                         <div className="relative -mt-24 sm:-mt-32 z-[5] flex justify-center items-center">
                             <CustomCarousel className="flex justify-center items-center text-center space-x-4">
                                 <div className='relative flex justify-center items-center pb-5'>
-                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-3xl transition-shadow duration-300">
                                         <div className='w-full flex justify-center items-center mb-4'>
                                             <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' alt="Bayu" />
                                         </div>
@@ -401,7 +460,7 @@ export default function Welcome({ auth }) {
                                 </div>
 
                                 <div className='relative flex justify-center items-center pb-5'>
-                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/70 backdrop-blur-md backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                                         <div className='w-full flex justify-center items-center mb-4'>
                                             <img src='images/emot-bayu.png?v=1' className='max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary' alt="Bayu" />
                                         </div>
@@ -413,32 +472,42 @@ export default function Welcome({ auth }) {
                             </CustomCarousel>
                         </div>
 
-                        {/* <div className='flex flex-row gap-4 flex-shrink-0 mt-5 items-center justify-center'>
-                            <button className="btn btn-sm shadow-2xl rounded-lg" onClick={handlePrevClick}><ArrowLongLeftIcon className='w-6 h-6 font-black' /></button>
-                            <button className="shadow-xl rounded-md px-3 py-2" onClick={handleNextClick}><ArrowLongRightIcon className='w-6 h-6 font-black' /></button>
-                        </div> */}
-
                         {/* FAQ section */}
                         <section id='FaQ' className='block w-full mt-20 py-16'>
                             <div className='flex flex-col w-full'>
-                                <div className='px-0 md:px-8 lg:px-10'>
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantFade(-100, 0)}
+                                initial="hidden"
+                                animate={controls}
+                                className='px-0 md:px-8 lg:px-10'>
                                     <span className='uppercase text-sm font-semibold md:text-base text-primary'>Malu Bertanya nanti gatau</span>
                                     <h3 className='capitalize font-black text-4xl md:text-5xl mt-2 text-secondary'>Frequently Asked Questions</h3>
                                     <p className='capitalize text-slate-500 mt-2 w-4/5 text-sm sm:text-base'>Pertanyaan umum mengenai Kelompok Studi Tech Artisan. Jika masih ada yang ingin ditanyakan, kalian bisa hubungi kontak dibawah ini.</p>
-                                </div>
+                                </motion.div>
                             </div>
 
                             <div className='flex flex-col-reverse md:flex-row w-full mt-10 justify-between items-center'>
-                                <div className='mt-5 items-start'>
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className='mt-5 items-start'>
                                     <img src='images/image-FAQ.png?version=1.0' className='max-h-[450px]' />
-                                </div>
+                                </motion.div>
 
-                                <div className='md:w-6/12 flex flex-col gap-4'>
+                                <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className='md:w-6/12 flex flex-col gap-4'>
                                     <Accordion title="Siapa yang boleh ikut PKM TI?" answer="Khusus untuk mahasiswa Fakultas Teknik Universitas Udayana saja yang boleh bergabung dalam Kelompok Studi TecArt" />
                                     <Accordion title="Emang Wajib Kak?" answer="Pakek nanya wajib lah 🥶" />
                                     <Accordion title="Kalo menang dapet PC Gaming gak?" answer="Mang eak Dapet hadiah Pc 😊🥶" />
                                     <Accordion title="Kalo pake jasa joki gapapa kan kak?" answer="yang bener aje rugi dong !" />
-                                </div>
+                                </motion.div>
                             </div>
 
                         </section>
@@ -449,15 +518,27 @@ export default function Welcome({ auth }) {
                     {/* Contact section */}
                     <section id='contact-us' className='min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0'>
                         <div className='mt-4 block justify-center  w-full text-center items-center'>
-                            <h3 className='capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
+                            <motion.div
+                            whileInView="visible"
+                            variants={variantZoom}
+                            initial="hidden"
+                            animate={controls}
+                            >
+                                <h3 className='capitalize text-4xl md:text-5xl font-black flex gap-2 md:gap-4 justify-center flex-row items-center'><span className='text-secondary'>Find More</span> <span className='text-blue-lagoon'>about us</span></h3>
+                                
+                                <div className='flex w-full items-center text-center justify-center'>
+                                    <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>
+                                        Dapatkan info terkini tentang kegiatan yang diselenggarakan Technology Artisan pada Official Accounts Technology Artisan. Ikuti terus perkembangannya !
+                                    </p>
+                                </div>
+                            </motion.div>
 
-                            <div className='flex w-full items-center text-center justify-center'>
-                                <p className='font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 '>
-                                    Dapatkan info terkini tentang kegiatan yang diselenggarakan Technology Artisan pada Official Accounts Technology Artisan. Ikuti terus perkembangannya !
-                                </p>
-                            </div>
-
-                            <div className='flex flex-wrap md:flex-row justify-center items-center relative w-full gap-4 mt-5'>
+                            <motion.div
+                            whileInView="visible"
+                            variants={variantZoom}
+                            initial="hidden"
+                            animate={controls}
+                            className='flex flex-wrap md:flex-row justify-center items-center relative w-full gap-4 mt-5'>
                                 <button className='bg-white-blue rounded-lg px-4 py-2 flex flex-row gap-3 items-center'>
                                     <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary' />
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
@@ -477,11 +558,16 @@ export default function Welcome({ auth }) {
                                     <ChatBubbleLeftEllipsisIcon className='w-5 h-5 text-primary' />
                                     <span className='text-linear-blue lowercase font-medium text-sm'>hmti.udayana</span>
                                 </button>
-                            </div>
+                            </motion.div>
 
-                            <div>
+                            <motion.div
+                            whileInView="visible"
+                            variants={variantZoom}
+                            initial="hidden"
+                            animate={controls}
+                            >
                                 <img src="images/contact-us-bro.png" className='mx-auto max-h-[450px] mt-10' alt="contact us illustration" />
-                            </div>
+                            </motion.div>
                         </div>
                     </section>
 
@@ -490,7 +576,7 @@ export default function Welcome({ auth }) {
                 <footer className="footer p-12 bg-base-200 text-base-content grid-cols-2 md:grid-cols-6 gap-x-20">
                     <aside className='col-span-2 w-4/5 md:w-full'>
                         <img src="images/Logo-PKM-TI.png" className='w-32' alt="" />
-                        <p className='capitalize text-lg text-slate-700 font-semibold dark:text-white'>program studi sarjana teknologi informasi fakultas teknik universitas udayana</p>
+                        <p className='capitalize text-lg font-semibold'>program studi sarjana teknologi informasi fakultas teknik universitas udayana</p>
                     </aside>
                     <nav className='col-span-1 md:col-span-2'>
                         <h6 className="footer-title mb-0">Alamat</h6>

@@ -74,6 +74,7 @@ export default function NavBar({ auth }) {
 
                     {auth.user ? (
                         <Link
+                            as="button"
                             href={route("dashboard")}
                             className="font-medium bg-primary px-6 py-2 rounded-md text-white hover:text-white hover:bg-blue-lagoon dark:text-gray-400 dark:hover:text-white transition-all duration-300"
                         >
@@ -82,6 +83,7 @@ export default function NavBar({ auth }) {
                     ) : (
                         <>
                             <Link
+                                as="button"
                                 href={route("login")}
                                 className="font-medium bg-primary px-6 py-2 rounded-md text-white hover:text-white hover:bg-blue-lagoon dark:text-gray-400 dark:hover:text-white transition-all duration-300"
                             >
@@ -89,6 +91,7 @@ export default function NavBar({ auth }) {
                             </Link>
 
                             <Link
+                                as="button"
                                 href={route("register")}
                                 className="font-medium px-6 py-2 rounded-md text-primary outline outline-primary outline-2 -outline-offset-2 hover:text-white hover:bg-primary dark:text-gray-400 dark:hover:text-white transition-all duration-300"
                             >

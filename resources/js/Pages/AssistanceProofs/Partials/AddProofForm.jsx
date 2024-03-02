@@ -3,7 +3,7 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import { useForm } from "@inertiajs/react";
 
 export default function AddProofForm() {
-    const { data, setData, post, processing, errors } = useForm({
+    const { data, setData, post, processing, reset, errors } = useForm({
         proof_url: "",
         assistance_date: "",
     });
@@ -11,7 +11,9 @@ export default function AddProofForm() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("assistance-proofs.add", useParam(1)));
+        post(route("assistance-proofs.add", useParam(1)), {
+            onSuccess: () => reset("proof_url", "assistance_date"),
+        });
     };
 
     return (

@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Proposal;
+use App\Models\Team;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureTeamHasNoProposal
+class EnsureTeamHasLecturer
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class EnsureTeamHasNoProposal
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $isProposalExist = Proposal::where('team_id', $request->route('teamId'))->first();
+        $isTeamHasLecturer = Team::find($request->route('teamId'))->lecturer_id;
         
-        if (!$isProposalExist) return $next($request);
+        if ($isTeamHasLecturer) return $next($request);
 
-        return back()->with('msg', 'Tim sudah memiliki proposal');
+        return back()->with('msg', 'Tim belum memiliki Dosen Pembimbing');
     }
 }

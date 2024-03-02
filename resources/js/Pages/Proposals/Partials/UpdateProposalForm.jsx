@@ -28,7 +28,7 @@ export default function UpdateProposalForm({ user, proposal }) {
     function ProposalStatus() {
         const status = proposal.status;
         const statuses = {
-            accepted: { style: "badge-success", content: "Diterima" },
+            approved: { style: "badge-success", content: "Diterima" },
             rejected: { style: "badge-error", content: "Ditolak" },
             pending: { style: "badge-warning", content: "Diperiksa" },
         };

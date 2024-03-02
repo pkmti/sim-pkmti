@@ -141,4 +141,29 @@ const useRandomInt = () => {
     return Math.floor(Math.random() * 999999);
 };
 
-export { useRandomString, useRandomTeamName, useParam, useRandomInt };
+const useIsObjectEmpty = (object) => {
+    for (const prop in object) {
+        if (Object.hasOwn(object, prop)) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+const useTruncatedString = (str, num) => {
+    if (str.length > num) {
+        return str.slice(0, num) + "...";
+    } else {
+        return str;
+    }
+};
+
+export {
+    useRandomString,
+    useRandomTeamName,
+    useParam,
+    useRandomInt,
+    useIsObjectEmpty,
+    useTruncatedString,
+};

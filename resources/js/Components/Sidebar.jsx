@@ -64,7 +64,7 @@ export default function Sidebar({ user, navigations, children }) {
                         <ul className="font-bold">
                             {navigations.map((navigation, i) => (
                                 <li key={i} className="my-2">
-                                    <Link href={navigation.link}>
+                                    <Link href={navigation.link} as="button">
                                         {navigation.icon} {navigation.text}
                                     </Link>
                                 </li>
@@ -75,7 +75,7 @@ export default function Sidebar({ user, navigations, children }) {
 
                         <ul className="font-bold">
                             <li className="my-2">
-                                <Link href={route("profile.edit")}>
+                                <Link href={route("profile.edit")} as="button">
                                     <UserIcon className="h-6 w-6" />
                                     {user.nim}
                                 </Link>
@@ -102,14 +102,20 @@ export default function Sidebar({ user, navigations, children }) {
                             {user.role === "admin" &&
                                 (location.pathname.search(/admin/) === -1 ? (
                                     <li className="my-2">
-                                        <Link href={route("admin.dashboard")}>
+                                        <Link
+                                            href={route("admin.dashboard")}
+                                            as="button"
+                                        >
                                             <ShieldExclamationIcon className="h-6 w-6" />
                                             Menu Admin
                                         </Link>
                                     </li>
                                 ) : (
                                     <li className="my-2">
-                                        <Link href={route("dashboard")}>
+                                        <Link
+                                            href={route("dashboard")}
+                                            as="button"
+                                        >
                                             <AcademicCapIcon className="h-6 w-6" />
                                             Menu Utama
                                         </Link>
@@ -143,7 +149,7 @@ export default function Sidebar({ user, navigations, children }) {
                     <div className="modal-action">
                         <form method="dialog">
                             <Link
-                                as="a"
+                                as="button"
                                 className="btn btn-error me-1"
                                 method="post"
                                 href={route("logout")}

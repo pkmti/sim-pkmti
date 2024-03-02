@@ -67,6 +67,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'role' => \App\Http\Middleware\Role::class,
-        'has-no-proposal' => \App\Http\Middleware\EnsureTeamHasNoProposal::class,
+        'has.no-team' => \App\Http\Middleware\EnsureUserHasNoTeam::class,
+        'has.no-proposal' => \App\Http\Middleware\EnsureTeamHasNoProposal::class,
+        'has.proposal' => \App\Http\Middleware\EnsureTeamHasProposal::class,
+        'has.lecturer' => \App\Http\Middleware\EnsureTeamHasLecturer::class,
     ];
 }

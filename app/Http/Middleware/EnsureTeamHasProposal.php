@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class EnsureTeamHasNoProposal
+class EnsureTeamHasProposal
 {
     /**
      * Handle an incoming request.
@@ -18,8 +18,8 @@ class EnsureTeamHasNoProposal
     {
         $isProposalExist = Proposal::where('team_id', $request->route('teamId'))->first();
         
-        if (!$isProposalExist) return $next($request);
+        if ($isProposalExist) return $next($request);
 
-        return back()->with('msg', 'Tim sudah memiliki proposal');
+        return back()->with('msg', 'Tim belum memiliki proposal');
     }
 }

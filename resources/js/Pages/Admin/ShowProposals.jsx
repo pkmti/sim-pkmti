@@ -30,6 +30,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                 title: proposal.title,
                 team_id: proposal.team.id,
                 team_name: proposal.team.team_name,
+                lecturer: proposal.team.lecturer.name,
                 scheme: proposal.scheme,
                 draft_proposal_url: proposal.draft_proposal_url,
                 final_proposal_url: proposal.final_proposal_url,
@@ -335,7 +336,18 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 editor={(rowData) => textEditor(rowData)}
                                 key="title"
                                 field="title"
+                                className="min-w-64"
                                 header={<span className="me-2">Judul</span>}
+                                sortable
+                            />
+                            <Column
+                                key="lecturer"
+                                field="lecturer"
+                                header={
+                                    <span className="me-2">
+                                        Dosen Pembimbing
+                                    </span>
+                                }
                                 sortable
                             />
                             <Column
@@ -359,12 +371,16 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 className="text-center"
                                 body={(rowData) => {
                                     return (
-                                        <a
-                                            href={rowData.draft_proposal_url}
-                                            className="btn btn-sm btn-square"
-                                        >
-                                            <PaperClipIcon className="h-4 w-4" />
-                                        </a>
+                                        rowData.draft_proposal_url && (
+                                            <a
+                                                href={
+                                                    rowData.draft_proposal_url
+                                                }
+                                                className="btn btn-sm btn-square"
+                                            >
+                                                <PaperClipIcon className="h-4 w-4" />
+                                            </a>
+                                        )
                                     );
                                 }}
                             />
@@ -376,12 +392,16 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 className="text-center"
                                 body={(rowData) => {
                                     return (
-                                        <a
-                                            href={rowData.final_proposal_url}
-                                            className="btn btn-sm btn-square"
-                                        >
-                                            <PaperClipIcon className="h-4 w-4" />
-                                        </a>
+                                        rowData.final_proposal_url && (
+                                            <a
+                                                href={
+                                                    rowData.final_proposal_url
+                                                }
+                                                className="btn btn-sm btn-square"
+                                            >
+                                                <PaperClipIcon className="h-4 w-4" />
+                                            </a>
+                                        )
                                     );
                                 }}
                             />

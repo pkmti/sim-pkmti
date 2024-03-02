@@ -105,20 +105,20 @@ class ProposalController extends Controller
         Proposal::find($proposalId)->update(['status' => 'approved']);
 
         // send email to team leader
-        // $proposalTitle = Proposal::find($proposalId)->title;
-        // $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
-        // $leader = User::find($leaderId)->first();
-        // $emailArgs = [
-        //     'email' => $leader->email,
-        //     'subject' => 'Selamat! Proposal PKM Kalian Telah Disetujui! 🎉',
-        //     'view' => 'emails.accept-proposal',
-        //     'data' => [
-        //         'name' => $leader->name,
-        //         'proposal_title' => $proposalTitle,
-        //     ],
-        //     'attachments' => []
-        // ];
-        // dispatch(new SendEmailJob($emailArgs));
+        $proposalTitle = Proposal::find($proposalId)->title;
+        $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
+        $leader = User::find($leaderId)->first();
+        $emailArgs = [
+            'email' => $leader->email,
+            'subject' => 'Selamat! Proposal PKM Kalian Telah Disetujui! 🎉',
+            'view' => 'emails.accept-proposal',
+            'data' => [
+                'name' => $leader->name,
+                'proposal_title' => $proposalTitle,
+            ],
+            'attachments' => []
+        ];
+        dispatch(new SendEmailJob($emailArgs));
 
         return back()->with('msg', 'Proposal telah disetujui');
     }
@@ -137,21 +137,21 @@ class ProposalController extends Controller
         ]);
 
         // send email to team leader
-        // $proposalTitle = Proposal::find($proposalId)->title;
-        // $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
-        // $leader = User::find($leaderId)->first();
-        // $emailArgs = [
-        //     'email' => $leader->email,
-        //     'subject' => 'Yuk, Semangat! Proposal PKM Kalian Masih Bisa Direvisi! 💪',
-        //     'view' => 'emails.reject-proposal',
-        //     'data' => [
-        //         'name' => $leader->name,
-        //         'proposal_title' => $proposalTitle,
-        //         'note' => $request->note,
-        //     ],
-        //     'attachments' => []
-        // ];
-        // dispatch(new SendEmailJob($emailArgs));
+        $proposalTitle = Proposal::find($proposalId)->title;
+        $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
+        $leader = User::find($leaderId)->first();
+        $emailArgs = [
+            'email' => $leader->email,
+            'subject' => 'Yuk, Semangat! Proposal PKM Kalian Masih Bisa Direvisi! 💪',
+            'view' => 'emails.reject-proposal',
+            'data' => [
+                'name' => $leader->name,
+                'proposal_title' => $proposalTitle,
+                'note' => $request->note,
+            ],
+            'attachments' => []
+        ];
+        dispatch(new SendEmailJob($emailArgs));
 
         return back()->with('msg', 'Proposal telah ditolak');
     }

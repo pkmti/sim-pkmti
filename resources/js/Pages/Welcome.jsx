@@ -46,7 +46,7 @@ export default function Welcome({ auth }) {
                                 animate={controls}
                                 className="flex flex-col w-full"
                             >
-                                <span className="uppercase font-medium sm:text-lg mb-1 text-blue-lagoon">
+                                <span className="uppercase font-semibold text-sm sm:text-base mb-1 text-blue-lagoon">
                                     Pelatihan PKM TI 2024
                                 </span>
                                 <h3 className="capitalize text-secondary leading-19 font-bold text-5xl lg:text-6xl w-full">
@@ -498,13 +498,13 @@ export default function Welcome({ auth }) {
                             animate={controls}
                             className="flex flex-col w-full lg:w-1/2"
                         >
-                            <span className="uppercase text-sm md:text-base text-primary font-medium mb-1">
+                            <span className="uppercase text-sm sm:text-base text-primary font-semibold mb-1">
                                 Pembicara
                             </span>
                             <h3 className="capitalize text-3xl md:text-4xl lg:text-5xl font-bold text-secondary leading-12 md:leading-16">
                                 Bertemu dengan mereka yang sudah profesional
                             </h3>
-                            <p className="text-sm sm:text-base font-light text-gray-500 mt-3 capitalize">
+                            <p className="text-sm sm:text-base font-light text-gray-500 mt-3">
                                 Selamatkan tempat di barisan terdepan karena
                                 kami mempersembahkan Narasumber yang luar biasa
                                 di acara spesial PKM kami! Bersiaplah untuk
@@ -747,9 +747,9 @@ export default function Welcome({ auth }) {
                         </motion.div>
                     </section>
 
-                    {/* Suhu section */}
+                    {/* testimoni section */}
                     <section className="flex flex-col w-full py-4 mt-24 sm:px-12">
-                        <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl overflow-hidden p-10 bg-[url('images/pkm-ti-2023-pembukaan.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
+                        <div className="relative z-[1] h-fit pb-28 sm:pb-40 w-full rounded-2xl sm:rounded-3xl overflow-hidden p-10 bg-[url('images/pkm-ti-2023.jpg')] bg-cover bg-no-repeat bg-center before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-secondary before:to-blue-500 before:opacity-80 before:-z-[1]">
                             <motion.div
                                 whileInView="visible"
                                 variants={variantZoom}
@@ -778,25 +778,40 @@ export default function Welcome({ auth }) {
                         <div className="relative -mt-24 sm:-mt-32 z-[5] flex justify-center items-center">
                             <CustomCarousel className="flex justify-center items-center text-center space-x-4">
                                 <div className="relative flex justify-center items-center pb-5">
-                                    <div className="flex flex-col w-11/12 lg:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-3xl transition-shadow duration-300">
-                                        <div className="w-full flex justify-center items-center mb-4">
+                                    <div className="flex flex-col items-center w-11/12 md:max-w-[50rem] p-6 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <div className="w-full flex justify-center items-center mb-4 max-w-[12rem] max-h-[12rem] rounded-full overflow-hidden border-2 border-primary">
                                             <img
-                                                src="images/emot-bayu.png?v=1"
-                                                className="max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary"
-                                                alt="Bayu"
+                                                src="images/kak-kepin.jpg?v=1"
+                                                className="object-contain object-center bg-no-repeat"
+                                                alt="Kepin"
                                             />
                                         </div>
-                                        <p className="text-center text-slate-500 mb-2">
-                                            “Program Kreativitas Mahasiswa-Karsa
-                                            Cipta (PKM-KC) merupakan program
-                                            penciptaan yang didasari atas karsa
-                                            dan nalar mahasiswa, bersifat
-                                            konstruktif serta menghasilkan suatu
-                                            sistem, desain, model/barang atau
-                                            prototipe dan sejenisnya.”
+                                        <p className="text-center text-slate-600 mb-2">
+                                            “Pelatihan PKM TI ini bener-bener berguna banget. Lewat pelatihan ini aku jadi tau gimana buat proposal yang baik dan ampuh buat lolos pendanaan. Ditambah lagi pemateri nya bener-bener ngasih insight baru!!!”
                                         </p>
-                                        <h3 className="text-xl text-primary font-bold mb-2">
-                                            Bayu
+                                        <h3 className="capitalize text-xl text-primary font-bold mb-2">
+                                            Kepin
+                                        </h3>
+                                        <p className="capitalize text-slate-400">
+                                            mahasiswa aktif teknologi informasi
+                                        </p>
+                                    </div>
+                                </div>
+                                
+                                <div className="relative flex justify-center items-center pb-5">
+                                    <div className="flex flex-col items-center w-11/12 md:max-w-[50rem] p-6 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <div className="w-full flex justify-center items-center mb-4 max-w-[12rem] max-h-[12rem] rounded-full overflow-hidden border-2 border-primary">
+                                            <img
+                                                src="images/kak-christina.jpg?v=1"
+                                                className="object-contain object-center bg-no-repeat"
+                                                alt="Christina"
+                                            />
+                                        </div>
+                                        <p className="text-center text-slate-600 mb-2">
+                                            “Banyak insight dan pandangan baru yang saya dapat berkat tips and trick dari Pelatihan PKM TI. Saya merasa lebih siap dan percaya diri untuk eksplorasi ide menjadi hasil yang inovatif.”
+                                        </p>
+                                        <h3 className="capitalize text-xl text-primary font-bold mb-2">
+                                            Christina
                                         </h3>
                                         <p className="capitalize text-slate-400">
                                             mahasiswa aktif teknologi informasi
@@ -804,103 +819,76 @@ export default function Welcome({ auth }) {
                                     </div>
                                 </div>
 
-                                <div className="relative flex justify-center items-center pb-5">
-                                    <div className="flex flex-col w-11/12 md:max-w-[40rem] p-4 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                        <div className="w-full flex justify-center items-center mb-4">
-                                            <img
-                                                src="images/emot-bayu.png?v=1"
-                                                className="max-w-[10rem] rounded-full items-center object-contain object-center bg-no-repeat border-2 border-primary"
-                                                alt="Bayu"
-                                            />
-                                        </div>
-                                        <p className="text-center text-slate-500 mb-2">
-                                            “Program Kreativitas Mahasiswa-Karsa
-                                            test (PKM-KC) merupakan program
-                                            penciptaan yang didasari atas karsa
-                                            dan nalar mahasiswa, bersifat
-                                            konstruktif serta menghasilkan suatu
-                                            sistem, desain, model/barang atau
-                                            prototipe dan sejenisnya.”
-                                        </p>
-                                        <h3 className="text-xl text-primary font-bold mb-2">
-                                            Bayu
-                                        </h3>
-                                        <p className="capitalize text-slate-400">
-                                            mahasiswa aktif teknologi informasi
-                                        </p>
-                                    </div>
-                                </div>
                             </CustomCarousel>
                         </div>
+                    </section>
 
-                        {/* FAQ section */}
-                        <section id="FaQ" className="block w-full mt-20 py-16">
-                            <div className="flex flex-col w-full">
-                                <motion.div
-                                    whileInView="visible"
-                                    variants={variantFade(-100, 0)}
-                                    initial="hidden"
-                                    animate={controls}
-                                    className="px-0 lg:px-10"
-                                >
-                                    <span className="uppercase text-sm font-semibold md:text-base text-primary">
-                                        Pertanyaan Umum
-                                    </span>
-                                    <h3 className="capitalize font-black text-4xl md:text-5xl mt-2 text-secondary">
-                                        Hal yang sering ditanyakan
-                                    </h3>
-                                    <p className="text-slate-500 mt-2 w-4/5 text-sm sm:text-base">
-                                        Pertanyaan umum yang sering ditanyakan terkait PKM TI 2024. Jika masih ada yang ingin ditanyakan lebih lanjut, kalian bisa hubungi narahubung dibawah ini.
-                                    </p>
-                                </motion.div>
-                            </div>
+                    {/* FAQ section */}
+                    <section id="FaQ" className="block w-full mt-20 py-16 sm:px-12">
+                        <div className="flex flex-col w-full">
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantFade(-100, 0)}
+                                initial="hidden"
+                                animate={controls}
+                            >
+                                <span className="uppercase text-sm font-semibold md:text-base text-primary">
+                                    Pertanyaan Umum
+                                </span>
+                                <h3 className="capitalize font-black text-4xl md:text-5xl mt-2 text-secondary">
+                                    Hal yang sering ditanyakan
+                                </h3>
+                                <p className="text-slate-500 mt-2 w-11/12 text-sm sm:text-base">
+                                    Pertanyaan umum yang sering ditanyakan terkait PKM TI 2024. Jika masih ada yang ingin ditanyakan lebih lanjut, kalian bisa hubungi narahubung dibawah ini.
+                                </p>
+                            </motion.div>
+                        </div>
 
-                            <div className="flex flex-col-reverse lg:flex-row w-full mt-10 justify-between items-start lg:items-center">
-                                <motion.div
-                                    whileInView="visible"
-                                    variants={variantZoom}
-                                    initial="hidden"
-                                    animate={controls}
-                                    className="mt-5 items-start"
-                                >
-                                    <img
-                                        src="images/image-FAQ.png?version=1.0"
-                                        className="max-h-[450px]"
-                                    />
-                                </motion.div>
+                        <div className="flex flex-col-reverse lg:flex-row w-full mt-10 justify-between items-start lg:items-center">
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="mt-5 items-start"
+                            >
+                                <img
+                                    src="images/image-FAQ.png?version=1.0"
+                                    className="max-h-[450px]"
+                                />
+                            </motion.div>
 
-                                <motion.div
-                                    whileInView="visible"
-                                    variants={variantZoom}
-                                    initial="hidden"
-                                    animate={controls}
-                                    className="lg:w-1/2 flex flex-col gap-4"
-                                >
-                                    <Accordion
-                                        title="Apakah mahasiswa program studi Teknologi Informasi Universitas Udayana wajib mengikuti Pelatihan PKM TI 2024?"
-                                        answer="Mahasiswa yang belum mengikuti Pelatihan PKM TI periode sebelumnya atau belum lulus pada pelatihan sebelumnya wajib untuk mengikuti Pelatihan PKM TI 2024. Dan bagi mahasiswa yang sudah mengikuti Pelatihan PKM TI periode sebelumnya juga boleh mengikuti Pelatihan PKM TI 2024."
-                                    />
-                                    <Accordion
-                                        title="Apa yang akan dilakukan mahasiswa selama Pelatihan PKM TI 2024?"
-                                        answer="Selama Pelatihan PKM TI 2024, mahasiswa akan dibimbing dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi."
-                                    />
-                                    <Accordion
-                                        title="Apa yang diharapkan mahasiswa peroleh setelah mengikuti Pelatihan PKM TI 2024?"
-                                        answer="Setelah mengikuti Pelatihan PKM TI 2024, diharapkan mahasiswa akan memperoleh pemahaman mendalam mengenai pengembangan judul, penyesuaian format berdasarkan pedoman, teknik penelitian, serta keterampilan teknis yang diperlukan untuk mengimplementasikan ide-ide tersebut."
-                                    />
-                                    <Accordion
-                                        title="Apa luaran yang dihasilkan oleh mahasiswa setelah mengikuti Pelatihan PKM TI 2024?"
-                                        answer="Luaran dari kegiatan ini berupa proposal PKM yang memiliki potensi memberikan manfaat signifikan dalam konteks Teknologi Informasi dan dapat diajukan untuk mendapatkan dukungan dan pendanaan pada tahun 2025."
-                                    />
-                                </motion.div>
-                            </div>
-                        </section>
+                            <motion.div
+                                whileInView="visible"
+                                variants={variantZoom}
+                                initial="hidden"
+                                animate={controls}
+                                className="lg:w-1/2 flex flex-col gap-4"
+                            >
+                                <Accordion
+                                    title="Apakah mahasiswa program studi Teknologi Informasi Universitas Udayana wajib mengikuti Pelatihan PKM TI 2024?"
+                                    answer="Mahasiswa yang belum mengikuti Pelatihan PKM TI periode sebelumnya atau belum lulus pada pelatihan sebelumnya wajib untuk mengikuti Pelatihan PKM TI 2024. Dan bagi mahasiswa yang sudah mengikuti Pelatihan PKM TI periode sebelumnya juga boleh mengikuti Pelatihan PKM TI 2024."
+                                />
+                                <Accordion
+                                    title="Apa yang akan dilakukan mahasiswa selama Pelatihan PKM TI 2024?"
+                                    answer="Selama Pelatihan PKM TI 2024, mahasiswa akan dibimbing dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi."
+                                />
+                                <Accordion
+                                    title="Apa yang diharapkan mahasiswa peroleh setelah mengikuti Pelatihan PKM TI 2024?"
+                                    answer="Setelah mengikuti Pelatihan PKM TI 2024, diharapkan mahasiswa akan memperoleh pemahaman mendalam mengenai pengembangan judul, penyesuaian format berdasarkan pedoman, teknik penelitian, serta keterampilan teknis yang diperlukan untuk mengimplementasikan ide-ide tersebut."
+                                />
+                                <Accordion
+                                    title="Apa luaran yang dihasilkan oleh mahasiswa setelah mengikuti Pelatihan PKM TI 2024?"
+                                    answer="Luaran dari kegiatan ini berupa proposal PKM yang memiliki potensi memberikan manfaat signifikan dalam konteks Teknologi Informasi dan dapat diajukan untuk mendapatkan dukungan dan pendanaan pada tahun 2025."
+                                />
+                            </motion.div>
+                        </div>
                     </section>
 
                     {/* Contact section */}
                     <section
                         id="contact-us"
-                        className="min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0"
+                        className="min-h-screen flex flex-col justify-start w-full text-center items-center sm:pt-16 pb-0 sm:px-12"
                     >
                         <div className="mt-4 block justify-center  w-full text-center items-center">
                             <motion.div
@@ -919,7 +907,7 @@ export default function Welcome({ auth }) {
                                 </h3>
 
                                 <div className="flex w-full items-center text-center justify-center">
-                                    <p className="font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-2/4 ">
+                                    <p className="font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-4/5 ">
                                         Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi narahubung yang tertera di bawah ini.
                                     </p>
                                 </div>
@@ -1051,7 +1039,7 @@ export default function Welcome({ auth }) {
                     </nav>
                 </footer>
                 <footer className="py-5 px-12 bg-base-300 text-slate-600">
-                    <p>© 2024 Ilmiah PKM TI </p>
+                    <p>© 2024 PKM TI Udayana </p>
                 </footer>
             </div>
 

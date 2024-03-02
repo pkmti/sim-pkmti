@@ -16,7 +16,7 @@ const Accordion = ({ title, answer }) => {
                     className="flex justify-between w-full "
                     onClick={() => setAccordionOpen(!accordionOpen)}
                 >
-                    <div className="w-11/12 text-lg text-slate-900 font-semibold text-start">
+                    <div className="w-11/12 text-base text-slate-800 font-semibold text-start">
                         {title}
                     </div>
 
@@ -34,7 +34,7 @@ const Accordion = ({ title, answer }) => {
                             : "grid-rows-[0] opacity-0"
                     }`}
                 >
-                    <p className="overflow-hidden">{answer}</p>
+                    <p className="overflow-hidden text-base">{answer}</p>
                 </div>
             </div>
         </>

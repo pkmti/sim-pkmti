@@ -361,7 +361,7 @@ export default function Welcome({ auth }) {
                             <div>
                                 <div className="relative mx-2 overflow-hidden group rounded-lg">
                                     <img
-                                        src="images/prabowo.png"
+                                        src="images/Gusti_Made_Arya_Sasmita,ST.,MT.png?Dosen-TeknologiInformasi"
                                         className="w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300"
                                     />
                                     <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
@@ -404,7 +404,7 @@ export default function Welcome({ auth }) {
                             <div>
                                 <div className="relative mx-2 overflow-hidden group rounded-lg">
                                     <img
-                                        src="images/nadiem.png"
+                                        src="images/Anak_Agung_Ngurah_Hary_Susila, S.TI.,M.MT.png?Dosen-TeknologiInformasi"
                                         className="w-64 h-80 rounded-lg object-fill object-center cursor-pointer group-hover:scale-125 duration-300"
                                     />
                                     <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">

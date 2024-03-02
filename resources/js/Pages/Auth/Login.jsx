@@ -135,7 +135,7 @@ export default function Login({ status, canResetPassword }) {
                         <Link
                             href={route("password.request")}
                             className="link link-hover flex justify-center"
-                            as="a"
+                            as="span"
                         >
                             Lupa password?
                         </Link>

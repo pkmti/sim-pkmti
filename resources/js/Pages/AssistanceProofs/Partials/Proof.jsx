@@ -86,6 +86,7 @@ export default function Proof({ proof, order }) {
                         Edit
                     </button>
                     <Link
+                        as="button"
                         href={route("assistance-proofs.destroy", [
                             useParam(1),
                             proof.id,

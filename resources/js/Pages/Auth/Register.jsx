@@ -238,7 +238,7 @@ export default function Register() {
                     <Link
                         href={route("login")}
                         className="link link-hover flex justify-center"
-                        as="a"
+                        as="span"
                     >
                         Sudah punya akun?
                     </Link>

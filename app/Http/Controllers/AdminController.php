@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proposal;
+use App\Models\Team;
 use App\Models\User;
 use Inertia\Inertia;
 
@@ -29,9 +30,14 @@ class AdminController extends Controller
         return Inertia::render('Admin/ShowUsers', compact('users'));
     }
 
+    public function showTeams() {
+        $teams = Team::with('members', 'leader', 'lecturer')->get();
+
+        return Inertia::render('Admin/ShowTeams', compact('teams'));
+    }
+
     public function showProposals() {
-        $proposals = Proposal::with('team', 'team.assistanceProofs')->get();
-        // dd($proposals[0]->team);
+        $proposals = Proposal::with('team', 'team.assistanceProofs', 'team.lecturer')->get();
 
         return Inertia::render('Admin/ShowProposals', compact('proposals'));
     }

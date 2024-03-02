@@ -19,7 +19,7 @@ class AssistanceProofController extends Controller
     public function add(Request $request, $teamId)
     {
         $request->validate([
-            'proof_url' => 'required|url|unique:'.AssistanceProof::class,
+            'proof_url' => 'required|url|max:255|unique:'.AssistanceProof::class,
             'assistance_date' => 'required|date',
         ], [
             'proof_url.required' => 'Mohon masukkan bukti asistensi',

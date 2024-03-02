@@ -9,7 +9,7 @@ import {
     CheckIcon,
     EllipsisHorizontalIcon,
     ExclamationTriangleIcon,
-    PaperAirplaneIcon,
+    PaperClipIcon,
     PencilIcon,
     PhotoIcon,
     TrashIcon,
@@ -208,45 +208,46 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                             Daftar bukti asistensi {rowData.team_name}
                         </p>
 
-                        {rowData.assistance_proofs.map((proof, i) => {
-                            return (
-                                <div
-                                    key={proof.id}
-                                    className="flex items-center mb-4 justify-between mx-1"
-                                >
-                                    <div>
-                                        <p className="font-bold text-xs mb-1">
-                                            BUKTI {i + 1}
-                                        </p>
-                                        <p className="font-bold text-sm">
-                                            Tanggal :&nbsp;
-                                            {proof.assistance_date}
-                                        </p>
-                                        <a
-                                            href={proof.proof_url}
-                                            className="font-bold text-sm"
-                                        >
-                                            URL :&nbsp;
-                                            {useTruncatedString(
-                                                proof.proof_url,
-                                                15
-                                            )}
-                                        </a>
-                                    </div>
+                        {rowData.assistance_proofs &&
+                            rowData.assistance_proofs.map((proof, i) => {
+                                return (
                                     <div
-                                        className="tooltip"
-                                        data-tip="Kunjungi URL"
+                                        key={proof.id}
+                                        className="flex items-center mb-4 justify-between mx-1"
                                     >
-                                        <a
-                                            href={proof.proof_url}
-                                            className="btn btn-square "
+                                        <div>
+                                            <p className="font-bold text-xs mb-1">
+                                                BUKTI {i + 1}
+                                            </p>
+                                            <p className="font-bold text-sm">
+                                                Tanggal :&nbsp;
+                                                {proof.assistance_date}
+                                            </p>
+                                            <a
+                                                href={proof.proof_url}
+                                                className="font-bold text-sm"
+                                            >
+                                                URL :&nbsp;
+                                                {useTruncatedString(
+                                                    proof.proof_url,
+                                                    15
+                                                )}
+                                            </a>
+                                        </div>
+                                        <div
+                                            className="tooltip"
+                                            data-tip="Kunjungi URL"
                                         >
-                                            <PhotoIcon className="h-6 w-6" />
-                                        </a>
+                                            <a
+                                                href={proof.proof_url}
+                                                className="btn btn-square "
+                                            >
+                                                <PhotoIcon className="h-6 w-6" />
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
                         <div className="modal-action">
                             <form method="dialog">
                                 <button className="btn">Tutup</button>
@@ -273,6 +274,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                     <div className="w-full flex lg:gap-4 flex-col-reverse lg:flex-row justify-end lg:text-right mb-4">
                         <div className="lg:text-right">
                             <input
+                                autoComplete="search"
                                 type="text"
                                 className="input input-bordered join-item"
                                 value={filter.global.value || ""}
@@ -308,7 +310,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                     <div className="overflow-x-auto">
                         <DataTable
                             value={selectedFields}
-                            className="table table-zebra whitespace-nowrap"
+                            className="table table-zebra"
                             filters={filter}
                             editMode="row"
                             dataKey="id"
@@ -354,13 +356,14 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 key="draft_proposal_url"
                                 field="draft_proposal_url"
                                 header="Proposal Draf"
+                                className="text-center"
                                 body={(rowData) => {
                                     return (
                                         <a
                                             href={rowData.draft_proposal_url}
                                             className="btn btn-sm btn-square"
                                         >
-                                            <PaperAirplaneIcon className="h-4 w-4" />
+                                            <PaperClipIcon className="h-4 w-4" />
                                         </a>
                                     );
                                 }}
@@ -370,13 +373,14 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 key="final_proposal_url"
                                 field="final_proposal_url"
                                 header="Proposal Final"
+                                className="text-center"
                                 body={(rowData) => {
                                     return (
                                         <a
                                             href={rowData.final_proposal_url}
                                             className="btn btn-sm btn-square"
                                         >
-                                            <PaperAirplaneIcon className="h-4 w-4" />
+                                            <PaperClipIcon className="h-4 w-4" />
                                         </a>
                                     );
                                 }}
@@ -429,7 +433,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                             <Column
                                 rowEditor={true}
                                 header={"Edit"}
-                                className="text-center"
+                                className="whitespace-nowrap"
                                 unstyled
                             />
                             <Column

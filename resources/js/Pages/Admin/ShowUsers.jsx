@@ -102,6 +102,7 @@ export default function Users({ auth, users, flash, errors }) {
                     <div className="w-full flex lg:gap-4 flex-col-reverse lg:flex-row justify-end lg:text-right mb-4">
                         <div className="lg:text-right">
                             <input
+                                autoComplete="search"
                                 type="text"
                                 className="input input-bordered join-item"
                                 value={filter.global.value || ""}

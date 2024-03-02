@@ -14,6 +14,7 @@ class AdminController extends Controller
 
         foreach ($users as $user) {
             if ($user->team_id && 
+                $user->team->lecturer_id &&
                 $user->team->proposal && 
                 $user->team->proposal->final_proposal_url &&
                 $user->team->proposal->status == 'approved' &&

@@ -53,14 +53,24 @@ export default function Welcome({ auth }) {
                                     Sistem Informasi Pelatihan PKM TI Udayana
                                 </h3>
                                 <p className="text-sm sm:text-base my-5 font-light w-full">
-                                    Pelatihan PKM TI 2024 merupakan bagian dari program kerja Himpunan Mahasiswa Teknologi Informasi Universitas Udayana periode 2024, yang bertujuan membimbing mahasiswa dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi.
+                                    Pelatihan PKM TI 2024 merupakan bagian dari
+                                    program kerja Himpunan Mahasiswa Teknologi
+                                    Informasi Universitas Udayana periode 2024,
+                                    yang bertujuan membimbing mahasiswa dalam
+                                    merancang Program Kreativitas Mahasiswa
+                                    (PKM) yang inovatif dan kreatif di bidang
+                                    Teknologi Informasi.
                                 </p>
                                 <div className="mt-3 w-64 none">
-                                    <a href={route('guidebook')} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md">
+                                    <a
+                                        href="/guidebook"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md"
+                                    >
                                         <BookOpenIcon className="w-5 h-5" />
                                         Buku Panduan
                                     </a>
-
                                 </div>
                             </motion.div>
                             <motion.div
@@ -177,11 +187,29 @@ export default function Welcome({ auth }) {
                                 <span className="block font-semibold leading-8">
                                     Apa itu PKM TI 2024?
                                 </span>
-                                Pelatihan PKM Teknologi Informasi 2024 merupakan salah satu inisiatif dari Himpunan Mahasiswa Teknologi Informasi (HMTI) yang bertujuan untuk memberikan platform bagi mahasiswa dalam memperluas pengetahuan mereka terkait Program Kreativitas Mahasiswa (PKM). Pelatihan ini akan mengeksplorasi tema
+                                Pelatihan PKM Teknologi Informasi 2024 merupakan
+                                salah satu inisiatif dari Himpunan Mahasiswa
+                                Teknologi Informasi (HMTI) yang bertujuan untuk
+                                memberikan platform bagi mahasiswa dalam
+                                memperluas pengetahuan mereka terkait Program
+                                Kreativitas Mahasiswa (PKM). Pelatihan ini akan
+                                mengeksplorasi tema
                                 <span className="font-bold text-bold">
-                                    “Membangkitkan Generasi Dengan Kreativitas Visioner Untuk Menghasilkan Karya Inovatif, dan Kreatif Melalui PKM”
+                                    “Membangkitkan Generasi Dengan Kreativitas
+                                    Visioner Untuk Menghasilkan Karya Inovatif,
+                                    dan Kreatif Melalui PKM”
                                 </span>
-                                yang bermakna harapan agar generasi muda Teknologi Informasi dapat termotivasi dalam mengembangkan kreativitas visioner dan mampu memperhitungkan tren masa depan dengan berkarya melalui PKM. Dengan melibatkan mahasiswa dalam pelatihan ini, diharapkan mahasiswa dapat memperoleh pemahaman mendalam mengenai pengembangan judul, penyesuaian format berdasarkan pedoman, teknik penelitian, serta keterampilan teknis yang diperlukan untuk mengimplementasikan ide-ide tersebut.
+                                yang bermakna harapan agar generasi muda
+                                Teknologi Informasi dapat termotivasi dalam
+                                mengembangkan kreativitas visioner dan mampu
+                                memperhitungkan tren masa depan dengan berkarya
+                                melalui PKM. Dengan melibatkan mahasiswa dalam
+                                pelatihan ini, diharapkan mahasiswa dapat
+                                memperoleh pemahaman mendalam mengenai
+                                pengembangan judul, penyesuaian format
+                                berdasarkan pedoman, teknik penelitian, serta
+                                keterampilan teknis yang diperlukan untuk
+                                mengimplementasikan ide-ide tersebut.
                             </p>
                             <a
                                 href="#pkm-topik"
@@ -218,9 +246,18 @@ export default function Welcome({ auth }) {
                                         Hasilkan Karya yang Inovatif dan Kreatif
                                     </h2>
                                     <p className="text-sm sm:text-base text-slate-200 text-center">
-                                        Pada PKM TI 2024 Bidang PKM yang diperbolehkan adalah PKM Kewirausahaan (PKM-K), Pengabdian Masyarakat (PKM-PM), Penalaran Iptek (PKM-PI), Karsa Cipta (PKM-KC), dan Gagasan Futuristik Tertulis (PKM-GFT). Adapun judul yang dibuat oleh masing-masing tim harus relevan dengan bidang Teknologi Informasi, disarankan menggunakan istilah seperti AI, Machine Learning, IoT, AR, VR, atau XR.
+                                        Pada PKM TI 2024 Bidang PKM yang
+                                        diperbolehkan adalah PKM Kewirausahaan
+                                        (PKM-K), Pengabdian Masyarakat (PKM-PM),
+                                        Penalaran Iptek (PKM-PI), Karsa Cipta
+                                        (PKM-KC), dan Gagasan Futuristik
+                                        Tertulis (PKM-GFT). Adapun judul yang
+                                        dibuat oleh masing-masing tim harus
+                                        relevan dengan bidang Teknologi
+                                        Informasi, disarankan menggunakan
+                                        istilah seperti AI, Machine Learning,
+                                        IoT, AR, VR, atau XR.
                                     </p>
-
                                 </motion.div>
                             </div>
                             <div className="relative -mt-20 sm:-mt-32 z-[5] flex flex-col justify-center items-center lg:flex-row lg:items-start space-y-6 lg:space-x-4 lg:space-y-0">
@@ -243,7 +280,12 @@ export default function Welcome({ auth }) {
                                         model/barang atau prototipe dan
                                         sejenisnya.
                                     </p>
-                                    <a href={route("panduanbelmawa")} target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:underline">
+                                    <a
+                                        href={"/panduan-belmawa"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary text-sm hover:underline"
+                                    >
                                         Selengkapnya
                                     </a>
                                 </motion.div>
@@ -273,7 +315,12 @@ export default function Welcome({ auth }) {
                                         kompetensi, wawasan dan pengalaman dalam
                                         berwirausaha
                                     </p>
-                                    <a href={route("panduanbelmawa")} target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:underline">
+                                    <a
+                                        href="/panduan-belmawa"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary text-sm hover:underline"
+                                    >
                                         Selengkapnya
                                     </a>
                                 </motion.div>
@@ -296,7 +343,12 @@ export default function Welcome({ auth }) {
                                         mengurangi kesenjangan dan melindungi
                                         lingkungan.
                                     </p>
-                                    <a href={route("panduanbelmawa")} target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:underline">
+                                    <a
+                                        href="/panduan-belmawa"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary text-sm hover:underline"
+                                    >
                                         Selengkapnya
                                     </a>
                                 </motion.div>
@@ -320,7 +372,12 @@ export default function Welcome({ auth }) {
                                         dalam menyelesaikan permasalahan yang
                                         ada di masyarakat.
                                     </p>
-                                    <a href={route("panduanbelmawa")} target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:underline">
+                                    <a
+                                        href="/panduan-belmawa"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary text-sm hover:underline"
+                                    >
                                         Selengkapnya
                                     </a>
                                 </motion.div>
@@ -346,7 +403,12 @@ export default function Welcome({ auth }) {
                                         diidealisasikan sebagai pusat solusi
                                         dapat menjadi kenyataan.
                                     </p>
-                                    <a href={route("panduanbelmawa")} target="_blank" rel="noopener noreferrer" className="text-primary text-sm hover:underline">
+                                    <a
+                                        href="/panduan-belmawa"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary text-sm hover:underline"
+                                    >
                                         Selengkapnya
                                     </a>
                                 </motion.div>
@@ -367,12 +429,14 @@ export default function Welcome({ auth }) {
                                     <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
                                         <div className="px-4">
                                             <p className="text-white opacity-100 text-lg font-bold leading-5">
-                                                “Tips Untuk Menyusun Proposal PKM yang Sesuai!"
+                                                “Tips Untuk Menyusun Proposal
+                                                PKM yang Sesuai!"
                                             </p>
                                             <div className="divider before:bg-white after:bg-white"></div>
                                             <div className="flex flex-col">
                                                 <span className="font-bold capitalize text-sm text-white">
-                                                    Gusti Made Arya Sasmita, ST., MT.
+                                                    Gusti Made Arya Sasmita,
+                                                    ST., MT.
                                                 </span>
                                                 <p className="font-light text-sm md:text-xs text-white">
                                                     Dosen Teknologi Informasi
@@ -416,7 +480,8 @@ export default function Welcome({ auth }) {
                                             <div className="divider before:bg-white after:bg-white"></div>
                                             <div className="flex flex-col">
                                                 <span className="font-bold capitalize text-sm text-white">
-                                                    Anak Agung Ngurah Hary Susila, S.TI., M.MT.
+                                                    Anak Agung Ngurah Hary
+                                                    Susila, S.TI., M.MT.
                                                 </span>
                                                 <p className="font-light text-sm md:text-xs text-white">
                                                     Dosen Teknologi Informasi
@@ -569,7 +634,6 @@ export default function Welcome({ auth }) {
                                     {/* row 1 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 8 - 14 Maret 2024
                                             </p>
@@ -578,77 +642,83 @@ export default function Welcome({ auth }) {
                                             Pendaftaran dan Pengumpulan Judul
                                         </td>
                                         <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
                                     {/* row 2 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 8 - 21 Maret 2024
                                             </p>
                                         </td>
+                                        <td>Seleksi Judul</td>
                                         <td>
-                                            Seleksi Judul
-                                        </td>
-                                        <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
                                     {/* row 3 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 22 Maret 2024
                                             </p>
                                         </td>
                                         <td>
-                                            Pengumuman Tim Terdaftar Pengumuman Tim Terdaftar
+                                            Pengumuman Tim Terdaftar Pengumuman
+                                            Tim Terdaftar
                                         </td>
                                         <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
-
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
                                     {/* row 4 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 23 Maret 2024
                                             </p>
                                         </td>
                                         <td>
-                                            Pengumuman Tim Terdaftar Pengumuman Tim Terdaftar
+                                            Pengumuman Tim Terdaftar Pengumuman
+                                            Tim Terdaftar
                                         </td>
                                         <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
-
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
 
                                     {/* row 5 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 30 Maret 2024
                                             </p>
                                         </td>
+                                        <td>Pelatihan PKM TI 2024</td>
                                         <td>
-                                            Pelatihan PKM TI 2024
-                                        </td>
-                                        <td>
-                                            <button className="btn btn-sm bg-blue-lagoon hover:bg-primary text-white"> Aula Suastika</button>
+                                            <button className="btn btn-sm bg-blue-lagoon hover:bg-primary text-white">
+                                                {" "}
+                                                Aula Suastika
+                                            </button>
                                         </td>
                                     </tr>
 
                                     {/* row 6 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 30 Maret – 17 Mei 2024
                                             </p>
@@ -656,90 +726,88 @@ export default function Welcome({ auth }) {
                                         <td>
                                             Masa Asistensi Draf Proposal PKM TI
                                         </td>
-                                        <td>
-                                            -
-                                        </td>
+                                        <td>-</td>
                                     </tr>
                                     {/* row 7 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 31 Maret – 16 Mei 2024
                                             </p>
                                         </td>
+                                        <td>Pengumpulan Bukti Asistensi</td>
                                         <td>
-                                            Pengumpulan Bukti Asistensi
-                                        </td>
-                                        <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
-
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
 
                                     {/* row 8 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 11 – 17 Mei 2024
                                             </p>
                                         </td>
+                                        <td>Pengumpulan Draf Proposal</td>
                                         <td>
-                                            Pengumpulan Draf Proposal
-                                        </td>
-                                        <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
-
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
 
                                     {/* row 9 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 8 Juni 2024
                                             </p>
                                         </td>
+                                        <td>Klinik PKM TI 2024</td>
                                         <td>
-                                            Klinik PKM TI 2024
-                                        </td>
-                                        <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
-
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
 
                                     {/* row 10 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 12 – 15 Juni 2024
                                             </p>
                                         </td>
+                                        <td>Pengumpulan Proposal Final </td>
                                         <td>
-                                            Pengumpulan Proposal Final	                                        </td>
-                                        <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
-
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
 
                                     {/* row 11 */}
                                     <tr className="hover">
                                         <td className="block w-[150px] sm:min-w-[250px]">
-
                                             <p className="capitalize text-sm sm:text-base">
                                                 22 Juni 2024
                                             </p>
                                         </td>
                                         <td>
-                                            Pengumuman Kelulusan Pelatihan PKM TI 2024	                                        </td>
+                                            Pengumuman Kelulusan Pelatihan PKM
+                                            TI 2024{" "}
+                                        </td>
                                         <td>
-                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white"> • Online</button>
-
+                                            <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
+                                                {" "}
+                                                • Online
+                                            </button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -770,7 +838,11 @@ export default function Welcome({ auth }) {
                                     Apa kata mereka?
                                 </h2>
                                 <p className="text-slate-200 text-center text-sm sm:text-base">
-                                    Inilah pandangan langsung dari peserta yang telah mengikuti pelatihan PKM Teknologi Informasi periode sebelumnya. Mereka berbagi pengalaman, kesan, dan manfaat yang diperoleh dari program pelatihan ini.
+                                    Inilah pandangan langsung dari peserta yang
+                                    telah mengikuti pelatihan PKM Teknologi
+                                    Informasi periode sebelumnya. Mereka berbagi
+                                    pengalaman, kesan, dan manfaat yang
+                                    diperoleh dari program pelatihan ini.
                                 </p>
                             </motion.div>
                         </div>
@@ -787,7 +859,13 @@ export default function Welcome({ auth }) {
                                             />
                                         </div>
                                         <p className="text-center text-slate-600 mb-2">
-                                            “Pelatihan PKM TI ini bener-bener berguna banget. Lewat pelatihan ini aku jadi tau gimana buat proposal yang baik dan ampuh buat lolos pendanaan. Ditambah lagi pemateri nya bener-bener ngasih insight baru!!!”
+                                            “Pelatihan PKM TI ini bener-bener
+                                            berguna banget. Lewat pelatihan ini
+                                            aku jadi tau gimana buat proposal
+                                            yang baik dan ampuh buat lolos
+                                            pendanaan. Ditambah lagi pemateri
+                                            nya bener-bener
+                                            ngasih insight baru!!!”
                                         </p>
                                         <h3 className="capitalize text-xl text-primary font-bold mb-2">
                                             Kepin
@@ -797,7 +875,7 @@ export default function Welcome({ auth }) {
                                         </p>
                                     </div>
                                 </div>
-                                
+
                                 <div className="relative flex justify-center items-center pb-5">
                                     <div className="flex flex-col items-center w-11/12 md:max-w-[50rem] p-6 bg-white/75 backdrop-blur-2xl backdrop-brightness-150 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
                                         <div className="w-full flex justify-center items-center mb-4 max-w-[12rem] max-h-[12rem] rounded-full overflow-hidden border-2 border-primary">
@@ -808,7 +886,12 @@ export default function Welcome({ auth }) {
                                             />
                                         </div>
                                         <p className="text-center text-slate-600 mb-2">
-                                            “Banyak insight dan pandangan baru yang saya dapat berkat tips and trick dari Pelatihan PKM TI. Saya merasa lebih siap dan percaya diri untuk eksplorasi ide menjadi hasil yang inovatif.”
+                                            “Banyak insight dan pandangan baru
+                                            yang saya dapat berkat tips and
+                                            trick dari Pelatihan PKM TI. Saya
+                                            merasa lebih siap dan percaya diri
+                                            untuk eksplorasi ide menjadi
+                                            hasil yang inovatif.”
                                         </p>
                                         <h3 className="capitalize text-xl text-primary font-bold mb-2">
                                             Christina
@@ -818,13 +901,15 @@ export default function Welcome({ auth }) {
                                         </p>
                                     </div>
                                 </div>
-
                             </CustomCarousel>
                         </div>
                     </section>
 
                     {/* FAQ section */}
-                    <section id="FaQ" className="block w-full mt-20 py-16 sm:px-12">
+                    <section
+                        id="FaQ"
+                        className="block w-full mt-20 py-16 sm:px-12"
+                    >
                         <div className="flex flex-col w-full">
                             <motion.div
                                 whileInView="visible"
@@ -839,7 +924,10 @@ export default function Welcome({ auth }) {
                                     Hal yang sering ditanyakan
                                 </h3>
                                 <p className="text-slate-500 mt-2 w-11/12 text-sm sm:text-base">
-                                    Pertanyaan umum yang sering ditanyakan terkait PKM TI 2024. Jika masih ada yang ingin ditanyakan lebih lanjut, kalian bisa hubungi narahubung dibawah ini.
+                                    Pertanyaan umum yang sering ditanyakan
+                                    terkait PKM TI 2024. Jika masih ada yang
+                                    ingin ditanyakan lebih lanjut, kalian bisa
+                                    hubungi narahubung dibawah ini.
                                 </p>
                             </motion.div>
                         </div>
@@ -908,7 +996,9 @@ export default function Welcome({ auth }) {
 
                                 <div className="flex w-full items-center text-center justify-center">
                                     <p className="font-light text-sm md:text-base text-slate-500 text-center mt-2 w-full md:w-4/5 ">
-                                        Jika Anda memiliki pertanyaan lebih lanjut, jangan ragu untuk menghubungi narahubung yang tertera di bawah ini.
+                                        Jika Anda memiliki pertanyaan lebih
+                                        lanjut, jangan ragu untuk menghubungi
+                                        narahubung yang tertera di bawah ini.
                                     </p>
                                 </div>
                             </motion.div>
@@ -929,13 +1019,15 @@ export default function Welcome({ auth }) {
                                         <a
                                             href="https://wa.me/+6281381090336"
                                             target="_blank"
-                                            className="text-linear-blue font-medium text-sm block hover:underline">
+                                            className="text-linear-blue font-medium text-sm block hover:underline"
+                                        >
                                             WA : 0813-8109-0336
                                         </a>
                                         <a
                                             href="http://line.me/ti/p/~niputucans"
                                             target="_blank"
-                                            className="text-linear-blue font-medium text-sm block hover:underline">
+                                            className="text-linear-blue font-medium text-sm block hover:underline"
+                                        >
                                             LINE : niputucans
                                         </a>
                                     </div>
@@ -950,13 +1042,15 @@ export default function Welcome({ auth }) {
                                         <a
                                             href="https://wa.me/+6285739490558"
                                             target="_blank"
-                                            className="text-linear-blue font-medium text-sm block hover:underline">
+                                            className="text-linear-blue font-medium text-sm block hover:underline"
+                                        >
                                             WA: 0857-3949-0558
                                         </a>
                                         <a
                                             href="http://line.me/ti/p/~tiksnaapsr."
                                             target="_blank"
-                                            className="text-linear-blue font-medium text-sm block hover:underline">
+                                            className="text-linear-blue font-medium text-sm block hover:underline"
+                                        >
                                             LINE: tiksnaapsr.
                                         </a>
                                     </div>
@@ -971,19 +1065,19 @@ export default function Welcome({ auth }) {
                                         <a
                                             href="https://wa.me/+62895321697691"
                                             target="_blank"
-                                            className="text-linear-blue font-medium text-sm block hover:underline">
+                                            className="text-linear-blue font-medium text-sm block hover:underline"
+                                        >
                                             WA: 0895-3216-97691
                                         </a>
                                         <a
                                             href="http://line.me/ti/p/~baay9"
                                             target="_blank"
-                                            className="text-linear-blue font-medium text-sm block hover:underline">
+                                            className="text-linear-blue font-medium text-sm block hover:underline"
+                                        >
                                             LINE: baay9
                                         </a>
                                     </div>
                                 </button>
-
-
                             </motion.div>
 
                             <motion.div
@@ -1016,16 +1110,31 @@ export default function Welcome({ auth }) {
                     </aside>
                     <nav className="col-span-1 md:col-span-2">
                         <h6 className="footer-title mb-0">Alamat</h6>
-                        <a className="link link-hover mb-4" href="https://maps.app.goo.gl/BxpnRYfHvLDrVYmZ8" target="_blank" rel="noopener noreferrer">
+                        <a
+                            className="link link-hover mb-4"
+                            href="https://maps.app.goo.gl/BxpnRYfHvLDrVYmZ8"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             Jl. Kampus Udayana Bukit Jimbaran, Jimbaran, Kuta
                             Selatan, Kabupaten Badung, Bali 80361
                         </a>
 
                         <h6 className="footer-title mb-0">Telepon</h6>
-                        <a className="link link-hover mb-4" href="tel:0361701806">(0361) 701806</a>
+                        <a
+                            className="link link-hover mb-4"
+                            href="tel:0361701806"
+                        >
+                            (0361) 701806
+                        </a>
 
                         <h6 className="footer-title mb-0">Email</h6>
-                        <a className="link link-hover mb-4" href="mailto:hmti@unud.ac.id">hmti@unud.ac.id</a>
+                        <a
+                            className="link link-hover mb-4"
+                            href="mailto:hmti@unud.ac.id"
+                        >
+                            hmti@unud.ac.id
+                        </a>
                     </nav>
                     <nav className="col-span-1 md:col-span-2">
                         <h6 className="footer-title mb-0">Terkait</h6>

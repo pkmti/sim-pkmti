@@ -56,7 +56,7 @@ export default function Welcome({ auth }) {
                                     Pelatihan PKM TI 2024 merupakan bagian dari program kerja Himpunan Mahasiswa Teknologi Informasi Universitas Udayana periode 2024, yang bertujuan membimbing mahasiswa dalam merancang Program Kreativitas Mahasiswa (PKM) yang inovatif dan kreatif di bidang Teknologi Informasi.
                                 </p>
                                 <div className="mt-3 w-64 none">
-                                    <a href={route('guidebook')} className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md">
+                                    <a href={route('guidebook')} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-lagoon text-white btn lg:btn-md">
                                         <BookOpenIcon className="w-5 h-5" />
                                         Buku Panduan
                                     </a>

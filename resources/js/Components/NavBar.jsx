@@ -28,7 +28,7 @@ export default function NavBar({ auth }) {
                 scrolled ? "shadow-md" : "shadow-none"
             } duration-300`}
         >
-            <div className="flex justify-between w-full lg:navbar-start px-6 lg:px-0 py-2 sm:px-10 bg-base-100">
+            <div className="flex justify-between w-full lg:w-1/3 lg:navbar-start px-6 lg:px-0 py-2 sm:px-10 bg-base-100">
                 <a href="#" className="cursor-pointer w-14">
                     <img src="/images/Logo-PKM-TI.png?v=1.0" alt="w-full" />
                 </a>
@@ -53,21 +53,21 @@ export default function NavBar({ auth }) {
                 <div className="lg:navbar-center flex-col lg:flex">
                     <ul className="menu menu-vertical lg:menu-horizontal px-1">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="#">Beranda</a>
                         </li>
                         <li>
-                            <a href="#about-us">About Us</a>
+                            <a href="#about-us">Tentang PKM TI</a>
                         </li>
                         <li>
-                            <a href="#FaQ">FAQ</a>
+                            <a href="#FaQ">Pertanyaan Umum</a>
                         </li>
                         <li>
-                            <a href="#contact-us">Contact Us</a>
+                            <a href="#contact-us">Kontak Kami</a>
                         </li>
                     </ul>
                 </div>
 
-                <div className="flex flex-col space-y-4 lg:flex-row lg:navbar-end lg:space-y-0 lg:space-x-4 lg:items-center">
+                <div className="flex flex-col space-y-4 lg:w-fit lg:flex-row lg:navbar-end lg:space-y-0 lg:space-x-4 lg:items-center">
                     <div className="hidden lg:block">
                         <DarkMode />
                     </div>

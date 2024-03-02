@@ -28,9 +28,10 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
             return {
                 id: proposal.id,
                 title: proposal.title,
+                description: proposal.description,
                 team_id: proposal.team.id,
                 team_name: proposal.team.team_name,
-                lecturer: proposal.team.lecturer.name,
+                lecturer: proposal.team.lecturer ? proposal.team.lecturer : "",
                 scheme: proposal.scheme,
                 draft_proposal_url: proposal.draft_proposal_url,
                 final_proposal_url: proposal.final_proposal_url,
@@ -338,6 +339,20 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 field="title"
                                 className="min-w-64"
                                 header={<span className="me-2">Judul</span>}
+                                sortable
+                            />
+                            <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="description"
+                                field="description"
+                                className="min-w-64"
+                                header={
+                                    <span className="me-2">Gambaran Umum</span>
+                                }
+                                body={(rowData) =>
+                                    rowData.description &&
+                                    useTruncatedString(rowData.description, 150)
+                                }
                                 sortable
                             />
                             <Column

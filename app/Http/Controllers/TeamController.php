@@ -119,7 +119,7 @@ class TeamController extends Controller
     {
         Team::find($teamId)->update(['leader_id' => $userId]);
 
-        return redirect()->back()->with('msg', 'Ketua tim berhasil diganti.');
+        return back()->with('msg', 'Ketua tim berhasil diganti.');
     }
 
     public function update(Request $request, $teamId)
@@ -132,7 +132,7 @@ class TeamController extends Controller
 
         Team::find($teamId)->update($request->all());
 
-        return to_route('teams.show', $teamId)->with('msg', 'Informasi tim berhasil diubah.');
+        return back()->with('msg', 'Informasi tim berhasil diubah.');
     }
 
     public function destroy($teamId)

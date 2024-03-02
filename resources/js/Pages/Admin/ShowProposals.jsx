@@ -31,7 +31,9 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                 description: proposal.description,
                 team_id: proposal.team.id,
                 team_name: proposal.team.team_name,
-                lecturer: proposal.team.lecturer ? proposal.team.lecturer : "",
+                lecturer: proposal.team.lecturer
+                    ? proposal.team.lecturer.name
+                    : "",
                 scheme: proposal.scheme,
                 draft_proposal_url: proposal.draft_proposal_url,
                 final_proposal_url: proposal.final_proposal_url,

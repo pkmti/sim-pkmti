@@ -7,6 +7,7 @@ use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Jobs\SendEmailJob;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -41,6 +42,9 @@ Route::get('/test-email', function () {
     dispatch(new SendEmailJob($emailArgs));
 });
 
+Route::get('/guidebook', fn () => Redirect::to('https://drive.google.com/drive/folders/1fczvCUzj9yp-uJetouDcljul4hZ2rwtU?usp=drive_link'));
+Route::get('/panduan-belmawa', fn () => Redirect::to('https://drive.google.com/drive/folders/1rs3oFykE4d6NM7MUgxuNCqx291ORPqZI?usp=drive_link'));
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -50,11 +54,19 @@ Route::get('/', function () {
     ]);
 })->name('welcome');
 
-Route::get('/guidebook', fn () => Redirect::to('https://drive.google.com/drive/folders/1fczvCUzj9yp-uJetouDcljul4hZ2rwtU?usp=drive_link'));
-Route::get('/panduan-belmawa', fn () => Redirect::to('https://drive.google.com/drive/folders/1rs3oFykE4d6NM7MUgxuNCqx291ORPqZI?usp=drive_link'));
-
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $user = User::with('team', 'team.proposal', 'team.members', 'team.assistanceProofs')->find(Auth::id());
+
+    $infos = [
+        "hasTeam" => !is_null($user->team_id),
+        "hasEnoughTeamMembers" => $user->team->members->count() >= 3, 
+        "hasProposal" => !is_null($user->team->proposal),
+        "proposalStatus" => $user->team->proposal->status ?? "unsubmitted",
+        // "note" => $user->team->proposal->note ?? "",
+        "hasEnoughAssistanceProofs" => $user->team->assistanceProofs->count() >= 3,
+    ];
+
+    return Inertia::render('Dashboard', compact('infos'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

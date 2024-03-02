@@ -76,50 +76,43 @@ class TeamController extends Controller
     public function leave($teamId)
     {
         $user = User::find(Auth::id());
-        $teamMembersCount = User::where('team_id', $teamId)->count();
         $pastTeam = Team::with('members')->find($teamId);
+        $teamMembersCount = $pastTeam->members->count();
+
+        $user->update(['team_id' => null]);
 
         if ($teamMembersCount == 1) {
-            // logic if he/she was alone
             $pastTeam->delete();
-        } else {
-            // logic if he/she was a leader at the team 
-            if ($pastTeam->leader_id == $user->id) {
-                $pastTeam->update(['leader_id' =>  $pastTeam->members()->first()->id]);
-            }
+        } else if ($pastTeam->leader_id == $user->id) {
+            $pastTeam->update(['leader_id' =>  User::where('team_id', $teamId)->first()->id]);
         }
-        
-        $user->update(['team_id' => null]);
             
-        return to_route('dashboard')->with('msg', 'Kamu berhasil keluar dari tim.');
+        return to_route('dashboard')->with('msg', 'Kamu berhasil keluar dari tim');
     }
 
     public function kickMember($teamId, $userId)
     {
+        $user = User::find($userId);
         $pastTeam = Team::with('members')->find($teamId);
-        $teamMembersCount = User::where('team_id', $teamId)->count();
+        $teamMembersCount = $pastTeam->members->count();
+
+        $user->update(['team_id' => null]);
 
         if ($teamMembersCount == 1) {
-            // logic if he/she was alone
             $pastTeam->delete();
-            return to_route('dashboard')->with('msg', 'Tim dibubarkan.');
-        } else {
-            // logic if he/she was a leader at the team 
-            if ($pastTeam->leader_id == $userId) {
-                $pastTeam->update(['leader_id' =>  $pastTeam->members()->first()->id]);
-            }
+            return to_route('dashboard')->with('msg', 'Tim dibubarkan');
+        } else if ($pastTeam->leader_id == $userId) {
+            $pastTeam->update(['leader_id' =>  User::where('team_id', $teamId)->first()->id]);
         }
 
-        User::find($userId)->update(['team_id' => null]);
-
-        return back()->with('msg', 'Anggota tim berhasil dikeluarkan.');
+        return back()->with('msg', 'Anggota tim berhasil dikeluarkan');
     }
 
     public function changeLeader($teamId, $userId)
     {
         Team::find($teamId)->update(['leader_id' => $userId]);
 
-        return back()->with('msg', 'Ketua tim berhasil diganti.');
+        return back()->with('msg', 'Ketua tim berhasil diganti');
     }
 
     public function update(Request $request, $teamId)

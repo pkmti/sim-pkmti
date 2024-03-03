@@ -1,3 +1,5 @@
+import ModalBody from "@/Components/ModalBody";
+import ModalButton from "@/Components/ModalButton";
 import Toast from "@/Components/Toast";
 import { useRandomInt } from "@/utils";
 import {
@@ -59,134 +61,156 @@ export default function UpdatePasswordForm() {
                 />
             )}
 
-            <form onSubmit={updatePassword}>
-                {/* Input current password */}
-                <div className="form-control my-2">
-                    <label
-                        htmlFor="current_password"
-                        className="font-bold mb-2"
-                    >
-                        Password Lama
-                    </label>
-                    <div className="join">
-                        <input
-                            id="current_password"
-                            type="password"
-                            name="current_password"
-                            value={data.current_password}
-                            onChange={(e) =>
-                                setData("current_password", e.target.value)
-                            }
-                            className="input input-bordered w-full join-item z-[1]"
-                        />
-                        <label className="btn btn-square join-item swap">
+            <div>
+                <form onSubmit={updatePassword} id="update_password_form">
+                    {/* Input current password */}
+                    <div className="form-control my-2">
+                        <label
+                            htmlFor="current_password"
+                            className="font-bold mb-2"
+                        >
+                            Password Lama
+                        </label>
+                        <div className="join">
                             <input
-                                type="checkbox"
-                                onClick={() => {
-                                    let x =
-                                        document.getElementById(
-                                            "current_password"
+                                id="current_password"
+                                type="password"
+                                name="current_password"
+                                value={data.current_password}
+                                onChange={(e) =>
+                                    setData("current_password", e.target.value)
+                                }
+                                className="input input-bordered w-full join-item z-[1]"
+                            />
+                            <label className="btn btn-square join-item swap">
+                                <input
+                                    type="checkbox"
+                                    onClick={() => {
+                                        let x =
+                                            document.getElementById(
+                                                "current_password"
+                                            );
+                                        x.type =
+                                            x.type === "password"
+                                                ? "text"
+                                                : "password";
+                                    }}
+                                />
+                                <EyeSlashIcon className="h-6 w-6 swap-on" />
+                                <EyeIcon className="h-6 w-6 swap-off" />
+                            </label>
+                        </div>
+
+                        <p className="mt-2 text-error">
+                            {errors.current_password}
+                        </p>
+                    </div>
+
+                    {/* Input password */}
+                    <div className="form-control my-2">
+                        <label htmlFor="password" className="font-bold mb-2">
+                            Password Baru
+                        </label>
+                        <div className="join">
+                            <input
+                                id="password"
+                                type="password"
+                                name="password"
+                                value={data.password}
+                                onChange={(e) =>
+                                    setData("password", e.target.value)
+                                }
+                                className="input input-bordered w-full join-item z-[1]"
+                            />
+                            <label className="btn btn-square join-item swap">
+                                <input
+                                    type="checkbox"
+                                    onClick={() => {
+                                        let x =
+                                            document.getElementById("password");
+                                        x.type =
+                                            x.type === "password"
+                                                ? "text"
+                                                : "password";
+                                    }}
+                                />
+                                <EyeSlashIcon className="h-6 w-6 swap-on" />
+                                <EyeIcon className="h-6 w-6 swap-off" />
+                            </label>
+                        </div>
+
+                        <p className="mt-2 text-error">{errors.password}</p>
+                    </div>
+
+                    {/* Input confirmation password */}
+                    <div className="form-control my-2">
+                        <label
+                            htmlFor="password_confirmation"
+                            className="font-bold mb-2"
+                        >
+                            Konfirmasi Password
+                        </label>
+                        <div className="join">
+                            <input
+                                id="password_confirmation"
+                                type="password"
+                                name="password_confirmation"
+                                value={data.password_confirmation}
+                                onChange={(e) =>
+                                    setData(
+                                        "password_confirmation",
+                                        e.target.value
+                                    )
+                                }
+                                className="input input-bordered w-full join-item z-[1]"
+                            />
+                            <label className="btn btn-square join-item swap">
+                                <input
+                                    type="checkbox"
+                                    onClick={() => {
+                                        let x = document.getElementById(
+                                            "password_confirmation"
                                         );
-                                    x.type =
-                                        x.type === "password"
-                                            ? "text"
-                                            : "password";
-                                }}
-                            />
-                            <EyeSlashIcon className="h-6 w-6 swap-on" />
-                            <EyeIcon className="h-6 w-6 swap-off" />
-                        </label>
+                                        x.type =
+                                            x.type === "password"
+                                                ? "text"
+                                                : "password";
+                                    }}
+                                />
+                                <EyeSlashIcon className="h-6 w-6 swap-on" />
+                                <EyeIcon className="h-6 w-6 swap-off" />
+                            </label>
+                        </div>
+
+                        <p className="mt-2 text-error">
+                            {errors.password_confirmation}
+                        </p>
                     </div>
+                </form>
 
-                    <p className="mt-2 text-error">{errors.current_password}</p>
-                </div>
+                <ModalButton modalId="update_password_modal">
+                    <button className="btn btn-warning mb-2 w-full">
+                        <KeyIcon className="h-6 w-6" />
+                        Ganti password
+                    </button>
+                </ModalButton>
+            </div>
 
-                {/* Input password */}
-                <div className="form-control my-2">
-                    <label htmlFor="password" className="font-bold mb-2">
-                        Password Baru
-                    </label>
-                    <div className="join">
-                        <input
-                            id="password"
-                            type="password"
-                            name="password"
-                            value={data.password}
-                            onChange={(e) =>
-                                setData("password", e.target.value)
-                            }
-                            className="input input-bordered w-full join-item z-[1]"
-                        />
-                        <label className="btn btn-square join-item swap">
-                            <input
-                                type="checkbox"
-                                onClick={() => {
-                                    let x = document.getElementById("password");
-                                    x.type =
-                                        x.type === "password"
-                                            ? "text"
-                                            : "password";
-                                }}
-                            />
-                            <EyeSlashIcon className="h-6 w-6 swap-on" />
-                            <EyeIcon className="h-6 w-6 swap-off" />
-                        </label>
-                    </div>
-
-                    <p className="mt-2 text-error">{errors.password}</p>
-                </div>
-
-                {/* Input confirmation password */}
-                <div className="form-control my-2">
-                    <label
-                        htmlFor="password_confirmation"
-                        className="font-bold mb-2"
+            <ModalBody
+                id="update_password_modal"
+                headerText="Ganti Password"
+                actionButton={
+                    <button
+                        className="btn btn-warning"
+                        disabled={processing}
+                        form="update_password_form"
                     >
-                        Konfirmasi Password
-                    </label>
-                    <div className="join">
-                        <input
-                            id="password_confirmation"
-                            type="password"
-                            name="password_confirmation"
-                            value={data.password_confirmation}
-                            onChange={(e) =>
-                                setData("password_confirmation", e.target.value)
-                            }
-                            className="input input-bordered w-full join-item z-[1]"
-                        />
-                        <label className="btn btn-square join-item swap">
-                            <input
-                                type="checkbox"
-                                onClick={() => {
-                                    let x = document.getElementById(
-                                        "password_confirmation"
-                                    );
-                                    x.type =
-                                        x.type === "password"
-                                            ? "text"
-                                            : "password";
-                                }}
-                            />
-                            <EyeSlashIcon className="h-6 w-6 swap-on" />
-                            <EyeIcon className="h-6 w-6 swap-off" />
-                        </label>
-                    </div>
-
-                    <p className="mt-2 text-error">
-                        {errors.password_confirmation}
-                    </p>
-                </div>
-
-                <button
-                    className="btn btn-warning mb-2 w-full"
-                    disabled={processing}
-                    type="submit"
-                >
-                    <KeyIcon className="h-6 w-6" />
-                    Ganti password
-                </button>
-            </form>
+                        Ganti password
+                    </button>
+                }
+            >
+                Apakah Anda yakin mengganti password Anda?
+            </ModalBody>
         </>
     );
 }

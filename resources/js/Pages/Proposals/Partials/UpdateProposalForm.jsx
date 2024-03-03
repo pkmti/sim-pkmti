@@ -1,3 +1,5 @@
+import ModalBody from "@/Components/ModalBody";
+import ModalButton from "@/Components/ModalButton";
 import { useParam } from "@/utils";
 import { DocumentArrowUpIcon } from "@heroicons/react/24/outline";
 import {
@@ -43,174 +45,212 @@ export default function UpdateProposalForm({ user, proposal }) {
     }
 
     return (
-        <div className="lg:w-1/2">
-            <DocumentIcon className="h-10 w-10 mb-4" />
-            <h3 className="font-bold text-xs mb-2">PROPOSAL</h3>
-            <ProposalStatus />
+        <>
+            <div className="lg:w-1/2">
+                <DocumentIcon className="h-10 w-10 mb-4" />
+                <h3 className="font-bold text-xs mb-2">PROPOSAL</h3>
+                <ProposalStatus />
 
-            <form onSubmit={submit}>
-                {proposal.note && (
-                    <div className="alert alert-info" role="alert">
-                        <InformationCircleIcon className="h-6 w-6" />
-                        <div>
-                            <h3 className="font-bold">Catatan</h3>
-                            <div className="text-xs">{proposal.note}</div>
+                <form onSubmit={submit} id="update_proposal_form">
+                    {proposal.note && (
+                        <div className="alert alert-info" role="alert">
+                            <InformationCircleIcon className="h-6 w-6" />
+                            <div>
+                                <h3 className="font-bold">Catatan</h3>
+                                <div className="text-xs">{proposal.note}</div>
+                            </div>
                         </div>
+                    )}
+
+                    {/* Input Title */}
+                    <div className="form-control my-2">
+                        <label htmlFor="title" className="font-bold mb-2">
+                            Judul
+                        </label>
+                        <textarea
+                            id="title"
+                            name="title"
+                            value={data.title || ""}
+                            rows={2}
+                            autoComplete="title"
+                            onChange={(e) => setData("title", e.target.value)}
+                            className="textarea textarea-bordered lg:resize-none"
+                        ></textarea>
+
+                        <p className="mt-2 text-error">{errors.title}</p>
                     </div>
-                )}
 
-                {/* Input Title */}
-                <div className="form-control my-2">
-                    <label htmlFor="title" className="font-bold mb-2">
-                        Judul
-                    </label>
-                    <textarea
-                        id="title"
-                        name="title"
-                        value={data.title || ""}
-                        rows={2}
-                        autoComplete="title"
-                        onChange={(e) => setData("title", e.target.value)}
-                        className="textarea textarea-bordered lg:resize-none"
-                    ></textarea>
-
-                    <p className="mt-2 text-error">{errors.title}</p>
-                </div>
-
-                {/* Select PKM Scheme */}
-                <div className="form-control my-2">
-                    <label htmlFor="title" className="font-bold mb-2">
-                        Skema
-                    </label>
-                    <select
-                        id="scheme"
-                        name="scheme"
-                        className="select select-bordered w-full text-base"
-                        value={data.scheme}
-                        onChange={(e) => setData("scheme", e.target.value)}
-                    >
-                        <option value="" disabled>
-                            Pilih skema PKM
-                        </option>
-                        {validSchemes.map((scheme, i) => (
-                            <option key={i} value={scheme}>
-                                {scheme}
+                    {/* Select PKM Scheme */}
+                    <div className="form-control my-2">
+                        <label htmlFor="title" className="font-bold mb-2">
+                            Skema
+                        </label>
+                        <select
+                            id="scheme"
+                            name="scheme"
+                            className="select select-bordered w-full text-base"
+                            value={data.scheme}
+                            onChange={(e) => setData("scheme", e.target.value)}
+                        >
+                            <option value="" disabled>
+                                Pilih skema PKM
                             </option>
-                        ))}
-                    </select>
+                            {validSchemes.map((scheme, i) => (
+                                <option key={i} value={scheme}>
+                                    {scheme}
+                                </option>
+                            ))}
+                        </select>
 
-                    <p className="mt-2 text-error">{errors.scheme}</p>
-                </div>
-
-                {/* Input Description */}
-                <div className="form-control my-2">
-                    <label htmlFor="description" className="font-bold mb-2">
-                        Gambaran Umum
-                    </label>
-                    <textarea
-                        id="description"
-                        name="description"
-                        value={data.description || ""}
-                        rows={2}
-                        maxLength={255}
-                        autoComplete="description"
-                        onChange={(e) => setData("description", e.target.value)}
-                        className="textarea textarea-bordered"
-                    ></textarea>
-                </div>
-
-                {/* Input Draft Proposal Link */}
-                <div className="form-control my-2">
-                    <label
-                        htmlFor="draft_proposal_url"
-                        className="font-bold mb-2"
-                    >
-                        Link Proposal Draf (.pdf)
-                    </label>
-                    <div className="join">
-                        <input
-                            id="draft_proposal_url"
-                            type="text"
-                            name="draft_proposal_url"
-                            value={data.draft_proposal_url}
-                            autoComplete="draft_proposal_url"
-                            onChange={(e) =>
-                                setData("draft_proposal_url", e.target.value)
-                            }
-                            className="input input-bordered join-item z-[1] w-full"
-                        />
-
-                        <div className="tooltip" data-tip="Kunjungi tautan">
-                            <a
-                                href={proposal.draft_proposal_url}
-                                className="join-item btn btn-square"
-                            >
-                                <ArrowUturnRightIcon className="h-6 w-6" />
-                            </a>
-                        </div>
+                        <p className="mt-2 text-error">{errors.scheme}</p>
                     </div>
 
-                    <p className="mt-2 text-error">
-                        {errors.draft_proposal_url}
-                    </p>
-                </div>
-
-                {/* Input Final Proposal Link */}
-                <div className="form-control my-2">
-                    <label
-                        htmlFor="final_proposal_url"
-                        className="font-bold mb-2"
-                    >
-                        Link Proposal Final (.pdf)
-                    </label>
-                    <div className="join">
-                        <input
-                            id="final_proposal_url"
-                            type="text"
-                            name="final_proposal_url"
-                            value={data.final_proposal_url}
-                            autoComplete="final_proposal_url"
-                            disabled={true && !proposal.draft_proposal_url}
+                    {/* Input Description */}
+                    <div className="form-control my-2">
+                        <label htmlFor="description" className="font-bold mb-2">
+                            Gambaran Umum
+                        </label>
+                        <textarea
+                            id="description"
+                            name="description"
+                            value={data.description || ""}
+                            rows={2}
+                            maxLength={255}
+                            autoComplete="description"
                             onChange={(e) =>
-                                setData("final_proposal_url", e.target.value)
+                                setData("description", e.target.value)
                             }
-                            className="input input-bordered join-item z-[1] w-full"
-                        />
-                        <div className="tooltip" data-tip="Kunjungi tautan">
-                            <a
-                                href={proposal.final_proposal_url}
-                                className="join-item btn btn-square"
-                            >
-                                <ArrowUturnRightIcon className="h-6 w-6" />
-                            </a>
-                        </div>
+                            className="textarea textarea-bordered"
+                        ></textarea>
                     </div>
 
-                    <p className="mt-2 text-error">
-                        {errors.final_proposal_url}
-                    </p>
-                </div>
+                    {/* Input Draft Proposal Link */}
+                    <div className="form-control my-2">
+                        <label
+                            htmlFor="draft_proposal_url"
+                            className="font-bold mb-2"
+                        >
+                            Link Proposal Draf (.pdf)
+                        </label>
+                        <div className="join">
+                            <input
+                                id="draft_proposal_url"
+                                type="text"
+                                name="draft_proposal_url"
+                                value={data.draft_proposal_url}
+                                autoComplete="draft_proposal_url"
+                                onChange={(e) =>
+                                    setData(
+                                        "draft_proposal_url",
+                                        e.target.value
+                                    )
+                                }
+                                className="input input-bordered join-item z-[1] w-full"
+                            />
 
-                <button
-                    className="btn btn-warning mb-2 w-full"
-                    disabled={processing}
-                    type="submit"
-                >
-                    <DocumentArrowUpIcon className="h-6 w-6" />
-                    Simpan Proposal
-                </button>
-            </form>
+                            <div className="tooltip" data-tip="Kunjungi tautan">
+                                <a
+                                    href={proposal.draft_proposal_url}
+                                    className="join-item btn btn-square"
+                                >
+                                    <ArrowUturnRightIcon className="h-6 w-6" />
+                                </a>
+                            </div>
+                        </div>
 
-            {(user.id === proposal.team.leader_id || user.role === "admin") && (
-                <Link
-                    as="button"
-                    method="delete"
-                    className="btn btn-error mb-2 w-full"
-                    href={route("proposals.destroy", useParam(1))}
-                >
-                    <TrashIcon className="h-6 w-6" /> Hapus Proposal
-                </Link>
-            )}
-        </div>
+                        <p className="mt-2 text-error">
+                            {errors.draft_proposal_url}
+                        </p>
+                    </div>
+
+                    {/* Input Final Proposal Link */}
+                    <div className="form-control my-2">
+                        <label
+                            htmlFor="final_proposal_url"
+                            className="font-bold mb-2"
+                        >
+                            Link Proposal Final (.pdf)
+                        </label>
+                        <div className="join">
+                            <input
+                                id="final_proposal_url"
+                                type="text"
+                                name="final_proposal_url"
+                                value={data.final_proposal_url}
+                                autoComplete="final_proposal_url"
+                                disabled={true && !proposal.draft_proposal_url}
+                                onChange={(e) =>
+                                    setData(
+                                        "final_proposal_url",
+                                        e.target.value
+                                    )
+                                }
+                                className="input input-bordered join-item z-[1] w-full"
+                            />
+                            <div className="tooltip" data-tip="Kunjungi tautan">
+                                <a
+                                    href={proposal.final_proposal_url}
+                                    className="join-item btn btn-square"
+                                >
+                                    <ArrowUturnRightIcon className="h-6 w-6" />
+                                </a>
+                            </div>
+                        </div>
+
+                        <p className="mt-2 text-error">
+                            {errors.final_proposal_url}
+                        </p>
+                    </div>
+                </form>
+                <ModalButton modalId="update_proposal_modal">
+                    <button className="btn btn-warning mb-2 w-full">
+                        <DocumentArrowUpIcon className="h-6 w-6" />
+                        Simpan Proposal
+                    </button>
+                </ModalButton>
+
+                {(user.id === proposal.team.leader_id ||
+                    user.role === "admin") && (
+                    <ModalButton modalId="delete_proposal_modal">
+                        <button className="btn btn-error mb-2 w-full">
+                            <TrashIcon className="h-6 w-6" /> Hapus Proposal
+                        </button>
+                    </ModalButton>
+                )}
+            </div>
+
+            <ModalBody
+                id="update_proposal_modal"
+                headerText="Edit Proposal"
+                actionButton={
+                    <button
+                        className="btn btn-warning"
+                        disabled={processing}
+                        form="update_proposal_form"
+                    >
+                        Simpan
+                    </button>
+                }
+            >
+                Apakah Anda yakin menyimpan perubahan informasi proposal?
+            </ModalBody>
+
+            <ModalBody
+                id="delete_proposal_modal"
+                headerText="Hapus Proposal"
+                actionButton={
+                    <Link
+                        as="button"
+                        method="delete"
+                        href={route("proposals.destroy", useParam(1))}
+                        className="btn btn-error"
+                    >
+                        Hapus
+                    </Link>
+                }
+            >
+                Apakah Anda yakin menghapus proposal?
+            </ModalBody>
+        </>
     );
 }

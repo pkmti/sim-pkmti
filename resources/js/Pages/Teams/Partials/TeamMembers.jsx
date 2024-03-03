@@ -1,4 +1,6 @@
-import { useParam } from "@/utils";
+import ModalBody from "@/Components/ModalBody";
+import ModalButton from "@/Components/ModalButton";
+import { useParam, useRandomInt } from "@/utils";
 import {
     UserMinusIcon,
     ArrowsRightLeftIcon,
@@ -7,41 +9,13 @@ import {
     CodeBracketSquareIcon,
 } from "@heroicons/react/24/solid";
 import { Link } from "@inertiajs/react";
-
-function KickMember({ memberId }) {
-    return (
-        <div className="tooltip" data-tip="Keluarkan Anggota">
-            <Link
-                as="button"
-                method="delete"
-                className="btn btn-square btn-error btn-sm"
-                href={route("teams.kick", [useParam(1), memberId])}
-            >
-                <UserMinusIcon className="h-5 w-5" />
-            </Link>
-        </div>
-    );
-}
-
-function ChangeLeader({ memberId }) {
-    return (
-        <div className="tooltip" data-tip="Ganti Ketua">
-            <Link
-                as="button"
-                method="patch"
-                className="btn btn-square btn-warning btn-sm"
-                href={route("teams.changeLeader", [useParam(1), memberId])}
-            >
-                <ArrowsRightLeftIcon className="h-5 w-5" />
-            </Link>
-        </div>
-    );
-}
+import { useState } from "react";
 
 export default function TeamMembers({ user, team }) {
-    const leaderFirst = team.members.sort((a) =>
-        a.id === team.leader_id ? -1 : 0
-    );
+    team.members.sort((a) => (a.id === team.leader_id ? -1 : 0));
+
+    const [selectedMember, setSelectedMember] = useState({ id: 0 });
+    const randomKey = useRandomInt();
 
     return (
         <>
@@ -100,18 +74,57 @@ export default function TeamMembers({ user, team }) {
                                         <td>{member.phone}</td>
                                         <td>{member.line_id}</td>
                                         <td className="flex gap-1">
-                                            {/* Kick member */}
                                             {user.id !== member.id &&
                                                 (user.role === "admin" ||
                                                     user.id ===
-                                                        team.leader_id) && (
+                                                        team.leader_id) &&
+                                                team.leader_id !==
+                                                    member.id && (
                                                     <>
-                                                        <KickMember
-                                                            memberId={member.id}
-                                                        />
-                                                        <ChangeLeader
-                                                            memberId={member.id}
-                                                        />
+                                                        <ModalButton
+                                                            modalId={
+                                                                "kick_member_modal" +
+                                                                randomKey
+                                                            }
+                                                        >
+                                                            <div
+                                                                className="tooltip"
+                                                                data-tip="Keluarkan"
+                                                            >
+                                                                <button
+                                                                    className="btn btn-square btn-error btn-sm"
+                                                                    onClick={() =>
+                                                                        setSelectedMember(
+                                                                            member
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    <UserMinusIcon className="h-5 w-5" />
+                                                                </button>
+                                                            </div>
+                                                        </ModalButton>
+                                                        <ModalButton
+                                                            modalId={
+                                                                "change_leader_modal" +
+                                                                randomKey
+                                                            }
+                                                        >
+                                                            <div
+                                                                className="tooltip"
+                                                                data-tip="Keluarkan"
+                                                            >
+                                                                <button
+                                                                    className="btn btn-square btn-warning btn-sm"
+                                                                    onClick={() =>
+                                                                        setSelectedMember(
+                                                                            member
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    <ArrowsRightLeftIcon className="h-5 w-5" />
+                                                                </button>
+                                                            </div>
+                                                        </ModalButton>
                                                     </>
                                                 )}
                                         </td>
@@ -122,6 +135,47 @@ export default function TeamMembers({ user, team }) {
                     </table>
                 </div>
             </div>
+
+            <ModalBody
+                headerText="Keluarkan Anggota"
+                id={"kick_member_modal" + randomKey}
+                actionButton={
+                    <Link
+                        as="button"
+                        method="delete"
+                        className="btn btn-error"
+                        href={route("teams.kick", [
+                            useParam(1),
+                            selectedMember.id,
+                        ])}
+                    >
+                        Keluarkan
+                    </Link>
+                }
+            >
+                Apakah Anda yakin mengeluarkan {selectedMember.name}?
+            </ModalBody>
+
+            <ModalBody
+                headerText="Ganti Ketua"
+                id={"change_leader_modal" + randomKey}
+                actionButton={
+                    <Link
+                        as="button"
+                        method="patch"
+                        className="btn btn-warning"
+                        href={route("teams.changeLeader", [
+                            useParam(1),
+                            selectedMember.id,
+                        ])}
+                    >
+                        Ganti
+                    </Link>
+                }
+            >
+                Apakah Anda yakin mengganti {selectedMember.name} menjadi ketua
+                tim?
+            </ModalBody>
         </>
     );
 }

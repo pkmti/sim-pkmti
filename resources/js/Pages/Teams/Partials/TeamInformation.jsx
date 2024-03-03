@@ -1,3 +1,5 @@
+import ModalBody from "@/Components/ModalBody";
+import ModalButton from "@/Components/ModalButton";
 import { useParam, useRandomString } from "@/utils";
 import {
     ArrowLeftEndOnRectangleIcon,
@@ -29,7 +31,7 @@ export default function TeamInformation({ user, team, lecturers }) {
             <div className="lg:w-96">
                 <UserGroupIcon className="h-10 w-10 mb-4" />
                 <h3 className="font-bold text-xs mb-4">INFORMASI TIM</h3>
-                <form onSubmit={updateTeam}>
+                <form onSubmit={updateTeam} id="team_information_form">
                     {/* Team name */}
                     <div className="form-control my-2">
                         <label htmlFor="team_name" className="font-bold mb-2">
@@ -119,53 +121,118 @@ export default function TeamInformation({ user, team, lecturers }) {
                             </div>
                         </div>
                     </div>
+                </form>
 
-                    {(user.id === team.leader_id || user.role === "admin") && (
-                        <>
-                            <button
-                                className="btn btn-warning mb-2 w-full"
-                                disabled={processing}
-                                type="submit"
-                            >
+                {(user.id === team.leader_id || user.role === "admin") && (
+                    <>
+                        <ModalButton modalId="edit_team_modal">
+                            <button className="btn btn-warning mb-2 w-full">
                                 <PencilIcon className="h-6 w-6" />
                                 Simpan Perubahan
                             </button>
+                        </ModalButton>
+                        <ModalButton modalId="regenerate_token_modal">
+                            <button className="btn btn-warning mb-2 w-full">
+                                <ArrowPathIcon className="h-6 w-6" />
+                                Buat Token Baru
+                            </button>
+                        </ModalButton>
+                    </>
+                )}
+
+                <ModalButton modalId="leave_team_modal">
+                    <button className="btn btn-error mb-2 w-full">
+                        <ArrowLeftEndOnRectangleIcon className="h-6 w-6" />
+                        Keluar Tim
+                    </button>
+                </ModalButton>
+
+                {(user.id === team.leader_id || user.role === "admin") && (
+                    <ModalButton modalId="destroy_team_modal">
+                        <button className="btn btn-error mb-2 w-full">
+                            <PowerIcon className="h-6 w-6" /> Bubarkan Tim
+                        </button>
+                    </ModalButton>
+                )}
+            </div>
+
+            {/* Modal */}
+            {(user.id === team.leader_id || user.role === "admin") && (
+                <>
+                    <ModalBody
+                        headerText="Edit Tim"
+                        id="edit_team_modal"
+                        actionButton={
+                            <button
+                                className="btn btn-warning mb-2 w-full"
+                                disabled={processing}
+                                form="team_information_form"
+                                type="submit"
+                            >
+                                Simpan Perubahan
+                            </button>
+                        }
+                    >
+                        Apakah Anda yakin menyimpan perubahan informasi tim?
+                    </ModalBody>
+
+                    <ModalBody
+                        headerText="Ganti Token"
+                        id="regenerate_token_modal"
+                        actionButton={
                             <button
                                 className="btn btn-warning mb-2 w-full"
                                 disabled={processing}
                                 onClick={() =>
                                     setData("token", useRandomString(8))
                                 }
+                                form="team_information_form"
                                 type="submit"
                             >
-                                <ArrowPathIcon className="h-6 w-6" />
-                                Buat Token Baru
+                                Buat Token
                             </button>
-                        </>
-                    )}
-                </form>
+                        }
+                    >
+                        Apakah Anda yakin membuat token tim baru?
+                    </ModalBody>
+                </>
+            )}
 
-                <Link
-                    as="button"
-                    method="delete"
-                    className="btn btn-error mb-2 w-full"
-                    href={route("teams.leave", useParam(1))}
-                >
-                    <ArrowLeftEndOnRectangleIcon className="h-6 w-6" /> Keluar
-                    Tim
-                </Link>
-
-                {(user.id === team.leader_id || user.role === "admin") && (
+            <ModalBody
+                headerText="Keluar Tim"
+                id="leave_team_modal"
+                actionButton={
                     <Link
                         as="button"
                         method="delete"
                         className="btn btn-error mb-2 w-full"
-                        href={route("teams.destroy", useParam(1))}
+                        href={route("teams.leave", useParam(1))}
                     >
-                        <PowerIcon className="h-6 w-6" /> Bubarkan Tim
+                        Keluar Tim
                     </Link>
-                )}
-            </div>
+                }
+            >
+                Apakah Anda yakin untuk keluar dari tim {team.team_name}?
+            </ModalBody>
+
+            {(user.id === team.leader_id || user.role === "admin") && (
+                <ModalBody
+                    headerText="Bubarkan Tim"
+                    id="destroy_team_modal"
+                    actionButton={
+                        <Link
+                            as="button"
+                            method="delete"
+                            className="btn btn-error mb-2 w-full"
+                            href={route("teams.destroy", useParam(1))}
+                        >
+                            Bubarkan Tim
+                        </Link>
+                    }
+                >
+                    Apakah Anda yakin membubarkan tim {team.team_name}?
+                </ModalBody>
+            )}
         </>
     );
 }

@@ -1,4 +1,6 @@
-import { useParam } from "@/utils";
+import ModalBody from "@/Components/ModalBody";
+import ModalButton from "@/Components/ModalButton";
+import { useParam, useRandomInt } from "@/utils";
 import {
     ArrowUturnRightIcon,
     PencilIcon,
@@ -12,6 +14,8 @@ export default function Proof({ proof, order }) {
         assistance_date: proof.assistance_date,
     });
 
+    const randomKey = useRandomInt();
+
     const submit = (e) => {
         e.preventDefault();
 
@@ -21,7 +25,7 @@ export default function Proof({ proof, order }) {
     return (
         <>
             <div className="divider"></div>
-            <form onSubmit={submit}>
+            <form onSubmit={submit} id={"edit_proof_form" + randomKey}>
                 <h3 className="font-bold text-xs mb-4">BUKTI {order}</h3>
                 {/* Input Proof URL */}
                 <div className="form-control my-2">
@@ -75,16 +79,42 @@ export default function Proof({ proof, order }) {
 
                     <p className="mt-2 text-error">{errors.assistance_date}</p>
                 </div>
+            </form>
 
-                <div className="join join-vertical lg:join-horizontal w-full">
-                    <button className="btn btn-warning join-item lg:w-1/2 w-full">
-                        <PencilIcon
-                            className="h-6 w-6"
-                            disabled={processing}
-                            type="submit"
-                        />
+            <ModalButton modalId={"edit_proof_modal" + randomKey}>
+                <button className="btn btn-warning w-full mb-2">
+                    <PencilIcon className="h-6 w-6" />
+                    Edit
+                </button>
+            </ModalButton>
+
+            <ModalButton modalId={"delete_proof_modal" + randomKey}>
+                <button className="btn btn-error w-full">
+                    <TrashIcon className="h-6 w-6" />
+                    Hapus
+                </button>
+            </ModalButton>
+
+            <ModalBody
+                id={"edit_proof_modal" + randomKey}
+                headerText="Edit Bukti"
+                actionButton={
+                    <button
+                        className="btn btn-warning"
+                        disabled={processing}
+                        form={"edit_proof_form" + randomKey}
+                    >
                         Edit
                     </button>
+                }
+            >
+                Apakah Anda yakin menyimpan perubahan informasi bukti asistensi?
+            </ModalBody>
+
+            <ModalBody
+                id={"delete_proof_modal" + randomKey}
+                headerText="Hapus Bukti"
+                actionButton={
                     <Link
                         as="button"
                         href={route("assistance-proofs.destroy", [
@@ -92,13 +122,14 @@ export default function Proof({ proof, order }) {
                             proof.id,
                         ])}
                         method="delete"
-                        className="btn btn-error join-item lg:w-1/2 w-full"
+                        className="btn btn-error"
                     >
-                        <TrashIcon className="h-6 w-6" />
                         Hapus
                     </Link>
-                </div>
-            </form>
+                }
+            >
+                Apakah Anda yakin menghapus bukti asistensi?
+            </ModalBody>
         </>
     );
 }

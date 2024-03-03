@@ -9,6 +9,8 @@ import {
 } from "@heroicons/react/24/solid";
 import { Link } from "@inertiajs/react";
 import { useEffect, useState } from "react";
+import ModalButton from "./ModalButton";
+import ModalBody from "./ModalBody";
 
 export default function Sidebar({ user, navigations, children }) {
     const [theme, setThemes] = useState(
@@ -123,44 +125,32 @@ export default function Sidebar({ user, navigations, children }) {
                                 ))}
 
                             <li className="my-2">
-                                <a
-                                    onClick={() =>
-                                        document
-                                            .getElementById(
-                                                "logout-confirmation"
-                                            )
-                                            .showModal()
-                                    }
-                                >
+                                <ModalButton modalId="logout_modal">
                                     <ArrowLeftEndOnRectangleIcon className="h-6 w-6" />
                                     Keluar
-                                </a>
+                                </ModalButton>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            {/* Logout confirmation */}
-            <dialog id="logout-confirmation" className="modal">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Keluar</h3>
-                    <p className="py-4">Apakah Anda yakin untuk keluar?</p>
-                    <div className="modal-action">
-                        <form method="dialog">
-                            <Link
-                                as="button"
-                                className="btn btn-error me-1"
-                                method="post"
-                                href={route("logout")}
-                            >
-                                Keluar
-                            </Link>
-                            <button className="btn ms-1">Batal</button>
-                        </form>
-                    </div>
-                </div>
-            </dialog>
+            <ModalBody
+                id="logout_modal"
+                headerText="Keluar"
+                actionButton={
+                    <Link
+                        as="button"
+                        className="btn btn-error me-1"
+                        method="post"
+                        href={route("logout")}
+                    >
+                        Keluar
+                    </Link>
+                }
+            >
+                Apakah Anda yakin untuk keluar?
+            </ModalBody>
         </>
     );
 }

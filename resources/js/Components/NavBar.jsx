@@ -87,7 +87,7 @@ export default function NavBar({ auth }) {
                                 href={route("login")}
                                 className="font-medium bg-primary px-6 py-2 rounded-md text-white hover:text-white hover:bg-blue-lagoon dark:text-gray-400 dark:hover:text-white transition-all duration-300"
                             >
-                                Log in
+                                Login
                             </Link>
 
                             <Link

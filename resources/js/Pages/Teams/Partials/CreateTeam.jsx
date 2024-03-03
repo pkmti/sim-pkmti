@@ -1,3 +1,5 @@
+import ModalBody from "@/Components/ModalBody";
+import ModalButton from "@/Components/ModalButton";
 import { useRandomTeamName } from "@/utils";
 import { ArrowPathIcon, UserPlusIcon } from "@heroicons/react/24/solid";
 import { useForm } from "@inertiajs/react";
@@ -22,49 +24,71 @@ export default function CreateTeam() {
 
     return (
         <>
-            <form onSubmit={submit}>
-                <UserPlusIcon className="h-10 w-10 mb-4" />
-                <h3 className="font-bold text-xs">BUAT TIM</h3>
-                <div className="form-control my-4">
-                    <label htmlFor="team_name" className="font-bold mb-2">
-                        Nama Tim
-                    </label>
-                    <div className="join">
-                        <input
-                            id="team_name"
-                            type="text"
-                            name="team_name"
-                            value={data.team_name}
-                            autoComplete="team_name"
-                            isfocused="true"
-                            onChange={(e) =>
-                                setData("team_name", e.target.value)
-                            }
-                            className="input input-bordered join-item z-[1]"
-                        />
-                        <div className="tooltip" data-tip="Buat nama tim">
-                            <label
-                                className="btn btn-square join-item"
-                                onClick={() =>
-                                    setData("team_name", useRandomTeamName())
+            <div>
+                <form onSubmit={submit} id="create_team_form">
+                    <UserPlusIcon className="h-10 w-10 mb-4" />
+                    <h3 className="font-bold text-xs">BUAT TIM</h3>
+                    <div className="form-control my-4">
+                        <label htmlFor="team_name" className="font-bold mb-2">
+                            Nama Tim
+                        </label>
+                        <div className="join">
+                            <input
+                                id="team_name"
+                                type="text"
+                                name="team_name"
+                                value={data.team_name}
+                                autoComplete="team_name"
+                                isfocused="true"
+                                onChange={(e) =>
+                                    setData("team_name", e.target.value)
                                 }
-                            >
-                                <ArrowPathIcon className="h-6 w-6" />
-                            </label>
+                                className="input input-bordered join-item z-[1]"
+                            />
+                            <div className="tooltip" data-tip="Buat nama tim">
+                                <label
+                                    className="btn btn-square join-item"
+                                    onClick={() =>
+                                        setData(
+                                            "team_name",
+                                            useRandomTeamName()
+                                        )
+                                    }
+                                >
+                                    <ArrowPathIcon className="h-6 w-6" />
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
-                    {errors.team_name && (
-                        <p className="mt-2 text-error">{errors.team_name}</p>
-                    )}
-                </div>
-                <button
-                    className="btn btn-primary w-full mb-2"
-                    disabled={processing}
-                >
-                    Buat Tim
-                </button>
-            </form>
+                        {errors.team_name && (
+                            <p className="mt-2 text-error">
+                                {errors.team_name}
+                            </p>
+                        )}
+                    </div>
+                </form>
+                <ModalButton modalId="create_team_modal">
+                    <button className="btn btn-primary w-full mb-2">
+                        Buat Tim
+                    </button>
+                </ModalButton>
+            </div>
+
+            <ModalBody
+                id="create_team_modal"
+                headerText="Buat Tim"
+                actionButton={
+                    <button
+                        className="btn btn-primary"
+                        form="create_team_form"
+                        disabled={processing}
+                    >
+                        Buat Tim
+                    </button>
+                }
+            >
+                Apakah Anda yakin ingin membuat tim {data.team_name}?
+            </ModalBody>
         </>
     );
 }

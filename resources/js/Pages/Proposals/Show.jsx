@@ -1,8 +1,8 @@
 import Toast from "@/Components/Toast";
 import ParticipantLayout from "@/Layouts/ParticipantLayout";
-import CreateProposalForm from "./Partials/CreateProposalForm";
-import { useParam, useRandomInt } from "@/utils";
+import { useRandomInt } from "@/utils";
 import UpdateProposalForm from "./Partials/UpdateProposalForm";
+import SubmitProposalForm from "./Partials/SubmitProposalForm";
 
 export default function Show({ auth, proposal, flash }) {
     const { user } = auth;
@@ -20,7 +20,7 @@ export default function Show({ auth, proposal, flash }) {
             {proposal ? (
                 <UpdateProposalForm user={user} proposal={proposal} />
             ) : (
-                <CreateProposalForm />
+                <SubmitProposalForm />
             )}
         </ParticipantLayout>
     );

@@ -78,6 +78,10 @@ export default function Dashboard({ auth, infos, flash }) {
             warning: <ExclamationCircleIcon className="h-6 w-6" />,
         };
 
+        <div className="alert alert-success" role="alert"></div>;
+        <div className="alert alert-error" role="alert"></div>;
+        <div className="alert alert-warning" role="alert"></div>;
+
         return (
             <div className={`alert alert-${mode} mb-2`} role="alert">
                 {icon[mode]}

@@ -57,13 +57,18 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     $user = User::with('team', 'team.proposal', 'team.members', 'team.assistanceProofs')->find(Auth::id());
 
+    $hasTeam = !is_null($user->team_id);
+    $hasEnoughMembers = $hasTeam && $user->team->members->count() >= 3;
+    $hasProposal = $hasEnoughMembers && !is_null($user->team->proposal);
+    $proposalStatus = $hasProposal ? $user->team->proposal->status : "unsubmitted";
+    $hasEnoughAssistanceProofs = $hasProposal && $user->team->assistanceProofs->count() >= 3;
+
     $infos = [
-        "hasTeam" => !is_null($user->team_id),
-        "hasEnoughTeamMembers" => $user->team->members->count() >= 3, 
-        "hasProposal" => !is_null($user->team->proposal),
-        "proposalStatus" => $user->team->proposal->status ?? "unsubmitted",
-        // "note" => $user->team->proposal->note ?? "",
-        "hasEnoughAssistanceProofs" => $user->team->assistanceProofs->count() >= 3,
+        "hasTeam" => $hasTeam,
+        "hasEnoughTeamMembers" => $hasEnoughMembers, 
+        "hasProposal" => $hasProposal,
+        "proposalStatus" => $proposalStatus,
+        "hasEnoughAssistanceProofs" => $hasEnoughAssistanceProofs,
     ];
 
     return Inertia::render('Dashboard', compact('infos'));

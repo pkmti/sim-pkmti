@@ -18,9 +18,17 @@ import {
 import { Link, router } from "@inertiajs/react";
 import Toast from "@/Components/Toast";
 import { useIsObjectEmpty, useRandomInt } from "@/utils";
+import ModalButton from "@/Components/ModalButton";
+import ModalBody from "@/Components/ModalBody";
 
 export default function ShowTeams({ auth, teams, flash, errors }) {
     const { user } = auth;
+
+    const randomKey = useRandomInt();
+    const [deletedTeam, setDeletedTeam] = useState({
+        id: 0,
+        team_name: "PKM Team",
+    });
 
     // Select field that want to display
     const [selectedFields, setSelectedFields] = useState(
@@ -81,27 +89,29 @@ export default function ShowTeams({ auth, teams, flash, errors }) {
     };
 
     const membersDetail = (rowData) => {
+        const [kickedMember, setKickedMember] = useState({
+            id: 0,
+            name: "John Doe",
+        });
+
+        const [changedLeader, setChangedLeader] = useState({
+            id: 0,
+            name: "John Doe",
+        });
+
         return (
             <>
-                <button
-                    className="btn btn-square btn-sm"
-                    onClick={() =>
-                        document
-                            .getElementById(
-                                "reject_proposal_modal" + rowData.id
-                            )
-                            .showModal()
-                    }
-                >
-                    <EllipsisHorizontalIcon className="h-4 w-4" />
-                </button>
-                <dialog
-                    id={"reject_proposal_modal" + rowData.id}
-                    className="modal text-left"
-                >
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg mb-4">Anggota</h3>
+                <ModalButton modalId={"members_detail_modal" + rowData.id}>
+                    <button className="btn btn-square btn-sm">
+                        <EllipsisHorizontalIcon className="h-4 w-4" />
+                    </button>
+                </ModalButton>
 
+                <div className="text-left">
+                    <ModalBody
+                        id={"members_detail_modal" + rowData.id}
+                        headerText="Anggota Tim"
+                    >
                         {rowData.members.map((member, i) => {
                             return (
                                 <div
@@ -117,41 +127,106 @@ export default function ShowTeams({ auth, teams, flash, errors }) {
                                     </span>
                                     <span>{member.name}</span>
 
-                                    <Link
-                                        as="button"
-                                        className="btn btn-xs btn-square btn-error"
-                                        method="delete"
-                                        href={route("teams.kick", [
-                                            rowData.id,
-                                            member.id,
-                                        ])}
+                                    <ModalButton
+                                        modalId={
+                                            "kick_member_modal" + rowData.id
+                                        }
                                     >
-                                        <UserMinusIcon className="h-4 w-4" />
-                                    </Link>
-                                    {member.nim !== rowData.leader_nim && (
-                                        <Link
-                                            as="button"
-                                            className="btn btn-xs btn-square btn-warning"
-                                            method="patch"
-                                            href={route("teams.changeLeader", [
-                                                rowData.id,
-                                                member.id,
-                                            ])}
+                                        <button
+                                            className="btn btn-xs btn-square btn-error"
+                                            onClick={() => {
+                                                document
+                                                    .getElementById(
+                                                        "members_detail_modal" +
+                                                            rowData.id
+                                                    )
+                                                    .close();
+                                                setKickedMember(
+                                                    rowData.members[i]
+                                                );
+                                            }}
                                         >
-                                            <ArrowsRightLeftIcon className="h-4 w-4" />
-                                        </Link>
+                                            <UserMinusIcon className="h-4 w-4" />
+                                        </button>
+                                    </ModalButton>
+
+                                    {member.nim !== rowData.leader_nim && (
+                                        <ModalButton
+                                            modalId={
+                                                "change_leader_modal" +
+                                                rowData.id
+                                            }
+                                        >
+                                            <button
+                                                className="btn btn-xs btn-square btn-warning"
+                                                onClick={() => {
+                                                    document
+                                                        .getElementById(
+                                                            "members_detail_modal" +
+                                                                rowData.id
+                                                        )
+                                                        .close();
+                                                    setChangedLeader(
+                                                        rowData.members[i]
+                                                    );
+                                                }}
+                                            >
+                                                <ArrowsRightLeftIcon className="h-4 w-4" />
+                                            </button>
+                                        </ModalButton>
                                     )}
                                 </div>
                             );
                         })}
+                    </ModalBody>
+                </div>
 
-                        <div className="modal-action">
-                            <form method="dialog">
-                                <button className="btn">Tutup</button>
-                            </form>
-                        </div>
-                    </div>
-                </dialog>
+                {/* Kick Member */}
+                <div className="text-left">
+                    <ModalBody
+                        headerText="Keluarkan Anggota"
+                        id={"kick_member_modal" + rowData.id}
+                        actionButton={
+                            <Link
+                                as="button"
+                                method="delete"
+                                className="btn btn-error"
+                                href={route("teams.kick", [
+                                    rowData.id,
+                                    kickedMember.id,
+                                ])}
+                            >
+                                Keluarkan
+                            </Link>
+                        }
+                    >
+                        Apakah Anda yakin mengeluarkan {kickedMember.name}?
+                    </ModalBody>
+                </div>
+
+                {/* Change Leader */}
+                <div className="text-left">
+                    <ModalBody
+                        headerText="Ganti Ketua"
+                        id={"change_leader_modal" + rowData.id}
+                        actionButton={
+                            <Link
+                                as="button"
+                                className="btn btn-warning"
+                                method="patch"
+                                href={route("teams.changeLeader", [
+                                    rowData.id,
+                                    changedLeader.id,
+                                ])}
+                            >
+                                Ganti
+                            </Link>
+                        }
+                    >
+                        Apakah Anda yakin mengganti {changedLeader.name} menjadi
+                        ketua tim?
+                    </ModalBody>
+                </div>
             </>
         );
     };
@@ -282,17 +357,20 @@ export default function ShowTeams({ auth, teams, flash, errors }) {
                                 header={"Hapus"}
                                 body={(rowData) => {
                                     return (
-                                        <Link
-                                            as="button"
-                                            method="delete"
-                                            href={route(
-                                                "teams.destroy",
-                                                rowData.id
-                                            )}
-                                            className="btn btn-error btn-square btn-sm mx-1"
+                                        <ModalButton
+                                            modalId={
+                                                "delete_team_modal" + randomKey
+                                            }
                                         >
-                                            <TrashIcon className="h-4 w-4" />
-                                        </Link>
+                                            <button
+                                                onClick={() => {
+                                                    setDeletedTeam(rowData);
+                                                }}
+                                                className="btn btn-error btn-square btn-sm mx-1"
+                                            >
+                                                <TrashIcon className="h-4 w-4" />
+                                            </button>
+                                        </ModalButton>
                                     );
                                 }}
                             />
@@ -300,6 +378,23 @@ export default function ShowTeams({ auth, teams, flash, errors }) {
                     </div>
                 </div>
             </AdminLayout>
+
+            <ModalBody
+                headerText="Hapus Tim"
+                id={"delete_team_modal" + randomKey}
+                actionButton={
+                    <Link
+                        as="button"
+                        method="delete"
+                        href={route("teams.destroy", deletedTeam.id)}
+                        className="btn btn-error"
+                    >
+                        Hapus
+                    </Link>
+                }
+            >
+                Apakah Anda yakin menghapus tim {deletedTeam.team_name}?
+            </ModalBody>
         </>
     );
 }

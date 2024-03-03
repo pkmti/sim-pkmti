@@ -18,9 +18,19 @@ import {
 import { Link, router, useForm } from "@inertiajs/react";
 import Toast from "@/Components/Toast";
 import { useIsObjectEmpty, useRandomInt, useTruncatedString } from "@/utils";
+import ModalButton from "@/Components/ModalButton";
+import ModalBody from "@/Components/ModalBody";
 
 export default function ShowProposals({ auth, proposals, flash, errors }) {
     const { user } = auth;
+
+    const randomKey = useRandomInt();
+    const [deletedProposal, setDeletedProposal] = useState({
+        id: 0,
+        title: "Judul Proposal PKM",
+        team_id: 0,
+        team_name: "PKM Team",
+    });
 
     // Select field that want to display
     const [selectedFields, setSelectedFields] = useState(
@@ -111,6 +121,37 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
         );
     };
 
+    const approveAction = (rowData) => {
+        return (
+            <>
+                <ModalButton modalId={"approve_proposal_modal" + rowData.id}>
+                    <button className="btn btn-success btn-square btn-sm mx-1">
+                        <CheckIcon className="h-4 w-4" />
+                    </button>
+                </ModalButton>
+                <div className="text-left">
+                    <ModalBody
+                        id={"approve_proposal_modal" + rowData.id}
+                        headerText="Setujui Proposal"
+                        actionButton={
+                            <Link
+                                as="button"
+                                method="patch"
+                                href={route("proposals.accept", rowData.id)}
+                                className="btn btn-success"
+                            >
+                                Setujui
+                            </Link>
+                        }
+                    >
+                        Apakah Anda yakin menyetujui proposal dengan judul "
+                        {useTruncatedString(rowData.title, 20)}"
+                    </ModalBody>
+                </div>
+            </>
+        );
+    };
+
     const rejectAction = (rowData) => {
         const { data, setData, patch, errors } = useForm({
             note: rowData.note,
@@ -127,30 +168,30 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
 
         return (
             <>
-                <button
-                    onClick={() =>
-                        document
-                            .getElementById(
-                                "reject_proposal_modal" + rowData.id
-                            )
-                            .showModal()
-                    }
-                    className="btn btn-error btn-square btn-sm mx-1"
-                >
-                    <XMarkIcon className="h-4 w-4" />
-                </button>
-                <dialog
-                    id={"reject_proposal_modal" + rowData.id}
-                    className="modal"
-                >
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg">Catatan</h3>
+                <ModalButton modalId={"reject_proposal_modal" + rowData.id}>
+                    <button className="btn btn-error btn-square btn-sm mx-1">
+                        <XMarkIcon className="h-4 w-4" />
+                    </button>
+                </ModalButton>
+                <div className="text-left">
+                    <ModalBody
+                        id={"reject_proposal_modal" + rowData.id}
+                        headerText="Tolak Proposal"
+                        actionButton={
+                            <button
+                                className="btn btn-error me-2"
+                                form={"reject_proposal_form" + rowData.id}
+                            >
+                                Tolak Proposal
+                            </button>
+                        }
+                    >
                         <form
                             onSubmit={submit}
                             id={"reject_proposal_form" + rowData.id}
                         >
-                            <div className="form-control my-4">
-                                <p className="py-4">
+                            <div className="form-control">
+                                <p className="mb-4">
                                     Mohon berikan catatan kesalahan!
                                 </p>
 
@@ -159,6 +200,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                     type="text"
                                     name="note"
                                     rows="3"
+                                    placeholder="Terdapat kesalahan pada ... "
                                     value={data.note}
                                     onChange={(e) =>
                                         setData("note", e.target.value)
@@ -173,19 +215,8 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 )}
                             </div>
                         </form>
-                        <div className="modal-action">
-                            <form method="dialog">
-                                <button
-                                    className="btn btn-error me-2"
-                                    form={"reject_proposal_form" + rowData.id}
-                                >
-                                    Tolak Proposal
-                                </button>
-                                <button className="btn">Batal</button>
-                            </form>
-                        </div>
-                    </div>
-                </dialog>
+                    </ModalBody>
+                </div>
             </>
         );
     };
@@ -193,25 +224,16 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
     const displayAssistanceProofs = (rowData) => {
         return (
             <>
-                <button
-                    onClick={() =>
-                        document
-                            .getElementById("proofs_modal" + rowData.id)
-                            .showModal()
-                    }
-                    className="btn btn-square btn-sm mx-1"
-                >
-                    <EllipsisHorizontalIcon className="h-4 w-4" />
-                </button>
-                <dialog id={"proofs_modal" + rowData.id} className="modal">
-                    <div className="modal-box text-left">
-                        <h3 className="font-bold text-lg mb-2">
-                            Bukti Asistensi
-                        </h3>
-                        <p className="mb-4">
-                            Daftar bukti asistensi {rowData.team_name}
-                        </p>
-
+                <ModalButton modalId={"assistance_proofs_modal" + rowData.id}>
+                    <button className="btn btn-square btn-sm mx-1">
+                        <EllipsisHorizontalIcon className="h-4 w-4" />
+                    </button>
+                </ModalButton>
+                <div className="text-left">
+                    <ModalBody
+                        headerText="Bukti Asistensi"
+                        id={"assistance_proofs_modal" + rowData.id}
+                    >
                         {rowData.assistance_proofs &&
                             rowData.assistance_proofs.map((proof, i) => {
                                 return (
@@ -252,13 +274,8 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                     </div>
                                 );
                             })}
-                        <div className="modal-action">
-                            <form method="dialog">
-                                <button className="btn">Tutup</button>
-                            </form>
-                        </div>
-                    </div>
-                </dialog>
+                    </ModalBody>
+                </div>
             </>
         );
     };
@@ -446,21 +463,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                             <Column
                                 header={"Setuju"}
                                 key="accept"
-                                body={(rowData) => {
-                                    return (
-                                        <Link
-                                            as="button"
-                                            method="patch"
-                                            href={route(
-                                                "proposals.accept",
-                                                rowData.id
-                                            )}
-                                            className="btn btn-success btn-square btn-sm mx-1"
-                                        >
-                                            <CheckIcon className="h-4 w-4" />
-                                        </Link>
-                                    );
-                                }}
+                                body={approveAction}
                             />
                             <Column
                                 key="reject"
@@ -477,17 +480,22 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 header={"Hapus"}
                                 body={(rowData) => {
                                     return (
-                                        <Link
-                                            as="button"
-                                            method="delete"
-                                            href={route(
-                                                "proposals.destroy",
-                                                rowData.team_id
-                                            )}
-                                            className="btn btn-error btn-square btn-sm mx-1"
+                                        <ModalButton
+                                            modalId={
+                                                "delete_proposal_modal" +
+                                                randomKey
+                                            }
                                         >
-                                            <TrashIcon className="h-4 w-4" />
-                                        </Link>
+                                            <button
+                                                onClick={() => {
+                                                    setDeletedProposal(rowData);
+                                                    console.log(rowData);
+                                                }}
+                                                className="btn btn-error btn-square btn-sm mx-1"
+                                            >
+                                                <TrashIcon className="h-4 w-4" />
+                                            </button>
+                                        </ModalButton>
                                     );
                                 }}
                             />
@@ -495,6 +503,27 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                     </div>
                 </div>
             </AdminLayout>
+
+            <ModalBody
+                headerText="Hapus Proposal"
+                id={"delete_proposal_modal" + randomKey}
+                actionButton={
+                    <Link
+                        as="button"
+                        method="delete"
+                        href={route("proposals.destroy", [
+                            deletedProposal.team_id,
+                            deletedProposal.id,
+                        ])}
+                        className="btn btn-error"
+                    >
+                        Hapus
+                    </Link>
+                }
+            >
+                Apakah Anda yakin menghapus tim{" "}
+                {useTruncatedString(deletedProposal.title, 20)}?
+            </ModalBody>
         </>
     );
 }

@@ -15,9 +15,13 @@ import {
 import { Link, router } from "@inertiajs/react";
 import Toast from "@/Components/Toast";
 import { useIsObjectEmpty, useRandomInt } from "@/utils";
+import ModalBody from "@/Components/ModalBody";
+import ModalButton from "@/Components/ModalButton";
 
 export default function Users({ auth, users, flash, errors }) {
     const { user } = auth;
+
+    const randomKey = useRandomInt();
 
     // Select field that want to display
     const [selectedFields, setSelectedFields] = useState(
@@ -86,6 +90,9 @@ export default function Users({ auth, users, flash, errors }) {
             </div>
         );
     };
+
+    // delete user
+    const [deletedUser, setDeletedUser] = useState({ id: 0, name: "John Doe" });
 
     return (
         <>
@@ -205,17 +212,20 @@ export default function Users({ auth, users, flash, errors }) {
                                 header={"Hapus"}
                                 body={(rowData) => {
                                     return (
-                                        <Link
-                                            as="button"
-                                            method="delete"
-                                            href={route(
-                                                "users.destroy",
-                                                rowData.id
-                                            )}
-                                            className="btn btn-error btn-square btn-sm mx-1"
+                                        <ModalButton
+                                            modalId={
+                                                "deleted_user_modal" + randomKey
+                                            }
                                         >
-                                            <TrashIcon className="h-4 w-4" />
-                                        </Link>
+                                            <button
+                                                onClick={() => {
+                                                    setDeletedUser(rowData);
+                                                }}
+                                                className="btn btn-error btn-square btn-sm mx-1"
+                                            >
+                                                <TrashIcon className="h-4 w-4" />
+                                            </button>
+                                        </ModalButton>
                                     );
                                 }}
                             ></Column>
@@ -223,6 +233,23 @@ export default function Users({ auth, users, flash, errors }) {
                     </div>
                 </div>
             </AdminLayout>
+
+            <ModalBody
+                id={"deleted_user_modal" + randomKey}
+                headerText="Hapus Pengguna"
+                actionButton={
+                    <Link
+                        as="button"
+                        method="delete"
+                        href={route("users.destroy", deletedUser.id)}
+                        className="btn btn-error"
+                    >
+                        Hapus
+                    </Link>
+                }
+            >
+                Apakah Anda yakin menhapus {deletedUser.name.split(" ")[0]}?
+            </ModalBody>
         </>
     );
 }

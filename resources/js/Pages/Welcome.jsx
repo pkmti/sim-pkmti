@@ -670,10 +670,7 @@ export default function Welcome({ auth }) {
                                                 22 Maret 2024
                                             </p>
                                         </td>
-                                        <td>
-                                            Pengumuman Tim Terdaftar Pengumuman
-                                            Tim Terdaftar
-                                        </td>
+                                        <td>Pengumuman Tim Terdaftar</td>
                                         <td>
                                             <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
                                                 {" "}
@@ -688,10 +685,7 @@ export default function Welcome({ auth }) {
                                                 23 Maret 2024
                                             </p>
                                         </td>
-                                        <td>
-                                            Pengumuman Tim Terdaftar Pengumuman
-                                            Tim Terdaftar
-                                        </td>
+                                        <td>Techincal Meeting Peserta</td>
                                         <td>
                                             <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
                                                 {" "}

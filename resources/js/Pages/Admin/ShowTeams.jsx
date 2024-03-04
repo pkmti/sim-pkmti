@@ -45,8 +45,6 @@ export default function ShowTeams({ auth, teams, flash, errors }) {
         })
     );
 
-    console.log(selectedFields);
-
     // Search
     const [filter, setFilter] = useState({
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },

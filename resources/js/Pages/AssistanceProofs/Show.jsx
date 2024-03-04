@@ -13,7 +13,6 @@ import Proof from "./Partials/Proof";
 export default function Show({ auth, proofs, flash }) {
     const { user } = auth;
 
-    console.log(proofs);
     return (
         <>
             {flash.msg && (

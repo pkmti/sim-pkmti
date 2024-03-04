@@ -489,7 +489,6 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                             <button
                                                 onClick={() => {
                                                     setDeletedProposal(rowData);
-                                                    console.log(rowData);
                                                 }}
                                                 className="btn btn-error btn-square btn-sm mx-1"
                                             >

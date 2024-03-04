@@ -9,7 +9,6 @@ import {
 
 export default function Dashboard({ auth, infos, flash }) {
     const { user } = auth;
-    console.log(infos);
 
     const displayedInfos = {
         hasTeam: {

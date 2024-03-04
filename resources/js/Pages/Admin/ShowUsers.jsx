@@ -51,7 +51,6 @@ export default function Users({ auth, users, flash, errors }) {
             ...prevFilter,
             global: { value, matchMode: FilterMatchMode.CONTAINS },
         }));
-        console.log(filter);
     };
 
     // Edit

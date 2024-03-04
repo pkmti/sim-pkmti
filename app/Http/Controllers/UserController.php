@@ -10,11 +10,6 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
     public function update(Request $request, string $id)
     {
         $selectedRequest = [

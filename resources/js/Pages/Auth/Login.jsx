@@ -84,7 +84,7 @@ export default function Login({ status, canResetPassword }) {
                                                     "password"
                                                 );
                                             x.type =
-                                                x.type === "password"
+                                                x.type == "password"
                                                     ? "text"
                                                     : "password";
                                         }}

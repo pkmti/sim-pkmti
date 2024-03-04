@@ -90,9 +90,9 @@ export default function Dashboard({ auth, infos, flash }) {
                 {icon[mode]}
                 <div>
                     <h3 className="font-bold">
-                        {mode === "success" && "Selesai"}
-                        {mode === "warning" && "Peringatan"}
-                        {mode === "error" && "Bahaya"}
+                        {mode == "success" && "Selesai"}
+                        {mode == "warning" && "Peringatan"}
+                        {mode == "error" && "Bahaya"}
                     </h3>
                     <div className="text-xs">{text}</div>
                 </div>

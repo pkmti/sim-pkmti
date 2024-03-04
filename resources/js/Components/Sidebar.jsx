@@ -90,19 +90,19 @@ export default function Sidebar({ user, navigations, children }) {
                                         onChange={handleTheme}
                                         className="hidden"
                                         checked={
-                                            theme === "light" ? false : true
+                                            theme == "light" ? false : true
                                         }
                                     />
                                     <SunIcon className="swap-on h-6 w-6" />
                                     <MoonIcon className="swap-off h-6 w-6" />
-                                    {theme === "light"
+                                    {theme == "light"
                                         ? "Mode Gelap"
                                         : "Mode Terang"}
                                 </label>
                             </li>
 
-                            {user.role === "admin" &&
-                                (location.pathname.search(/admin/) === -1 ? (
+                            {user.role == "admin" &&
+                                (location.pathname.search(/admin/) == -1 ? (
                                     <li className="my-2">
                                         <Link
                                             href={route("admin.dashboard")}

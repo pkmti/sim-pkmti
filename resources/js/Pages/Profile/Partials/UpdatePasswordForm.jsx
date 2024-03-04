@@ -91,7 +91,7 @@ export default function UpdatePasswordForm() {
                                                 "current_password"
                                             );
                                         x.type =
-                                            x.type === "password"
+                                            x.type == "password"
                                                 ? "text"
                                                 : "password";
                                     }}
@@ -129,7 +129,7 @@ export default function UpdatePasswordForm() {
                                         let x =
                                             document.getElementById("password");
                                         x.type =
-                                            x.type === "password"
+                                            x.type == "password"
                                                 ? "text"
                                                 : "password";
                                     }}
@@ -172,7 +172,7 @@ export default function UpdatePasswordForm() {
                                             "password_confirmation"
                                         );
                                         x.type =
-                                            x.type === "password"
+                                            x.type == "password"
                                                 ? "text"
                                                 : "password";
                                     }}

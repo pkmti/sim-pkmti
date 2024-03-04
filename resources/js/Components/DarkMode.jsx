@@ -29,7 +29,7 @@ export default function DarkMode({}) {
                         type="checkbox"
                         onChange={handleTheme}
                         className="hidden"
-                        checked={theme === "light" ? false : true}
+                        checked={theme == "light" ? false : true}
                     />
 
                     <SunIcon className="swap-on dark:text-yellow-400 text-white fill-current w-5 h-5" />

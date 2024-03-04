@@ -123,7 +123,7 @@ export default function TeamInformation({ user, team, lecturers }) {
                     </div>
                 </form>
 
-                {(user.id === team.leader_id || user.role === "admin") && (
+                {(user.id == team.leader_id || user.role == "admin") && (
                     <>
                         <ModalButton modalId="edit_team_modal">
                             <button className="btn btn-warning mb-2 w-full">
@@ -147,7 +147,7 @@ export default function TeamInformation({ user, team, lecturers }) {
                     </button>
                 </ModalButton>
 
-                {(user.id === team.leader_id || user.role === "admin") && (
+                {(user.id == team.leader_id || user.role == "admin") && (
                     <ModalButton modalId="destroy_team_modal">
                         <button className="btn btn-error mb-2 w-full">
                             <PowerIcon className="h-6 w-6" /> Bubarkan Tim
@@ -157,7 +157,7 @@ export default function TeamInformation({ user, team, lecturers }) {
             </div>
 
             {/* Modal */}
-            {(user.id === team.leader_id || user.role === "admin") && (
+            {(user.id == team.leader_id || user.role == "admin") && (
                 <>
                     <ModalBody
                         headerText="Edit Tim"
@@ -215,7 +215,7 @@ export default function TeamInformation({ user, team, lecturers }) {
                 Apakah Anda yakin untuk keluar dari tim {team.team_name}?
             </ModalBody>
 
-            {(user.id === team.leader_id || user.role === "admin") && (
+            {(user.id == team.leader_id || user.role == "admin") && (
                 <ModalBody
                     headerText="Bubarkan Tim"
                     id="destroy_team_modal"

@@ -120,11 +120,11 @@ export default function Welcome({ auth }) {
                                 <CalendarDaysIcon className="w-6 h-6 font-extrabold" />
                                 <div className="block">
                                     <span className="capitalize text-gray-400 font-normal text-sm md:text-base">
-                                        Date
+                                        Waktu
                                     </span>
 
                                     <p className="text-base md:text-sm font-light">
-                                        Minggu, 4 Februari 2024
+                                        Sabtu, 30 Maret 2024
                                     </p>
                                 </div>
                             </div>

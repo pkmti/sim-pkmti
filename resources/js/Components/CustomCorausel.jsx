@@ -12,13 +12,13 @@ function CustomCarousel({ children }) {
 
     const handlePrevClick = () => {
         setSelectedIndex(
-            selectedIndex === 0 ? totalItems - 1 : selectedIndex - 1
+            selectedIndex == 0 ? totalItems - 1 : selectedIndex - 1
         );
     };
 
     const handleNextClick = () => {
         setSelectedIndex(
-            selectedIndex === totalItems - 1 ? 0 : selectedIndex + 1
+            selectedIndex == totalItems - 1 ? 0 : selectedIndex + 1
         );
     };
 
@@ -42,14 +42,14 @@ function CustomCarousel({ children }) {
                 <button
                     className="btn btn-sm shadow-2xl rounded-lg"
                     onClick={handlePrevClick}
-                    disabled={selectedIndex === 0}
+                    disabled={selectedIndex == 0}
                 >
                     <ArrowLongLeftIcon className="w-6 h-6 font-black" />
                 </button>
                 <button
                     className="btn btn-sm shadow-2xl rounded-lg"
                     onClick={handleNextClick}
-                    disabled={selectedIndex === totalItems - 1}
+                    disabled={selectedIndex == totalItems - 1}
                 >
                     <ArrowLongRightIcon className="w-6 h-6 font-black" />
                 </button>

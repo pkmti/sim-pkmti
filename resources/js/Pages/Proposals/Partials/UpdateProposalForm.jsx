@@ -212,8 +212,8 @@ export default function UpdateProposalForm({ user, proposal }) {
                     </button>
                 </ModalButton>
 
-                {(user.id === proposal.team.leader_id ||
-                    user.role === "admin") && (
+                {(user.id == proposal.team.leader_id ||
+                    user.role == "admin") && (
                     <ModalButton modalId="delete_proposal_modal">
                         <button className="btn btn-error mb-2 w-full">
                             <TrashIcon className="h-6 w-6" /> Hapus Proposal

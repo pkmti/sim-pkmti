@@ -39,16 +39,18 @@ export default function Toast({ id, content }) {
     return (
         <div
             id={id}
-            className="toast lg:toast-top lg:toast-end toast-bottom toast-center z-50"
+            className="toast lg:toast-top lg:toast-end toast-bottom toast-center z-10"
         >
-            <div role="alert" className="alert alert-info">
+            <div role="alert" className="alert alert-info text-left flex">
                 <InformationCircleIcon className="h-6 w-6 hidden lg:block" />
 
-                <div className="me-10">
+                <div className="me-10 w-52">
                     <h3 className="font-bold text-left">Informasi</h3>
-                    <div className="text-xs text-left">{content}</div>
+                    <div className="text-xs text-left whitespace-pre-wrap">
+                        {content}
+                    </div>
                     <progress
-                        className="progress w-56 progress-secondary"
+                        className="progress w-56 progress-secondary hidden lg:inline-block"
                         value={progress}
                         max="100"
                     ></progress>

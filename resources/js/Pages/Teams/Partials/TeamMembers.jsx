@@ -25,7 +25,7 @@ export default function TeamMembers({ user, team }) {
                     <UserIcon className="h-6 w-6" />
                     <span className="font-bold">{team.members.length} / 5</span>
                 </div>
-                <div className="overflow-x-auto max-w-96">
+                <div className="overflow-x-auto lg:max-w-96">
                     <table className="table table-zebra mb-4 whitespace-nowrap">
                         <thead>
                             <tr>

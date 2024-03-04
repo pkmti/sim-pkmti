@@ -20,6 +20,6 @@ class EnsureUserHasNoTeam
 
         if (!$user->team_id) return $next($request);
         
-        return to_route('teams.show', $user->team_id)->with('msg', 'Kamu sudah memiliki tim');
+        return to_route('teams.show', $user->team_id)->with('msg', 'Anda sudah memiliki tim');
     }
 }

@@ -36,7 +36,10 @@ export default function Show({ auth, proofs, flash }) {
                     </div>
 
                     {proofs.length < 3 && (
-                        <div className="alert alert-info mb-4" role="alert">
+                        <div
+                            className="alert alert-info mb-4 text-left flex"
+                            role="alert"
+                        >
                             <InformationCircleIcon className="h-6 w-6" />
                             <div>
                                 <h3 className="font-bold">Catatan</h3>

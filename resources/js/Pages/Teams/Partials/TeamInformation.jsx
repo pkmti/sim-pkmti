@@ -95,7 +95,7 @@ export default function TeamInformation({ user, team, lecturers }) {
                                 readOnly
                             />
                             <div
-                                className="tooltip"
+                                className="tooltip join-item"
                                 data-tip={
                                     !wasCopied ? "Salin tautan" : "Tersalin"
                                 }

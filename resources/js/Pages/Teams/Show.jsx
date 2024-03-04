@@ -16,7 +16,7 @@ export default function Show({ auth, team, lecturers, flash }) {
                     id="team_information"
                 />
             )}
-            <div className="lg:flex lg:gap-10 lg:overflow-x-visible overflow-x-auto">
+            <div className="lg:flex lg:gap-10 lg:overflow-x-visible overflow-x-hidden">
                 <TeamInformation
                     user={user}
                     team={team}

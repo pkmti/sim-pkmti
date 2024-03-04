@@ -83,7 +83,10 @@ export default function Dashboard({ auth, infos, flash }) {
         <div className="alert alert-warning" role="alert"></div>;
 
         return (
-            <div className={`alert alert-${mode} mb-2`} role="alert">
+            <div
+                className={`alert alert-${mode} mb-2 text-left flex`}
+                role="alert"
+            >
                 {icon[mode]}
                 <div>
                     <h3 className="font-bold">

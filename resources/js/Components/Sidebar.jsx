@@ -49,7 +49,7 @@ export default function Sidebar({ user, navigations, children }) {
                         {children}
                     </div>
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side z-20">
                     <label
                         htmlFor="sidebar"
                         aria-label="close sidebar"

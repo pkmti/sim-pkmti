@@ -53,7 +53,10 @@ export default function UpdateProposalForm({ user, proposal }) {
 
                 <form onSubmit={submit} id="update_proposal_form">
                     {proposal.note && (
-                        <div className="alert alert-info" role="alert">
+                        <div
+                            className="alert alert-info text-left flex"
+                            role="alert"
+                        >
                             <InformationCircleIcon className="h-6 w-6" />
                             <div>
                                 <h3 className="font-bold">Catatan</h3>

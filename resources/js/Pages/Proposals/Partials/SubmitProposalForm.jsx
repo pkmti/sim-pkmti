@@ -21,7 +21,7 @@ export default function SubmitProposalForm() {
 
     return (
         <>
-            <div className="lg:w-1/2">
+            <div className="lg:w-1/2 md:w-3/4 w-full">
                 <DocumentIcon className="h-10 w-10 mb-4" />
                 <h3 className="font-bold text-xs mb-4">PROPOSAL</h3>
                 <form onSubmit={submit} id="submit_proposal_form">
@@ -73,7 +73,7 @@ export default function SubmitProposalForm() {
                 <ModalButton modalId="submit_proposal_modal">
                     <button className="btn btn-success w-full">
                         <DocumentArrowUpIcon className="h-6 w-6" />
-                        Ajukan Proposal
+                        Ajukan Judul
                     </button>
                 </ModalButton>
             </div>

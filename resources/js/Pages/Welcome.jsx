@@ -868,7 +868,7 @@ export default function Welcome({ auth }) {
                                             ngasih insight baru!!!”
                                         </p>
                                         <h3 className="capitalize text-xl text-primary font-bold mb-2">
-                                            Kepin
+                                            Kevin
                                         </h3>
                                         <p className="capitalize text-slate-400">
                                             mahasiswa aktif teknologi informasi

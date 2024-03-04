@@ -87,7 +87,7 @@ class TeamController extends Controller
             $pastTeam->update(['leader_id' =>  User::where('team_id', $teamId)->first()->id]);
         }
             
-        return to_route('dashboard')->with('msg', 'Kamu berhasil keluar dari tim');
+        return to_route('dashboard')->with('msg', 'Anda berhasil keluar dari tim');
     }
 
     public function kickMember($teamId, $userId)

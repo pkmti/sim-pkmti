@@ -314,7 +314,10 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                         </div>
                     </div>
                     {!useIsObjectEmpty(errors) && (
-                        <div className="alert alert-error mb-4" role="alert">
+                        <div
+                            className="alert alert-error mb-4 text-left flex"
+                            role="alert"
+                        >
                             <ExclamationTriangleIcon className="h-6 w-6" />
                             <div>
                                 <h3 className="font-bold">Kesalahan</h3>

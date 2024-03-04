@@ -29,7 +29,7 @@ use function Termwind\render;
 
 Route::get('/test-email', function () {
     $emailArgs = [
-        'email' => 'ptadityamahendrap@gmail.com',
+        'email' => 'bayurkp194@gmail.com',
         'subject' => 'Selamat Datang di PKM TI',
         'view' => 'emails.reject-proposal',
         'data' => [

@@ -71,7 +71,7 @@ export default function JoinTeam() {
                     </button>
                 }
             >
-                Apakah Anda yakin ingin membuat tim {data.team_name}?
+                Apakah Anda yakin ingin bergabung?
             </ModalBody>
         </>
     );

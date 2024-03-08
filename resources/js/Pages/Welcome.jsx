@@ -429,8 +429,7 @@ export default function Welcome({ auth }) {
                                     <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
                                         <div className="px-4">
                                             <p className="text-white opacity-100 text-lg font-bold leading-5">
-                                                “Tips Untuk Menyusun Proposal
-                                                PKM yang Sesuai!"
+                                                “Bedah Ide dan Judul PKM TI”
                                             </p>
                                             <div className="divider before:bg-white after:bg-white"></div>
                                             <div className="flex flex-col">
@@ -474,8 +473,7 @@ export default function Welcome({ auth }) {
                                     <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
                                         <div className="px-4">
                                             <p className="text-white opacity-100 text-lg font-bold leading-5">
-                                                “Tips and Trik Menyusun Proposal
-                                                PKM dengan Benar”
+                                                “Bedah Ide dan Judul PKM TI”
                                             </p>
                                             <div className="divider before:bg-white after:bg-white"></div>
                                             <div className="flex flex-col">
@@ -519,8 +517,8 @@ export default function Welcome({ auth }) {
                                     <div className="absolute w-64 h-80 inset-0 cursor-pointer bg-gradient-blue opacity-0 hover:opacity-100 rounded-lg transition-opacity flex justify-center items-center">
                                         <div className="px-4">
                                             <p className="text-white opacity-100 text-lg font-bold leading-5">
-                                                “Tips and Trik Membuat Proposal
-                                                PKM Lolos Pimnas 1”
+                                                “Tips dan Trik Membuat Proposal
+                                                PKM Lolos Pendanaan”
                                             </p>
                                             <div className="divider before:bg-white after:bg-white"></div>
                                             <div className="flex flex-col">
@@ -685,7 +683,7 @@ export default function Welcome({ auth }) {
                                                 23 Maret 2024
                                             </p>
                                         </td>
-                                        <td>Techincal Meeting Peserta</td>
+                                        <td>Technical Meeting Peserta</td>
                                         <td>
                                             <button className="btn btn-sm bg-green-600 hover:bg-green-700 text-white">
                                                 {" "}

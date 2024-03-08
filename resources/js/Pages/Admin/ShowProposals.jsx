@@ -23,6 +23,7 @@ import ModalBody from "@/Components/ModalBody";
 
 export default function ShowProposals({ auth, proposals, flash, errors }) {
     const { user } = auth;
+    console.log(proposals);
 
     const randomKey = useRandomInt();
     const [deletedProposal, setDeletedProposal] = useState({
@@ -44,6 +45,8 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                 lecturer: proposal.team.lecturer
                     ? proposal.team.lecturer.name
                     : "",
+                leader_nim: proposal.team.leader.nim,
+                leader_name: proposal.team.leader.name,
                 scheme: proposal.scheme,
                 draft_proposal_url: proposal.draft_proposal_url,
                 final_proposal_url: proposal.final_proposal_url,
@@ -250,6 +253,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                                 {proof.assistance_date}
                                             </p>
                                             <a
+                                                target="_blank"
                                                 href={proof.proof_url}
                                                 className="font-bold text-sm"
                                             >
@@ -378,6 +382,12 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 sortable
                             />
                             <Column
+                                key="team_name"
+                                field="team_name"
+                                header={<span className="me-2">Nama Tim</span>}
+                                sortable
+                            />
+                            <Column
                                 key="lecturer"
                                 field="lecturer"
                                 header={
@@ -388,9 +398,17 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                 sortable
                             />
                             <Column
-                                key="team_name"
-                                field="team_name"
-                                header={<span className="me-2">Nama Tim</span>}
+                                key="leader_name"
+                                field="leader_name"
+                                header={
+                                    <span className="me-2">Nama Ketua</span>
+                                }
+                                sortable
+                            />
+                            <Column
+                                key="leader_nim"
+                                field="leader_nim"
+                                header={<span className="me-2">NIM Ketua</span>}
                                 sortable
                             />
                             <Column
@@ -410,6 +428,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                     return (
                                         rowData.draft_proposal_url && (
                                             <a
+                                                target="_blank"
                                                 href={
                                                     rowData.draft_proposal_url
                                                 }
@@ -431,6 +450,7 @@ export default function ShowProposals({ auth, proposals, flash, errors }) {
                                     return (
                                         rowData.final_proposal_url && (
                                             <a
+                                                target="_blank"
                                                 href={
                                                     rowData.final_proposal_url
                                                 }

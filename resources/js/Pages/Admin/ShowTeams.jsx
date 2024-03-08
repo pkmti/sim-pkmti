@@ -40,6 +40,11 @@ export default function ShowTeams({ auth, teams, flash, errors }) {
                 leader_nim: team.leader ? team.leader.nim : "",
                 lecturer: team.lecturer ? team.lecturer.name : "",
                 members: team.members,
+                members_count: team.members.length,
+                members_list: team.members
+                    .filter((member) => member.id != team.leader.id)
+                    .map((member) => `${member.nim} - ${member.name}`)
+                    .join(","),
                 token: team.token,
             };
         })

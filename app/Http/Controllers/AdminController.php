@@ -35,7 +35,7 @@ class AdminController extends Controller
     }
 
     public function showProposals() {
-        $proposals = Proposal::with('team', 'team.assistanceProofs', 'team.lecturer')->get();
+        $proposals = Proposal::with('team', 'team.leader', 'team.assistanceProofs', 'team.lecturer')->get();
 
         return Inertia::render('Admin/ShowProposals', compact('proposals'));
     }

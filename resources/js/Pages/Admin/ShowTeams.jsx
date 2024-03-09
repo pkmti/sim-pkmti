@@ -43,8 +43,11 @@ export default function ShowTeams({ auth, teams, flash, errors }) {
                 members_count: team.members.length,
                 members_list: team.members
                     .filter((member) => member.id != team.leader.id)
-                    .map((member) => `${member.nim} - ${member.name}`)
-                    .join(","),
+                    .map(
+                        (member) =>
+                            `${member.nim},${member.name},${member.line_id}`
+                    )
+                    .join(";"),
                 token: team.token,
             };
         })

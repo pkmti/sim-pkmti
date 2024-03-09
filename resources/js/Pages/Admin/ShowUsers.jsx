@@ -203,6 +203,13 @@ export default function Users({ auth, users, flash, errors }) {
                                 sortable
                             />
                             <Column
+                                editor={(rowData) => textEditor(rowData)}
+                                key="line_id"
+                                field="line_id"
+                                header={<span className="me-2">ID Line</span>}
+                                sortable
+                            />
+                            <Column
                                 key="status"
                                 field="status"
                                 body={statusBadge}

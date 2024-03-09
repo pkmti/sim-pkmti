@@ -212,8 +212,7 @@
                   line-height: 25px;
                 ">
               <p style="color: white">
-                PKM TI 2024<br />
-                Grow Up The Passion, Change The Vision
+                PKM TI 2024
               </p>
               <div class="flex flex-row gap-6">
                 <a href="https://www.facebook.com/ITCC.Udayana" target="_blank" class="p-2 rounded-xl text-white"><svg

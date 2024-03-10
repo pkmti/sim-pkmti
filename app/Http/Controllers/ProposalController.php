@@ -107,7 +107,7 @@ class ProposalController extends Controller
         // send email to team leader
         $proposalTitle = Proposal::find($proposalId)->title;
         $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
-        $leader = User::find($leaderId)->first();
+        $leader = User::find($leaderId);
         $emailArgs = [
             'email' => $leader->email,
             'subject' => 'Selamat! Proposal PKM Kalian Telah Disetujui! 🎉',
@@ -139,7 +139,7 @@ class ProposalController extends Controller
         // send email to team leader
         $proposalTitle = Proposal::find($proposalId)->title;
         $leaderId = Proposal::with('team')->find($proposalId)->team->leader_id;
-        $leader = User::find($leaderId)->first();
+        $leader = User::find($leaderId);
         $emailArgs = [
             'email' => $leader->email,
             'subject' => 'Yuk, Semangat! Proposal PKM Kalian Masih Bisa Direvisi! 💪',
